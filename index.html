@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HackStark is a cybersecurity learning and open-source community covering ethical hacking, penetration testing, IoT security, network security, OSINT, Linux and practical security research.">
+  <meta name="theme-color" content="#100d0c">
+  <meta name="color-scheme" content="dark light">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>HackStark | Cybersecurity Education, Ethical Hacking &amp; Open Source</title>
+
+  <!-- SITE_URL: replaced with the verified deployment origin before publishing. -->
+  <link rel="canonical" href="https://hackstark.ahmedtalha470.chatgpt.site/">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="512x512">
+  <link rel="manifest" href="site.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HackStark">
+  <meta property="og:title" content="HackStark | Learn. Secure. Innovate.">
+  <meta property="og:description" content="Practical cybersecurity education, ethical hacking, open-source projects and responsible security research.">
+  <meta property="og:url" content="https://hackstark.ahmedtalha470.chatgpt.site/">
+  <meta property="og:image" content="https://hackstark.ahmedtalha470.chatgpt.site/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HackStark — Learn. Secure. Innovate.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HackStark | Learn. Secure. Innovate.">
+  <meta name="twitter:description" content="Cybersecurity education, ethical hacking and open-source security research.">
+  <meta name="twitter:image" content="https://hackstark.ahmedtalha470.chatgpt.site/og.png">
+
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#organization",
+        "name": "HackStark",
+        "url": "https://hackstark.ahmedtalha470.chatgpt.site/",
+        "email": "hackstarkofficial@gmail.com",
+        "description": "A cybersecurity learning and open-source community focused on practical, ethical and responsible security education.",
+        "founder": { "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#founder" },
+        "sameAs": [
+          "https://github.com/hackstarkofficial",
+          "https://www.youtube.com/@hackstark8829",
+          "https://facebook.com/hackstarkk/",
+          "https://t.me/hackstarkofficial"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#website",
+        "url": "https://hackstark.ahmedtalha470.chatgpt.site/",
+        "name": "HackStark",
+        "publisher": { "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#organization" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#founder",
+        "name": "Muhammad Ahmed Talha",
+        "jobTitle": "Founder & CEO — HackStark",
+        "url": "https://talha.dpdns.org/",
+        "sameAs": ["https://linkedin.com/in/ahmedtalha470"]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Reusable icon symbols -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13Z"/><path d="M4 19.5v-13M8 8h8M8 12h6"/></symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24"><path d="M15 4h5v5M20 4l-9 9"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7.4A5.8 5.8 0 0 0 19.3 3 5.4 5.4 0 0 0 19.1.1S17.9-.3 15 1.6a13.4 13.4 0 0 0-6 0C6.1-.3 4.9.1 4.9.1A5.4 5.4 0 0 0 4.7 3a5.8 5.8 0 0 0-1.5 4.1c0 5.8 3.5 7 6.8 7.4A4.8 4.8 0 0 0 9 18v4"/><path d="M9 19c-3 .9-3-1.5-4-2"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></symbol>
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a3 3 0 0 1 6 0v4M12 10v7"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A8.4 8.4 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></symbol>
+    <symbol id="icon-network" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="m7 7 4 9M17 7l-4 9M7 6h10"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4V8Z"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="icon-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.3 8.4-8 10-4.7-1.6-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-5"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="icon-telegram" viewBox="0 0 24 24"><path d="m21 4-3 16-6-4-3 3v-5l8-7-10 6-4-2 18-7Z"/></symbol>
+    <symbol id="icon-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+    <symbol id="icon-wifi" viewBox="0 0 24 24"><path d="M4 10a12 12 0 0 1 16 0M7 13a8 8 0 0 1 10 0M10 16a4 4 0 0 1 4 0"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4 4 20"/></symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24"><path d="M21 12s0-4-1-5-3-1-8-1-7 0-8 1-1 5-1 5 0 4 1 5 3 1 8 1 7 0 8-1 1-5 1-5Z"/><path d="m10 9 5 3-5 3V9Z"/></symbol>
+  </svg>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="HackStark home">
+        <span class="brand-mark" aria-hidden="true"><img src="hackstark-icon.png" width="36" height="36" alt=""></span>
+        <span>Hack<span>Stark</span></span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#home" class="is-active">Home</a>
+        <a href="#about">About</a>
+        <a href="#focus">Focus Areas</a>
+        <a href="#projects">Projects</a>
+        <a href="#learn">Learn</a>
+        <a href="#founder">Founder</a>
+        <a href="#community">Community</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Change color theme">
+          <svg class="theme-icon theme-icon--sun" aria-hidden="true"><use href="#icon-sun"></use></svg>
+          <svg class="theme-icon theme-icon--moon" aria-hidden="true"><use href="#icon-moon"></use></svg>
+        </button>
+        <a class="button button--small button--primary header-cta" href="#contact">Join Community</a>
+        <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+          <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-menu" aria-label="Mobile navigation" hidden>
+      <div class="mobile-nav__inner">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#focus">Focus Areas</a>
+        <a href="#projects">Projects</a>
+        <a href="#learn">Learn</a>
+        <a href="#founder">Founder</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero section" id="home" aria-labelledby="hero-heading">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow--one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Cybersecurity • Education • Open Source</p>
+          <h1 id="hero-heading">Learn cybersecurity.<br>Build skills. <em>Defend better.</em></h1>
+          <p class="hero-description">HackStark is a learning and open-source community making ethical hacking, network defense, IoT security, OSINT and responsible security research practical and accessible.</p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="#learn">Explore Resources <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            <a class="button button--ghost" href="https://github.com/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="github"><svg aria-hidden="true"><use href="#icon-github"></use></svg> View GitHub</a>
+          </div>
+          <a class="text-link hero-text-link" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube">Watch practical tutorials <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+        </div>
+
+        <div class="hero-visual" role="img" aria-label="A diagram showing HackStark's responsible cybersecurity learning process">
+          <div class="visual-topline">
+            <span class="status-pill"><span></span> Authorized learning environment</span>
+            <span class="mono-label">HS / 01</span>
+          </div>
+          <div class="security-core">
+            <div class="core-rings" aria-hidden="true"></div>
+            <div class="core-shield"><img src="hackstark-icon.png" width="64" height="64" alt=""></div>
+            <div class="core-copy">
+              <span>Security mindset</span>
+              <strong>Learn → Validate → Defend</strong>
+            </div>
+          </div>
+          <div class="learning-path" aria-hidden="true">
+            <div class="path-line"></div>
+            <div class="path-step is-complete"><span>01</span><strong>Understand</strong><small>Concept &amp; scope</small></div>
+            <div class="path-step is-current"><span>02</span><strong>Practice</strong><small>Controlled lab</small></div>
+            <div class="path-step"><span>03</span><strong>Harden</strong><small>Defensive action</small></div>
+          </div>
+          <div class="visual-footer">
+            <span><svg aria-hidden="true"><use href="#icon-lock"></use></svg> Permission first</span>
+            <span><svg aria-hidden="true"><use href="#icon-book"></use></svg> Knowledge shared</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="HackStark learning pillars">
+      <div class="container trust-grid">
+        <div><span>01</span> Open-source projects</div>
+        <div><span>02</span> Practical tutorials</div>
+        <div><span>03</span> Ethical security research</div>
+        <div><span>04</span> Community learning</div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section--roomy" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-intro section-intro--split reveal">
+          <div>
+            <p class="eyebrow"><span></span> Who we are</p>
+            <h2 id="about-heading">Cybersecurity knowledge through <em>practice.</em></h2>
+          </div>
+          <div class="section-copy">
+            <p>HackStark is an independent cybersecurity learning community that turns technical security concepts into clear, practical education through demonstrations, tutorials, open-source projects and responsible research.</p>
+            <p>We explore ethical hacking, network reconnaissance, Linux security, IoT, OSINT, vulnerability assessment, security automation and defensive cybersecurity—with authorization and responsible use at the center.</p>
+          </div>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle-card reveal">
+            <span class="card-index">01</span>
+            <div class="icon-box"><svg aria-hidden="true"><use href="#icon-book"></use></svg></div>
+            <h3>Learn</h3>
+            <p>Turn complex cybersecurity ideas into understandable, practical learning.</p>
+          </article>
+          <article class="principle-card reveal">
+            <span class="card-index">02</span>
+            <div class="icon-box"><svg aria-hidden="true"><use href="#icon-code"></use></svg></div>
+            <h3>Build</h3>
+            <p>Create tools, labs and open-source projects that reinforce technical skills.</p>
+          </article>
+          <article class="principle-card reveal">
+            <span class="card-index">03</span>
+            <div class="icon-box"><svg aria-hidden="true"><use href="#icon-shield"></use></svg></div>
+            <h3>Secure</h3>
+            <p>Promote defensive thinking, authorized testing and responsible practice.</p>
+          </article>
+          <article class="principle-card reveal">
+            <span class="card-index">04</span>
+            <div class="icon-box"><svg aria-hidden="true"><use href="#icon-network"></use></svg></div>
+            <h3>Share</h3>
+            <p>Grow skills together through accessible resources and open knowledge.</p>
+          </article>
+        </div>
+
+        <div class="mission-panel reveal">
+          <div class="mission-emblem" aria-hidden="true"><span>HS</span></div>
+          <div class="mission-main">
+            <p class="eyebrow eyebrow--light"><span></span> Our mission</p>
+            <h3>Move beyond theory.</h3>
+            <p>Help cybersecurity learners build practical, responsible and accessible skills through authorized experimentation, ethical conduct, defensive thinking and continuous learning.</p>
+          </div>
+          <div class="mission-vision">
+            <span class="mono-label">Vision / 2026+</span>
+            <p>Build a technically skilled community capable of understanding modern cyber threats and creating safer digital environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Focus Areas -->
+    <section class="section section--tinted" id="focus" aria-labelledby="focus-heading">
+      <div class="container">
+        <div class="section-intro reveal">
+          <p class="eyebrow"><span></span> What we explore</p>
+          <h2 id="focus-heading">Core focus areas</h2>
+          <p>Skills and disciplines for understanding systems, assessing risk and building stronger defenses.</p>
+        </div>
+
+        <div class="focus-grid">
+          <article class="focus-card reveal">
+            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-shield"></use></svg></div><span>01</span></div>
+            <h3>Ethical Hacking &amp; Penetration Testing</h3>
+            <p>Authorized testing methodology, reconnaissance and vulnerability validation in controlled environments.</p>
+            <ul class="mini-list"><li>Methodology</li><li>Vulnerability assessment</li></ul>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-network"></use></svg></div><span>02</span></div>
+            <h3>Network Security</h3>
+            <p>Network discovery, infrastructure security, protocol analysis and defensive monitoring.</p>
+            <ul class="mini-list"><li>Nmap</li><li>Protocol analysis</li></ul>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-wifi"></use></svg></div><span>03</span></div>
+            <h3>IoT &amp; Wireless Security</h3>
+            <p>Embedded devices, wireless networks and authorized IoT security assessment.</p>
+            <ul class="mini-list"><li>Wireless labs</li><li>Device security</li></ul>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-search"></use></svg></div><span>04</span></div>
+            <h3>OSINT &amp; Reconnaissance</h3>
+            <p>Responsible collection and analysis of publicly available information.</p>
+            <ul class="mini-list"><li>Footprinting</li><li>Open-source intelligence</li></ul>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-code"></use></svg></div><span>05</span></div>
+            <h3>Security Automation</h3>
+            <p>Python and scripting for reconnaissance, network analysis and repeatable security workflows.</p>
+            <ul class="mini-list"><li>Python</li><li>Workflow automation</li></ul>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-terminal"></use></svg></div><span>06</span></div>
+            <h3>Linux &amp; Security Labs</h3>
+            <p>Kali Linux, virtualization, security tooling and controlled laboratory exercises.</p>
+            <ul class="mini-list"><li>Linux</li><li>Virtual labs</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open-source Projects -->
+    <section class="section section--roomy" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header-row reveal">
+          <div class="section-intro">
+            <p class="eyebrow"><span></span> Built in the open</p>
+            <h2 id="projects-heading">Open-source projects</h2>
+            <p>Explore HackStark's public repositories and educational security projects.</p>
+          </div>
+          <a class="text-link text-link--strong" href="https://github.com/hackstarkofficial?tab=repositories" target="_blank" rel="noopener noreferrer" data-social="github">All repositories <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+        </div>
+
+        <div class="filter-bar reveal" role="group" aria-label="Filter projects by category">
+          <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-button" data-filter="cybersecurity" aria-pressed="false">Cybersecurity</button>
+          <button type="button" class="filter-button" data-filter="linux" aria-pressed="false">Linux</button>
+          <button type="button" class="filter-button" data-filter="programming" aria-pressed="false">Programming</button>
+          <button type="button" class="filter-button" data-filter="cryptography" aria-pressed="false">Cryptography</button>
+        </div>
+        <p class="sr-only" id="project-filter-status" aria-live="polite"></p>
+
+        <div class="projects-grid" id="project-grid">
+          <article class="project-card reveal" data-category="linux" data-repository="FastestRepositoryForKali">
+            <div class="project-card__head">
+              <span class="project-icon"><svg aria-hidden="true"><use href="#icon-server"></use></svg></span>
+              <span class="repo-visibility">Public repository</span>
+            </div>
+            <h3>FastestRepositoryForKali</h3>
+            <p>Kali Linux repository configuration resource designed to help users configure efficient package sources.</p>
+            <ul class="tag-list"><li>Kali Linux</li><li>Repository config</li></ul>
+            <div class="repo-meta" aria-label="Repository metadata"><span data-repo-language>Configuration</span><span data-repo-updated>GitHub project</span></div>
+            <a class="card-link" href="https://github.com/hackstarkofficial/FastestRepositoryForKali" target="_blank" rel="noopener noreferrer">View repository <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </article>
+
+          <article class="project-card reveal" data-category="linux" data-repository="fastrepo4kali">
+            <div class="project-card__head">
+              <span class="project-icon"><svg aria-hidden="true"><use href="#icon-terminal"></use></svg></span>
+              <span class="repo-visibility">Public repository</span>
+            </div>
+            <h3>fastrepo4kali</h3>
+            <p>Repository configuration utility for optimizing Kali Linux package repository setup.</p>
+            <ul class="tag-list"><li>Linux</li><li>System config</li></ul>
+            <div class="repo-meta" aria-label="Repository metadata"><span data-repo-language>Configuration</span><span data-repo-updated>GitHub project</span></div>
+            <a class="card-link" href="https://github.com/hackstarkofficial/fastrepo4kali" target="_blank" rel="noopener noreferrer">View repository <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </article>
+
+          <article class="project-card reveal" data-category="programming" data-repository="C-Plus-Plus-Basic-Structure-Cheat-Sheet">
+            <div class="project-card__head">
+              <span class="project-icon"><svg aria-hidden="true"><use href="#icon-code"></use></svg></span>
+              <span class="repo-visibility">Learning resource</span>
+            </div>
+            <h3>C++ Basic Structure Cheat Sheet</h3>
+            <p>A concise C++ basic structure and syntax reference created for new programmers.</p>
+            <ul class="tag-list"><li>C++</li><li>Programming</li></ul>
+            <div class="repo-meta" aria-label="Repository metadata"><span data-repo-language>C++</span><span data-repo-updated>GitHub project</span></div>
+            <a class="card-link" href="https://github.com/hackstarkofficial/C-Plus-Plus-Basic-Structure-Cheat-Sheet" target="_blank" rel="noopener noreferrer">View resource <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </article>
+
+          <article class="project-card project-card--research reveal" data-category="cybersecurity programming" data-repository="slowlorisdos">
+            <div class="project-card__head">
+              <span class="project-icon"><svg aria-hidden="true"><use href="#icon-shield"></use></svg></span>
+              <span class="safety-label"><svg aria-hidden="true"><use href="#icon-lock"></use></svg> Lab only</span>
+            </div>
+            <h3>slowlorisdos</h3>
+            <p>Controlled-lab security research for understanding slow HTTP connection behavior and web-server resilience.</p>
+            <p class="responsibility-note">Authorized laboratory research only.</p>
+            <ul class="tag-list"><li>Python</li><li>Defensive research</li></ul>
+            <div class="repo-meta" aria-label="Repository metadata"><span data-repo-language>Python</span><span data-repo-updated>GitHub project</span></div>
+            <a class="card-link" href="https://github.com/hackstarkofficial/slowlorisdos" target="_blank" rel="noopener noreferrer">View research repository <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </article>
+
+          <article class="project-card reveal" data-category="cryptography programming" data-repository="SubstitutionCipher">
+            <div class="project-card__head">
+              <span class="project-icon"><svg aria-hidden="true"><use href="#icon-lock"></use></svg></span>
+              <span class="repo-visibility">Education</span>
+            </div>
+            <h3>SubstitutionCipher</h3>
+            <p>Educational Python implementation demonstrating classical substitution-cipher concepts.</p>
+            <ul class="tag-list"><li>Python</li><li>Cryptography</li></ul>
+            <div class="repo-meta" aria-label="Repository metadata"><span data-repo-language>Python</span><span data-repo-updated>GitHub project</span></div>
+            <a class="card-link" href="https://github.com/hackstarkofficial/SubstitutionCipher" target="_blank" rel="noopener noreferrer">View repository <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </article>
+
+          <aside class="projects-note reveal" aria-label="Open-source note">
+            <span class="mono-label">Open knowledge / Responsible use</span>
+            <blockquote>"Read the code. Understand the concept. Practice with permission."</blockquote>
+            <a href="#responsible-security">Our responsible-use principles <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </aside>
+        </div>
+        <p class="repo-data-note" id="repo-data-note">Static project information is always available. Current public metadata may be added from GitHub when your connection allows.</p>
+      </div>
+    </section>
+
+    <!-- Learning Section -->
+    <section class="section academy" id="learn" aria-labelledby="learn-heading">
+      <div class="academy-grid" aria-hidden="true"></div>
+      <div class="container">
+        <div class="academy-header reveal">
+          <div class="section-intro">
+            <p class="eyebrow eyebrow--light"><span></span> HackStark Academy</p>
+            <h2 id="learn-heading">Learn through practical <em>demonstrations.</em></h2>
+            <p>Guided security concepts and lab-first walkthroughs designed to help learners understand the why—not just repeat the steps.</p>
+          </div>
+          <a class="button button--light" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube"><svg aria-hidden="true"><use href="#icon-youtube"></use></svg> View all tutorials</a>
+        </div>
+
+        <div class="video-grid" id="video-grid">
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=TJVNQ2dNxQo" target="_blank" rel="noopener noreferrer" aria-label="Watch NMAP Network Scanning Demo on YouTube">
+              <img src="https://i.ytimg.com/vi/TJVNQ2dNxQo/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for NMAP network scanning demonstration">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">01</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Network security</span><h3>NMAP Network Scanning Demo</h3><p>Host discovery, ping scanning and open-port identification with Nmap.</p></div>
+          </article>
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=x6ICJDVH1Xw" target="_blank" rel="noopener noreferrer" aria-label="Watch XSS Reflected Attack Demonstration on YouTube">
+              <img src="https://i.ytimg.com/vi/x6ICJDVH1Xw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for reflected XSS security demonstration">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">02</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Web security</span><h3>XSS Reflected Attack Demonstration</h3><p>Reflected XSS concepts in controlled and authorized environments.</p><span class="video-safety">Educational security testing only.</span></div>
+          </article>
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=8nZfCiw-WyI" target="_blank" rel="noopener noreferrer" aria-label="Watch SpiderFoot OSINT tutorial on YouTube">
+              <img src="https://i.ytimg.com/vi/8nZfCiw-WyI/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for SpiderFoot OSINT tutorial">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">03</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">OSINT</span><h3>SpiderFoot OSINT</h3><p>An introduction to OSINT automation and reconnaissance with SpiderFoot.</p></div>
+          </article>
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=fncTkUqhrNQ" target="_blank" rel="noopener noreferrer" aria-label="Watch Enumeration and Footprinting tutorial on YouTube">
+              <img src="https://i.ytimg.com/vi/fncTkUqhrNQ/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for enumeration and footprinting tutorial">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">04</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Reconnaissance</span><h3>Enumeration &amp; Footprinting</h3><p>The role of enumeration and footprinting in authorized assessments.</p></div>
+          </article>
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=hEsuzIZyMdA" target="_blank" rel="noopener noreferrer" aria-label="Watch Network Scanning tutorial on YouTube">
+              <img src="https://i.ytimg.com/vi/hEsuzIZyMdA/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for foundational network scanning tutorial">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">05</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Network security</span><h3>Network Scanning</h3><p>Foundational scanning concepts and practical security reconnaissance.</p></div>
+          </article>
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=6pd9O3o7og0" target="_blank" rel="noopener noreferrer" aria-label="Watch Information Gathering tutorial on YouTube">
+              <img src="https://i.ytimg.com/vi/6pd9O3o7og0/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for ethical information gathering tutorial">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">06</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Ethical hacking</span><h3>Information Gathering</h3><p>Information gathering within an ethical penetration-testing workflow.</p></div>
+          </article>
+          <article class="video-card video-card--more reveal" hidden>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=xTstJNBFTwU" target="_blank" rel="noopener noreferrer" aria-label="Watch Introduction to Ethical Hacking on YouTube">
+              <img src="https://i.ytimg.com/vi/xTstJNBFTwU/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for introduction to ethical hacking">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">07</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Foundations</span><h3>Introduction to Ethical Hacking</h3><p>Responsible testing and core security concepts for beginners.</p></div>
+          </article>
+          <article class="video-card video-card--more reveal" hidden>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=Z9Hs6R5t4Eg" target="_blank" rel="noopener noreferrer" aria-label="Watch Kali Linux Repository and Root User Setup on YouTube">
+              <img src="https://i.ytimg.com/vi/Z9Hs6R5t4Eg/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for Kali Linux repository setup tutorial">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">08</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Kali Linux</span><h3>Kali Repository &amp; Root User Setup</h3><p>Package repository and administrative environment concepts.</p></div>
+          </article>
+          <article class="video-card video-card--more reveal" hidden>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=7Tl3fexB3yk" target="_blank" rel="noopener noreferrer" aria-label="Watch Install Kali Linux on VMware on YouTube">
+              <img src="https://i.ytimg.com/vi/7Tl3fexB3yk/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for installing Kali Linux on VMware">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">09</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Security labs</span><h3>Install Kali Linux on VMware</h3><p>Build a virtualized cybersecurity learning laboratory step by step.</p></div>
+          </article>
+          <article class="video-card video-card--more reveal" hidden>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer" aria-label="Watch Introduction to Ethical Hacking Course on YouTube">
+              <img src="https://i.ytimg.com/vi/YnGy6A-ZPtE/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for HackStark ethical hacking course introduction">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">10</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Course</span><h3>Introduction to Ethical Hacking Course</h3><p>An introduction to HackStark's ethical hacking learning series.</p></div>
+          </article>
+        </div>
+        <div class="show-more-wrap"><button class="button button--outline-light" type="button" id="show-more-videos" aria-expanded="false">Show 4 more lessons <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
+      </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="section section--roomy" id="founder" aria-labelledby="founder-heading">
+      <div class="container founder-layout">
+        <div class="founder-portrait reveal">
+          <div class="portrait-frame">
+            <img src="muhammad-ahmed-talha.webp" width="640" height="703" loading="lazy" decoding="async" alt="Muhammad Ahmed Talha, Founder and CEO of HackStark">
+            <div class="portrait-fallback" aria-hidden="true"><span>MAT</span></div>
+            <span class="portrait-label">Founder / Lead</span>
+          </div>
+          <div class="founder-signal"><span></span><p><strong>4+ years</strong> cybersecurity &amp; IT experience</p></div>
+        </div>
+
+        <div class="founder-copy reveal">
+          <p class="eyebrow"><span></span> Founder &amp; lead</p>
+          <h2 id="founder-heading">Meet the founder</h2>
+          <p class="founder-name">Muhammad Ahmed Talha</p>
+          <p class="founder-role">Founder &amp; CEO — HackStark <span>•</span> Cybersecurity &amp; IT Infrastructure Professional</p>
+          <p>Muhammad Ahmed Talha has 4+ years of hands-on experience across penetration testing, Red Team operations, vulnerability assessment, network and systems administration, security education and open-source tool development.</p>
+          <p>He holds a BS in Cyber Security from The Islamia University of Bahawalpur, RYK Campus (2020–2024). Most recently, he served as IT Assistant Manager at Toyota Royal Motors from March 2025 to August 2026.</p>
+          <p>In August 2026, he was invited as a Cyber Security Panelist and Speaker at the BZU Multan CIT Conference, discussing AI-enhanced threats, quantum-computing risk and stronger human cyber defenses.</p>
+
+          <div class="founder-highlights" aria-label="Founder highlights">
+            <div><strong>3,000+</strong><span>Students trained</span></div>
+            <div><strong>10+</strong><span>Security tools &amp; projects</span></div>
+            <div><strong>2026</strong><span>BZU Multan panelist</span></div>
+          </div>
+          <div class="founder-actions">
+            <a class="button button--primary" href="https://talha.dpdns.org/" target="_blank" rel="noopener noreferrer">View founder portfolio <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+            <a class="button button--ghost" href="https://linkedin.com/in/ahmedtalha470" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-linkedin"></use></svg> Connect on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="section section--tinted" id="community" aria-labelledby="community-heading">
+      <div class="container">
+        <div class="section-intro section-intro--center reveal">
+          <p class="eyebrow"><span></span> Join the community</p>
+          <h2 id="community-heading">Learn, build &amp; connect</h2>
+          <p>Choose the channel that fits how you learn—from source code and practical videos to discussion and updates.</p>
+        </div>
+
+        <div class="community-grid">
+          <a class="community-card reveal" href="https://github.com/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="github">
+            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-github"></use></svg></span><span><strong>GitHub</strong><small>Explore open-source projects</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
+          <a class="community-card reveal" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube">
+            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-youtube"></use></svg></span><span><strong>YouTube</strong><small>Watch practical tutorials</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
+          <a class="community-card reveal" href="https://t.me/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="telegramChannel">
+            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-telegram"></use></svg></span><span><strong>Telegram channel</strong><small>Follow community updates</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
+          <a class="community-card reveal" href="https://t.me/hackstarkk" target="_blank" rel="noopener noreferrer" data-social="telegramContact">
+            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-network"></use></svg></span><span><strong>Telegram contact</strong><small>Message the public account</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
+          <a class="community-card reveal" href="https://facebook.com/hackstarkk/" target="_blank" rel="noopener noreferrer" data-social="facebook">
+            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-globe"></use></svg></span><span><strong>Facebook</strong><small>Visit the verified public page</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
+          <a class="community-card reveal" href="mailto:hackstarkofficial@gmail.com">
+            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-mail"></use></svg></span><span><strong>Email</strong><small>Questions and collaboration</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsible Security -->
+    <section class="section responsible" id="responsible-security" aria-labelledby="responsible-heading">
+      <div class="container responsible-layout reveal">
+        <div class="responsible-icon"><svg aria-hidden="true"><use href="#icon-shield"></use></svg></div>
+        <div>
+          <p class="eyebrow eyebrow--light"><span></span> Permission first</p>
+          <h2 id="responsible-heading">Responsible security</h2>
+        </div>
+        <div class="responsible-copy">
+          <p>HackStark publishes cybersecurity content for education, defensive research and authorized security testing. Security techniques should only be used on systems, networks, applications or devices you own or have explicit permission to assess.</p>
+          <p>HackStark does not encourage unauthorized access, disruption, data theft or malicious activity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact and CTA -->
+    <section class="section section--roomy" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-layout">
+        <div class="contact-copy reveal">
+          <p class="eyebrow"><span></span> Start a conversation</p>
+          <h2 id="contact-heading">Connect with HackStark</h2>
+          <p>Have a question about our educational content, open-source projects, community or cybersecurity learning resources? Connect with HackStark through our official channels.</p>
+          <div class="email-panel">
+            <span><small>Organization email</small><a href="mailto:hackstarkofficial@gmail.com">hackstarkofficial@gmail.com</a></span>
+            <button class="copy-button" id="copy-email" type="button" data-email="hackstarkofficial@gmail.com" aria-describedby="copy-status"><svg aria-hidden="true"><use href="#icon-copy"></use></svg> Copy</button>
+          </div>
+          <p class="copy-status" id="copy-status" aria-live="polite"></p>
+        </div>
+        <div class="contact-channels reveal" aria-label="Contact channels">
+          <a href="mailto:hackstarkofficial@gmail.com"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span><strong>Email HackStark</strong><small>Questions &amp; collaboration</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          <a href="https://github.com/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="github"><svg aria-hidden="true"><use href="#icon-github"></use></svg><span><strong>GitHub</strong><small>Projects &amp; code</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          <a href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube"><svg aria-hidden="true"><use href="#icon-youtube"></use></svg><span><strong>YouTube</strong><small>Videos &amp; tutorials</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          <a href="https://facebook.com/hackstarkk/" target="_blank" rel="noopener noreferrer" data-social="facebook"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span><strong>Facebook</strong><small>Community page</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+        </div>
+      </div>
+
+      <div class="container final-cta reveal">
+        <div class="cta-grid" aria-hidden="true"></div>
+        <span class="mono-label">Your next step / Starts here</span>
+        <h2>Ready to start learning?</h2>
+        <p>Explore practical cybersecurity resources, open-source projects and educational demonstrations from HackStark.</p>
+        <div class="cta-actions">
+          <a class="button button--light" href="https://github.com/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="github"><svg aria-hidden="true"><use href="#icon-github"></use></svg> Explore GitHub</a>
+          <a class="button button--outline-light" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube"><svg aria-hidden="true"><use href="#icon-play"></use></svg> Watch tutorials</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a class="brand brand--footer" href="#home" aria-label="HackStark home"><span class="brand-mark" aria-hidden="true"><img src="hackstark-icon.png" width="36" height="36" alt=""></span><span>Hack<span>Stark</span></span></a>
+        <p>Cybersecurity Education &amp;<br>Open-Source Security Community</p>
+        <span>Learn ethically. Test responsibly. Secure continuously.</span>
+      </div>
+      <div class="footer-links">
+        <div><h2>Explore</h2><a href="#about">About</a><a href="#focus">Focus Areas</a><a href="#projects">Projects</a><a href="#learn">Learn</a></div>
+        <div><h2>Connect</h2><a href="#founder">Founder</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="mailto:hackstarkofficial@gmail.com">Email</a></div>
+        <div><h2>Principles</h2><a href="#responsible-security">Responsible Security</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 HackStark. All rights reserved.</p>
+      <div class="social-list" aria-label="HackStark social profiles">
+        <a href="https://github.com/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="github" aria-label="HackStark on GitHub"><svg aria-hidden="true"><use href="#icon-github"></use></svg></a>
+        <a href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube" aria-label="HackStark on YouTube"><svg aria-hidden="true"><use href="#icon-youtube"></use></svg></a>
+        <a href="https://facebook.com/hackstarkk/" target="_blank" rel="noopener noreferrer" data-social="facebook" aria-label="HackStark on Facebook"><svg aria-hidden="true"><use href="#icon-globe"></use></svg></a>
+        <a href="https://t.me/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="telegramChannel" aria-label="HackStark Telegram channel"><svg aria-hidden="true"><use href="#icon-telegram"></use></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
+    <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
+  </button>
+  <noscript><div class="noscript-note">JavaScript is optional here. All primary content and links remain available without it.</div></noscript>
+</body>
+</html>

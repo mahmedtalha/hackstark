@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hackstark.ahmedtalha470.chatgpt.site/sitemap.xml

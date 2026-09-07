@@ -1,0 +1,17 @@
+{
+  "name": "HackStark",
+  "short_name": "HackStark",
+  "description": "Cybersecurity education, ethical hacking and open-source security research.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#100d0c",
+  "theme_color": "#100d0c",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
