@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HackStark is a cybersecurity learning and open-source community covering ethical hacking, penetration testing, IoT security, network security, OSINT, Linux and practical security research.">
+  <meta name="description" content="HackStark is a cybersecurity education and open-source organization covering ethical hacking, penetration testing, IoT security, network security, OSINT, Linux and practical security research.">
   <meta name="theme-color" content="#06090e">
   <meta name="color-scheme" content="dark light">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -11,8 +11,8 @@
 
   <!-- SITE_URL: replaced with the verified deployment origin before publishing. -->
   <link rel="canonical" href="https://hackstark.ahmedtalha470.chatgpt.site/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="icon" href="favicon.png" type="image/png" sizes="512x512">
-  <link rel="manifest" href="site.webmanifest">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="HackStark">
@@ -29,12 +29,9 @@
   <meta name="twitter:description" content="Cybersecurity education, ethical hacking and open-source security research.">
   <meta name="twitter:image" content="https://hackstark.ahmedtalha470.chatgpt.site/og.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="jarvis-aichatbot.css">
+  <script src="hackstark-data.js" defer></script>
   <script src="script.js" defer></script>
   <script src="jarvis-aichatbot.js" defer></script>
 
@@ -48,7 +45,7 @@
         "name": "HackStark",
         "url": "https://hackstark.ahmedtalha470.chatgpt.site/",
         "email": "hackstarkofficial@gmail.com",
-        "description": "A cybersecurity learning and open-source community focused on practical, ethical and responsible security education.",
+        "description": "A cybersecurity education and open-source organization that grew from a learning community founded in 2015.",
         "founder": { "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#founder" },
         "sameAs": [
           "https://github.com/hackstarkofficial",
@@ -68,7 +65,7 @@
         "@type": "Person",
         "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#founder",
         "name": "Muhammad Ahmed Talha",
-        "jobTitle": "Founder & CEO — HackStark",
+        "jobTitle": "Founder & Lead — HackStark",
         "url": "https://talha.dpdns.org/",
         "sameAs": ["https://linkedin.com/in/ahmedtalha470"]
       }
@@ -78,6 +75,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
   <!-- Reusable icon symbols -->
   <svg class="svg-sprite" aria-hidden="true" focusable="false">
@@ -113,7 +111,7 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a class="brand" href="#home" aria-label="HackStark home">
-        <span class="brand-mark" aria-hidden="true"><img src="hackstark-icon.png" width="36" height="36" alt=""></span>
+        <span class="brand-mark" aria-hidden="true"><img src="hackstark-mark.svg" width="36" height="36" alt=""></span>
         <span>Hack<span>Stark</span></span>
       </a>
 
@@ -132,7 +130,7 @@
           <svg class="theme-icon theme-icon--sun" aria-hidden="true"><use href="#icon-sun"></use></svg>
           <svg class="theme-icon theme-icon--moon" aria-hidden="true"><use href="#icon-moon"></use></svg>
         </button>
-        <a class="button button--small button--primary header-cta" href="#contact">Join Community</a>
+        <a class="button button--small button--primary header-cta" href="#contact">Connect with us</a>
         <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
           <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
         </button>
@@ -161,10 +159,10 @@
       <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
       <div class="container hero-layout">
         <div class="hero-copy">
-          <img class="hero-brand-logo" src="hackstark-logo.png" width="240" height="143" alt="HackStark">
+          <img class="hero-brand-logo" src="hackstark-logo.svg" width="240" height="54" alt="HackStark" fetchpriority="high">
           <p class="eyebrow"><span></span> Cybersecurity • Education • Open Source</p>
           <h1 id="hero-heading">Learn cybersecurity.<br>Build skills. <em>Defend better.</em></h1>
-          <p class="hero-description">HackStark is a learning and open-source community making ethical hacking, network defense, IoT security, OSINT and responsible security research practical and accessible.</p>
+          <p class="hero-description">HackStark is a cybersecurity education and open-source organization—founded from a learning community—making ethical hacking, network defense, IoT security, OSINT and responsible security research practical and accessible.</p>
           <div class="hero-actions">
             <a class="button button--primary" href="#learn">Explore Resources <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
             <a class="button button--ghost" href="https://github.com/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="github"><svg aria-hidden="true"><use href="#icon-github"></use></svg> View GitHub</a>
@@ -172,24 +170,25 @@
           <a class="text-link hero-text-link" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube">Watch practical tutorials <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
         </div>
 
-        <div class="hero-visual" role="img" aria-label="A diagram showing HackStark's responsible cybersecurity learning process">
+        <div class="hero-visual" role="region" aria-labelledby="workflow-heading" aria-describedby="workflow-description">
           <div class="visual-topline">
             <span class="status-pill"><span></span> Authorized learning environment</span>
-            <span class="mono-label">HS / 01</span>
+            <span class="mono-label" id="workflow-reference">HS / 02</span>
           </div>
-          <div class="security-core">
+          <div class="security-core" id="security-stage-panel" role="tabpanel" aria-live="polite" aria-labelledby="workflow-step-practice">
             <div class="core-rings" aria-hidden="true"></div>
-            <div class="core-shield"><img src="hackstark-icon.png" width="64" height="64" alt=""></div>
+            <span class="workflow-mantra" aria-hidden="true">Learn → Validate → Defend</span>
+            <button class="core-shield" id="workflow-advance" type="button" aria-label="Continue to Harden" title="Advance workflow"><img src="hackstark-mark.svg" width="64" height="64" alt=""></button>
             <div class="core-copy">
-              <span>Security mindset</span>
-              <strong>Learn → Validate → Defend</strong>
+              <div><span id="workflow-label">Security mindset / Practice</span><strong id="workflow-heading">Validate safely in a controlled lab.</strong></div>
+              <p id="workflow-description">Reproduce the concept only in an isolated environment or on systems you own or have explicit permission to assess.</p>
             </div>
           </div>
-          <div class="learning-path" aria-hidden="true">
-            <div class="path-line"></div>
-            <div class="path-step is-complete"><span>01</span><strong>Understand</strong><small>Concept &amp; scope</small></div>
-            <div class="path-step is-current"><span>02</span><strong>Practice</strong><small>Controlled lab</small></div>
-            <div class="path-step"><span>03</span><strong>Harden</strong><small>Defensive action</small></div>
+          <div class="learning-path" role="tablist" aria-label="Responsible security learning workflow">
+            <div class="path-line" aria-hidden="true"><span id="workflow-progress"></span></div>
+            <button class="path-step is-complete" id="workflow-step-understand" type="button" role="tab" aria-controls="security-stage-panel" aria-selected="false" tabindex="-1" data-workflow-step="understand"><span>01</span><strong>Understand</strong><small>Concept &amp; scope</small></button>
+            <button class="path-step is-current" id="workflow-step-practice" type="button" role="tab" aria-controls="security-stage-panel" aria-selected="true" data-workflow-step="practice"><span>02</span><strong>Practice</strong><small>Controlled lab</small></button>
+            <button class="path-step" id="workflow-step-harden" type="button" role="tab" aria-controls="security-stage-panel" aria-selected="false" tabindex="-1" data-workflow-step="harden"><span>03</span><strong>Harden</strong><small>Defensive action</small></button>
           </div>
           <div class="visual-footer">
             <span><svg aria-hidden="true"><use href="#icon-lock"></use></svg> Permission first</span>
@@ -217,7 +216,7 @@
             <h2 id="about-heading">Cybersecurity knowledge through <em>practice.</em></h2>
           </div>
           <div class="section-copy">
-            <p>HackStark is an independent cybersecurity learning community that turns technical security concepts into clear, practical education through demonstrations, tutorials, open-source projects and responsible research.</p>
+            <p>HackStark is an independent cybersecurity education and open-source organization that turns technical security concepts into clear, practical learning through demonstrations, tutorials, public projects and responsible research.</p>
             <p>We explore ethical hacking, network reconnaissance, Linux security, IoT, OSINT, vulnerability assessment, security automation and defensive cybersecurity—with authorization and responsible use at the center.</p>
             <p>The original HackStark profile traces the community to 2015 and describes a goal of helping people understand what they can do with their gadgets, improve their internet skills and build clearer concepts about hacking and the internet.</p>
           </div>
@@ -230,6 +229,24 @@
           <article class="fact-card"><strong>5</strong><span>Public repositories</span><p>Open-source resources spanning Linux, programming and security education.</p></article>
           <article class="fact-card"><strong>10</strong><span>Featured lessons</span><p>Official videos currently collected in the HackStark Academy section.</p></article>
         </div>
+
+        <section class="identity-evolution reveal" aria-labelledby="identity-evolution-heading">
+          <div>
+            <p class="eyebrow"><span></span> Our evolution</p>
+            <h3 id="identity-evolution-heading">Community roots. Organization today.</h3>
+          </div>
+          <div class="identity-switcher">
+            <div class="identity-tabs" role="tablist" aria-label="HackStark identity timeline">
+              <button type="button" role="tab" id="identity-tab-community" aria-controls="identity-panel" aria-selected="true" data-identity-stage="community">2015 — Community roots</button>
+              <button type="button" role="tab" id="identity-tab-organization" aria-controls="identity-panel" aria-selected="false" tabindex="-1" data-identity-stage="organization">Today — Organization</button>
+            </div>
+            <div class="identity-panel" id="identity-panel" role="tabpanel" tabindex="0" aria-live="polite" aria-labelledby="identity-tab-community">
+              <span class="mono-label" id="identity-panel-label">2015 / Community</span>
+              <h4 id="identity-panel-title">HackStark began as a learning community.</h4>
+              <p id="identity-panel-description">The original community shared practical knowledge about gadgets, IoT, penetration testing and internet skills, giving beginners a place to learn together.</p>
+            </div>
+          </div>
+        </section>
 
         <div class="principles-grid">
           <article class="principle-card reveal">
@@ -259,14 +276,18 @@
         </div>
 
         <div class="brand-story reveal">
-          <figure class="brand-story__media">
-            <img src="HS.JPG" width="489" height="715" loading="lazy" decoding="async" alt="Early HackStark brand photograph showing two masked community members beneath the HackStark logo">
-            <figcaption><span>Archive / HackStark</span><strong>Visual roots</strong></figcaption>
-          </figure>
+          <div class="brand-story__system" role="img" aria-label="Defensive security lab flow connecting an isolated lab, authorized assessment, analysis and hardening">
+            <div class="system-status"><span></span> Controlled environment</div>
+            <div class="system-node system-node--source"><small>01 / LAB</small><strong>Isolated systems</strong><span>Linux · IoT · Network</span></div>
+            <div class="system-flow" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="system-node system-node--core"><img src="hackstark-mark.svg" width="58" height="58" alt=""><strong>Authorized assessment</strong><span>Observe · Validate · Document</span></div>
+            <div class="system-flow" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="system-node system-node--result"><small>03 / DEFEND</small><strong>Harden &amp; share</strong><span>Fix · Monitor · Educate</span></div>
+          </div>
           <div class="brand-story__copy">
-            <p class="eyebrow"><span></span> The identity</p>
-            <h3>Curiosity with a clear ethical boundary.</h3>
-            <p>The original HackStark visual reflects the curiosity, privacy awareness and hands-on mindset that shaped the community. Today, that energy is focused on practical education, defensive research and learning in authorized environments.</p>
+            <p class="eyebrow"><span></span> The practice</p>
+            <h3>Curiosity directed toward defense.</h3>
+            <p>HackStark’s modern identity is built around a professional security-lab workflow: understand systems, test only with permission, document evidence and turn findings into stronger defenses and clearer education.</p>
             <ul class="brand-story__values" aria-label="HackStark values">
               <li><span>01</span><strong>Question systems</strong><small>Understand how technology works before testing it.</small></li>
               <li><span>02</span><strong>Practice responsibly</strong><small>Use isolated labs, owned systems and explicit permission.</small></li>
@@ -274,6 +295,18 @@
             </ul>
           </div>
         </div>
+
+        <aside class="origins-archive reveal" aria-labelledby="origins-heading">
+          <figure>
+            <img src="HS.JPG" width="489" height="715" loading="lazy" decoding="async" alt="Archival 2015-era HackStark community photograph">
+          </figure>
+          <div class="origins-archive__date"><span>2015</span><i aria-hidden="true"></i><span>Today</span></div>
+          <div>
+            <p class="eyebrow"><span></span> Archival identity</p>
+            <h3 id="origins-heading">HackStark Origins — 2015</h3>
+            <p>The masked photograph is retained as a small historical artifact—not the primary brand image. It documents the community’s early visual language; today HackStark presents itself through education, open source, defensive security and authorized practice.</p>
+          </div>
+        </aside>
 
         <div class="mission-panel reveal">
           <div class="mission-emblem" aria-hidden="true"><span>HS</span></div>
@@ -366,6 +399,61 @@
           <a class="text-link text-link--strong" href="https://github.com/hackstarkofficial?tab=repositories" target="_blank" rel="noopener noreferrer" data-social="github">All repositories <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
         </div>
 
+        <div class="case-studies" aria-label="HackStark project case studies">
+          <article class="case-study reveal">
+            <div class="case-study__visual" aria-label="Kali Linux package-source workflow">
+              <span>Repository list</span><i aria-hidden="true">→</i><strong>Kali lab</strong><i aria-hidden="true">→</i><span>Package access</span>
+            </div>
+            <div class="case-study__body">
+              <div class="case-study__heading"><span>01 / Linux infrastructure</span><h3>Kali Repository Utilities</h3></div>
+              <dl><div><dt>Problem</dt><dd>Security labs depend on correctly configured package sources.</dd></div><div><dt>Approach</dt><dd>Two public repositories document and streamline Kali repository setup.</dd></div><div><dt>Technology</dt><dd>Kali Linux · package sources · system configuration</dd></div><div><dt>Evidence</dt><dd>Reusable public configuration resources available in source control.</dd></div></dl>
+              <p class="case-study__use"><strong>Defensive use:</strong> prepare reliable, isolated learning environments before authorized assessment work.</p>
+              <div class="case-study__links"><a href="https://github.com/hackstarkofficial/FastestRepositoryForKali" target="_blank" rel="noopener noreferrer">Primary source <svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a href="https://github.com/hackstarkofficial/fastrepo4kali" target="_blank" rel="noopener noreferrer">Companion source <svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div>
+            </div>
+          </article>
+
+          <article class="case-study reveal">
+            <div class="case-study__visual" aria-label="Controlled web-service resilience research workflow">
+              <span>Isolated client</span><i aria-hidden="true">→</i><strong>Test server</strong><i aria-hidden="true">→</i><span>Observe limits</span>
+            </div>
+            <div class="case-study__body">
+              <div class="case-study__heading"><span>02 / Defensive research</span><h3>Web-Service Resilience Lab</h3></div>
+              <dl><div><dt>Problem</dt><dd>Slow HTTP connections can consume server capacity and reduce availability.</dd></div><div><dt>Approach</dt><dd>A Python lab project supports controlled observation of connection behavior.</dd></div><div><dt>Technology</dt><dd>Python · HTTP · isolated laboratory</dd></div><div><dt>Evidence</dt><dd>The public <code>slowlorisdos</code> repository is preserved with an MIT license.</dd></div></dl>
+              <p class="case-study__use"><strong>Defensive use:</strong> study timeouts, connection limits, reverse proxies, monitoring and response. Never target a real service.</p>
+              <div class="case-study__links"><a href="https://github.com/hackstarkofficial/slowlorisdos" target="_blank" rel="noopener noreferrer">View source code <svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a href="#responsible-security">Responsible-use policy <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+            </div>
+          </article>
+
+          <article class="case-study reveal">
+            <div class="case-study__visual" aria-label="Classical substitution cipher learning flow">
+              <span>Plain text</span><i aria-hidden="true">→</i><strong>Character map</strong><i aria-hidden="true">→</i><span>Cipher text</span>
+            </div>
+            <div class="case-study__body">
+              <div class="case-study__heading"><span>03 / Applied learning</span><h3>Substitution Cipher Explorer</h3></div>
+              <dl><div><dt>Problem</dt><dd>Cryptography concepts can feel abstract to first-time learners.</dd></div><div><dt>Approach</dt><dd>A compact implementation makes character substitution visible in code.</dd></div><div><dt>Technology</dt><dd>Python · classical cryptography · text processing</dd></div><div><dt>Evidence</dt><dd>A public educational implementation learners can inspect and modify.</dd></div></dl>
+              <p class="case-study__use"><strong>Defensive use:</strong> build foundational understanding; classical substitution is not suitable for protecting modern data.</p>
+              <div class="case-study__links"><a href="https://github.com/hackstarkofficial/SubstitutionCipher" target="_blank" rel="noopener noreferrer">View source code <svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div>
+            </div>
+          </article>
+
+          <article class="case-study reveal">
+            <div class="case-study__visual" aria-label="C plus plus learning reference flow">
+              <span>Syntax</span><i aria-hidden="true">→</i><strong>Program structure</strong><i aria-hidden="true">→</i><span>Practice</span>
+            </div>
+            <div class="case-study__body">
+              <div class="case-study__heading"><span>04 / Programming foundations</span><h3>C++ Structure Reference</h3></div>
+              <dl><div><dt>Problem</dt><dd>New programmers need a clear reference before building larger tools.</dd></div><div><dt>Approach</dt><dd>A concise cheat sheet organizes basic syntax and program structure.</dd></div><div><dt>Technology</dt><dd>C++ · syntax reference · beginner education</dd></div><div><dt>Evidence</dt><dd>A public reference that supports HackStark’s beginner-accessible learning path.</dd></div></dl>
+              <p class="case-study__use"><strong>Defensive use:</strong> strengthen the programming foundation needed to understand and audit security tooling.</p>
+              <div class="case-study__links"><a href="https://github.com/hackstarkofficial/C-Plus-Plus-Basic-Structure-Cheat-Sheet" target="_blank" rel="noopener noreferrer">View learning resource <svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="repository-index-heading reveal">
+          <div><span class="mono-label">Repository index</span><h3>Browse the complete public collection</h3></div>
+          <p>Case studies provide context; the cards below remain the direct repository index with optional live metadata.</p>
+        </div>
+
         <div class="filter-bar reveal" role="group" aria-label="Filter projects by category">
           <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">All</button>
           <button type="button" class="filter-button" data-filter="cybersecurity" aria-pressed="false">Cybersecurity</button>
@@ -443,7 +531,7 @@
             <a href="#responsible-security">Our responsible-use principles <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
           </aside>
         </div>
-        <p class="repo-data-note" id="repo-data-note">Static project information is always available. Current public metadata may be added from GitHub when your connection allows.</p>
+        <p class="repo-data-note" id="repo-data-note" role="status" aria-live="polite" aria-busy="false">Static project information is always available. Current public metadata may be added from GitHub when your connection allows.</p>
       </div>
     </section>
 
@@ -547,7 +635,7 @@
       <div class="container founder-layout">
         <div class="founder-portrait reveal">
           <div class="portrait-frame">
-            <img src="muhammad-ahmed-talha.webp" width="640" height="703" loading="lazy" decoding="async" alt="Muhammad Ahmed Talha, Founder and CEO of HackStark">
+            <img src="muhammad-ahmed-talha.webp" width="640" height="703" loading="lazy" decoding="async" alt="Muhammad Ahmed Talha, Founder and Lead of HackStark">
             <div class="portrait-fallback" aria-hidden="true"><span>MAT</span></div>
             <span class="portrait-label">Founder / Lead</span>
           </div>
@@ -558,15 +646,15 @@
           <p class="eyebrow"><span></span> Founder &amp; lead</p>
           <h2 id="founder-heading">Meet the founder</h2>
           <p class="founder-name">Muhammad Ahmed Talha</p>
-          <p class="founder-role">Founder &amp; CEO — HackStark <span>•</span> Cybersecurity &amp; IT Infrastructure Professional</p>
+          <p class="founder-role"><b data-founder-title>Founder &amp; Lead — HackStark</b> <span>•</span> Cybersecurity &amp; IT Infrastructure Professional</p>
           <p>Muhammad Ahmed Talha has 4+ years of hands-on experience across penetration testing, Red Team operations, vulnerability assessment, network and systems administration, security education and open-source tool development.</p>
-          <p>He holds a BS in Cyber Security from The Islamia University of Bahawalpur, RYK Campus (2020–2024). Most recently, he served as IT Assistant Manager at Toyota Royal Motors from March 2025 to August 2026.</p>
+          <p>He holds a <a href="https://talha.dpdns.org/#certifications" target="_blank" rel="noopener noreferrer" data-founder-evidence="education">BS in Cyber Security from The Islamia University of Bahawalpur, RYK Campus (2020–2024)</a>. Most recently, he served as IT Assistant Manager at Toyota Royal Motors from March 2025 to August 2026.</p>
           <p>In August 2026, he was invited as a Cyber Security Panelist and Speaker at the BZU Multan CIT Conference, discussing AI-enhanced threats, quantum-computing risk and stronger human cyber defenses.</p>
 
           <div class="founder-highlights" aria-label="Founder highlights">
-            <div><strong>3,000+</strong><span>Students trained</span></div>
-            <div><strong>10+</strong><span>Security tools &amp; projects</span></div>
-            <div><strong>2026</strong><span>BZU Multan panelist</span></div>
+            <a href="https://talha.dpdns.org/#stats" target="_blank" rel="noopener noreferrer" data-founder-evidence="students" aria-label="View evidence for 3,000 plus students trained"><strong data-statistic="trainedStudentsClaim">3,000+</strong><span>Students trained</span><small>View evidence ↗</small></a>
+            <a href="https://talha.dpdns.org/#projects" target="_blank" rel="noopener noreferrer" data-founder-evidence="projects" aria-label="View evidence for 10 plus security tools and projects"><strong data-statistic="securityToolsAndProjectsClaim">10+</strong><span>Security tools &amp; projects</span><small>View evidence ↗</small></a>
+            <a href="https://talha.dpdns.org/#speaking" target="_blank" rel="noopener noreferrer" data-founder-evidence="speaking" aria-label="View evidence for the 2026 BZU Multan panel appearance"><strong>2026</strong><span>BZU Multan panelist</span><small>View evidence ↗</small></a>
           </div>
           <div class="founder-actions">
             <a class="button button--primary" href="https://talha.dpdns.org/" target="_blank" rel="noopener noreferrer">View founder portfolio <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
@@ -599,7 +687,7 @@
             <span class="community-icon"><svg aria-hidden="true"><use href="#icon-network"></use></svg></span><span><strong>Telegram contact</strong><small>Message the public account</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
           </a>
           <a class="community-card reveal" href="https://facebook.com/hackstarkk/" target="_blank" rel="noopener noreferrer" data-social="facebook">
-            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-globe"></use></svg></span><span><strong>Facebook</strong><small>Visit the verified public page</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+            <span class="community-icon"><svg aria-hidden="true"><use href="#icon-globe"></use></svg></span><span><strong>Facebook</strong><small>Visit the official Facebook page</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
           </a>
           <a class="community-card reveal" href="mailto:hackstarkofficial@gmail.com">
             <span class="community-icon"><svg aria-hidden="true"><use href="#icon-mail"></use></svg></span><span><strong>Email</strong><small>Questions and collaboration</small></span><svg class="community-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
@@ -660,8 +748,8 @@
   <footer class="site-footer">
     <div class="container footer-main">
       <div class="footer-brand">
-        <a class="brand brand--footer" href="#home" aria-label="HackStark home"><span class="brand-mark" aria-hidden="true"><img src="hackstark-icon.png" width="36" height="36" alt=""></span><span>Hack<span>Stark</span></span></a>
-        <p>Cybersecurity Education &amp;<br>Open-Source Security Community</p>
+        <a class="brand brand--footer" href="#home" aria-label="HackStark home"><span class="brand-mark" aria-hidden="true"><img src="hackstark-mark.svg" width="36" height="36" alt=""></span><span>Hack<span>Stark</span></span></a>
+        <p>Cybersecurity Education &amp;<br>Open-Source Organization</p>
         <span>Learn ethically. Test responsibly. Secure continuously.</span>
       </div>
       <div class="footer-links">

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 88" role="img" aria-labelledby="title desc">
+  <title id="title">HackStark</title>
+  <desc id="desc">HackStark wordmark with a computer and defensive shield symbol.</desc>
+  <g transform="translate(4 8)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="3" width="58" height="42" rx="8" stroke="#2388c7" stroke-width="4"/>
+    <path d="M23 56h20M33 45v11" stroke="#2388c7" stroke-width="4"/>
+    <path d="M33 12 46 17v9c0 8-5.2 13.2-13 16-7.8-2.8-13-8-13-16v-9l13-5Z" fill="#0b1722" stroke="#22b573" stroke-width="4"/>
+    <path d="m27.5 26.5 3.5 3.5 7-8" stroke="#72e6ad" stroke-width="3"/>
+  </g>
+  <text x="82" y="56" fill="#f8fafc" font-family="Outfit, Inter, Arial, sans-serif" font-size="48" font-weight="760" letter-spacing="-1.8">Hack<tspan fill="#55b7e9">Stark</tspan></text>
+</svg>

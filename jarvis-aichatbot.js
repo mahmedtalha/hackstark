@@ -1,6 +1,12 @@
 (() => {
   "use strict";
 
+  const DATA = window.hackstarkData;
+  if (!DATA) {
+    console.error("JARVIS could not load the shared HackStark data source.");
+    return;
+  }
+
   const URLS = Object.freeze({
     about: "#about",
     focus: "#focus",
@@ -10,59 +16,20 @@
     community: "#community",
     responsible: "#responsible-security",
     contact: "#contact",
-    github: "https://github.com/hackstarkofficial",
-    youtube: "https://www.youtube.com/@hackstark8829",
-    facebook: "https://facebook.com/hackstarkk/",
-    telegram: "https://t.me/hackstarkofficial",
-    telegramGroup: "https://t.me/hackstarkk",
-    instagram: "https://www.instagram.com/hackstark/",
-    linkedin: "https://linkedin.com/in/ahmedtalha470",
-    email: "mailto:hackstarkofficial@gmail.com"
+    github: DATA.socials.github,
+    youtube: DATA.socials.youtube,
+    facebook: DATA.socials.facebook,
+    telegram: DATA.socials.telegramChannel,
+    telegramGroup: DATA.socials.telegramContact,
+    instagram: DATA.socials.instagram,
+    linkedin: DATA.founder.linkedin,
+    email: `mailto:${DATA.organization.email}`
   });
 
-  const PROJECTS = Object.freeze([
-    { aliases: ["fastestrepositoryforkali", "fastest repository", "kali repository"], name: "FastestRepositoryForKali", text: "A Kali Linux resource for configuring efficient package repositories.", language: "configuration/resource", created: "23 May 2020", updated: "20 Mar 2025", stars: 3, forks: 0, branch: "master", license: "not declared", url: "https://github.com/hackstarkofficial/FastestRepositoryForKali" },
-    { aliases: ["fastrepo4kali", "fast repo"], name: "fastrepo4kali", text: "A utility for optimizing Kali Linux repository configuration.", language: "configuration/resource", created: "13 Dec 2020", updated: "20 Aug 2025", stars: 2, forks: 3, branch: "main", license: "not declared", url: "https://github.com/hackstarkofficial/fastrepo4kali" },
-    { aliases: ["c++", "cplusplus", "cheat sheet", "basic structure"], name: "C++ Basic Structure Cheat Sheet", text: "A concise C++ syntax and program-structure reference for beginners.", language: "C++", created: "27 Oct 2020", updated: "27 Oct 2020", stars: 0, forks: 0, branch: "main", license: "not declared", url: "https://github.com/hackstarkofficial/C-Plus-Plus-Basic-Structure-Cheat-Sheet" },
-    { aliases: ["slowloris", "slowlorisdos", "dos research"], name: "slowlorisdos", text: "Controlled-lab research for understanding slow HTTP connections and web-server resilience. It is intended only for authorized laboratory use.", language: "Python", created: "2 Mar 2021", updated: "4 May 2021", stars: 0, forks: 0, branch: "main", license: "MIT", url: "https://github.com/hackstarkofficial/slowlorisdos" },
-    { aliases: ["substitutioncipher", "substitution cipher", "cryptography"], name: "SubstitutionCipher", text: "An educational Python implementation of classical substitution-cipher concepts.", language: "Python", created: "17 Nov 2022", updated: "17 Nov 2022", stars: 0, forks: 0, branch: "main", license: "not declared", url: "https://github.com/hackstarkofficial/SubstitutionCipher" }
-  ]);
-
-  const VIDEOS = Object.freeze([
-    { id: "TJVNQ2dNxQo", aliases: ["nmap", "network scanning", "port scanning", "ping scan"], title: "NMAP Network Scanning Demo", topic: "Host discovery, ping scanning and open-port identification in an authorized lab." },
-    { id: "x6ICJDVH1Xw", aliases: ["xss", "reflected xss", "dvwa"], title: "XSS Reflected Attack Demonstration on DVWA & Online Website", topic: "A reflected cross-site scripting demonstration; use DVWA or another deliberately vulnerable lab only." },
-    { id: "8nZfCiw-WyI", aliases: ["spiderfoot", "osint"], title: "SpiderFoot OSINT # 2.4.2", topic: "Automated collection and correlation of public information for lawful OSINT research." },
-    { id: "fncTkUqhrNQ", aliases: ["enumeration", "footprinting"], title: "What is Enumeration | Enumeration & FootPrinting # 2.4", topic: "The concepts and defensive value of enumeration and footprinting." },
-    { id: "hEsuzIZyMdA", aliases: ["scan network", "scanning networks"], title: "How to scan network | Scanning Networks # 2.3", topic: "Network scanning fundamentals for systems you own or are authorized to assess." },
-    { id: "6pd9O3o7og0", aliases: ["information gathering", "recon"], title: "What is information Gathering | Information gathering # 2.1", topic: "The information-gathering phase of an ethical security assessment." },
-    { id: "xTstJNBFTwU", aliases: ["what is ethical hacking", "ethical hacking introduction"], title: "What is Ethical Hacking | introduction to Ethical Hacking # 2.1", topic: "Ethical hacking foundations, scope and permission-first practice." },
-    { id: "Z9Hs6R5t4Eg", aliases: ["setup repository", "root user", "kali repository setup"], title: "How to Setup Repository & Root User in Kali Linux", topic: "Preparing a Kali Linux learning environment and its package repositories." },
-    { id: "7Tl3fexB3yk", aliases: ["install kali", "kali vmware", "vmware"], title: "How to install Kali Linux on VMware", topic: "Creating an isolated Kali Linux virtual-machine lab." },
-    { id: "YnGy6A-ZPtE", aliases: ["course introduction", "introduction course", "start course"], title: "Introduction to Ethical Hacking Course By HackStark", topic: "An overview and starting point for the HackStark ethical-hacking course." }
-  ].map((video) => Object.freeze({ ...video, url: `https://www.youtube.com/watch?v=${video.id}` })));
-
-  const COURSE_AREAS = Object.freeze([
-    "virtualization and Kali Linux lab setup", "ethical-hacking foundations and authorization", "footprinting, reconnaissance and OSINT", "network scanning and enumeration", "vulnerability analysis", "system and endpoint security", "malware threats and defensive analysis", "traffic analysis and sniffing", "social-engineering awareness", "denial-of-service resilience", "session security", "IDS, firewalls and honeypots", "web-server and web-application security", "DVWA, WebGoat, XSS and SQL-injection concepts", "wireless security", "mobile-platform security", "IoT security", "cloud-computing and VPS fundamentals", "cryptography", "continued research and responsible practice"
-  ]);
-
-  const HISTORICAL_PROFILE = Object.freeze({
-    source: "HackStark.txt",
-    communitySince: 2015,
-    originalDescription: "A community sharing knowledge of IoT (Internet of Things) in penetration testing.",
-    originalGoal: "Teach people what they can do with their gadgets, improve their internet skills and develop clearer concepts about hacking and the internet.",
-    learningPromise: "No previous programming experience is needed to begin the ethical-hacking learning path.",
-    historicalHandles: Object.freeze({
-      facebook: "facebook.com/hackstarkofficial",
-      telegramGroup: "@hackstarkk",
-      telegramChannel: "@hackstarkofficial",
-      instagram: "@hackstark",
-      github: "@hackstarkofficial",
-      twitter: "@HackStarkk"
-    }),
-    historicalWhatsAppCommunities: Object.freeze([
-      "HackStark Official", "HackStark 2.O Official", "Hacking Courses 4 Free"
-    ])
-  });
+  const PROJECTS = DATA.projects;
+  const VIDEOS = DATA.videos;
+  const COURSE_AREAS = DATA.courseAreas;
+  const HISTORICAL_PROFILE = DATA.history;
 
   const topicAnswer = (title, detail, actions = []) => response(`${title}: ${detail}\nHackStark discusses this only for education, defense and authorized testing.`, actions.length ? actions : [action("Responsible use", URLS.responsible), action("Academy", URLS.learn)]);
 
@@ -72,6 +39,22 @@
     .replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, "")
     .replace(/[^a-z0-9+#.\-/\s]/g, " ").replace(/\s+/g, " ").trim();
   const includesAny = (text, phrases) => phrases.some((phrase) => text.includes(normalize(phrase)));
+  const formatDate = (value) => {
+    const date = new Date(`${value}T00:00:00Z`);
+    return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(date);
+  };
+  const projectMetrics = (project) => {
+    const live = DATA.runtime.repositories?.find((item) => item.name === project.repository);
+    return {
+      language: live?.language || project.language,
+      updated: live?.updated_at ? formatDate(live.updated_at.slice(0, 10)) : formatDate(project.updated),
+      stars: Number.isFinite(live?.stargazers_count) ? live.stargazers_count : project.stars,
+      forks: Number.isFinite(live?.forks_count) ? live.forks_count : project.forks,
+      branch: live?.default_branch || project.branch,
+      license: live?.license?.spdx_id || project.license || "not declared",
+      source: live ? "current GitHub data loaded by this page" : `reference snapshot ${formatDate(DATA.statistics.snapshotDate)}`
+    };
+  };
 
   class HackStarkKnowledge {
     async respond(question) {
@@ -91,21 +74,24 @@
       }
 
       const project = PROJECTS.find((item) => item.aliases.some((alias) => q.includes(alias)));
-      if (project) return response(`${project.name}: ${project.text}\nPublic GitHub snapshot (7 Sep 2026): language ${project.language}; created ${project.created}; last repository update ${project.updated}; ${project.stars} stars; ${project.forks} forks; default branch ${project.branch}; license ${project.license}. Counts can change.`, [
+      if (project) {
+        const metrics = projectMetrics(project);
+        return response(`${project.name}: ${project.description}\nRepository details from ${metrics.source}: language ${metrics.language}; created ${formatDate(project.created)}; last repository update ${metrics.updated}; ${metrics.stars} stars; ${metrics.forks} forks; default branch ${metrics.branch}; license ${metrics.license}.`, [
         action("Open repository", project.url), action("All projects", URLS.projects)
-      ]);
+        ]);
+      }
 
       const video = VIDEOS.find((item) => item.id.toLowerCase() === q || item.aliases.some((alias) => q.includes(alias)));
-      if (video && (video.id.toLowerCase() === q || includesAny(q, ["video", "watch", "lesson", "tutorial", "youtube", "demo"]))) return response(`${video.title}\n${video.topic}\nThis is one of 10 official HackStark lessons currently featured on this website.`, [
+      if (video && (video.id.toLowerCase() === q || includesAny(q, ["video", "watch", "lesson", "tutorial", "youtube", "demo"]))) return response(`${video.title}\n${video.topic}\nThis is one of ${VIDEOS.length} official HackStark lessons currently featured on this website.`, [
         action("Watch on YouTube", video.url), action("Browse Academy", URLS.learn)
       ]);
 
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
-        return response("I’m JARVIS, HackStark’s local website assistant. My knowledge includes the community’s supplied history, mission and learning philosophy; founder profile; six focus areas; four learning pillars; five public GitHub repositories with a dated metadata snapshot; 10 featured official YouTube lessons; the broader historical course map; current verified community channels; legacy-link cautions; and responsible-security guidance. I work without sending your question to an external AI service.", [action("About HackStark", URLS.about), action("Course map", URLS.learn), action("Projects", URLS.projects)]);
+        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge source includes the organization’s community roots, mission and learning philosophy; founder profile; ${DATA.focusAreas.length} focus areas; four learning pillars; ${PROJECTS.length} featured public repositories; ${VIDEOS.length} official YouTube lessons; the broader course map; current community channels; legacy-link cautions; and responsible-security guidance. Live repository metadata is shared with the visible project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course map", URLS.learn), action("Projects", URLS.projects)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
-        return response(`HackStark’s original goal in ${HISTORICAL_PROFILE.source} is to teach people what they can do with their gadgets, help them improve their internet skills and make hacking and internet concepts clearer. Today that purpose is expressed through practical cybersecurity education, authorized experimentation, ethical conduct, defensive thinking and open knowledge. Its vision is a skilled community that helps create safer digital environments.`, [
+        return response(`HackStark’s original goal in ${HISTORICAL_PROFILE.source} is to teach people what they can do with their gadgets, help them improve their internet skills and make hacking and internet concepts clearer. Today the organization expresses that purpose through practical cybersecurity education, authorized experimentation, ethical conduct, defensive thinking and open knowledge. Its vision is to build a skilled community that helps create safer digital environments.`, [
           action("Read the mission", URLS.about), action("Responsible security", URLS.responsible)
         ]);
       }
@@ -115,23 +101,23 @@
       }
 
       if (includesAny(q, ["logo", "brand", "colors", "colour", "visual identity", "hs.jpg", "hackstark image"])) {
-        return response("HackStark’s current visual identity is derived from the supplied HS.JPG/HackStark artwork. The website uses the HackStark lock-and-code mark, near-black navy surfaces, emerald-green actions and cyan-blue highlights, with Outfit headings, Inter body text and Fira Code technical labels.", [action("See HackStark", URLS.about)]);
+        return response("HackStark’s current visual identity preserves the blue-and-green recognition of the supplied historical artwork in a simplified flat vector mark: a computer frame containing a defensive shield and verification check. The website uses near-black navy surfaces, emerald-green actions, cyan-blue highlights and privacy-minded system typography. HS.JPG remains only as a small, desaturated 2015 archival artifact.", [action("See HackStark", URLS.about)]);
       }
 
       if (includesAny(q, ["history", "started", "start year", "when did", "founded", "since 2015", "how old", "visual roots", "identity"])) {
-        return response(`According to ${HISTORICAL_PROFILE.source}, HackStark has been active in the field since ${HISTORICAL_PROFILE.communitySince}. The early profile described a penetration-testing community centered on IoT knowledge, gadgets and clearer internet skills. That identity has evolved toward broader practical cybersecurity education, open knowledge, defensive research and permission-first testing. The public GitHub account was created on 19 May 2020.`, [
+        return response(`According to ${HISTORICAL_PROFILE.source}, HackStark has been active since ${HISTORICAL_PROFILE.communitySince}. It began as a penetration-testing learning community centered on IoT knowledge, gadgets and clearer internet skills. HackStark has since evolved into a cybersecurity education and open-source organization while retaining its community-first roots. The public GitHub account was created on 19 May 2020.`, [
           action("See visual roots", URLS.about), action("Meet the founder", URLS.founder)
         ]);
       }
 
       if (includesAny(q, ["founder", "ceo", "muhammad", "ahmed talha", "talha"])) {
-        return response("Muhammad Ahmed Talha is the Founder and CEO of HackStark. He is a cybersecurity and IT infrastructure professional focused on practical education, security research, open-source tools and community learning.", [
-          action("Founder profile", URLS.founder), action("Founder website", "https://talha.dpdns.org/"), action("LinkedIn", URLS.linkedin)
+        return response(`${DATA.founder.name} is ${DATA.founder.title}. He is a ${DATA.founder.role.toLowerCase()} focused on practical education, security research, open-source tools and community programs.`, [
+          action("Founder profile", URLS.founder), action("Founder website", DATA.founder.website), action("LinkedIn", URLS.linkedin)
         ]);
       }
 
-      if (includesAny(q, ["focus", "focus area", "focus areas", "focous", "focous area", "focous areas", "foucs", "foucs area", "foucs areas", "skills", "topics", "expertise", "specializations", "specialisations", "what do you teach", "learn about", "cybersecurity areas"])) {
-        return response("HackStark focuses on:\n• Ethical hacking and penetration testing\n• Network security\n• IoT and wireless security\n• OSINT and reconnaissance\n• Security automation\n• Linux and controlled security labs", [
+      if (includesAny(q, ["focus", "focus area", "focus areas", "focous", "focous area", "focous areas", "foucs", "foucs area", "foucs areas", "skills", "topics", "expertise", "specializations", "specialisations", "what do you teach", "what does hackstark teach", "what does hack stark teach", "what does the hackstark teach", "what can i learn", "what will i learn", "subjects taught", "learn about", "cybersecurity areas"])) {
+        return response(`HackStark focuses on:\n${DATA.focusAreas.map((area) => `• ${area}`).join("\n")}`, [
           action("Explore focus areas", URLS.focus), action("Watch tutorials", URLS.learn)
         ]);
       }
@@ -141,22 +127,25 @@
       }
 
       if (includesAny(q, ["raw data", "hackstark.txt", "original profile", "old profile", "original description", "describe original hackstark"])) {
-        return response(`${HISTORICAL_PROFILE.source} describes HackStark as “${HISTORICAL_PROFILE.originalDescription}” It says the community has been in the field since ${HISTORICAL_PROFILE.communitySince}, spends time learning and practicing penetration testing, and aims to help people understand their gadgets, strengthen internet skills and clarify hacking concepts. It also says beginners do not need previous programming experience. These are historical self-descriptions; the current website adds a broader defensive-security and authorization-first position.`, [action("Current About page", URLS.about), action("Responsible use", URLS.responsible)]);
+        return response(`${HISTORICAL_PROFILE.source} describes HackStark as “${HISTORICAL_PROFILE.originalDescription}” It says the original community has been active since ${HISTORICAL_PROFILE.communitySince}, spent time learning and practicing penetration testing, and aimed to help people understand their gadgets, strengthen internet skills and clarify hacking concepts. It also says beginners do not need previous programming experience. These are historical self-descriptions; HackStark is now a cybersecurity education and open-source organization with a broader defensive-security and authorization-first position.`, [action("Current About page", URLS.about), action("Responsible use", URLS.responsible)]);
       }
 
       if (includesAny(q, ["who is hackstark", "what is hackstark", "about hackstark", "community", "organization", "organisation"])) {
-        return response(`HackStark is an independent cybersecurity learning and open-source community active since ${HISTORICAL_PROFILE.communitySince}. Its original profile emphasized IoT in penetration testing, gadgets and better internet skills. Its current scope includes ethical hacking, network defense, IoT and wireless security, OSINT, Linux labs, security automation, tutorials and public projects—all framed around education and authorized use.`, [
+        return response(`HackStark is an independent cybersecurity education and open-source organization that began as a learning community in ${HISTORICAL_PROFILE.communitySince}. Its original profile emphasized IoT in penetration testing, gadgets and better internet skills. Today the organization covers ethical hacking, network defense, IoT and wireless security, OSINT, Linux labs, security automation, tutorials, public projects and community programs—all framed around education and authorized use.`, [
           action("About HackStark", URLS.about), action("Join the community", URLS.community)
         ]);
       }
 
       if (includesAny(q, ["most starred", "popular repo", "most popular project", "github stats", "repository stats", "followers"])) {
-        return response("In the public GitHub snapshot checked 7 Sep 2026, HackStark had five public repositories and 9 followers. FastestRepositoryForKali was the most-starred repository with 3 stars; fastrepo4kali had 2 stars and the most forks with 3. Counts can change after this snapshot.", [action("Open GitHub", URLS.github), action("View projects", URLS.projects)]);
+        const ranked = PROJECTS.map((project) => ({ project, metrics: projectMetrics(project) })).sort((a, b) => b.metrics.stars - a.metrics.stars);
+        const source = ranked[0].metrics.source;
+        return response(`Using ${source}, HackStark has ${PROJECTS.length} featured public repositories. ${ranked[0].project.name} has the highest displayed star count at ${ranked[0].metrics.stars}; ${ranked.slice(1, 3).map(({ project: item, metrics }) => `${item.name} has ${metrics.stars}`).join(" and ")}. The profile follower count is ${DATA.statistics.githubFollowers} from the reference snapshot and is not refreshed by the repository request.`, [action("Open GitHub", URLS.github), action("View projects", URLS.projects)]);
       }
 
       if (includesAny(q, ["projects", "repositories", "repos", "open source", "github", "what have you built"])) {
-        const list = PROJECTS.map((item) => `• ${item.name} — ${item.language}; ${item.stars} stars; ${item.forks} forks`).join("\n");
-        return response(`HackStark has five public repositories in the GitHub snapshot checked 7 Sep 2026:\n${list}\nThe account had 9 followers and no public gists at that snapshot. Repository counts can change.`, [
+        const metrics = PROJECTS.map((item) => ({ item, values: projectMetrics(item) }));
+        const list = metrics.map(({ item, values }) => `• ${item.name} — ${values.language}; ${values.stars} stars; ${values.forks} forks`).join("\n");
+        return response(`HackStark’s ${PROJECTS.length} featured public repositories (${metrics[0].values.source}):\n${list}\nThe website groups this evidence into four case studies: Kali repository utilities, web-service resilience research, substitution-cipher learning and C++ programming foundations.`, [
           action("View projects", URLS.projects), action("Open GitHub", URLS.github)
         ]);
       }
@@ -167,7 +156,7 @@
 
       if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming"])) {
         const list = VIDEOS.map((item, index) => `• ${index + 1}. ${item.title}`).join("\n");
-        return response(`HackStark’s supplied profile says beginners can start without prior programming experience. The website currently features these 10 official YouTube lessons:\n${list}`, [
+        return response(`HackStark’s supplied profile says beginners can start without prior programming experience. The website currently features these ${VIDEOS.length} official YouTube lessons:\n${list}`, [
           action("Browse Academy", URLS.learn), action("YouTube channel", URLS.youtube)
         ]);
       }
@@ -182,6 +171,10 @@
 
       if (includesAny(q, ["nmap", "network scanning", "network security"])) {
         return response("HackStark covers network discovery, protocol analysis, infrastructure security and defensive monitoring. Its Nmap demonstration introduces host discovery, ping scanning and open-port identification on authorized systems.", [action("Watch network lessons", URLS.learn)]);
+      }
+
+      if (includesAny(q, ["security automation", "automation", "python scripting", "repeatable workflow"])) {
+        return topicAnswer("Security automation", "HackStark uses Python and scripting to make authorized reconnaissance, network analysis, evidence collection and repeatable defensive workflows clearer and more consistent.", [action("Explore projects", URLS.projects), action("Academy", URLS.learn)]);
       }
 
       if (includesAny(q, ["vulnerability", "nikto", "nexpose", "insightvm"])) {
@@ -237,7 +230,7 @@
 
       if (includesAny(q, ["old link", "historical link", "instagram", "twitter", "x account", "whatsapp"])) {
         return response(`${HISTORICAL_PROFILE.source} historically listed Facebook ${HISTORICAL_PROFILE.historicalHandles.facebook}, Telegram group ${HISTORICAL_PROFILE.historicalHandles.telegramGroup}, Telegram channel ${HISTORICAL_PROFILE.historicalHandles.telegramChannel}, Instagram ${HISTORICAL_PROFILE.historicalHandles.instagram}, GitHub ${HISTORICAL_PROFILE.historicalHandles.github} and X/Twitter ${HISTORICAL_PROFILE.historicalHandles.twitter}. It also named three WhatsApp communities: ${HISTORICAL_PROFILE.historicalWhatsAppCommunities.join(", ")}. Because ownership and invite validity can change, JARVIS does not expose the old personal phone number or invite URLs as current. Use the website’s verified links first.`, [
-          action("Verified community links", URLS.community), action("Instagram reference", URLS.instagram)
+          action("Official community links", URLS.community), action("Instagram reference", URLS.instagram)
         ]);
       }
 
@@ -253,7 +246,7 @@
         ]);
       }
 
-      return response("I couldn’t match that to the HackStark knowledge currently available to me. I can answer about its history, mission, founder, focus areas, five GitHub repositories, 10 featured YouTube lessons, broader course map, cybersecurity concepts, verified community channels and responsible-use policy.", [
+      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, its community roots, history, mission, founder, ${DATA.focusAreas.length} focus areas, ${PROJECTS.length} featured GitHub repositories, ${VIDEOS.length} YouTube lessons, broader course map, cybersecurity concepts, community channels and responsible-use policy.`, [
         action("About HackStark", URLS.about), action("Explore the website", URLS.focus)
       ]);
     }
@@ -283,7 +276,8 @@
         form: root.querySelector("#jarvis-form"),
         input: root.querySelector("#jarvis-text-input"),
         send: root.querySelector("#jarvis-send-btn"),
-        clear: root.querySelector("#jarvis-clear-btn")
+        clear: root.querySelector("#jarvis-clear-btn"),
+        footerStatus: root.querySelector(".jarvis-footer-text")
       };
       this.bind();
       this.trackViewport();
@@ -341,7 +335,7 @@
 
     showWelcome() {
       this.welcomed = true;
-      this.addMessage("bot", response("Hello! I’m JARVIS, the HackStark assistant. I can help you explore cybersecurity learning topics, open-source projects, Academy tutorials, community channels and responsible-use guidance."), [
+      this.addMessage("bot", response("Hello! I’m JARVIS, the HackStark organization assistant. I can help you explore cybersecurity learning topics, open-source projects, Academy tutorials, community channels and responsible-use guidance."), [
         ["About", "What is HackStark?"],
         ["Focus areas", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],
@@ -382,7 +376,9 @@
       } catch (error) {
         typing.remove();
         console.error("JARVIS could not answer.", error);
-        this.addMessage("bot", response("I’m having trouble answering. Please use the HackStark website navigation below.", [action("Explore HackStark", URLS.about)]));
+        this.addMessage("bot", response("I couldn’t generate that response. Your question was not lost—please try again, or use the HackStark links below.", [action("Explore HackStark", URLS.about)]), [
+          ["Try again", question], ["Assistant help", "What can you answer?"]
+        ], "error");
       } finally {
         this.processing = false;
         this.setProcessing(false);
@@ -393,11 +389,14 @@
       this.el.send.disabled = value;
       this.el.input.disabled = value;
       this.el.send.setAttribute("aria-busy", String(value));
+      this.root.classList.toggle("jarvis-processing", value);
+      if (this.el.footerStatus) this.el.footerStatus.textContent = value ? "Generating a HackStark response…" : "HackStark knowledge • No API key exposed";
     }
 
-    addMessage(role, payload, quickActions = []) {
+    addMessage(role, payload, quickActions = [], tone = "") {
       const wrapper = document.createElement("article");
       wrapper.className = `jarvis-msg jarvis-msg-${role}`;
+      if (tone) wrapper.classList.add(`jarvis-msg-${tone}`);
       if (role === "bot") {
         const avatar = document.createElement("span");
         avatar.className = "jarvis-msg-avatar";
@@ -470,7 +469,8 @@
       const row = document.createElement("div");
       row.className = "jarvis-typing-row";
       row.setAttribute("role", "status");
-      row.innerHTML = '<div class="jarvis-typing"><span>JARVIS is thinking...</span><span class="jarvis-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>';
+      row.setAttribute("aria-label", "JARVIS is generating a response");
+      row.innerHTML = '<div class="jarvis-typing"><span class="jarvis-loading-spinner" aria-hidden="true"></span><span>Generating response</span><span class="jarvis-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="jarvis-response-skeleton" aria-hidden="true"><i></i><i></i><i></i></span></div>';
       this.el.messages.append(row);
       this.scrollLatest();
       return row;

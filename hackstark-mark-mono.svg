@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">HackStark monochrome mark</title>
+  <desc id="desc">A single-color computer frame containing a defensive shield.</desc>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="9" width="50" height="36" rx="7" stroke-width="4"/>
+    <path d="M23 54h18M32 45v9" stroke-width="4"/>
+    <path d="M32 17 43 21v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14v-8l11-4Z" stroke-width="3.5"/>
+    <path d="m27.5 29.5 3 3 6-7" stroke-width="3"/>
+  </g>
+</svg>
