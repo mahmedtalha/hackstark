@@ -1,0 +1,117 @@
+/* JARVIS assistant — dimensions and motion matched to the supplied portfolio reference. */
+#jarvis-assistant { color-scheme: dark; font-family: Inter, sans-serif; }
+#jarvis-chat-window[hidden] { display: none !important; }
+.jarvis-sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+
+#jarvis-launcher { position: fixed; right: calc(18px + var(--jarvis-viewport-right,0px)); bottom: calc(max(16px,env(safe-area-inset-bottom)) + var(--jarvis-viewport-bottom,0px)); z-index: 9999; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+#jarvis-launcher .jarvis-btn-core { position: relative; display: flex; width: 38px; height: 38px; align-items: center; justify-content: center; border: 2px solid rgba(0,212,255,.5); border-radius: 50%; background: linear-gradient(135deg,#0a0f1e,#111827); box-shadow: 0 0 16px rgba(0,212,255,.3),0 0 40px rgba(0,212,255,.1),inset 0 0 20px rgba(0,212,255,.05); transition: transform .2s ease,box-shadow .2s ease,border-color .2s ease; }
+#jarvis-launcher .jarvis-btn-core svg { width: 16px; height: 16px; fill: none; stroke: #00d4ff; stroke-width: 1.5; filter: drop-shadow(0 0 6px rgba(0,212,255,.8)); }
+#jarvis-launcher .jarvis-ring,#jarvis-launcher .jarvis-ring-2 { position: absolute; top: 50%; left: 50%; border-radius: 50%; pointer-events: none; }
+#jarvis-launcher .jarvis-ring { width: 48px; height: 48px; border: 1.5px solid transparent; border-top-color: rgba(0,212,255,.7); border-right-color: rgba(0,212,255,.2); animation: jarvis-spin 3s linear infinite; }
+#jarvis-launcher .jarvis-ring-2 { width: 56px; height: 56px; border: 1px solid transparent; border-bottom-color: rgba(0,212,255,.4); border-left-color: rgba(0,212,255,.1); animation: jarvis-spin-rev 5s linear infinite; }
+#jarvis-launcher .jarvis-pulse { position: absolute; top: 3px; right: 3px; width: 6px; height: 6px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 8px #00ff88; animation: jarvis-pulse 2s ease-in-out infinite; }
+#jarvis-launcher .jarvis-label { position: absolute; top: 50%; right: calc(100% + 5px); width: max-content; padding: 3px 6px; border: 1px solid rgba(0,212,255,.3); border-radius: 12px; background: rgba(9,14,29,.94); box-shadow: 0 0 10px rgba(0,212,255,.12); color: rgba(0,212,255,.9); font: 7px "Fira Code",monospace; letter-spacing: .65px; text-transform: uppercase; white-space: nowrap; user-select: none; transform: translateY(-50%); transition: opacity .18s ease,visibility .18s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease; }
+#jarvis-launcher .jarvis-question { margin-left: 1px; color: #00ff88; font-weight: 700; }
+.jarvis-chat-visible #jarvis-launcher .jarvis-label { opacity: 0; visibility: hidden; pointer-events: none; }
+#jarvis-launcher:hover .jarvis-label,#jarvis-launcher:focus-visible .jarvis-label { color: #7cecff; border-color: rgba(0,212,255,.65); box-shadow: 0 0 14px rgba(0,212,255,.25); }
+#jarvis-launcher .jarvis-tooltip { display: none; }
+#jarvis-launcher:hover .jarvis-btn-core { border-color: rgba(0,212,255,.9); box-shadow: 0 0 24px rgba(0,212,255,.5),0 0 60px rgba(0,212,255,.2),inset 0 0 20px rgba(0,212,255,.1); transform: scale(1.08); }
+
+#jarvis-chat-window { position: fixed; right: calc(18px + var(--jarvis-viewport-right,0px)); bottom: calc(78px + var(--jarvis-viewport-bottom,0px)); z-index: 9998; display: flex; width: min(330px,calc(var(--jarvis-viewport-width,100vw) - 56px)); height: min(600px,calc(var(--jarvis-viewport-height,100vh) - 125px)); flex-direction: column; overflow: hidden; border: 1px solid rgba(0,212,255,.25); border-radius: 16px; background: linear-gradient(160deg,#090e1d 0%,#0d1424 60%,#0a1628 100%); box-shadow: 0 0 40px rgba(0,212,255,.15),0 20px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(0,212,255,.1); font-family: Inter,sans-serif; opacity: 0; pointer-events: none; transform: translateY(20px) scale(.96); transition: opacity .25s ease,transform .25s ease; }
+#jarvis-chat-window.jarvis-open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+#jarvis-chat-window.jarvis-minimized { height: 64px; }
+#jarvis-chat-window.jarvis-minimized #jarvis-messages,#jarvis-chat-window.jarvis-minimized #jarvis-input-area { visibility: hidden; }
+#jarvis-chat-window::before { position: absolute; z-index: 0; inset: 0; border-radius: 16px; background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,212,255,.012) 2px,rgba(0,212,255,.012) 4px); content: ""; pointer-events: none; }
+
+#jarvis-header { position: relative; z-index: 1; display: flex; flex-shrink: 0; align-items: center; gap: 7px; padding: 5px 9px; border-bottom: 1px solid rgba(0,212,255,.15); background: linear-gradient(90deg,rgba(0,212,255,.08),transparent); }
+.jarvis-header-icon { display: flex; width: 26px; height: 26px; flex-shrink: 0; align-items: center; justify-content: center; border: 1.5px solid rgba(0,212,255,.4); border-radius: 50%; background: linear-gradient(135deg,rgba(0,212,255,.15),rgba(0,212,255,.05)); box-shadow: 0 0 10px rgba(0,212,255,.2); }
+.jarvis-header-icon svg { width: 12px; height: 12px; fill: none; stroke: #00d4ff; stroke-width: 1.5; }
+.jarvis-header-info { flex: 1; }
+.jarvis-header-info h2 { margin: 0; color: #00d4ff; font: 700 13px/1 Outfit,sans-serif; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0,212,255,.5); }
+.jarvis-header-info p { margin: 1px 0 0; color: rgba(200,220,255,.5); font-size: 8px; letter-spacing: .5px; }
+.jarvis-online-badge { display: flex; align-items: center; gap: 4px; color: #00ff88; font: 8px "Fira Code",monospace; letter-spacing: .5px; }
+.jarvis-online-dot { width: 5px; height: 5px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 6px #00ff88; animation: jarvis-pulse 2s ease-in-out infinite; }
+.jarvis-header-controls { display: flex; align-items: center; gap: 4px; }
+.jarvis-ctrl-btn { display: flex; width: 24px; height: 24px; align-items: center; justify-content: center; padding: 0; border: 1px solid rgba(0,212,255,.2); border-radius: 5px; background: rgba(0,212,255,.06); color: rgba(0,212,255,.6); font: 16px/1 Inter,sans-serif; cursor: pointer; transition: all .15s ease; }
+.jarvis-ctrl-btn:hover { border-color: rgba(0,212,255,.5); background: rgba(0,212,255,.15); color: #00d4ff; }
+.jarvis-ctrl-btn.jarvis-close-btn:hover { border-color: rgba(255,60,60,.4); background: rgba(255,60,60,.15); color: #ff4444; }
+#jarvis-assistant button:focus-visible,#jarvis-assistant a:focus-visible,#jarvis-assistant textarea:focus-visible { outline: 2px solid #7cecff; outline-offset: 2px; }
+
+#jarvis-messages { position: relative; z-index: 1; display: flex; flex: 1; flex-direction: column; gap: 14px; padding: 16px; overflow-y: auto; scroll-behavior: smooth; }
+#jarvis-messages::-webkit-scrollbar { width: 4px; }
+#jarvis-messages::-webkit-scrollbar-track { background: transparent; }
+#jarvis-messages::-webkit-scrollbar-thumb { border-radius: 4px; background: rgba(0,212,255,.2); }
+.jarvis-msg { display: flex; max-width: 92%; gap: 10px; animation: jarvis-msg-in .3s ease; }
+.jarvis-msg-bot { align-self: flex-start; }
+.jarvis-msg-user { align-self: flex-end; flex-direction: row-reverse; }
+.jarvis-msg-avatar { display: flex; width: 28px; height: 28px; flex-shrink: 0; align-items: center; justify-content: center; margin-top: 2px; border: 1px solid rgba(0,212,255,.35); border-radius: 50%; background: linear-gradient(135deg,rgba(0,212,255,.15),rgba(0,212,255,.05)); }
+.jarvis-msg-avatar svg { width: 14px; height: 14px; fill: none; stroke: #00d4ff; stroke-width: 1.5; }
+.jarvis-msg-bubble { max-width: calc(100% - 40px); }
+.jarvis-msg-meta { margin-bottom: 4px; color: rgba(150,180,220,.4); font: 9px "Fira Code",monospace; letter-spacing: .5px; }
+.jarvis-msg-user .jarvis-msg-meta { text-align: right; }
+.jarvis-msg-text { padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.jarvis-msg-text p { margin: 0; color: inherit; }
+.jarvis-msg-text p + p { margin-top: 7px; }
+.jarvis-msg-bot .jarvis-msg-text { border: 1px solid rgba(0,212,255,.15); border-radius: 4px 12px 12px; background: rgba(0,212,255,.07); color: rgba(200,230,255,.9); }
+.jarvis-msg-user .jarvis-msg-text { border: 1px solid rgba(0,212,255,.25); border-radius: 12px 4px 12px 12px; background: linear-gradient(135deg,rgba(0,212,255,.18),rgba(0,150,200,.12)); color: #e0f4ff; text-align: right; }
+.jarvis-msg-text ul { margin: 6px 0 0; padding-left: 18px; list-style: disc; }
+.jarvis-msg-text li { margin-bottom: 3px; color: rgba(180,220,255,.85); }
+
+.jarvis-actions,.jarvis-quick-actions { display: flex; flex-wrap: wrap; }
+.jarvis-actions { gap: 6px; margin-top: 8px; }
+.jarvis-quick-actions { column-gap: 4px; row-gap: 3px; margin-top: 6px; }
+.jarvis-action-btn,.jarvis-chip { border: 1px solid rgba(0,212,255,.3); border-radius: 20px; background: rgba(0,212,255,.06); color: rgba(0,212,255,.85); font-family: "Fira Code",monospace; white-space: nowrap; cursor: pointer; transition: all .15s ease; }
+.jarvis-action-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; font-size: 11px; text-decoration: none; }
+.jarvis-action-btn::after { content: "↗"; font-size: 9px; }
+.jarvis-action-btn[href^="#"]::after { content: "→"; }
+.jarvis-chip { padding: 4px 9px; font-size: 10px; }
+.jarvis-action-btn:hover,.jarvis-chip:hover { border-color: rgba(0,212,255,.6); background: rgba(0,212,255,.16); box-shadow: 0 0 10px rgba(0,212,255,.18); color: #00d4ff; }
+
+.jarvis-typing-row { align-self: flex-start; animation: jarvis-msg-in .2s ease; }
+.jarvis-typing { display: flex; width: fit-content; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid rgba(0,212,255,.15); border-radius: 4px 12px 12px; background: rgba(0,212,255,.07); }
+.jarvis-typing > span:first-child { color: rgba(0,212,255,.6); font: 10px "Fira Code",monospace; letter-spacing: .5px; }
+.jarvis-dots { display: flex; gap: 4px; }
+.jarvis-dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(0,212,255,.6); animation: jarvis-dot-bounce 1.2s ease-in-out infinite; }
+.jarvis-dots i:nth-child(2) { animation-delay: .2s; }
+.jarvis-dots i:nth-child(3) { animation-delay: .4s; }
+
+#jarvis-input-area { position: relative; z-index: 1; flex-shrink: 0; padding: 12px 14px; border-top: 1px solid rgba(0,212,255,.12); background: rgba(0,0,0,.3); }
+.jarvis-input-row { display: flex; align-items: center; gap: 8px; padding: 4px 6px 4px 12px; border: 1px solid rgba(0,212,255,.2); border-radius: 12px; background: rgba(0,212,255,.05); transition: border-color .15s ease,box-shadow .15s ease; }
+.jarvis-input-row:focus-within { border-color: rgba(0,212,255,.45); box-shadow: 0 0 12px rgba(0,212,255,.1); }
+#jarvis-text-input { flex: 1; min-width: 0; min-height: 36px; max-height: 96px; padding: 8px 0; border: 0; outline: 0; resize: none; background: transparent; color: rgba(200,230,255,.9); font: 13px/1.5 Inter,sans-serif; }
+#jarvis-text-input::placeholder { color: rgba(0,212,255,.3); }
+.jarvis-input-btn { display: flex; width: 34px; height: 34px; flex-shrink: 0; align-items: center; justify-content: center; padding: 0; border: 1px solid rgba(0,212,255,.35); border-radius: 8px; background: linear-gradient(135deg,rgba(0,212,255,.25),rgba(0,150,200,.15)); color: #00d4ff; cursor: pointer; transition: all .15s ease; }
+.jarvis-input-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.jarvis-input-btn:hover:not(:disabled) { background: linear-gradient(135deg,rgba(0,212,255,.4),rgba(0,150,200,.25)); box-shadow: 0 0 12px rgba(0,212,255,.3); }
+.jarvis-input-btn:disabled { opacity: .4; cursor: not-allowed; }
+.jarvis-input-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding: 0 2px; }
+.jarvis-footer-text,#jarvis-clear-btn { font: 9px "Fira Code",monospace; letter-spacing: .5px; }
+.jarvis-footer-text { color: rgba(0,212,255,.25); }
+#jarvis-clear-btn { padding: 0; border: 0; background: transparent; color: rgba(0,212,255,.3); cursor: pointer; transition: color .15s; }
+#jarvis-clear-btn:hover { color: rgba(0,212,255,.7); }
+
+@keyframes jarvis-spin { from { transform: translate(-50%,-50%) rotate(0); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes jarvis-spin-rev { from { transform: translate(-50%,-50%) rotate(0); } to { transform: translate(-50%,-50%) rotate(-360deg); } }
+@keyframes jarvis-pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.85); } }
+@keyframes jarvis-dot-bounce { 0%,80%,100% { opacity: .5; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-5px); } }
+@keyframes jarvis-msg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.back-to-top { right: calc(18px + var(--jarvis-viewport-right,0px)); bottom: calc(105px + var(--jarvis-viewport-bottom,0px)); }
+.jarvis-chat-visible .back-to-top { opacity: 0 !important; visibility: hidden !important; pointer-events: none; }
+
+@media (max-width:480px) {
+  #jarvis-launcher { right: calc(12px + var(--jarvis-viewport-right,0px)); bottom: calc(max(12px,env(safe-area-inset-bottom)) + var(--jarvis-viewport-bottom,0px)); }
+  #jarvis-chat-window { right: calc(12px + var(--jarvis-viewport-right,0px)); bottom: calc(70px + var(--jarvis-viewport-bottom,0px)); width: min(330px,84vw,calc(var(--jarvis-viewport-width,100vw) - 40px)); height: min(75dvh,540px,calc(var(--jarvis-viewport-height,100vh) - 115px)); border-radius: 14px; }
+  .jarvis-msg-text { font-size: 12px; }
+  #jarvis-messages { padding: 13px; }
+  #jarvis-input-area { padding: 10px; }
+}
+@media (max-width:360px) {
+  #jarvis-chat-window { height: min(72dvh,500px,calc(var(--jarvis-viewport-height,100vh) - 115px)); }
+  .jarvis-header-info p,.jarvis-footer-text { display: none; }
+  .jarvis-header-controls { gap: 3px; }
+  .jarvis-input-row { gap: 4px; padding-left: 9px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  #jarvis-assistant *,#jarvis-assistant *::before,#jarvis-assistant *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

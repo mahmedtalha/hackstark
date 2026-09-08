@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="HackStark is a cybersecurity learning and open-source community covering ethical hacking, penetration testing, IoT security, network security, OSINT, Linux and practical security research.">
-  <meta name="theme-color" content="#100d0c">
+  <meta name="theme-color" content="#06090e">
   <meta name="color-scheme" content="dark light">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>HackStark | Cybersecurity Education, Ethical Hacking &amp; Open Source</title>
@@ -29,9 +29,14 @@
   <meta name="twitter:description" content="Cybersecurity education, ethical hacking and open-source security research.">
   <meta name="twitter:image" content="https://hackstark.ahmedtalha470.chatgpt.site/og.png">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="jarvis-aichatbot.css">
   <script src="script.js" defer></script>
+  <script src="jarvis-aichatbot.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -156,6 +161,7 @@
       <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
       <div class="container hero-layout">
         <div class="hero-copy">
+          <img class="hero-brand-logo" src="hackstark-logo.png" width="240" height="143" alt="HackStark">
           <p class="eyebrow"><span></span> Cybersecurity • Education • Open Source</p>
           <h1 id="hero-heading">Learn cybersecurity.<br>Build skills. <em>Defend better.</em></h1>
           <p class="hero-description">HackStark is a learning and open-source community making ethical hacking, network defense, IoT security, OSINT and responsible security research practical and accessible.</p>
@@ -213,7 +219,16 @@
           <div class="section-copy">
             <p>HackStark is an independent cybersecurity learning community that turns technical security concepts into clear, practical education through demonstrations, tutorials, open-source projects and responsible research.</p>
             <p>We explore ethical hacking, network reconnaissance, Linux security, IoT, OSINT, vulnerability assessment, security automation and defensive cybersecurity—with authorization and responsible use at the center.</p>
+            <p>The original HackStark profile traces the community to 2015 and describes a goal of helping people understand what they can do with their gadgets, improve their internet skills and build clearer concepts about hacking and the internet.</p>
           </div>
+        </div>
+
+        <div class="facts-grid reveal" aria-label="HackStark at a glance">
+          <article class="fact-card"><strong>2015</strong><span>Community roots</span><p>Active in practical security learning since the community’s early profile.</p></article>
+          <article class="fact-card"><strong>Beginner</strong><span>Friendly entry point</span><p>No previous programming experience is required to begin the learning path.</p></article>
+          <article class="fact-card"><strong>IoT</strong><span>Original specialty</span><p>Connected devices and penetration-testing knowledge shaped HackStark’s early focus.</p></article>
+          <article class="fact-card"><strong>5</strong><span>Public repositories</span><p>Open-source resources spanning Linux, programming and security education.</p></article>
+          <article class="fact-card"><strong>10</strong><span>Featured lessons</span><p>Official videos currently collected in the HackStark Academy section.</p></article>
         </div>
 
         <div class="principles-grid">
@@ -241,6 +256,23 @@
             <h3>Share</h3>
             <p>Grow skills together through accessible resources and open knowledge.</p>
           </article>
+        </div>
+
+        <div class="brand-story reveal">
+          <figure class="brand-story__media">
+            <img src="HS.JPG" width="489" height="715" loading="lazy" decoding="async" alt="Early HackStark brand photograph showing two masked community members beneath the HackStark logo">
+            <figcaption><span>Archive / HackStark</span><strong>Visual roots</strong></figcaption>
+          </figure>
+          <div class="brand-story__copy">
+            <p class="eyebrow"><span></span> The identity</p>
+            <h3>Curiosity with a clear ethical boundary.</h3>
+            <p>The original HackStark visual reflects the curiosity, privacy awareness and hands-on mindset that shaped the community. Today, that energy is focused on practical education, defensive research and learning in authorized environments.</p>
+            <ul class="brand-story__values" aria-label="HackStark values">
+              <li><span>01</span><strong>Question systems</strong><small>Understand how technology works before testing it.</small></li>
+              <li><span>02</span><strong>Practice responsibly</strong><small>Use isolated labs, owned systems and explicit permission.</small></li>
+              <li><span>03</span><strong>Share defenses</strong><small>Turn discoveries into safer tools and clearer education.</small></li>
+            </ul>
+          </div>
         </div>
 
         <div class="mission-panel reveal">
@@ -304,6 +336,20 @@
             <p>Kali Linux, virtualization, security tooling and controlled laboratory exercises.</p>
             <ul class="mini-list"><li>Linux</li><li>Virtual labs</li></ul>
           </article>
+        </div>
+
+        <div class="learning-roadmap reveal" aria-labelledby="roadmap-heading">
+          <div class="learning-roadmap__intro">
+            <p class="eyebrow"><span></span> Suggested learning path</p>
+            <h3 id="roadmap-heading">From first lab to defensive practice.</h3>
+            <p>The broader historical curriculum is organized here as a safe, modern roadmap. Every practical exercise belongs in an isolated environment or on systems you are explicitly authorized to assess.</p>
+          </div>
+          <ol class="roadmap-steps">
+            <li><span>01</span><div><strong>Prepare the lab</strong><p>Virtualization, Kali Linux setup, repositories, networking basics and ethical-hacking foundations.</p></div></li>
+            <li><span>02</span><div><strong>Understand exposure</strong><p>Footprinting, lawful OSINT, network scanning, enumeration and vulnerability analysis.</p></div></li>
+            <li><span>03</span><div><strong>Strengthen defenses</strong><p>Traffic analysis, malware awareness, social-engineering defense, availability, sessions, IDS, firewalls and honeypots.</p></div></li>
+            <li><span>04</span><div><strong>Explore specializations</strong><p>Web applications, wireless, mobile, IoT, cloud platforms, cryptography and security automation.</p></div></li>
+          </ol>
         </div>
       </div>
     </section>
@@ -638,6 +684,53 @@
   <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
     <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
   </button>
+
+  <div id="jarvis-assistant">
+    <button id="jarvis-launcher" type="button" aria-label="Open JARVIS AI Assistant" aria-controls="jarvis-chat-window" aria-expanded="false">
+      <span class="jarvis-tooltip" role="tooltip">Ask JARVIS</span>
+      <span class="jarvis-btn-core" aria-hidden="true">
+        <span class="jarvis-ring"></span><span class="jarvis-ring-2"></span>
+        <svg viewBox="0 0 24 24"><path d="M9 3h6M12 3v3M7 7h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3Z"/><path d="M8 12h.01M16 12h.01M8.5 16h7M4 11H2M22 11h-2"/></svg>
+        <span class="jarvis-pulse"></span>
+      </span>
+      <span class="jarvis-label">ASK JARVIS<span class="jarvis-question">?</span></span>
+    </button>
+
+    <section id="jarvis-chat-window" role="dialog" aria-modal="false" aria-labelledby="jarvis-dialog-title" aria-describedby="jarvis-dialog-subtitle" aria-hidden="true" hidden inert>
+      <header id="jarvis-header">
+        <div class="jarvis-header-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 3h6M12 3v3M7 7h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3Z"/><path d="M8 12h.01M16 12h.01M8.5 16h7"/></svg>
+        </div>
+        <div class="jarvis-header-info">
+          <h2 id="jarvis-dialog-title">JARVIS</h2>
+          <p id="jarvis-dialog-subtitle">HackStark Assistant</p>
+          <span class="jarvis-online-badge"><span class="jarvis-online-dot"></span>Online</span>
+        </div>
+        <div class="jarvis-header-controls">
+          <button id="jarvis-minimize-btn" class="jarvis-ctrl-btn" type="button" aria-label="Minimize JARVIS" title="Minimize" aria-expanded="true">−</button>
+          <button id="jarvis-close-btn" class="jarvis-ctrl-btn jarvis-close-btn" type="button" aria-label="Close JARVIS" title="Close">×</button>
+        </div>
+      </header>
+
+      <div id="jarvis-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+      <div id="jarvis-input-area">
+        <form id="jarvis-form" novalidate>
+          <label class="jarvis-sr-only" for="jarvis-text-input">Ask JARVIS about HackStark</label>
+          <div class="jarvis-input-row">
+            <textarea id="jarvis-text-input" rows="1" maxlength="500" placeholder="Ask about HackStark, projects, tutorials..." autocomplete="off"></textarea>
+            <button id="jarvis-send-btn" class="jarvis-input-btn" type="submit" aria-label="Send message" title="Send">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 4 17 8-17 8 3-8-3-8Z"/><path d="M7 12h14"/></svg>
+            </button>
+          </div>
+        </form>
+        <div class="jarvis-input-footer">
+          <span class="jarvis-footer-text">HackStark knowledge • No API key exposed</span>
+          <button id="jarvis-clear-btn" type="button">Clear chat</button>
+        </div>
+      </div>
+    </section>
+  </div>
   <noscript><div class="noscript-note">JavaScript is optional here. All primary content and links remain available without it.</div></noscript>
 </body>
 </html>

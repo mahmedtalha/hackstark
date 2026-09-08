@@ -326,7 +326,7 @@
       const applyTheme = (theme) => {
         document.documentElement.dataset.theme = theme;
         toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
-        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#100d0c" : "#f4eee4");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#06090e" : "#f8fafc");
       };
 
       applyTheme(initial);

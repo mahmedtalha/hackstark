@@ -13,6 +13,7 @@ A lightweight, responsive website for HackStark—a cybersecurity education and 
 
 - Hero and community learning pillars
 - About, mission and vision
+- HackStark at-a-glance facts and a four-stage defensive learning roadmap based on the supplied historical profile
 - Six cybersecurity focus areas
 - Filterable open-source project showcase
 - HackStark Academy video library
@@ -30,6 +31,7 @@ A lightweight, responsive website for HackStark—a cybersecurity education and 
 - Accessible project filters and video expansion
 - Optional current GitHub metadata with static fallbacks
 - Copy-email action with an accessible status message
+- Ask JARVIS assistant with structured local knowledge covering HackStark history, mission, founder, learning pillars, focus areas, five public repositories, 10 featured videos, the broader course map, verified community channels and responsible-use guidance
 - Reduced-motion, higher-contrast and print accommodations
 - Semantic metadata, JSON-LD, sitemap, robots file and social-card support
 - A branded 1200 × 630 social preview card in `og.png`
@@ -65,9 +67,12 @@ Upload the root-level website files. No server runtime, database or build step i
 ## Customization
 
 - Design tokens and theme colors are at the top of `style.css`.
-- The production palette follows `HackStark.JPG`: warm charcoal, sepia and parchment foundations with HackStark blue and security-green accents.
+- The production style follows the supplied portfolio reference: near-black navy surfaces, emerald actions, cyan highlights, glass navigation and compact rounded cards.
+- Typography uses Outfit for headings, Inter for body copy and Fira Code for technical labels.
 - Brand files are `hackstark-logo.png`, `hackstark-icon.png` and `favicon.png` in the project root.
 - Organization, social and repository configuration is grouped at the top of `script.js`.
+- JARVIS behavior and presentation live in `jarvis-aichatbot.js` and `jarvis-aichatbot.css`.
+- JARVIS keeps dated public-profile metadata clearly labeled as a snapshot, distinguishes current verified links from historical references and answers dual-use security topics only at a defensive, authorized-lab level.
 - Critical links and copy remain in HTML so the website still works without JavaScript.
 - Only use community URLs that have been manually verified. The current production set intentionally omits unverified or unavailable historical profiles.
 

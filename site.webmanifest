@@ -4,8 +4,8 @@
   "description": "Cybersecurity education, ethical hacking and open-source security research.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#100d0c",
-  "theme_color": "#100d0c",
+  "background_color": "#06090e",
+  "theme_color": "#06090e",
   "icons": [
     {
       "src": "favicon.png",
