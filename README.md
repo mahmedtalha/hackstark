@@ -39,7 +39,7 @@ A lightweight, responsive website for HackStark—a cybersecurity education and 
 - Accessible loading skeletons, progress indicators and visible fallback messaging for JARVIS and GitHub metadata
 - Copy-email action with an accessible status message
 - Direct Google contact-form action for professional inquiries and collaboration
-- Ask JARVIS assistant with structured local knowledge covering HackStark's organization identity, community roots, history, mission, founder, learning pillars, focus areas, five public repositories, 10 featured videos, the broader course map, official channels and responsible-use guidance
+- Ask JARVIS for local guidance across the 46-lesson beginner curriculum, progress controls, current and pending video links, project records, HackStark history, official channels and responsible-use guidance
 - Reduced-motion, higher-contrast and print accommodations
 - Semantic metadata, JSON-LD, sitemap, robots file and social-card support
 - Consistent SVG/PNG favicon and Open Graph social-card metadata across every HTML page

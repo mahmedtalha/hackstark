@@ -37,6 +37,10 @@
   const VIDEOS = DATA.videos;
   const COURSE_AREAS = DATA.courseAreas;
   const BEGINNER_COURSE = DATA.courses?.find((item) => item.id === "ethical-hacking-beginners");
+  const LINKED_COURSE_LESSONS = BEGINNER_COURSE?.sections
+    .flatMap((section) => section.modules)
+    .flatMap((module) => module.lessons)
+    .filter((lesson) => lesson.videoUrl).length || 0;
   const HISTORICAL_PROFILE = DATA.history;
 
   const topicAnswer = (title, detail, actions = []) => response(`${title}: ${detail}\nHackStark discusses this only for education, defense and authorized testing.`, actions.length ? actions : [action("Responsible use", URLS.responsible), action("Academy", URLS.learn)]);
@@ -104,7 +108,7 @@
       ]);
 
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
-        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge source includes the organization’s community roots, mission and learning philosophy; founder profile; ${DATA.focusAreas.length} focus areas; four learning pillars; ${PORTFOLIO_PROJECTS.length} founder security project groups; ${PROJECTS.length} HackStark public repositories; ${VIDEOS.length} official YouTube lessons; the broader course map; current community channels; legacy-link cautions; and responsible-security guidance. Live repository metadata is shared with the HackStark repository cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course map", URLS.learn), action("Projects", URLS.projects)]);
+        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; founder profile; ${DATA.focusAreas.length} focus areas; ${PORTFOLIO_PROJECTS.length + PROJECTS.length} project records; the ${BEGINNER_COURSE?.videoLessonCount || 46}-lesson beginner course; ${VIDEOS.length} currently featured YouTube lessons; community channels; legacy-content cautions; and responsible-security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Projects", URLS.projects)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -174,6 +178,14 @@
 
       if (includesAny(q, ["official ceh", "ceh certification", "ec council", "certification course"])) {
         return response("The HackStark beginner course is independent education covering topics historically aligned with CEH v11-era domains. It is not official or authorized EC-Council certification training, and completion does not award CEH certification.", [action("Read course context", URLS.course), action("Official CEH information", BEGINNER_COURSE?.officialReferences?.ceh || "https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/")]);
+      }
+
+      if (includesAny(q, ["course progress", "lesson progress", "reset progress", "where is progress stored"])) {
+        return response("Course progress is stored only in this browser on this device. Each lesson can cycle through Not started, In progress and Completed. HackStark does not receive this progress data, and the curriculum’s Reset Progress control clears it.", [action("Open curriculum", URLS.curriculum)]);
+      }
+
+      if (includesAny(q, ["coming soon", "video unavailable", "missing video", "available lessons", "linked lessons"])) {
+        return response(`The curriculum preserves all ${BEGINNER_COURSE?.videoLessonCount || 46} lesson records, but only verified destinations are clickable. ${LINKED_COURSE_LESSONS} course lessons currently have direct verified YouTube links; unavailable destinations are labeled “Video link coming soon” instead of using invented links.`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
       }
 
       if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {
@@ -267,8 +279,8 @@
         ]);
       }
 
-      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, its community roots, history, mission, founder, ${DATA.focusAreas.length} focus areas, ${PROJECTS.length} featured GitHub repositories, ${VIDEOS.length} YouTube lessons, broader course map, cybersecurity concepts, community channels and responsible-use policy.`, [
-        action("About HackStark", URLS.about), action("Explore the website", URLS.focus)
+      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, founder, ${DATA.focusAreas.length} focus areas, ${PORTFOLIO_PROJECTS.length + PROJECTS.length} project records, the ${BEGINNER_COURSE?.videoLessonCount || 46}-lesson beginner curriculum, currently linked videos, community channels and responsible-use policy.`, [
+        action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Explore projects", URLS.projects)
       ]);
     }
   }
@@ -356,7 +368,7 @@
 
     showWelcome() {
       this.welcomed = true;
-      this.addMessage("bot", response("Hello! I’m JARVIS, the HackStark organization assistant. I can help you explore cybersecurity learning topics, open-source projects, Academy tutorials, community channels and responsible-use guidance."), [
+      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can help you navigate the beginner course, curriculum, cybersecurity projects, community channels and responsible-use guidance."), [
         ["About", "What is HackStark?"],
         ["Focus areas", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],

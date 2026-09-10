@@ -1,11 +1,28 @@
 {
   "name": "HackStark",
   "short_name": "HackStark",
-  "description": "Cybersecurity education, ethical hacking and open-source security research.",
+  "description": "A structured ethical-hacking course, responsible cybersecurity labs and open-source security projects.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#06090e",
   "theme_color": "#06090e",
+  "shortcuts": [
+    {
+      "name": "Start Beginner Course",
+      "short_name": "Start Course",
+      "url": "./#about-course"
+    },
+    {
+      "name": "Browse Curriculum",
+      "short_name": "Curriculum",
+      "url": "./#curriculum"
+    },
+    {
+      "name": "Explore Projects",
+      "short_name": "Projects",
+      "url": "./#projects"
+    }
+  ],
   "icons": [
     {
       "src": "icon-192.png",

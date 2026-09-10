@@ -37,7 +37,6 @@
       this.scrollProgress();
       this.scrollSpy();
       this.revealAnimations();
-      this.identityEvolution();
       this.heroWorkflow();
       this.interactiveSurfaces();
       this.focusAssistant();
@@ -174,45 +173,6 @@
       window.addEventListener("resize", schedule, { passive: true });
     },
 
-    identityEvolution() {
-      const tabs = [...document.querySelectorAll("[data-identity-stage]")];
-      const panel = document.querySelector("#identity-panel");
-      const label = document.querySelector("#identity-panel-label");
-      const title = document.querySelector("#identity-panel-title");
-      const description = document.querySelector("#identity-panel-description");
-      if (!tabs.length || !panel || !label || !title || !description) return;
-
-      const select = (tab, moveFocus = false) => {
-        const stage = siteData.identityStages.find((item) => item.id === tab.dataset.identityStage);
-        if (!stage) return;
-        tabs.forEach((item) => {
-          const selected = item === tab;
-          item.setAttribute("aria-selected", String(selected));
-          item.tabIndex = selected ? 0 : -1;
-        });
-        label.textContent = stage.label;
-        title.textContent = stage.title;
-        description.textContent = stage.description;
-        panel.setAttribute("aria-labelledby", tab.id);
-        panel.classList.remove("identity-panel--changed");
-        requestAnimationFrame(() => panel.classList.add("identity-panel--changed"));
-        if (moveFocus) tab.focus();
-      };
-
-      tabs.forEach((tab, index) => {
-        const stage = siteData.identityStages.find((item) => item.id === tab.dataset.identityStage);
-        if (stage) tab.textContent = stage.label;
-        tab.addEventListener("click", () => select(tab));
-        tab.addEventListener("keydown", (event) => {
-          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-          event.preventDefault();
-          const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
-          select(tabs[nextIndex], true);
-        });
-      });
-      select(tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || tabs[0]);
-    },
-
     heroWorkflow() {
       const tabs = [...document.querySelectorAll("[data-workflow-step]")];
       const panel = document.querySelector("#security-stage-panel");
@@ -276,7 +236,7 @@
     },
 
     interactiveSurfaces() {
-      const surfaces = [...document.querySelectorAll(".fact-card, .principle-card, .focus-card, .portfolio-project-card, .case-study, .project-card, .video-card, .community-card, .founder-highlights > a")];
+      const surfaces = [...document.querySelectorAll(".fact-card, .focus-card, .portfolio-project-card, .case-study, .project-card, .video-card, .community-card, .founder-highlights > a")];
       surfaces.forEach((surface) => surface.classList.add("interactive-surface"));
       if (prefersReducedMotion() || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
       surfaces.forEach((surface) => {
