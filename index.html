@@ -12,7 +12,10 @@
   <!-- SITE_URL: replaced with the verified deployment origin before publishing. -->
   <link rel="canonical" href="https://hackstark.ahmedtalha470.chatgpt.site/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any">
-  <link rel="icon" href="favicon.png" type="image/png" sizes="512x512">
+  <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="HackStark">
@@ -30,9 +33,11 @@
   <meta name="twitter:image" content="https://hackstark.ahmedtalha470.chatgpt.site/og.png">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="course.css">
   <link rel="stylesheet" href="jarvis-aichatbot.css">
   <script src="hackstark-data.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="course.js" defer></script>
   <script src="jarvis-aichatbot.js" defer></script>
 
   <script type="application/ld+json">
@@ -67,7 +72,19 @@
         "name": "Muhammad Ahmed Talha",
         "jobTitle": "Founder & Lead — HackStark",
         "url": "https://talha.dpdns.org/",
-        "sameAs": ["https://linkedin.com/in/ahmedtalha470"]
+        "sameAs": [
+          "https://github.com/mahmedtalha",
+          "https://linkedin.com/in/ahmedtalha470"
+        ]
+      },
+      {
+        "@type": "Course",
+        "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#ethical-hacking-course",
+        "name": "Ethical Hacking Course for Beginners",
+        "description": "A structured beginner course covering Kali Linux lab setup, reconnaissance, vulnerability assessment, systems, networks, web security, wireless security, IoT, cloud computing and cryptography.",
+        "url": "https://hackstark.ahmedtalha470.chatgpt.site/#course-top",
+        "educationalLevel": "Beginner",
+        "provider": { "@id": "https://hackstark.ahmedtalha470.chatgpt.site/#organization" }
       }
     ]
   }
@@ -120,7 +137,11 @@
         <a href="#about">About</a>
         <a href="#focus">Focus Areas</a>
         <a href="#projects">Projects</a>
-        <a href="#learn">Learn</a>
+        <a href="#learn">Academy</a>
+        <a href="#about-course">Course Overview</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#faq">FAQ</a>
         <a href="#founder">Founder</a>
         <a href="#community">Community</a>
       </nav>
@@ -143,7 +164,11 @@
         <a href="#about">About</a>
         <a href="#focus">Focus Areas</a>
         <a href="#projects">Projects</a>
-        <a href="#learn">Learn</a>
+        <a href="#learn">Academy</a>
+        <a href="#about-course">Course Overview</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#faq">FAQ</a>
         <a href="#founder">Founder</a>
         <a href="#community">Community</a>
         <a href="#contact">Contact</a>
@@ -390,13 +415,138 @@
     <!-- Open-source Projects -->
     <section class="section section--roomy" id="projects" aria-labelledby="projects-heading">
       <div class="container">
-        <div class="section-header-row reveal">
+        <div class="section-header-row projects-section-header reveal">
           <div class="section-intro">
-            <p class="eyebrow"><span></span> Built in the open</p>
-            <h2 id="projects-heading">Open-source projects</h2>
-            <p>Explore HackStark's public repositories and educational security projects.</p>
+            <p class="eyebrow"><span></span> Security portfolio</p>
+            <h2 id="projects-heading">Featured Security Projects</h2>
+            <p>Hands-on projects with clear problems, methods, capabilities, and outcomes.</p>
           </div>
-          <a class="text-link text-link--strong" href="https://github.com/hackstarkofficial?tab=repositories" target="_blank" rel="noopener noreferrer" data-social="github">All repositories <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+          <a class="button button--ghost button--small" href="https://github.com/mahmedtalha" target="_blank" rel="noopener noreferrer" data-social="founderGithub"><svg aria-hidden="true"><use href="#icon-github"></use></svg> View GitHub</a>
+        </div>
+
+        <ul class="portfolio-expertise reveal" aria-label="Core technical expertise">
+          <li><svg aria-hidden="true"><use href="#icon-network"></use></svg>Network Infrastructure</li>
+          <li><svg aria-hidden="true"><use href="#icon-shield"></use></svg>Web Application Penetration Testing</li>
+          <li><svg aria-hidden="true"><use href="#icon-server"></use></svg>Cloud Deployments</li>
+          <li><svg aria-hidden="true"><use href="#icon-wifi"></use></svg>MikroTik &amp; Fortinet</li>
+        </ul>
+
+        <div class="filter-bar portfolio-filter-bar reveal" role="group" aria-label="Filter featured projects by specialty">
+          <button type="button" class="portfolio-filter-button is-active" data-portfolio-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="portfolio-filter-button" data-portfolio-filter="vapt" aria-pressed="false">VAPT</button>
+          <button type="button" class="portfolio-filter-button" data-portfolio-filter="osint" aria-pressed="false">OSINT</button>
+          <button type="button" class="portfolio-filter-button" data-portfolio-filter="network" aria-pressed="false">Network</button>
+          <button type="button" class="portfolio-filter-button" data-portfolio-filter="forensics" aria-pressed="false">Forensics</button>
+          <button type="button" class="portfolio-filter-button" data-portfolio-filter="development" aria-pressed="false">Development</button>
+        </div>
+        <p class="sr-only" id="portfolio-filter-status" aria-live="polite"></p>
+
+        <div class="portfolio-projects-grid" id="portfolio-project-grid">
+          <article class="portfolio-project-card portfolio-project-card--featured reveal" data-portfolio-project="info-gathering" data-portfolio-category="vapt osint network">
+            <div class="portfolio-project-card__heading"><span>Recon &amp; VAPT</span><h3>Information Gathering Framework</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Reconnaissance required moving between separate tools and inconsistent outputs.</dd></div>
+              <div><dt>What I built</dt><dd>A unified Python assessment workflow for domain and IP intelligence, enumeration, port scanning, and OSINT.</dd></div>
+              <div><dt>Key capability</dt><dd>Runs repeatable reconnaissance tasks through one organized workflow.</dd></div>
+              <div><dt>Result</dt><dd>Produces a consolidated assessment path and reduces manual tool switching.</dd></div>
+              <div><dt>Defensive use</dt><dd>Supports authorized asset discovery and attack-surface review.</dd></div>
+            </dl>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>Python</li><li>Nmap</li><li>Masscan</li><li>OpenVAS</li><li>OSINT</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/info-gathering" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+
+          <article class="portfolio-project-card portfolio-project-card--featured reveal" data-portfolio-project="user-finder" data-portfolio-category="osint development">
+            <div class="portfolio-project-card__heading"><span>OSINT Reconnaissance</span><h3>User Finder Zeta – OSINT Scanner</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Checking public username and email exposure platform by platform is slow and inconsistent.</dd></div>
+              <div><dt>What I built</dt><dd>A multithreaded scanner that checks public presence across platforms and generates structured reports.</dd></div>
+              <div><dt>Key capability</dt><dd>Performs concurrent public-footprint checks with consistent reporting.</dd></div>
+              <div><dt>Result</dt><dd>Consolidates scattered platform checks into one reviewable output.</dd></div>
+              <div><dt>Defensive use</dt><dd>Supports authorized exposure reviews and digital-footprint assessments.</dd></div>
+            </dl>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>Python</li><li>Multithreading</li><li>OSINT</li><li>API Scraping</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/user-finder" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+
+          <article class="portfolio-project-card portfolio-project-card--featured reveal" data-portfolio-project="metadata-extractor" data-portfolio-category="osint forensics development">
+            <div class="portfolio-project-card__heading"><span>Digital Forensics</span><h3>Zeta Metadata &amp; OSINT Extractor</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Documents and images can expose useful or sensitive metadata that is tedious to inspect manually.</dd></div>
+              <div><dt>What I built</dt><dd>A multi-format utility that extracts metadata from PDF, DOCX, and image files.</dd></div>
+              <div><dt>Key capability</dt><dd>Applies one extraction workflow across common office and image formats.</dd></div>
+              <div><dt>Result</dt><dd>Turns embedded file metadata into a structured, reviewable record.</dd></div>
+              <div><dt>Defensive use</dt><dd>Supports authorized investigations and pre-publication metadata risk reviews.</dd></div>
+            </dl>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>Python</li><li>EXIF</li><li>PDF/DOCX</li><li>Digital Forensics</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/meta-data-extractor-zeta" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+
+          <article class="portfolio-project-card portfolio-project-card--featured reveal" data-portfolio-project="wifi-deauth-detector" data-portfolio-category="network development">
+            <div class="portfolio-project-card__heading"><span>Wireless Defense</span><h3>Wi-Fi Deauth Detector NodeMCU</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Deauthentication activity can disrupt wireless access without an obvious physical warning.</dd></div>
+              <div><dt>What I built</dt><dd>An ESP8266 monitoring device that detects IEEE 802.11 deauthentication activity and alerts administrators.</dd></div>
+              <div><dt>Key capability</dt><dd>Identifies targeted Wi-Fi management-frame activity on dedicated hardware.</dd></div>
+              <div><dt>Result</dt><dd>Provides an immediate signal for investigating suspicious wireless disruption.</dd></div>
+              <div><dt>Defensive use</dt><dd>Designed as a focused wireless monitoring and alerting prototype.</dd></div>
+            </dl>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>NodeMCU ESP8266</li><li>C++</li><li>802.11</li><li>Embedded Systems</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/WiFiDeauthDetectorNodeMCU" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+
+          <div class="portfolio-more-heading reveal" data-portfolio-heading>
+            <span class="mono-label">More Projects</span>
+            <h3>Applied development &amp; research</h3>
+          </div>
+
+          <article class="portfolio-project-card reveal" data-portfolio-project="watermark-remover" data-portfolio-category="development">
+            <div class="portfolio-project-card__heading"><span>AI &amp; Vision Application</span><h3>AI Video &amp; Image Watermark Remover Pro</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Media cleanup workflows require object detection, segmentation, and inpainting across images and video.</dd></div>
+              <div><dt>What I built</dt><dd>A desktop GUI that integrates vision models into one media-processing workflow.</dd></div>
+              <div><dt>Key capability</dt><dd>Combines detection, segmentation, and reconstruction in an accessible interface.</dd></div>
+              <div><dt>Result</dt><dd>Produces a unified desktop workflow for AI-assisted media processing.</dd></div>
+            </dl>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>Python</li><li>Florence-2</li><li>LaMA AI</li><li>PyQt GUI</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/AI-Video-Watermark-Remover-Pro" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+
+          <article class="portfolio-project-card portfolio-project-card--research reveal" data-portfolio-project="slowloris-advanced" data-portfolio-category="vapt network development">
+            <div class="portfolio-project-card__heading"><span>Stress Testing</span><h3>Slowloris Advanced DoS Simulator</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Defenders need controlled ways to examine how servers handle long-lived connections.</dd></div>
+              <div><dt>Approach</dt><dd>Created a socket-based simulator for isolated, authorized resilience testing.</dd></div>
+              <div><dt>Key capability</dt><dd>Exercises web-server connection handling in a configurable lab workflow.</dd></div>
+              <div><dt>Result</dt><dd>Enables observation of connection behavior and defensive configuration in a test environment.</dd></div>
+              <div><dt>Defensive use</dt><dd>Supports resilience validation and mitigation testing only in controlled labs.</dd></div>
+            </dl>
+            <p class="portfolio-safety-label"><svg aria-hidden="true"><use href="#icon-lock"></use></svg>Authorized lab research only</p>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>Python</li><li>Socket Programming</li><li>DoS Simulation</li><li>Load Testing</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/slowlorisAdvancedVersion" target="_blank" rel="noopener noreferrer">View source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+
+          <article class="portfolio-project-card reveal" data-portfolio-project="endpoint-detectors" data-portfolio-category="vapt osint network development">
+            <div class="portfolio-project-card__heading"><span>Recon &amp; Network Security</span><h3>Live Website &amp; Proxy Detectors</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Large target and proxy lists require repetitive reachability, certificate, status, and latency checks.</dd></div>
+              <div><dt>What I built</dt><dd>Two network utilities for validating web targets and active proxy servers.</dd></div>
+              <div><dt>Key capability</dt><dd>Uses concurrent checks to review availability, SSL state, response codes, and latency.</dd></div>
+              <div><dt>Result</dt><dd>Transforms raw endpoint lists into validated, actionable results.</dd></div>
+              <div><dt>Defensive use</dt><dd>Supports authorized asset validation and network-health reviews.</dd></div>
+            </dl>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>Python</li><li>Async IO</li><li>Multithreading</li><li>SSL &amp; Proxy Audit</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/live-website-detector" target="_blank" rel="noopener noreferrer">Website source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a><a href="https://github.com/mahmedtalha/live-proxy-detector" target="_blank" rel="noopener noreferrer">Proxy source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+
+          <article class="portfolio-project-card portfolio-project-card--research reveal" data-portfolio-project="prodigy-suite" data-portfolio-category="vapt network forensics development">
+            <div class="portfolio-project-card__heading"><span>Grouped Security Suite</span><h3>Prodigy Cyber Security Research Suite</h3></div>
+            <dl>
+              <div><dt>Problem</dt><dd>Security concepts are easier to understand through isolated, observable lab implementations.</dd></div>
+              <div><dt>What I built</dt><dd>A Scapy packet analyzer, endpoint keystroke telemetry prototype, and pixel-based image cryptography project.</dd></div>
+              <div><dt>Key capability</dt><dd>Demonstrates packet inspection, endpoint event capture, and reversible pixel manipulation.</dd></div>
+              <div><dt>Result</dt><dd>Creates three focused implementations for studying distinct security controls and risks.</dd></div>
+              <div><dt>Defensive use</dt><dd>Developed exclusively for controlled laboratory and authorized research environments.</dd></div>
+            </dl>
+            <p class="portfolio-safety-label"><svg aria-hidden="true"><use href="#icon-lock"></use></svg>Authorized lab research only</p>
+            <div class="portfolio-project-card__footer"><ul class="tag-list"><li>Python</li><li>Scapy</li><li>Cryptography</li><li>Endpoint Security</li></ul><div class="case-study__links"><a href="https://github.com/mahmedtalha/PRODIGY_CS_05_packet_sniffer" target="_blank" rel="noopener noreferrer">Packet Sniffer source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a><a href="https://github.com/mahmedtalha/PRODIGY_CS_04_keylogger" target="_blank" rel="noopener noreferrer">Telemetry source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a><a href="https://github.com/mahmedtalha/PRODIGY_CS_02_Pixel_Manipulation_Image_Encryption" target="_blank" rel="noopener noreferrer">Image Encryption source <svg aria-hidden="true"><use href="#icon-github"></use></svg></a></div></div>
+          </article>
+        </div>
+
+        <div class="repository-index-heading repository-index-heading--organization reveal">
+          <div><span class="mono-label">HackStark open source</span><h3>Organization case studies</h3></div>
         </div>
 
         <div class="case-studies" aria-label="HackStark project case studies">
@@ -450,8 +600,7 @@
         </div>
 
         <div class="repository-index-heading reveal">
-          <div><span class="mono-label">Repository index</span><h3>Browse the complete public collection</h3></div>
-          <p>Case studies provide context; the cards below remain the direct repository index with optional live metadata.</p>
+          <div><span class="mono-label">Repository index</span><h3>Public repository collection</h3></div>
         </div>
 
         <div class="filter-bar reveal" role="group" aria-label="Filter projects by category">
@@ -539,13 +688,28 @@
     <section class="section academy" id="learn" aria-labelledby="learn-heading">
       <div class="academy-grid" aria-hidden="true"></div>
       <div class="container">
-        <div class="academy-header reveal">
-          <div class="section-intro">
+        <div class="academy-header academy-header--center reveal">
+          <div class="section-intro section-intro--centered">
             <p class="eyebrow eyebrow--light"><span></span> HackStark Academy</p>
-            <h2 id="learn-heading">Learn through practical <em>demonstrations.</em></h2>
-            <p>Guided security concepts and lab-first walkthroughs designed to help learners understand the why—not just repeat the steps.</p>
+            <h2 id="learn-heading">Learn Ethical Hacking <em>from the Ground Up.</em></h2>
+            <p>A clear, lab-first path from cybersecurity foundations to responsible security research.</p>
           </div>
-          <a class="button button--light" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube"><svg aria-hidden="true"><use href="#icon-youtube"></use></svg> View all tutorials</a>
+        </div>
+
+        <article class="academy-course-promo reveal">
+          <div class="academy-course-promo__mark" aria-hidden="true"><svg><use href="#icon-shield"></use></svg></div>
+          <div class="academy-course-promo__copy">
+            <span class="video-topic">Ethical Hacking</span>
+            <h3>Ethical Hacking Course for Beginners</h3>
+            <p>Build a practical foundation through structured lessons on Kali Linux labs, reconnaissance, networks, vulnerability assessment, web security, wireless, IoT, cloud and cryptography.</p>
+            <div class="academy-course-promo__facts"><span>Beginner</span><span>46 video lessons</span><span>21 core modules</span><span>4 lab setup lessons</span></div>
+          </div>
+          <a class="button button--light" href="#course-top">Explore Course <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+        </article>
+
+        <div class="academy-library-heading reveal">
+          <div><span class="video-topic">Free video lessons</span><h3>Watch practical demonstrations</h3></div>
+          <a class="text-link text-link--light" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube">View all tutorials <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
         </div>
 
         <div class="video-grid" id="video-grid">
@@ -629,6 +793,82 @@
         <div class="show-more-wrap"><button class="button button--outline-light" type="button" id="show-more-videos" aria-expanded="false">Show 4 more lessons <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
       </div>
     </section>
+
+    <div class="course-academy" id="course-top">
+      <nav class="course-subnav" aria-label="Ethical hacking course navigation">
+        <div class="container"><a href="#about-course">Overview</a><a href="#outcomes">Outcomes</a><a href="#curriculum">Curriculum</a><a href="#faq">FAQ</a></div>
+      </nav>
+
+      <section class="section course-home-section course-overview" id="about-course" aria-labelledby="about-course-heading">
+        <div class="container course-overview__grid">
+          <div><p class="eyebrow"><span></span> Course overview</p><h2 id="about-course-heading">A structured path into cybersecurity.</h2></div>
+          <div class="course-overview__copy">
+            <p><strong>Ethical Hacking Course for Beginners by HackStark</strong> combines 46 self-paced lessons with practical demonstrations and supporting resources.</p>
+            <p>Start with an isolated Kali Linux lab, then progress through reconnaissance, vulnerability assessment, systems, networks, web applications, wireless security, IoT, cloud computing and cryptography.</p>
+            <aside class="course-context-note"><strong>Independent education</strong><p>The curriculum covers topics historically aligned with CEH v11-era domains. It is not official or authorized EC-Council certification training, and completion does not earn CEH certification.</p><a href="https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/" target="_blank" rel="noopener noreferrer">Current official CEH information <svg aria-hidden="true"><use href="#icon-external"></use></svg></a></aside>
+          </div>
+        </div>
+        <div class="container course-needs course-needs--compact">
+          <div><p class="eyebrow"><span></span> Beginner friendly</p><h2>What you need</h2><p>No previous penetration-testing experience is required.</p></div>
+          <ul><li>Basic computer knowledge</li><li>Networking familiarity is helpful</li><li>A virtualization-capable computer</li><li>An internet connection</li><li>Curiosity and permission-first thinking</li></ul>
+        </div>
+      </section>
+
+      <section class="section course-home-section section--tinted" id="outcomes" aria-labelledby="outcomes-heading">
+        <div class="container">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Course outcomes</p><h2 id="outcomes-heading">What you'll learn</h2></div>
+          <div class="course-card-grid course-card-grid--four">
+            <article><svg aria-hidden="true"><use href="#icon-terminal"></use></svg><h3>Build a Security Lab</h3><p>Create a virtualized Kali Linux environment for controlled practice.</p></article>
+            <article><svg aria-hidden="true"><use href="#icon-search"></use></svg><h3>Understand Reconnaissance</h3><p>Learn information gathering, footprinting, OSINT and enumeration.</p></article>
+            <article><svg aria-hidden="true"><use href="#icon-network"></use></svg><h3>Analyze Networks</h3><p>Understand scanning, services, traffic capture and monitoring.</p></article>
+            <article><svg aria-hidden="true"><use href="#icon-shield"></use></svg><h3>Assess Vulnerabilities</h3><p>Learn assessment concepts and common validation tooling.</p></article>
+            <article><svg aria-hidden="true"><use href="#icon-lock"></use></svg><h3>Secure Systems</h3><p>Explore Windows, Android and endpoint concepts in controlled labs.</p></article>
+            <article><svg aria-hidden="true"><use href="#icon-code"></use></svg><h3>Explore Web Security</h3><p>Study applications, servers, sessions and injection defenses.</p></article>
+            <article><svg aria-hidden="true"><use href="#icon-wifi"></use></svg><h3>Wireless &amp; IoT</h3><p>Explore Wi-Fi, mobile platforms and connected-device security.</p></article>
+            <article><svg aria-hidden="true"><use href="#icon-book"></use></svg><h3>Research Responsibly</h3><p>Continue through labs, documentation, CTFs and open source.</p></article>
+          </div>
+          <div class="lab-path lab-path--compact" id="learning-path">
+            <div><p class="eyebrow"><span></span> Lab-first path</p><h3>Build the environment before testing.</h3><p>Practice only on systems you own, intentionally vulnerable environments, CTFs or systems for which you have explicit permission.</p><a href="https://www.kali.org/docs/virtualization/install-vmware-guest-vm/" target="_blank" rel="noopener noreferrer">Kali VMware documentation <svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div>
+            <ol><li><span>01</span>Install virtualization</li><li><span>02</span>Enable VT-x / AMD-V</li><li><span>03</span>Install Kali Linux</li><li><span>04</span>Configure Kali</li><li><span>05</span>Create an isolated lab</li></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section course-home-section course-curriculum-section" id="curriculum" aria-labelledby="curriculum-heading">
+        <div class="container">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> 46 video lessons</p><h2 id="curriculum-heading">Course Curriculum</h2><p>Search, filter and expand the learning path. Available videos open on YouTube; unlinked lessons are clearly marked.</p></div>
+          <div class="course-progress-panel" aria-labelledby="course-progress-heading">
+            <div><span class="mono-label">Stored on this device</span><h3 id="course-progress-heading">Course Progress</h3><p id="course-progress-text" aria-live="polite">0 / 46 lessons completed</p></div>
+            <div class="course-progress-track" role="progressbar" aria-label="Course completion" aria-valuemin="0" aria-valuemax="46" aria-valuenow="0"><span id="course-progress-bar"></span></div>
+            <strong id="course-progress-percent">0%</strong><button type="button" class="course-text-button" id="reset-course-progress">Reset Progress</button>
+          </div>
+          <div class="curriculum-tools">
+            <label class="curriculum-search"><span>Search curriculum</span><span><svg aria-hidden="true"><use href="#icon-search"></use></svg><input type="search" id="curriculum-search" placeholder="Search lessons, for example Wireshark" autocomplete="off"></span></label>
+            <div class="curriculum-actions"><button type="button" id="expand-curriculum">Expand All</button><button type="button" id="collapse-curriculum">Collapse All</button></div>
+          </div>
+          <div class="curriculum-filters" role="group" aria-label="Filter curriculum by category">
+            <button type="button" class="is-active" data-course-filter="all" aria-pressed="true">All</button><button type="button" data-course-filter="foundation" aria-pressed="false">Foundation</button><button type="button" data-course-filter="networking" aria-pressed="false">Networking</button><button type="button" data-course-filter="osint" aria-pressed="false">OSINT</button><button type="button" data-course-filter="vulnerability" aria-pressed="false">Vulnerability</button><button type="button" data-course-filter="system" aria-pressed="false">Systems</button><button type="button" data-course-filter="web" aria-pressed="false">Web</button><button type="button" data-course-filter="wireless" aria-pressed="false">Wireless</button><button type="button" data-course-filter="mobile" aria-pressed="false">Mobile</button><button type="button" data-course-filter="iot" aria-pressed="false">IoT</button><button type="button" data-course-filter="cloud" aria-pressed="false">Cloud</button><button type="button" data-course-filter="cryptography" aria-pressed="false">Cryptography</button>
+          </div>
+          <p class="curriculum-status" id="curriculum-status" role="status" aria-live="polite"></p>
+          <div id="course-curriculum-list"></div>
+          <noscript><div class="course-noscript"><h3>Course curriculum</h3><p>Enable JavaScript to search, filter and expand all 46 lessons. The course contains four lab lessons and 21 numbered modules.</p></div></noscript>
+        </div>
+      </section>
+
+      <section class="section course-home-section section--tinted course-faq" id="faq" aria-labelledby="faq-heading">
+        <div class="container">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Course questions</p><h2 id="faq-heading">Frequently Asked Questions</h2></div>
+          <div class="faq-list">
+            <details><summary>Is this suitable for beginners?</summary><p>Yes. It begins with virtualization and Kali Linux setup before introducing cybersecurity topics.</p></details>
+            <details><summary>Do I need previous experience?</summary><p>No. Basic computer knowledge is sufficient; networking knowledge is helpful.</p></details>
+            <details><summary>Is this an official CEH course?</summary><p>No. It is independent HackStark education and does not award EC-Council certification.</p></details>
+            <details><summary>Does it include practical demonstrations?</summary><p>Yes. Lab demonstrations must only be reproduced in controlled, authorized environments.</p></details>
+            <details><summary>Is all content current?</summary><p>Foundational and legacy lessons are clearly labeled, with current official documentation linked where available.</p></details>
+            <details><summary>Can I practice on public websites?</summary><p>No. Use your own systems, intentionally vulnerable labs, CTFs or explicitly authorized targets only.</p></details>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- Founder Section -->
     <section class="section section--roomy" id="founder" aria-labelledby="founder-heading">
@@ -725,6 +965,7 @@
           <p class="copy-status" id="copy-status" aria-live="polite"></p>
         </div>
         <div class="contact-channels reveal" aria-label="Contact channels">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScdbT_vnWj5tRU2b-XP_PdamjncAMHc3sgl6rGEUI8EHMe4QQ/viewform?usp=sharing" target="_blank" rel="noopener noreferrer" data-social="contactForm"><svg aria-hidden="true"><use href="#icon-external"></use></svg><span><strong>Google Contact Form</strong><small>Professional inquiries &amp; collaboration</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
           <a href="mailto:hackstarkofficial@gmail.com"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span><strong>Email HackStark</strong><small>Questions &amp; collaboration</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
           <a href="https://github.com/hackstarkofficial" target="_blank" rel="noopener noreferrer" data-social="github"><svg aria-hidden="true"><use href="#icon-github"></use></svg><span><strong>GitHub</strong><small>Projects &amp; code</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
           <a href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube"><svg aria-hidden="true"><use href="#icon-youtube"></use></svg><span><strong>YouTube</strong><small>Videos &amp; tutorials</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
@@ -753,7 +994,7 @@
         <span>Learn ethically. Test responsibly. Secure continuously.</span>
       </div>
       <div class="footer-links">
-        <div><h2>Explore</h2><a href="#about">About</a><a href="#focus">Focus Areas</a><a href="#projects">Projects</a><a href="#learn">Learn</a></div>
+        <div><h2>Explore</h2><a href="#about">About</a><a href="#focus">Focus Areas</a><a href="#projects">Projects</a><a href="#learn">Academy</a><a href="#curriculum">Course Curriculum</a></div>
         <div><h2>Connect</h2><a href="#founder">Founder</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="mailto:hackstarkofficial@gmail.com">Email</a></div>
         <div><h2>Principles</h2><a href="#responsible-security">Responsible Security</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
       </div>
@@ -774,7 +1015,7 @@
   </button>
 
   <div id="jarvis-assistant">
-    <button id="jarvis-launcher" type="button" aria-label="Open JARVIS AI Assistant" aria-controls="jarvis-chat-window" aria-expanded="false">
+    <button id="jarvis-launcher" type="button" aria-label="Open JARVIS — HackStark Assistant" aria-controls="jarvis-chat-window" aria-expanded="false">
       <span class="jarvis-tooltip" role="tooltip">Ask JARVIS</span>
       <span class="jarvis-btn-core" aria-hidden="true">
         <span class="jarvis-ring"></span><span class="jarvis-ring-2"></span>
@@ -790,9 +1031,9 @@
           <svg viewBox="0 0 24 24"><path d="M9 3h6M12 3v3M7 7h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3Z"/><path d="M8 12h.01M16 12h.01M8.5 16h7"/></svg>
         </div>
         <div class="jarvis-header-info">
-          <h2 id="jarvis-dialog-title">JARVIS</h2>
-          <p id="jarvis-dialog-subtitle">HackStark Assistant</p>
-          <span class="jarvis-online-badge"><span class="jarvis-online-dot"></span>Online</span>
+          <h2 id="jarvis-dialog-title">JARVIS — HackStark Assistant</h2>
+          <p id="jarvis-dialog-subtitle">Ask about HackStark, projects, tutorials and resources.</p>
+          <span class="jarvis-online-badge"><span class="jarvis-online-dot"></span>Local</span>
         </div>
         <div class="jarvis-header-controls">
           <button id="jarvis-minimize-btn" class="jarvis-ctrl-btn" type="button" aria-label="Minimize JARVIS" title="Minimize" aria-expanded="true">−</button>
@@ -806,14 +1047,14 @@
         <form id="jarvis-form" novalidate>
           <label class="jarvis-sr-only" for="jarvis-text-input">Ask JARVIS about HackStark</label>
           <div class="jarvis-input-row">
-            <textarea id="jarvis-text-input" rows="1" maxlength="500" placeholder="Ask about HackStark, projects, tutorials..." autocomplete="off"></textarea>
+            <textarea id="jarvis-text-input" rows="1" maxlength="500" placeholder="Ask about HackStark, projects, tutorials and resources..." autocomplete="off"></textarea>
             <button id="jarvis-send-btn" class="jarvis-input-btn" type="submit" aria-label="Send message" title="Send">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 4 17 8-17 8 3-8-3-8Z"/><path d="M7 12h14"/></svg>
             </button>
           </div>
         </form>
         <div class="jarvis-input-footer">
-          <span class="jarvis-footer-text">HackStark knowledge • No API key exposed</span>
+          <span class="jarvis-footer-text">Local HackStark knowledge • No external AI service</span>
           <button id="jarvis-clear-btn" type="button">Clear chat</button>
         </div>
       </div>

@@ -42,6 +42,7 @@
       this.interactiveSurfaces();
       this.focusAssistant();
       this.animatedFacts();
+      this.portfolioFilters();
       this.repositoryFilters();
       this.copyEmail();
       this.backToTop();
@@ -275,7 +276,7 @@
     },
 
     interactiveSurfaces() {
-      const surfaces = [...document.querySelectorAll(".fact-card, .principle-card, .focus-card, .case-study, .project-card, .video-card, .community-card, .founder-highlights > a")];
+      const surfaces = [...document.querySelectorAll(".fact-card, .principle-card, .focus-card, .portfolio-project-card, .case-study, .project-card, .video-card, .community-card, .founder-highlights > a")];
       surfaces.forEach((surface) => surface.classList.add("interactive-surface"));
       if (prefersReducedMotion() || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
       surfaces.forEach((surface) => {
@@ -406,7 +407,45 @@
       });
     },
 
+    portfolioFilters() {
+      const buttons = [...document.querySelectorAll("[data-portfolio-filter]")];
+      const cards = [...document.querySelectorAll("[data-portfolio-category]")];
+      const heading = document.querySelector("[data-portfolio-heading]");
+      const status = document.querySelector("#portfolio-filter-status");
+      if (!buttons.length || !cards.length) return;
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.portfolioFilter || "all";
+          let visibleCount = 0;
+
+          buttons.forEach((item) => {
+            const isActive = item === button;
+            item.classList.toggle("is-active", isActive);
+            item.setAttribute("aria-pressed", String(isActive));
+          });
+
+          cards.forEach((card) => {
+            const categories = (card.dataset.portfolioCategory || "").split(" ");
+            const shouldShow = filter === "all" || categories.includes(filter);
+            card.hidden = !shouldShow;
+            if (shouldShow) visibleCount += 1;
+          });
+
+          if (heading) {
+            const hasVisibleAdditionalProject = cards.some((card) => !card.classList.contains("portfolio-project-card--featured") && !card.hidden);
+            heading.hidden = !hasVisibleAdditionalProject;
+          }
+          if (status) {
+            const label = filter === "all" ? "all specialties" : filter.toUpperCase();
+            status.textContent = `${visibleCount} project${visibleCount === 1 ? "" : "s"} shown for ${label}.`;
+          }
+        });
+      });
+    },
+
     scheduleGitHubData() {
+      if (!document.querySelector("[data-repository]")) return;
       if (!("fetch" in window)) {
         this.repositoryState("fallback", "Live GitHub metadata is unavailable in this browser. Static project details remain ready.");
         return;

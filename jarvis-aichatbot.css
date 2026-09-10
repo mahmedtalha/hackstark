@@ -27,7 +27,7 @@
 .jarvis-header-icon { display: flex; width: 26px; height: 26px; flex-shrink: 0; align-items: center; justify-content: center; border: 1.5px solid rgba(0,212,255,.4); border-radius: 50%; background: linear-gradient(135deg,rgba(0,212,255,.15),rgba(0,212,255,.05)); box-shadow: 0 0 10px rgba(0,212,255,.2); }
 .jarvis-header-icon svg { width: 12px; height: 12px; fill: none; stroke: #00d4ff; stroke-width: 1.5; }
 .jarvis-header-info { flex: 1; }
-.jarvis-header-info h2 { margin: 0; color: #00d4ff; font: 700 13px/1 Outfit,sans-serif; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0,212,255,.5); }
+.jarvis-header-info h2 { margin: 0; color: #00d4ff; font: 700 11px/1.2 Outfit,sans-serif; letter-spacing: .7px; text-shadow: 0 0 10px rgba(0,212,255,.5); }
 .jarvis-header-info p { margin: 1px 0 0; color: #a9b9cc; font-size: 8px; letter-spacing: .5px; }
 .jarvis-online-badge { display: flex; align-items: center; gap: 4px; color: #00ff88; font: 8px "Fira Code",monospace; letter-spacing: .5px; }
 .jarvis-online-dot { width: 5px; height: 5px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 6px #00ff88; animation: jarvis-pulse 2s ease-in-out infinite; }

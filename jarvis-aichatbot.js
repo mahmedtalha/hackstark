@@ -7,28 +7,36 @@
     return;
   }
 
+  const onCoursePage = document.body.classList.contains("course-page");
+  const homeSection = (hash) => onCoursePage ? `../index.html${hash}` : hash;
   const URLS = Object.freeze({
-    about: "#about",
-    focus: "#focus",
-    projects: "#projects",
-    learn: "#learn",
-    founder: "#founder",
-    community: "#community",
-    responsible: "#responsible-security",
-    contact: "#contact",
+    about: homeSection("#about"),
+    focus: homeSection("#focus"),
+    projects: homeSection("#projects"),
+    learn: onCoursePage ? "#course-top" : "#learn",
+    course: "#course-top",
+    curriculum: "#curriculum",
+    founder: homeSection("#founder"),
+    community: homeSection("#community"),
+    responsible: onCoursePage ? "#learn-responsibly" : "#responsible-security",
+    contact: homeSection("#contact"),
     github: DATA.socials.github,
     youtube: DATA.socials.youtube,
     facebook: DATA.socials.facebook,
     telegram: DATA.socials.telegramChannel,
     telegramGroup: DATA.socials.telegramContact,
     instagram: DATA.socials.instagram,
+    founderGithub: DATA.socials.founderGithub,
+    contactForm: DATA.socials.contactForm,
     linkedin: DATA.founder.linkedin,
     email: `mailto:${DATA.organization.email}`
   });
 
   const PROJECTS = DATA.projects;
+  const PORTFOLIO_PROJECTS = DATA.portfolioProjects || [];
   const VIDEOS = DATA.videos;
   const COURSE_AREAS = DATA.courseAreas;
+  const BEGINNER_COURSE = DATA.courses?.find((item) => item.id === "ethical-hacking-beginners");
   const HISTORICAL_PROFILE = DATA.history;
 
   const topicAnswer = (title, detail, actions = []) => response(`${title}: ${detail}\nHackStark discusses this only for education, defense and authorized testing.`, actions.length ? actions : [action("Responsible use", URLS.responsible), action("Academy", URLS.learn)]);
@@ -73,11 +81,20 @@
         ]);
       }
 
+      const portfolioProject = PORTFOLIO_PROJECTS.find((item) => item.aliases.some((alias) => q.includes(normalize(alias))));
       const project = PROJECTS.find((item) => item.aliases.some((alias) => q.includes(alias)));
-      if (project) {
+      if (project && !portfolioProject) {
         const metrics = projectMetrics(project);
         return response(`${project.name}: ${project.description}\nRepository details from ${metrics.source}: language ${metrics.language}; created ${formatDate(project.created)}; last repository update ${metrics.updated}; ${metrics.stars} stars; ${metrics.forks} forks; default branch ${metrics.branch}; license ${metrics.license}.`, [
         action("Open repository", project.url), action("All projects", URLS.projects)
+        ]);
+      }
+
+      if (portfolioProject) {
+        const technologies = portfolioProject.technologies.join(", ");
+        const sourceActions = portfolioProject.sources.map((source) => action(source.label, source.url));
+        return response(`${portfolioProject.name} — ${portfolioProject.category}: ${portfolioProject.description}\nTechnologies: ${technologies}. This project is presented for defensive, authorized or controlled-lab use as applicable.`, [
+          ...sourceActions, action("All projects", URLS.projects)
         ]);
       }
 
@@ -87,7 +104,7 @@
       ]);
 
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
-        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge source includes the organization’s community roots, mission and learning philosophy; founder profile; ${DATA.focusAreas.length} focus areas; four learning pillars; ${PROJECTS.length} featured public repositories; ${VIDEOS.length} official YouTube lessons; the broader course map; current community channels; legacy-link cautions; and responsible-security guidance. Live repository metadata is shared with the visible project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course map", URLS.learn), action("Projects", URLS.projects)]);
+        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge source includes the organization’s community roots, mission and learning philosophy; founder profile; ${DATA.focusAreas.length} focus areas; four learning pillars; ${PORTFOLIO_PROJECTS.length} founder security project groups; ${PROJECTS.length} HackStark public repositories; ${VIDEOS.length} official YouTube lessons; the broader course map; current community channels; legacy-link cautions; and responsible-security guidance. Live repository metadata is shared with the HackStark repository cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course map", URLS.learn), action("Projects", URLS.projects)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -145,19 +162,23 @@
       if (includesAny(q, ["projects", "repositories", "repos", "open source", "github", "what have you built"])) {
         const metrics = PROJECTS.map((item) => ({ item, values: projectMetrics(item) }));
         const list = metrics.map(({ item, values }) => `• ${item.name} — ${values.language}; ${values.stars} stars; ${values.forks} forks`).join("\n");
-        return response(`HackStark’s ${PROJECTS.length} featured public repositories (${metrics[0].values.source}):\n${list}\nThe website groups this evidence into four case studies: Kali repository utilities, web-service resilience research, substitution-cipher learning and C++ programming foundations.`, [
-          action("View projects", URLS.projects), action("Open GitHub", URLS.github)
+        const portfolioList = PORTFOLIO_PROJECTS.map((item) => `• ${item.name} — ${item.category}`).join("\n");
+        return response(`The website presents ${PORTFOLIO_PROJECTS.length} founder security project groups:\n${portfolioList}\n\nIt also preserves HackStark’s ${PROJECTS.length} featured public repositories (${metrics[0].values.source}):\n${list}`, [
+          action("View projects", URLS.projects), action("Founder GitHub", URLS.founderGithub), action("HackStark GitHub", URLS.github)
         ]);
       }
 
       if (includesAny(q, ["curriculum", "course outline", "course map", "all topics", "syllabus", "modules"])) {
-        return response(`The broader historical HackStark course map covers:\n${COURSE_AREAS.map((area) => `• ${area}`).join("\n")}\nSome historical lessons mention dual-use tools. JARVIS provides only high-level, defensive guidance and routes practical work to owned or explicitly authorized labs.`, [action("Academy", URLS.learn), action("Responsible use", URLS.responsible)]);
+        return response(`HackStark Academy's ${BEGINNER_COURSE?.name || "beginner course"} contains ${BEGINNER_COURSE?.videoLessonCount || 46} video lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab-setup lessons. It covers:\n${COURSE_AREAS.map((area) => `• ${area}`).join("\n")}\nLegacy and dual-use topics are clearly labeled and framed for defense, education and explicitly authorized labs.`, [action("Open curriculum", URLS.curriculum), action("Responsible use", URLS.responsible)]);
       }
 
-      if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming"])) {
-        const list = VIDEOS.map((item, index) => `• ${index + 1}. ${item.title}`).join("\n");
-        return response(`HackStark’s supplied profile says beginners can start without prior programming experience. The website currently features these ${VIDEOS.length} official YouTube lessons:\n${list}`, [
-          action("Browse Academy", URLS.learn), action("YouTube channel", URLS.youtube)
+      if (includesAny(q, ["official ceh", "ceh certification", "ec council", "certification course"])) {
+        return response("The HackStark beginner course is independent education covering topics historically aligned with CEH v11-era domains. It is not official or authorized EC-Council certification training, and completion does not award CEH certification.", [action("Read course context", URLS.course), action("Official CEH information", BEGINNER_COURSE?.officialReferences?.ceh || "https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/")]);
+      }
+
+      if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {
+        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self-paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} core modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab-setup lessons. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration-testing experience is required.`, [
+          action("Explore the course", URLS.course), action("Open curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)
         ]);
       }
 
@@ -241,8 +262,8 @@
       }
 
       if (includesAny(q, ["contact", "email", "collaborate", "collaboration", "question"])) {
-        return response("For questions, collaboration or learning resources, email HackStark at hackstarkofficial@gmail.com or use the official community channels.", [
-          action("Email HackStark", URLS.email), action("Contact options", URLS.contact)
+        return response("For professional inquiries or collaboration, use the Google contact form. You can also email HackStark at hackstarkofficial@gmail.com or use the official community channels.", [
+          action("Google contact form", URLS.contactForm), action("Email HackStark", URLS.email), action("Contact options", URLS.contact)
         ]);
       }
 
@@ -306,7 +327,7 @@
       this.el.window.setAttribute("aria-hidden", "false");
       document.body.classList.add("jarvis-chat-visible");
       this.el.launcher.setAttribute("aria-expanded", "true");
-      this.el.launcher.setAttribute("aria-label", "Close JARVIS AI Assistant");
+      this.el.launcher.setAttribute("aria-label", "Close JARVIS — HackStark Assistant");
       if (this.el.window.classList.contains("jarvis-minimized")) this.toggleMinimize(false);
       if (!this.welcomed) this.showWelcome();
       this.resizeInput();
@@ -319,7 +340,7 @@
       document.body.classList.remove("jarvis-chat-visible");
       this.el.window.inert = true;
       this.el.launcher.setAttribute("aria-expanded", "false");
-      this.el.launcher.setAttribute("aria-label", "Open JARVIS AI Assistant");
+      this.el.launcher.setAttribute("aria-label", "Open JARVIS — HackStark Assistant");
       window.setTimeout(() => { if (!this.isOpen()) this.el.window.hidden = true; }, 260);
       this.el.launcher.focus();
     }
@@ -339,8 +360,8 @@
         ["About", "What is HackStark?"],
         ["Focus areas", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],
-        ["Academy", "What tutorials are available?"],
-        ["Course map", "Show the full course outline"],
+        ["Beginner course", "Tell me about the beginner course"],
+        ["Curriculum", "Show the full course curriculum"],
         ["GitHub facts", "Show GitHub stats"],
         ["Founder", "Who founded HackStark?"],
         ["Join", "How can I join the community?"],
