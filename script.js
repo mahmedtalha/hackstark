@@ -198,7 +198,7 @@
           tab.classList.toggle("is-complete", index < activeIndex);
         });
 
-        reference.textContent = `HS / ${stage.number}`;
+        reference.textContent = `Stage ${stage.number} / 03`;
         label.textContent = stage.label;
         heading.textContent = stage.title;
         description.textContent = stage.description;
@@ -224,6 +224,9 @@
           tab.querySelector("small").textContent = stage.summary;
         }
         tab.addEventListener("click", () => render(index));
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+          tab.addEventListener("pointerenter", () => render(index));
+        }
         tab.addEventListener("keydown", (event) => {
           if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
           event.preventDefault();

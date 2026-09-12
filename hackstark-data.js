@@ -52,6 +52,12 @@
     provider: "HackStark",
     level: "Beginner",
     delivery: "Self-paced",
+    currency: "PKR",
+    originalPrice: 5000,
+    price: 1999,
+    usdCurrency: "USD",
+    usdOriginalPrice: 20,
+    usdPrice: 7.99,
     videoLessonCount: 46,
     numberedModuleCount: 21,
     labLessonCount: 4,
@@ -241,9 +247,9 @@
     courses: Object.freeze([ethicalHackingCourse]),
     focusAreas: Object.freeze(["Ethical hacking and penetration testing", "Network security", "IoT and wireless security", "OSINT and reconnaissance", "Security automation", "Linux and controlled security labs"]),
     securityWorkflow: Object.freeze([
-      Object.freeze({ id: "understand", number: "01", name: "Understand", summary: "Concept & scope", label: "Security mindset / Understand", title: "Learn how the system behaves.", description: "Map the concept, define the authorized scope and understand the expected behavior before testing anything." }),
-      Object.freeze({ id: "practice", number: "02", name: "Practice", summary: "Controlled lab", label: "Security mindset / Practice", title: "Validate safely in a controlled lab.", description: "Reproduce the concept only in an isolated environment or on systems you own or have explicit permission to assess." }),
-      Object.freeze({ id: "harden", number: "03", name: "Harden", summary: "Defensive action", label: "Security mindset / Harden", title: "Turn findings into stronger defenses.", description: "Apply remediation, verify the fix, document the evidence and share the defensive lesson responsibly." })
+      Object.freeze({ id: "understand", number: "01", name: "Understand", summary: "Concept & scope", label: "Security mindset / Understand", title: "Understand before applying.", description: "Learn the concept, ethical scope and defensive purpose before using a technique." }),
+      Object.freeze({ id: "practice", number: "02", name: "Practice", summary: "Controlled lab", label: "Security mindset / Practice", title: "Practice safely.", description: "Apply the concept inside an authorized, controlled lab." }),
+      Object.freeze({ id: "harden", number: "03", name: "Harden", summary: "Defensive action", label: "Security mindset / Harden", title: "Strengthen defenses.", description: "Remediate findings, verify fixes and document defensive evidence." })
     ]),
     courseAreas: Object.freeze(["virtualization and Kali Linux lab setup", "ethical-hacking foundations and authorization", "footprinting, reconnaissance and OSINT", "network scanning and enumeration", "vulnerability analysis", "system and endpoint security", "malware threats and defensive analysis", "traffic analysis and sniffing", "social-engineering awareness", "denial-of-service resilience", "session security", "IDS, firewalls and honeypots", "web-server and web-application security", "DVWA, WebGoat, XSS and SQL-injection concepts", "wireless security", "mobile-platform security", "IoT security", "cloud-computing and VPS fundamentals", "cryptography", "continued research and responsible practice"]),
     statistics: Object.freeze({ snapshotDate: "2026-09-07", publicRepositories: 5, projectRecords: 13, githubFollowers: 9, publicGists: 0, featuredVideos: 10, courseLessons: 46, courseModules: 21, labLessons: 4, linkedCourseLessons: 9, trainedStudentsClaim: "3,000+", securityToolsAndProjectsClaim: "10+" }),

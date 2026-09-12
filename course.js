@@ -53,16 +53,18 @@
 
   function lessonMarkup(lesson, index) {
     const state = lessonState(lesson.id);
-    const watch = lesson.videoUrl
-      ? `<a class="course-watch-button" href="${lesson.videoUrl}" target="_blank" rel="noopener noreferrer">${svg("play")} Watch lesson</a>`
-      : `<span class="course-video-pending">Video link coming soon</span>`;
+    const isPreview = Boolean(lesson.videoUrl);
+    const watch = isPreview
+      ? `<a class="course-watch-button" href="${lesson.videoUrl}" target="_blank" rel="noopener noreferrer">${svg("play")} Free preview</a>`
+      : `<button class="course-locked-button" type="button" data-request-course>${svg("lock")} Purchase to unlock</button>`;
+    const progressButton = isPreview ? `<button class="course-progress-button" type="button" data-progress-for="${lesson.id}" data-state="${state}" aria-label="Progress for ${lesson.title}: ${progressStates[state].label}"><span aria-hidden="true"></span>${progressStates[state].short}</button>` : "";
     return `<article class="course-lesson" data-lesson-id="${lesson.id}" data-progress-state="${state}">
       <div class="course-lesson__number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div>
       <div class="course-lesson__copy">
-        <div class="course-lesson__meta"><span>${lesson.category}</span>${lesson.legacy ? badge("Legacy", "legacy") : ""}${lesson.labOnly ? badge("Lab only", "lab") : ""}</div>
+        <div class="course-lesson__meta"><span>${lesson.category}</span>${isPreview ? badge("Free preview", "preview") : badge("Locked", "locked")}${lesson.legacy ? badge("Legacy", "legacy") : ""}${lesson.labOnly ? badge("Lab only", "lab") : ""}</div>
         <h4>${lesson.title}</h4>
       </div>
-      <div class="course-lesson__actions">${watch}<button class="course-progress-button" type="button" data-progress-for="${lesson.id}" data-state="${state}" aria-label="Progress for ${lesson.title}: ${progressStates[state].label}"><span aria-hidden="true"></span>${progressStates[state].short}</button></div>
+      <div class="course-lesson__actions">${watch}${progressButton}</div>
     </article>`;
   }
 
@@ -185,6 +187,7 @@
     mount.querySelectorAll(".course-lesson").forEach((lesson) => {
       lesson.dataset.progressState = "0";
       const button = lesson.querySelector(".course-progress-button");
+      if (!button) return;
       button.dataset.state = "0";
       button.innerHTML = `<span aria-hidden="true"></span>${progressStates[0].short}`;
       button.setAttribute("aria-label", `Progress for ${lesson.querySelector("h4").textContent}: ${progressStates[0].label}`);
