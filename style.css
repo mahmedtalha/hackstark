@@ -291,6 +291,19 @@ h1 em, h2 em {
 .desktop-nav a:hover, .desktop-nav a.is-active { color: var(--text); }
 .desktop-nav a.is-active::after { transform: scaleX(1); }
 .header-actions { display: flex; align-items: center; gap: .55rem; }
+.auth-controls,
+.auth-signed-out,
+.auth-signed-in { display: flex; align-items: center; }
+.auth-signed-out { gap: .45rem; }
+.auth-link { min-height: 2.7rem; padding: .55rem .4rem; border: 0; background: transparent; color: var(--text-soft); font: 650 .78rem/1 var(--font-body); cursor: pointer; transition: color .2s ease; }
+.auth-link:hover { color: var(--accent-text); }
+.auth-sign-up { min-height: 2.7rem; padding-inline: .85rem; }
+.auth-status { color: var(--muted); font-family: var(--font-mono); font-size: .58rem; white-space: nowrap; }
+.auth-status.is-error { max-width: 8rem; color: #fda4af; white-space: normal; }
+.auth-signed-in { min-width: 2.25rem; min-height: 2.25rem; justify-content: center; }
+.mobile-auth { display: none; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .65rem; padding-top: 1rem; }
+.mobile-auth button { min-height: 2.8rem; border: 1px solid var(--border-strong); border-radius: .7rem; background: var(--surface-soft); color: var(--text); font-weight: 700; cursor: pointer; }
+.mobile-auth button:last-child { border-color: rgba(var(--accent-rgb),.45); background: rgba(var(--accent-rgb),.1); color: var(--accent-text); }
 
 .icon-button {
   display: grid;
@@ -847,6 +860,8 @@ html[data-theme="light"] .theme-icon--moon { display: block; }
 @media (max-width: 64rem) {
   .desktop-nav { display: none; }
   .menu-toggle { display: grid; }
+  .auth-signed-out { display: none; }
+  .mobile-auth:not([hidden]) { display: grid; }
   .hero { padding-top: calc(var(--header-height) + 4.5rem); }
   .hero-layout { grid-template-columns: 1fr 1fr; }
   .facts-grid { grid-template-columns: repeat(3,1fr); }
@@ -952,6 +967,7 @@ html[data-theme="light"] .theme-icon--moon { display: block; }
   .brand { font-size: 1.03rem; }
   .brand-mark { width: 1.95rem; height: 1.95rem; }
   .header-actions { gap: .35rem; }
+  .auth-status { display: none; }
   .icon-button { width: 2.55rem; height: 2.55rem; }
   .hero .eyebrow { font-size: .63rem; }
   .learning-path { grid-template-columns: 1fr; }

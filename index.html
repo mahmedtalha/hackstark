@@ -35,6 +35,9 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="course.css">
   <link rel="stylesheet" href="jarvis-aichatbot.css">
+  <script defer crossorigin="anonymous" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"></script>
+  <script defer crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJlbWl1bS1jb3ctMTE1MC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
+  <script src="clerk-auth.js" defer></script>
   <script src="hackstark-data.js" defer></script>
   <script src="script.js" defer></script>
   <script src="course.js" defer></script>
@@ -152,11 +155,21 @@
       </nav>
 
       <div class="header-actions">
+        <div class="auth-controls" id="clerk-auth-controls" aria-live="polite">
+          <div class="auth-signed-out" data-clerk-signed-out hidden>
+            <button class="auth-link" type="button" data-clerk-sign-in>Sign in</button>
+            <button class="button button--small button--outline-accent auth-sign-up" type="button" data-clerk-sign-up>Sign up</button>
+          </div>
+          <div class="auth-signed-in" data-clerk-signed-in hidden>
+            <span class="sr-only">Signed-in account menu</span>
+            <div id="clerk-user-button"></div>
+          </div>
+          <span class="auth-status" data-clerk-status>Account loading…</span>
+        </div>
         <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Change color theme">
           <svg class="theme-icon theme-icon--sun" aria-hidden="true"><use href="#icon-sun"></use></svg>
           <svg class="theme-icon theme-icon--moon" aria-hidden="true"><use href="#icon-moon"></use></svg>
         </button>
-        <a class="button button--small button--outline-accent header-cta" href="#about-course">Start course</a>
         <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
           <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
         </button>
@@ -177,6 +190,10 @@
         <a href="#founder">Founder</a>
         <a href="#community">Community</a>
         <a href="#contact">Contact</a>
+        <div class="mobile-auth" data-clerk-signed-out hidden>
+          <button type="button" data-clerk-sign-in>Sign in</button>
+          <button type="button" data-clerk-sign-up>Create account</button>
+        </div>
       </div>
     </nav>
   </header>
@@ -941,7 +958,7 @@
         <div><h2>Explore</h2><a href="#about">About</a><a href="#focus">Focus Areas</a><a href="#projects">Projects</a><a href="#founder">Founder</a></div>
         <div><h2>Connect</h2><a href="#founder">Founder</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="mailto:hackstarkofficial@gmail.com">Email</a></div>
         <div><h2>Academy</h2><a href="#about-course">Course Overview</a><a href="#outcomes">Outcomes</a><a href="#curriculum">Curriculum</a><a href="#faq">FAQ</a></div>
-        <div><h2>Principles</h2><a href="#responsible-security">Responsible Security</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+        <div><h2>Legal</h2><a href="#responsible-security">Responsible Security</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
       </div>
     </div>
     <div class="container footer-bottom">
