@@ -625,3 +625,25 @@
     HackStarkApp.init();
   }
 })();
+
+(() => {
+  "use strict";
+
+  const allowedDiscounts = Object.freeze([10, 20, 30, 40, 50]);
+
+  // Add coupon names here when they are ready.
+  // Example: WELCOME10: 10,
+  const codes = Object.freeze({
+  });
+
+  const normalize = (value) => String(value || "").trim().toUpperCase();
+
+  const find = (value) => {
+    const code = normalize(value);
+    const discount = Number(codes[code]);
+    if (!code || !allowedDiscounts.includes(discount)) return null;
+    return Object.freeze({ code, discount });
+  };
+
+  window.hackstarkCoupons = Object.freeze({ allowedDiscounts, codes, find });
+})();

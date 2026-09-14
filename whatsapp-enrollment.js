@@ -12,7 +12,13 @@
   const featuredStatus = document.querySelector("[data-featured-course-status]");
   const whatsappLink = document.querySelector("[data-payment-whatsapp]");
   const instructions = document.querySelector("[data-payment-instructions]");
+  const currentPrice = document.querySelector("[data-payment-current-price]");
+  const couponPanel = document.querySelector("[data-payment-coupon]");
+  const couponInput = document.querySelector("[data-coupon-input]");
+  const couponApply = document.querySelector("[data-coupon-apply]");
+  const couponStatus = document.querySelector("[data-coupon-status]");
   let waitingForSignIn = false;
+  let activeCoupon = null;
 
   const accessState = () => {
     const metadata = window.Clerk?.user?.publicMetadata || {};
@@ -57,10 +63,24 @@
 
   const selectedMethod = () => dialog?.querySelector('input[name="payment-method"]:checked')?.value || "JazzCash";
 
+  const calculatedPrices = () => {
+    const discount = activeCoupon?.discount || 0;
+    const multiplier = 1 - discount / 100;
+    return {
+      pkr: Math.round(coursePricePkr * multiplier),
+      inr: Math.round(coursePriceInr * multiplier),
+      usd: Number((coursePriceUsd * multiplier).toFixed(2))
+    };
+  };
+
+  const formatAmount = ({ pkr, inr, usd }) =>
+    `PKR ${pkr.toLocaleString("en-PK")} · ₹${inr.toLocaleString("en-IN")} INR · USD $${usd.toFixed(2)}`;
+
   const updatePayment = () => {
     if (!dialog || !instructions || !whatsappLink) return;
     const method = selectedMethod();
-    const amount = `PKR ${coursePricePkr.toLocaleString("en-PK")} · ₹${coursePriceInr} INR · USD $${coursePriceUsd}`;
+    const amount = formatAmount(calculatedPrices());
+    if (currentPrice) currentPrice.textContent = amount;
     const details = method === "JazzCash"
       ? `<span>Pay via JazzCash</span><dl><div><dt>Account Title</dt><dd>Muhammad Ahmed Talha</dd></div><div><dt>JazzCash Number</dt><dd>03238621733</dd></div><div><dt>Amount to Pay</dt><dd>${amount}</dd></div></dl>`
       : `<span>Pay via Easypaisa</span><dl><div><dt>Easypaisa Number</dt><dd>03023070227</dd></div><div><dt>Amount to Pay</dt><dd>${amount}</dd></div></dl>`;
@@ -74,6 +94,7 @@
       "",
       `Course: ${courseName}`,
       `Course fee: ${amount}`,
+      ...(activeCoupon ? [`Coupon: ${activeCoupon.code} (${activeCoupon.discount}% off)`] : []),
       `Payment Method: ${method}`,
       `Account Name: ${account.name}`,
       `Account Email: ${account.email}`,
@@ -82,6 +103,34 @@
       "Please verify the payment and provide course access."
     ].join("\n");
     whatsappLink.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  };
+
+  const applyCoupon = () => {
+    if (!couponInput || !couponStatus || !couponPanel) return;
+    const enteredCode = couponInput.value.trim();
+    couponPanel.classList.remove("is-applied", "has-error");
+
+    if (!enteredCode) {
+      activeCoupon = null;
+      couponStatus.textContent = "Enter a coupon code.";
+      updatePayment();
+      return;
+    }
+
+    const coupon = window.hackstarkCoupons?.find(enteredCode);
+    if (!coupon) {
+      activeCoupon = null;
+      couponPanel.classList.add("has-error");
+      couponStatus.textContent = "Coupon code is not valid.";
+      updatePayment();
+      return;
+    }
+
+    activeCoupon = coupon;
+    couponInput.value = coupon.code;
+    couponPanel.classList.add("is-applied");
+    couponStatus.textContent = `${coupon.discount}% coupon applied. Prices have been updated.`;
+    updatePayment();
   };
 
   const openPayment = () => {
@@ -124,6 +173,13 @@
 
   dialog?.addEventListener("change", (event) => {
     if (event.target.matches('input[name="payment-method"]')) updatePayment();
+  });
+
+  couponApply?.addEventListener("click", applyCoupon);
+  couponInput?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    applyCoupon();
   });
 
   dialog?.addEventListener("click", (event) => {
