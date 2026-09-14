@@ -79,14 +79,11 @@
         modules: Object.freeze([
           courseModule("Lab 01", "Downloading & Installing VMware", "Lab Setup", "foundation", [
             courseLesson("lab-01", "Downloading & Installing VMware", "1.1 Downloading & installing VMWare Software.mp4", "Lab Setup", { labOnly: true })
-          ], { resources: [
-            courseResource("VMware Download Resources", "external", { label: "Official documentation", url: "https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion", originalFile: "Download VMWare Player Direct Link.url; Download VMWare Player.url" })
-          ] }),
+          ]),
           courseModule("Lab 02", "Enabling Virtualization Technology", "Lab Setup", "foundation", [
             courseLesson("lab-02", "Enabling Virtualization Technology (VT x / AMD V)", "1.2 Enabling Virtualization Technology (VTx).mp4", "Lab Setup", { labOnly: true })
           ], {
-            description: "Learn what hardware virtualization is and how to enable the required processor feature through BIOS/UEFI when supported.",
-            resources: [courseResource("Virtualization Reference", "external", { label: "Reference article", url: "https://en.wikipedia.org/wiki/Hardware_virtualization", originalFile: "Virtualization (Wikipedia).url" })]
+            description: "Learn what hardware virtualization is and how to enable the required processor feature through BIOS/UEFI when supported."
           }),
           courseModule("Lab 03", "Installing Kali Linux on VMware", "Lab Setup", "foundation", [
             courseLesson("lab-03", "Installing Kali Linux on VMware", "1.3 installing Kali Linux on VMWare.mp4", "Lab Setup", { videoUrl: "https://www.youtube.com/watch?v=7Tl3fexB3yk", labOnly: true })
@@ -98,8 +95,7 @@
             courseLesson("lab-04", "Setting Up Repositories & User Configuration in Kali Linux", "1.4 Setting up Repository & User in Kali Linux .mp4", "Lab Setup", { videoUrl: "https://www.youtube.com/watch?v=Z9Hs6R5t4Eg", legacy: true, labOnly: true })
           ], {
             legacy: true,
-            description: "An earlier Kali workflow retained for historical value. Consult current Kali documentation before changing package sources.",
-            resources: [courseResource("Current Kali Repository Documentation", "external", { label: "Official documentation", url: "https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/" })]
+            description: "An earlier Kali workflow retained for historical value. Consult current Kali documentation before changing package sources."
           })
         ])
       }),
@@ -226,7 +222,7 @@
     }),
     founder: Object.freeze({
       name: "Muhammad Ahmed Talha",
-      title: "Founder and Lead at HackStark",
+      title: "Founder & Lead · HackStark",
       role: "Cybersecurity & IT Infrastructure Professional",
       website: "https://talha.dpdns.org/",
       linkedin: "https://linkedin.com/in/ahmedtalha470",

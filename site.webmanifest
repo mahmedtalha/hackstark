@@ -1,7 +1,7 @@
 {
   "name": "HackStark",
   "short_name": "HackStark",
-  "description": "A structured ethical-hacking course, responsible cybersecurity labs and open-source security projects.",
+  "description": "HackStark cybersecurity education, ethical hacking courses, responsible security research and open source projects.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#06090e",

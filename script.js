@@ -47,7 +47,6 @@
       this.backToTop();
       this.videoExpansion();
       this.imageFallbacks();
-      this.scheduleGitHubData();
     },
 
     applyConfiguredLinks() {
@@ -272,23 +271,30 @@
     },
 
     animatedFacts() {
-      const facts = [...document.querySelectorAll(".fact-card strong")].filter((item) => /^(5|10)$/.test(item.textContent.trim()));
+      const facts = [...document.querySelectorAll(".fact-card--key strong, .course-instructor__stats strong, .founder-highlights strong")]
+        .filter((item) => /^\d[\d,]*\+?$/.test(item.textContent.trim()));
       if (!facts.length || prefersReducedMotion() || !("IntersectionObserver" in window)) return;
       const observer = new IntersectionObserver((entries, currentObserver) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const item = entry.target;
-          const target = Number(item.textContent);
+          const original = item.textContent.trim();
+          const target = Number(original.replace(/[^\d]/g, ""));
+          const suffix = original.endsWith("+") ? "+" : "";
+          if (!Number.isFinite(target)) return;
           const started = performance.now();
+          item.classList.add("is-counting");
           const animate = (time) => {
-            const progress = Math.min(1, (time - started) / 650);
-            item.textContent = String(Math.round(target * (1 - Math.pow(1 - progress, 3))));
+            const progress = Math.min(1, (time - started) / 420);
+            const value = Math.round(target * (1 - Math.pow(1 - progress, 4)));
+            item.textContent = `${value.toLocaleString("en-US")}${suffix}`;
             if (progress < 1) requestAnimationFrame(animate);
+            else item.classList.remove("is-counting");
           };
           requestAnimationFrame(animate);
           currentObserver.unobserve(item);
         });
-      }, { threshold: .7 });
+      }, { threshold: .35 });
       facts.forEach((item) => observer.observe(item));
     },
 

@@ -58,7 +58,7 @@
       ? `<a class="course-watch-button" href="${lesson.videoUrl}" target="_blank" rel="noopener noreferrer">${svg("play")} Free preview</a>`
       : `<button class="course-locked-button" type="button" data-request-course>${svg("lock")} Purchase to unlock</button>`;
     const progressButton = isPreview ? `<button class="course-progress-button" type="button" data-progress-for="${lesson.id}" data-state="${state}" aria-label="Progress for ${lesson.title}: ${progressStates[state].label}"><span aria-hidden="true"></span>${progressStates[state].short}</button>` : "";
-    return `<article class="course-lesson" data-lesson-id="${lesson.id}" data-progress-state="${state}">
+    return `<article class="course-lesson" data-lesson-id="${lesson.id}" data-lesson-search="${`${lesson.title} ${lesson.category}`.toLowerCase()}" data-progress-state="${state}">
       <div class="course-lesson__number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div>
       <div class="course-lesson__copy">
         <div class="course-lesson__meta"><span>${lesson.category}</span>${isPreview ? badge("Free preview", "preview") : badge("Locked", "locked")}${lesson.legacy ? badge("Legacy", "legacy") : ""}${lesson.labOnly ? badge("Lab only", "lab") : ""}</div>
@@ -75,7 +75,7 @@
     const moduleBadges = `${module.legacy ? badge("Legacy content", "legacy") : ""}${module.badge ? badge(module.badge, "lab") : ""}`;
     const resources = module.resources.length
       ? `<div class="course-resources" aria-label="Supporting resources">${module.resources.map(resourceMarkup).join("")}</div>` : "";
-    return `<article class="course-module" data-filter="${module.filter}" data-search="${[module.number, module.title, module.category, module.description, ...module.lessons.map((lesson) => `${lesson.title} ${lesson.category}`)].join(" ").toLowerCase()}">
+    return `<article class="course-module" data-filter="${module.filter}" data-module-search="${[module.number, module.title, module.category, module.description].join(" ").toLowerCase()}" data-search="${[module.number, module.title, module.category, module.description, ...module.lessons.map((lesson) => `${lesson.title} ${lesson.category}`)].join(" ").toLowerCase()}">
       <h3>
         <button class="course-module__toggle" id="${buttonId}" type="button" aria-expanded="${isOpen}" aria-controls="${panelId}">
           <span class="course-module__identity"><span class="course-module__number">${module.number}</span><span><strong>${module.title}</strong><small>${module.category} · ${module.lessons.length} lesson${module.lessons.length === 1 ? "" : "s"}</small></span></span>
@@ -113,12 +113,19 @@
       let sectionCount = 0;
       section.querySelectorAll(".course-module").forEach((module) => {
         const filterMatch = activeFilter === "all" || module.dataset.filter === activeFilter;
-        const searchMatch = !query || module.dataset.search.includes(query);
+        const moduleMatch = !query || module.dataset.moduleSearch.includes(query);
+        let matchingLessons = 0;
+        module.querySelectorAll(".course-lesson").forEach((lesson) => {
+          const lessonMatch = !query || moduleMatch || lesson.dataset.lessonSearch.includes(query);
+          lesson.hidden = !lessonMatch;
+          if (lessonMatch) matchingLessons += 1;
+        });
+        const searchMatch = moduleMatch || matchingLessons > 0;
         const visible = filterMatch && searchMatch;
         module.hidden = !visible;
         if (visible) {
           visibleModules += 1;
-          visibleLessons += module.querySelectorAll(".course-lesson").length;
+          visibleLessons += matchingLessons;
           sectionCount += 1;
           if (query) setModuleOpen(module, true);
         }
@@ -126,7 +133,23 @@
       section.hidden = sectionCount === 0;
     });
     const status = document.querySelector("#curriculum-status");
-    if (status) status.textContent = visibleModules ? `${visibleModules} modules · ${visibleLessons} lessons shown` : "No lessons match this search and filter.";
+    const lessonCountLabel = !query && activeFilter === "all" ? `${visibleLessons}+` : String(visibleLessons);
+    if (status) status.textContent = visibleModules
+      ? `${visibleModules} module${visibleModules === 1 ? "" : "s"} · ${lessonCountLabel} lesson${visibleLessons === 1 ? "" : "s"} shown`
+      : "No lessons match your search.";
+  }
+
+  function selectFilter(filter) {
+    activeFilter = filter || "all";
+    searchTerm = "";
+    const search = document.querySelector("#curriculum-search");
+    if (search) search.value = "";
+    document.querySelectorAll("[data-course-filter]").forEach((item) => {
+      const active = item.dataset.courseFilter === activeFilter;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    applyFilters();
   }
 
   function updateProgress() {
@@ -137,7 +160,7 @@
     const bar = document.querySelector("#course-progress-bar");
     const track = bar?.parentElement;
     const percentage = document.querySelector("#course-progress-percent");
-    if (text) text.textContent = `${completed} / ${allLessons.length} lessons completed`;
+    if (text) text.textContent = `${completed} of ${allLessons.length}+ lessons completed`;
     if (bar) bar.style.width = `${percent}%`;
     if (track) track.setAttribute("aria-valuenow", String(completed));
     if (percentage) percentage.textContent = `${percent}%`;
@@ -166,17 +189,23 @@
 
   document.querySelector("#curriculum-search")?.addEventListener("input", (event) => {
     searchTerm = event.target.value.trim();
-    applyFilters();
-  });
-
-  document.querySelectorAll("[data-course-filter]").forEach((button) => button.addEventListener("click", () => {
-    activeFilter = button.dataset.courseFilter;
+    activeFilter = "all";
     document.querySelectorAll("[data-course-filter]").forEach((item) => {
-      const active = item === button;
+      const active = item.dataset.courseFilter === "all";
       item.classList.toggle("is-active", active);
       item.setAttribute("aria-pressed", String(active));
     });
     applyFilters();
+  });
+
+  document.querySelectorAll("[data-course-filter]").forEach((button) => button.addEventListener("click", () => selectFilter(button.dataset.courseFilter)));
+
+  document.querySelectorAll("[data-course-filter-link]").forEach((link) => link.addEventListener("click", () => {
+    selectFilter(link.dataset.courseFilterLink);
+    requestAnimationFrame(() => {
+      const firstVisibleModule = mount.querySelector(".course-module:not([hidden])");
+      if (firstVisibleModule) setModuleOpen(firstVisibleModule, true);
+    });
   }));
 
   document.querySelector("#expand-curriculum")?.addEventListener("click", () => mount.querySelectorAll(".course-module:not([hidden])").forEach((module) => setModuleOpen(module, true)));

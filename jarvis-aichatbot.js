@@ -108,7 +108,7 @@
       ]);
 
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
-        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; founder profile; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Projects", URLS.projects)]);
+        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; founder profile; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 46}+ lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Projects", URLS.projects)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -173,7 +173,7 @@
       }
 
       if (includesAny(q, ["curriculum", "course outline", "course map", "all topics", "syllabus", "modules"])) {
-        return response(`HackStark Academy's ${BEGINNER_COURSE?.name || "beginner course"} contains ${BEGINNER_COURSE?.videoLessonCount || 46} video lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab-setup lessons. It covers:\n${COURSE_AREAS.map((area) => `• ${area}`).join("\n")}\nLegacy and dual-use topics are clearly labeled and framed for defense, education and explicitly authorized labs.`, [action("Open curriculum", URLS.curriculum), action("Responsible use", URLS.responsible)]);
+        return response(`HackStark Academy's ${BEGINNER_COURSE?.name || "beginner course"} contains ${BEGINNER_COURSE?.videoLessonCount || 46}+ video lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons. It covers:\n${COURSE_AREAS.map((area) => `• ${area}`).join("\n")}\nLegacy and dual use topics are clearly labeled and framed for defense, education and explicitly authorized labs.`, [action("Open curriculum", URLS.curriculum), action("Responsible use", URLS.responsible)]);
       }
 
       if (includesAny(q, ["official ceh", "ceh certification", "ec council", "certification course"])) {
@@ -185,11 +185,11 @@
       }
 
       if (includesAny(q, ["coming soon", "video unavailable", "missing video", "available lessons", "linked lessons"])) {
-        return response(`The curriculum preserves all ${BEGINNER_COURSE?.videoLessonCount || 46} lesson records, but only verified destinations are clickable. ${LINKED_COURSE_LESSONS} course lessons currently have direct verified YouTube links; unavailable destinations are labeled “Video link coming soon” instead of using invented links.`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
+        return response(`The curriculum preserves ${BEGINNER_COURSE?.videoLessonCount || 46}+ lesson records, but only verified destinations are clickable. ${LINKED_COURSE_LESSONS} course lessons currently have direct verified YouTube links; unavailable destinations are labeled “Video link coming soon” instead of using invented links.`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
       }
 
       if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {
-        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} core modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration testing experience is required.`, [
+        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 46}+ lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} core modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration testing experience is required.`, [
           action("Explore the course", URLS.course), action("Open curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)
         ]);
       }
@@ -279,7 +279,7 @@
         ]);
       }
 
-      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, founder, ${DATA.focusAreas.length} focus areas, ${DATA.statistics.projectRecords} projects, the beginner curriculum with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons, currently linked videos, community channels and responsible use policy.`, [
+      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, founder, ${DATA.focusAreas.length} focus areas, ${DATA.statistics.projectRecords} projects, the beginner curriculum with ${BEGINNER_COURSE?.videoLessonCount || 46}+ lessons, currently linked videos, community channels and responsible use policy.`, [
         action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Explore projects", URLS.projects)
       ]);
     }
