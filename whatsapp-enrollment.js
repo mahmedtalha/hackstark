@@ -4,6 +4,7 @@
   const courseName = "Ethical Hacking Course for Beginners";
   const coursePricePkr = 1999;
   const coursePriceUsd = 7.99;
+  const coursePriceInr = 799;
   const courseId = "ethical-hacking-beginners";
   const whatsappNumber = "923023070227";
   const dialog = document.querySelector("#payment-dialog");
@@ -40,7 +41,7 @@
     });
     if (featuredStatus) {
       featuredStatus.textContent = state === "active"
-        ? "Course access active — continue where you left off."
+        ? "Course access active. Continue where you left off."
         : state === "pending"
           ? "Your payment is under manual verification."
           : "";
@@ -59,7 +60,7 @@
   const updatePayment = () => {
     if (!dialog || !instructions || !whatsappLink) return;
     const method = selectedMethod();
-    const amount = `PKR ${coursePricePkr.toLocaleString("en-PK")} · USD $${coursePriceUsd}`;
+    const amount = `PKR ${coursePricePkr.toLocaleString("en-PK")} · ₹${coursePriceInr} INR · USD $${coursePriceUsd}`;
     const details = method === "JazzCash"
       ? `<span>Pay via JazzCash</span><dl><div><dt>Account Title</dt><dd>Muhammad Ahmed Talha</dd></div><div><dt>JazzCash Number</dt><dd>03238621733</dd></div><div><dt>Amount to Pay</dt><dd>${amount}</dd></div></dl>`
       : `<span>Pay via Easypaisa</span><dl><div><dt>Easypaisa Number</dt><dd>03023070227</dd></div><div><dt>Amount to Pay</dt><dd>${amount}</dd></div></dl>`;
@@ -67,12 +68,12 @@
 
     const account = accountDetails();
     const message = [
-      "Assalam-o-Alaikum.",
+      "Assalam o Alaikum.",
       "",
       "I have completed payment for my HackStark course enrollment.",
       "",
       `Course: ${courseName}`,
-      `Amount: PKR ${coursePricePkr.toLocaleString("en-PK")} (USD $${coursePriceUsd})`,
+      `Course fee: ${amount}`,
       `Payment Method: ${method}`,
       `Account Name: ${account.name}`,
       `Account Email: ${account.email}`,

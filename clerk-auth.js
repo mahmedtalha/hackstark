@@ -45,7 +45,7 @@
         loadingIndicator.setAttribute("aria-label", "Account unavailable");
         loadingIndicator.title = "Account unavailable";
       }
-      setStatus("Sign-in unavailable", true);
+      setStatus("Sign in unavailable", true);
       return;
     }
 
@@ -122,7 +122,7 @@
         loadingIndicator.setAttribute("aria-label", "Account unavailable");
         loadingIndicator.title = "Account unavailable";
       }
-      setStatus("Sign-in unavailable", true);
+      setStatus("Sign in unavailable", true);
     }
   };
 

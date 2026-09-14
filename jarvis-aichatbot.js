@@ -97,7 +97,7 @@
       if (portfolioProject) {
         const technologies = portfolioProject.technologies.join(", ");
         const sourceActions = portfolioProject.sources.map((source) => action(source.label, source.url));
-        return response(`${portfolioProject.name} — ${portfolioProject.category}: ${portfolioProject.description}\nTechnologies: ${technologies}. This project is presented for defensive, authorized or controlled-lab use as applicable.`, [
+        return response(`${portfolioProject.name}. Category: ${portfolioProject.category}. ${portfolioProject.description}\nTechnologies: ${technologies}. This project is presented for defensive, authorized or controlled lab use as applicable.`, [
           ...sourceActions, action("All projects", URLS.projects)
         ]);
       }
@@ -108,7 +108,7 @@
       ]);
 
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
-        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; founder profile; ${DATA.focusAreas.length} focus areas; ${PORTFOLIO_PROJECTS.length + PROJECTS.length} project records; the ${BEGINNER_COURSE?.videoLessonCount || 46}-lesson beginner course; ${VIDEOS.length} currently featured YouTube lessons; community channels; legacy-content cautions; and responsible-security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Projects", URLS.projects)]);
+        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; founder profile; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Projects", URLS.projects)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -118,7 +118,7 @@
       }
 
       if (includesAny(q, ["learn build secure share", "four pillars", "pillars", "learning philosophy"])) {
-        return response("HackStark organizes its learning philosophy around four connected pillars:\n• Learn — build clear foundations and understand how technology behaves\n• Build — turn knowledge into tools, labs and open-source practice\n• Secure — think defensively and reduce real-world risk\n• Share — strengthen the community through accessible knowledge", [action("About HackStark", URLS.about), action("Focus areas", URLS.focus)]);
+        return response("HackStark organizes its learning philosophy around four connected pillars:\n• Learn: build clear foundations and understand how technology behaves\n• Build: turn knowledge into tools, labs and open source practice\n• Secure: think defensively and reduce practical risk\n• Share: strengthen the community through accessible knowledge", [action("About HackStark", URLS.about), action("Focus areas", URLS.focus)]);
       }
 
       if (includesAny(q, ["logo", "brand", "colors", "colour", "visual identity", "hs.jpg", "hackstark image"])) {
@@ -126,13 +126,13 @@
       }
 
       if (includesAny(q, ["history", "started", "start year", "when did", "founded", "since 2015", "how old", "visual roots", "identity"])) {
-        return response(`According to ${HISTORICAL_PROFILE.source}, HackStark has been active since ${HISTORICAL_PROFILE.communitySince}. It began as a penetration-testing learning community centered on IoT knowledge, gadgets and clearer internet skills. HackStark has since evolved into a cybersecurity education and open-source organization while retaining its community-first roots. The public GitHub account was created on 19 May 2020.`, [
+        return response(`According to ${HISTORICAL_PROFILE.source}, HackStark has been active since ${HISTORICAL_PROFILE.communitySince}. It began as a penetration testing learning community centered on IoT knowledge, gadgets and clearer internet skills. HackStark has since evolved into a cybersecurity education and open source organization while retaining its community roots. The public GitHub account was created on 19 May 2020.`, [
           action("See visual roots", URLS.about), action("Meet the founder", URLS.founder)
         ]);
       }
 
       if (includesAny(q, ["founder", "ceo", "muhammad", "ahmed talha", "talha"])) {
-        return response(`${DATA.founder.name} is ${DATA.founder.title}. He is a ${DATA.founder.role.toLowerCase()} focused on practical education, security research, open-source tools and community programs.`, [
+        return response(`${DATA.founder.name} is ${DATA.founder.title}. He is a ${DATA.founder.role.toLowerCase()} focused on practical education, security research, open source tools and community programs.`, [
           action("Founder profile", URLS.founder), action("Founder website", DATA.founder.website), action("LinkedIn", URLS.linkedin)
         ]);
       }
@@ -144,15 +144,15 @@
       }
 
       if (includesAny(q, ["who can learn", "target audience", "prerequisite", "programming experience", "coding experience", "absolute beginner"])) {
-        return response(`${HISTORICAL_PROFILE.learningPromise} HackStark is designed for curious beginners as well as learners developing practical security skills. The recommended path starts with virtualization, Kali Linux lab setup, networking basics and ethical-hacking foundations before advancing to specialized topics. Programming becomes useful later for automation, tooling and understanding code, but it is not treated as an entry barrier.`, [action("Start with Academy", URLS.learn), action("Responsible use", URLS.responsible)]);
+        return response(`${HISTORICAL_PROFILE.learningPromise} HackStark is designed for curious beginners as well as learners developing practical security skills. The recommended path starts with virtualization, Kali Linux lab setup, networking basics and ethical hacking foundations before advancing to specialized topics. Programming becomes useful later for automation, tooling and understanding code, but it is not treated as an entry barrier.`, [action("Start with Academy", URLS.learn), action("Responsible use", URLS.responsible)]);
       }
 
       if (includesAny(q, ["raw data", "hackstark.txt", "original profile", "old profile", "original description", "describe original hackstark"])) {
-        return response(`${HISTORICAL_PROFILE.source} describes HackStark as “${HISTORICAL_PROFILE.originalDescription}” It says the original community has been active since ${HISTORICAL_PROFILE.communitySince}, spent time learning and practicing penetration testing, and aimed to help people understand their gadgets, strengthen internet skills and clarify hacking concepts. It also says beginners do not need previous programming experience. These are historical self-descriptions; HackStark is now a cybersecurity education and open-source organization with a broader defensive-security and authorization-first position.`, [action("Current About page", URLS.about), action("Responsible use", URLS.responsible)]);
+        return response(`${HISTORICAL_PROFILE.source} describes HackStark as “${HISTORICAL_PROFILE.originalDescription}” It says the original community has been active since ${HISTORICAL_PROFILE.communitySince}, spent time learning and practicing penetration testing, and aimed to help people understand their gadgets, strengthen internet skills and clarify hacking concepts. It also says beginners do not need previous programming experience. These are historical descriptions; HackStark is now a cybersecurity education and open source organization with a broader focus on defense and authorization.`, [action("Current About page", URLS.about), action("Responsible use", URLS.responsible)]);
       }
 
       if (includesAny(q, ["who is hackstark", "what is hackstark", "about hackstark", "community", "organization", "organisation"])) {
-        return response(`HackStark is an independent cybersecurity education and open-source organization that began as a learning community in ${HISTORICAL_PROFILE.communitySince}. Its original profile emphasized IoT in penetration testing, gadgets and better internet skills. Today the organization covers ethical hacking, network defense, IoT and wireless security, OSINT, Linux labs, security automation, tutorials, public projects and community programs—all framed around education and authorized use.`, [
+        return response(`HackStark is an independent cybersecurity education and open source organization that began as a learning community in ${HISTORICAL_PROFILE.communitySince}. Its original profile emphasized IoT in penetration testing, gadgets and better internet skills. Today the organization covers ethical hacking, network defense, IoT and wireless security, OSINT, Linux labs, security automation, tutorials, public projects and community programs. Every area is framed around education and authorized use.`, [
           action("About HackStark", URLS.about), action("Join the community", URLS.community)
         ]);
       }
@@ -165,8 +165,8 @@
 
       if (includesAny(q, ["projects", "repositories", "repos", "open source", "github", "what have you built"])) {
         const metrics = PROJECTS.map((item) => ({ item, values: projectMetrics(item) }));
-        const list = metrics.map(({ item, values }) => `• ${item.name} — ${values.language}; ${values.stars} stars; ${values.forks} forks`).join("\n");
-        const portfolioList = PORTFOLIO_PROJECTS.map((item) => `• ${item.name} — ${item.category}`).join("\n");
+        const list = metrics.map(({ item, values }) => `• ${item.name}: ${values.language}; ${values.stars} stars; ${values.forks} forks`).join("\n");
+        const portfolioList = PORTFOLIO_PROJECTS.map((item) => `• ${item.name}: ${item.category}`).join("\n");
         return response(`The website presents ${PORTFOLIO_PROJECTS.length} founder security project groups:\n${portfolioList}\n\nIt also preserves HackStark’s ${PROJECTS.length} featured public repositories (${metrics[0].values.source}):\n${list}`, [
           action("View projects", URLS.projects), action("Founder GitHub", URLS.founderGithub), action("HackStark GitHub", URLS.github)
         ]);
@@ -189,7 +189,7 @@
       }
 
       if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {
-        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self-paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} core modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab-setup lessons. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration-testing experience is required.`, [
+        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} core modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration testing experience is required.`, [
           action("Explore the course", URLS.course), action("Open curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)
         ]);
       }
@@ -227,15 +227,15 @@
       }
 
       if (includesAny(q, ["social engineering", "phishing", "human security"])) {
-        return topicAnswer("Social-engineering awareness", "This area studies how attackers manipulate people. Defensive practice includes identity verification, phishing-resistant MFA, reporting processes and awareness training—never impersonating or deceiving real people without a sanctioned exercise.");
+        return topicAnswer("Social engineering awareness", "This area studies how attackers manipulate people. Defensive practice includes identity verification, MFA designed to resist phishing, reporting processes and awareness training. Never impersonate or deceive real people without a sanctioned exercise.");
       }
 
       if (includesAny(q, ["denial of service", "ddos", "dos", "slow http", "slowloris"])) {
-        return topicAnswer("Denial-of-service resilience", "HackStark’s slowlorisdos repository is framed as controlled-lab research. Defensive study focuses on rate limits, timeouts, reverse proxies, monitoring and incident response; no real service should be targeted.", [action("View lab repository", PROJECTS[3].url), action("Responsible use", URLS.responsible)]);
+        return topicAnswer("Denial of service resilience", "HackStark’s slowlorisdos repository is framed as controlled lab research. Defensive study focuses on rate limits, timeouts, reverse proxies, monitoring and incident response; no real service should be targeted.", [action("View lab repository", PROJECTS[3].url), action("Responsible use", URLS.responsible)]);
       }
 
       if (includesAny(q, ["malware", "virus", "trojan", "ransomware"])) {
-        return topicAnswer("Malware threats", "HackStark’s broader learning map includes understanding malware categories and their defensive indicators. Safe learning uses isolated samples, reputable sandboxes and incident-response practices—not creation or deployment.");
+        return topicAnswer("Malware threats", "HackStark’s broader learning map includes understanding malware categories and their defensive indicators. Safe learning uses isolated samples, reputable sandboxes and incident response practices. It does not include creation or deployment.");
       }
 
       if (includesAny(q, ["firewall", "ids", "ips", "honeypot", "session hijacking"])) {
@@ -243,7 +243,7 @@
       }
 
       if (includesAny(q, ["cloud", "vps", "mobile security", "android security"])) {
-        return topicAnswer("Platform security", "HackStark’s broader course map includes cloud/VPS and mobile-platform security. Core practices include least privilege, secure configuration, patching, encryption, logging and testing only assets within an approved scope.");
+        return topicAnswer("Platform security", "HackStark’s broader course map includes cloud and VPS security plus mobile platform security. Core practices include least privilege, secure configuration, patching, encryption, logging and testing only assets within an approved scope.");
 
       }
 
@@ -279,7 +279,7 @@
         ]);
       }
 
-      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, founder, ${DATA.focusAreas.length} focus areas, ${PORTFOLIO_PROJECTS.length + PROJECTS.length} project records, the ${BEGINNER_COURSE?.videoLessonCount || 46}-lesson beginner curriculum, currently linked videos, community channels and responsible-use policy.`, [
+      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, founder, ${DATA.focusAreas.length} focus areas, ${DATA.statistics.projectRecords} projects, the beginner curriculum with ${BEGINNER_COURSE?.videoLessonCount || 46} lessons, currently linked videos, community channels and responsible use policy.`, [
         action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Explore projects", URLS.projects)
       ]);
     }
@@ -339,7 +339,7 @@
       this.el.window.setAttribute("aria-hidden", "false");
       document.body.classList.add("jarvis-chat-visible");
       this.el.launcher.setAttribute("aria-expanded", "true");
-      this.el.launcher.setAttribute("aria-label", "Close JARVIS — HackStark Assistant");
+      this.el.launcher.setAttribute("aria-label", "Close JARVIS, HackStark Assistant");
       if (this.el.window.classList.contains("jarvis-minimized")) this.toggleMinimize(false);
       if (!this.welcomed) this.showWelcome();
       this.resizeInput();
@@ -352,7 +352,7 @@
       document.body.classList.remove("jarvis-chat-visible");
       this.el.window.inert = true;
       this.el.launcher.setAttribute("aria-expanded", "false");
-      this.el.launcher.setAttribute("aria-label", "Open JARVIS — HackStark Assistant");
+      this.el.launcher.setAttribute("aria-label", "Open JARVIS, HackStark Assistant");
       window.setTimeout(() => { if (!this.isOpen()) this.el.window.hidden = true; }, 260);
       this.el.launcher.focus();
     }
@@ -368,7 +368,7 @@
 
     showWelcome() {
       this.welcomed = true;
-      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can help you navigate the beginner course, curriculum, cybersecurity projects, community channels and responsible-use guidance."), [
+      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can help you navigate the beginner course, curriculum, cybersecurity projects, community channels and responsible use guidance."), [
         ["About", "What is HackStark?"],
         ["Focus areas", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],
@@ -409,7 +409,7 @@
       } catch (error) {
         typing.remove();
         console.error("JARVIS could not answer.", error);
-        this.addMessage("bot", response("I couldn’t generate that response. Your question was not lost—please try again, or use the HackStark links below.", [action("Explore HackStark", URLS.about)]), [
+        this.addMessage("bot", response("I couldn’t generate that response. Your question was not lost. Please try again, or use the HackStark links below.", [action("Explore HackStark", URLS.about)]), [
           ["Try again", question], ["Assistant help", "What can you answer?"]
         ], "error");
       } finally {

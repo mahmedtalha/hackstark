@@ -59,6 +59,10 @@
     },
 
     hydrateSharedData() {
+      document.querySelectorAll("[data-total-projects]").forEach((item) => {
+        item.textContent = String(siteData.statistics?.projectRecords || "15+");
+      });
+
       document.querySelectorAll("[data-repository]").forEach((card) => {
         const project = siteData.projects.find((item) => item.repository === card.dataset.repository);
         if (!project) return;
@@ -496,7 +500,7 @@
 
         if (loaded > 0) {
           const qualifier = loaded === cards.length ? "" : " Some live requests failed, so fallback details are shown for the rest.";
-          this.repositoryState("success", `Current public metadata loaded from GitHub for ${loaded} of ${cards.length} repositories.${qualifier}`);
+          this.repositoryState("success", "");
         } else {
           this.repositoryState("fallback", "GitHub metadata could not be reached. Static project details and repository links remain available.");
         }
@@ -597,7 +601,7 @@
         const expanded = button.getAttribute("aria-expanded") === "true";
         extraVideos.forEach((video) => { video.hidden = expanded; });
         button.setAttribute("aria-expanded", String(!expanded));
-        button.firstChild.textContent = expanded ? "Show 4 more lessons " : "Show fewer lessons ";
+        button.firstChild.textContent = expanded ? `Show ${extraVideos.length} more lessons ` : "Show fewer lessons ";
 
         if (!expanded) {
           extraVideos.forEach((video) => video.classList.add("is-visible"));
