@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hackstark.dpdns.org/sitemap.xml
+Sitemap: https://mahmedtalha.github.io/hackstark/sitemap.xml

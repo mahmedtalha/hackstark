@@ -17,6 +17,8 @@
     course: "#course-top",
     curriculum: "#curriculum",
     founder: homeSection("#founder"),
+    experience: homeSection("#experience"),
+    credentials: homeSection("#credentials"),
     community: homeSection("#community"),
     responsible: onCoursePage ? "#learn-responsibly" : "#responsible-security",
     contact: homeSection("#contact"),
@@ -29,7 +31,9 @@
     founderGithub: DATA.socials.founderGithub,
     contactForm: DATA.socials.contactForm,
     linkedin: DATA.founder.linkedin,
-    email: `mailto:${DATA.organization.email}`
+    email: `mailto:${DATA.organization.email}`,
+    founderEmail: `mailto:${DATA.founder.email}`,
+    founderPhone: `tel:${DATA.founder.phone.replace(/[^+\d]/g, "")}`
   });
 
   const PROJECTS = DATA.projects;
@@ -108,7 +112,7 @@
       ]);
 
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
-        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; founder profile; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 46}+ lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Projects", URLS.projects)]);
+        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; Muhammad Ahmed Talha’s profile, experience, skills, education, speaking and contact details; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Founder profile", URLS.founder), action("Projects", URLS.projects)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -122,7 +126,7 @@
       }
 
       if (includesAny(q, ["logo", "brand", "colors", "colour", "visual identity", "hs.jpg", "hackstark image"])) {
-        return response("HackStark’s current visual identity preserves the blue-and-green recognition of the supplied historical artwork in a simplified flat vector mark: a computer frame containing a defensive shield and verification check. The website uses near-black navy surfaces, emerald-green actions, cyan-blue highlights and privacy-minded system typography. HS.JPG remains only as a small, desaturated 2015 archival artifact.", [action("See HackStark", URLS.about)]);
+        return response("HackStark’s current visual identity uses the circular HackStark artwork featuring two masked figures, a shield, circuit details and the blue-to-green HackStark wordmark. The same artwork is used for the site header, footer, sign-in experience, browser favicon, Apple touch icon, Android/PWA icons and social preview. The website pairs it with near-black navy surfaces, emerald-green actions and cyan-blue highlights.", [action("See HackStark", URLS.about)]);
       }
 
       if (includesAny(q, ["history", "started", "start year", "when did", "founded", "since 2015", "how old", "visual roots", "identity"])) {
@@ -131,8 +135,42 @@
         ]);
       }
 
+      if (includesAny(q, ["professional experience", "work experience", "career", "employment", "resume", "cv", "toyota", "sugar mills", "itsolera", "techfly", "navttc", "udemy", "devcastle", "codealpha", "prodigy infotech"])) {
+        const roles = DATA.founderExperience.map((item) => `• ${item.role}, ${item.organization} (${item.period}): ${item.summary}`).join("\n");
+        return response(`${DATA.founder.name} has ${DATA.statistics.experienceClaim} years of experience across enterprise IT operations, CyberSecurity instruction, penetration testing and security projects. His professional record includes:\n${roles}`, [
+          action("Professional experience", URLS.experience), action("LinkedIn", URLS.linkedin), action("Full portfolio", DATA.founder.website)
+        ]);
+      }
+
+      if (includesAny(q, ["founder skills", "talha skills", "technical expertise", "technical skills", "security tools", "infrastructure skills", "technology exposure", "active directory", "fortinet", "pfsense", "mikrotik", "powershell", "scapy", "sentinel", "crowdstrike", "wazuh"])) {
+        const groups = [
+          ["CyberSecurity & VAPT", DATA.founderSkills.cybersecurity],
+          ["Security tools", DATA.founderSkills.tools],
+          ["Networking & infrastructure", DATA.founderSkills.infrastructure],
+          ["Scripting & technology exposure", DATA.founderSkills.exposure]
+        ].map(([label, items]) => `${label}: ${items.join(", ")}`).join("\n");
+        return response(`${DATA.founder.name}'s technical expertise includes:\n${groups}`, [action("Founder profile", URLS.founder), action("Projects", URLS.projects)]);
+      }
+
+      if (includesAny(q, ["education", "degree", "cgpa", "certificate", "certificates", "certification", "training", "islamia university", "iub", "cybrary", "isc2", "isc 2"])) {
+        const credentials = DATA.founderTraining.map((item) => `• ${item.name} — ${item.provider} (${item.detail})`).join("\n");
+        return response(`${DATA.founder.name} earned a ${DATA.founder.education.degree} from ${DATA.founder.education.institution}, with a CGPA of ${DATA.founder.education.cgpa}. Verified education and training listed on the site:\n${credentials}`, [action("Education & training", URLS.credentials), action("Full portfolio", DATA.founder.website)]);
+      }
+
+      if (includesAny(q, ["speaker", "panelist", "conference", "bzu", "ai threats", "quantum security", "human firewall"])) {
+        return response(`${DATA.founder.name} served as a ${DATA.speaking.role} at the ${DATA.speaking.event} in ${DATA.speaking.date}. Topics included ${DATA.speaking.topics.join("; ")}.`, [action("Founder profile", URLS.founder), action("Speaking evidence", DATA.founder.evidence.speaking)]);
+      }
+
+      if (includesAny(q, ["open to work", "job opportunity", "job opportunities", "hire talha", "availability", "available for work"])) {
+        return response(`${DATA.founder.name} is ${DATA.founder.availability.toLowerCase()}. He is based in ${DATA.founder.location}.`, [action("Email Muhammad", URLS.founderEmail), action("LinkedIn", URLS.linkedin), action("Experience", URLS.experience)]);
+      }
+
+      if (includesAny(q, ["contact muhammad", "contact talha", "email muhammad", "email talha", "phone muhammad", "phone talha", "talha whatsapp", "founder contact"])) {
+        return response(`Contact ${DATA.founder.name} at ${DATA.founder.email}, phone/WhatsApp ${DATA.founder.phone}, or LinkedIn at linkedin.com/in/ahmedtalha470. He is based in ${DATA.founder.location}.`, [action("Email Muhammad", URLS.founderEmail), action("Call or WhatsApp", URLS.founderPhone), action("LinkedIn", URLS.linkedin)]);
+      }
+
       if (includesAny(q, ["founder", "ceo", "muhammad", "ahmed talha", "talha"])) {
-        return response(`${DATA.founder.name} is ${DATA.founder.title}. He is a ${DATA.founder.role.toLowerCase()} focused on practical education, security research, open source tools and community programs.`, [
+        return response(`${DATA.founder.name} is ${DATA.founder.title} and a ${DATA.founder.role}. ${DATA.founder.summary} His profile records ${DATA.statistics.managedWorkstationsClaim} workstations managed, ${DATA.statistics.trainedStudentsClaim} learners reached and ${DATA.statistics.securityToolsAndProjectsClaim} projects and custom security tools. He is based in ${DATA.founder.location} and is ${DATA.founder.availability.toLowerCase()}.`, [
           action("Founder profile", URLS.founder), action("Founder website", DATA.founder.website), action("LinkedIn", URLS.linkedin)
         ]);
       }
@@ -173,7 +211,7 @@
       }
 
       if (includesAny(q, ["curriculum", "course outline", "course map", "all topics", "syllabus", "modules"])) {
-        return response(`HackStark Academy's ${BEGINNER_COURSE?.name || "beginner course"} contains ${BEGINNER_COURSE?.videoLessonCount || 46}+ video lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons. It covers:\n${COURSE_AREAS.map((area) => `• ${area}`).join("\n")}\nLegacy and dual use topics are clearly labeled and framed for defense, education and explicitly authorized labs.`, [action("Open curriculum", URLS.curriculum), action("Responsible use", URLS.responsible)]);
+        return response(`HackStark Academy's ${BEGINNER_COURSE?.name || "beginner course"} contains ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons. It covers:\n${COURSE_AREAS.map((area) => `• ${area}`).join("\n")}\nLegacy and dual use topics are clearly labeled and framed for defense, education and explicitly authorized labs.`, [action("Open curriculum", URLS.curriculum), action("Responsible use", URLS.responsible)]);
       }
 
       if (includesAny(q, ["official ceh", "ceh certification", "ec council", "certification course"])) {
@@ -185,11 +223,11 @@
       }
 
       if (includesAny(q, ["coming soon", "video unavailable", "missing video", "available lessons", "linked lessons"])) {
-        return response(`The curriculum preserves ${BEGINNER_COURSE?.videoLessonCount || 46}+ lesson records, but only verified destinations are clickable. ${LINKED_COURSE_LESSONS} course lessons currently have direct verified YouTube links; unavailable destinations are labeled “Video link coming soon” instead of using invented links.`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
+        return response(`The learning program includes ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons. The structured website catalog currently exposes ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules plus ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons, and only verified video destinations are clickable. ${LINKED_COURSE_LESSONS} catalog lessons currently have direct verified YouTube links; unavailable destinations are labeled “Video link coming soon.”`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
       }
 
       if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {
-        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 46}+ lessons, ${BEGINNER_COURSE?.numberedModuleCount || 21} core modules and ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration testing experience is required.`, [
+        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self-paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons covering 25+ tools and platforms. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration testing experience is required.`, [
           action("Explore the course", URLS.course), action("Open curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)
         ]);
       }
@@ -274,12 +312,12 @@
       }
 
       if (includesAny(q, ["contact", "email", "collaborate", "collaboration", "question"])) {
-        return response("For professional inquiries or collaboration, use the Google contact form. You can also email HackStark at hackstarkofficial@gmail.com or use the official community channels.", [
-          action("Google contact form", URLS.contactForm), action("Email HackStark", URLS.email), action("Contact options", URLS.contact)
+        return response(`For employment and professional inquiries, contact ${DATA.founder.name} at ${DATA.founder.email}, phone/WhatsApp ${DATA.founder.phone}, or LinkedIn at linkedin.com/in/ahmedtalha470. For HackStark course and organization inquiries, email ${DATA.organization.email} or use the Google contact form.`, [
+          action("Email Muhammad", URLS.founderEmail), action("Call or WhatsApp", URLS.founderPhone), action("LinkedIn", URLS.linkedin), action("Google contact form", URLS.contactForm)
         ]);
       }
 
-      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization, founder, ${DATA.focusAreas.length} focus areas, ${DATA.statistics.projectRecords} projects, the beginner curriculum with ${BEGINNER_COURSE?.videoLessonCount || 46}+ lessons, currently linked videos, community channels and responsible use policy.`, [
+      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization; Muhammad Ahmed Talha’s experience, skills, education, speaking and contact details; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner curriculum with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons; community channels; and responsible use policy.`, [
         action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Explore projects", URLS.projects)
       ]);
     }
@@ -289,7 +327,7 @@
     if (url.startsWith("#")) return url;
     try {
       const parsed = new URL(url, window.location.href);
-      return ["http:", "https:", "mailto:"].includes(parsed.protocol) ? url : "#";
+      return ["http:", "https:", "mailto:", "tel:"].includes(parsed.protocol) ? url : "#";
     } catch { return "#"; }
   };
 
@@ -368,8 +406,10 @@
 
     showWelcome() {
       this.welcomed = true;
-      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can help you navigate the beginner course, curriculum, cybersecurity projects, community channels and responsible use guidance."), [
+      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can help with Muhammad Ahmed Talha’s experience, skills, education, projects and contact details, as well as HackStark’s course, community and responsible-use guidance."), [
         ["About", "What is HackStark?"],
+        ["Experience", "Tell me about Muhammad Ahmed Talha's professional experience"],
+        ["Skills", "What are Muhammad Ahmed Talha's technical skills?"],
         ["Focus areas", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],
         ["Beginner course", "Tell me about the beginner course"],
@@ -477,7 +517,7 @@
         link.className = "jarvis-action-btn";
         link.href = safeUrl(item.url);
         link.textContent = item.label;
-        if (!item.url.startsWith("#") && !item.url.startsWith("mailto:")) { link.target = "_blank"; link.rel = "noopener noreferrer"; }
+        if (!item.url.startsWith("#") && !item.url.startsWith("mailto:") && !item.url.startsWith("tel:")) { link.target = "_blank"; link.rel = "noopener noreferrer"; }
         if (item.url.startsWith("#")) link.addEventListener("click", () => this.close());
         container.append(link);
       });

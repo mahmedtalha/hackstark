@@ -11,14 +11,14 @@
   ].map(Object.freeze);
 
   const portfolioProjects = [
-    { id: "info-gathering", name: "Information Gathering Framework", aliases: ["information gathering framework", "info gathering", "recon framework"], category: "Recon & VAPT", description: "A unified Python assessment workflow for domain and IP intelligence, enumeration, port scanning and OSINT.", technologies: ["Python", "Nmap", "Masscan", "OpenVAS", "OSINT"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/info-gathering" }] },
-    { id: "user-finder", name: "User Finder Zeta: OSINT Scanner", aliases: ["user finder", "user finder zeta", "osint scanner"], category: "OSINT Reconnaissance", description: "A multithreaded scanner that checks public username and email presence across platforms and generates structured reports.", technologies: ["Python", "Multithreading", "OSINT", "API Scraping"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/user-finder" }] },
-    { id: "metadata-extractor", name: "Zeta Metadata & OSINT Extractor", aliases: ["metadata extractor", "zeta metadata", "metadata osint"], category: "Digital Forensics", description: "A utility that extracts structured metadata from PDF, DOCX and image files.", technologies: ["Python", "EXIF", "PDF/DOCX", "Digital Forensics"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/meta-data-extractor-zeta" }] },
-    { id: "wifi-deauth-detector", name: "WiFi Deauth Detector NodeMCU", aliases: ["wifi deauth detector", "wi-fi deauth detector", "nodemcu detector"], category: "Wireless Defense", description: "An ESP8266 monitoring device that detects IEEE 802.11 deauthentication activity and alerts administrators.", technologies: ["NodeMCU ESP8266", "C++", "802.11", "Embedded Systems"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/WiFiDeauthDetectorNodeMCU" }] },
-    { id: "watermark-remover", name: "AI Video & Image Watermark Remover Pro", aliases: ["watermark remover", "ai video watermark", "image watermark remover"], category: "AI & Vision Application", description: "A desktop GUI that combines object detection, segmentation and reconstruction in one media processing workflow.", technologies: ["Python", "Florence 2", "LaMA AI", "PyQt GUI"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/AI-Video-Watermark-Remover-Pro" }] },
-    { id: "slowloris-advanced", name: "Slowloris Advanced DoS Simulator", aliases: ["slowloris advanced", "dos simulator", "stress testing simulator"], category: "Stress Testing", description: "A socket based simulator for observing web server connection handling in isolated, authorized resilience labs.", technologies: ["Python", "Socket Programming", "DoS Simulation", "Load Testing"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/slowlorisAdvancedVersion" }] },
-    { id: "endpoint-detectors", name: "Live Website & Proxy Detectors", aliases: ["live website detector", "live proxy detector", "website proxy detectors"], category: "Recon & Network Security", description: "Two concurrent network utilities for validating web targets and active proxy servers, including SSL state, response codes and latency.", technologies: ["Python", "Async IO", "Multithreading", "SSL & Proxy Audit"], sources: [{ label: "Website source", url: "https://github.com/mahmedtalha/live-website-detector" }, { label: "Proxy source", url: "https://github.com/mahmedtalha/live-proxy-detector" }] },
-    { id: "prodigy-suite", name: "Prodigy Cyber Security Research Suite", aliases: ["prodigy suite", "packet sniffer", "endpoint telemetry", "pixel image encryption"], category: "Grouped Security Suite", description: "Three controlled lab implementations covering Scapy packet inspection, endpoint keystroke telemetry and reversible pixel manipulation.", technologies: ["Python", "Scapy", "Cryptography", "Endpoint Security"], sources: [{ label: "Packet Sniffer source", url: "https://github.com/mahmedtalha/PRODIGY_CS_05_packet_sniffer" }, { label: "Telemetry source", url: "https://github.com/mahmedtalha/PRODIGY_CS_04_keylogger" }, { label: "Image Encryption source", url: "https://github.com/mahmedtalha/PRODIGY_CS_02_Pixel_Manipulation_Image_Encryption" }] }
+    { id: "info-gathering", name: "Information Gathering Framework", aliases: ["information gathering framework", "info gathering", "recon framework"], category: "Recon & VAPT", description: "A Python CLI/GUI that combines Nmap, Masscan, OpenVAS, DNS, CMS and HTTP checks, storing port, OS, service, URL, DNS and vulnerability findings in structured, report-ready output.", technologies: ["Python", "Nmap", "Masscan", "OpenVAS", "DNS/HTTP"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/info-gathering" }] },
+    { id: "user-finder", name: "User Finder Zeta: OSINT Scanner", aliases: ["user finder", "user finder zeta", "osint scanner"], category: "OSINT Reconnaissance", description: "A CLI/GUI OSINT search tool with username permutations, filters, proxies, APIs and concurrent requests that exports authorized public-footprint results to CSV, TXT and PDF.", technologies: ["Python", "OSINT", "APIs", "CSV/PDF"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/user-finder" }] },
+    { id: "metadata-extractor", name: "Zeta Metadata & OSINT Extractor", aliases: ["metadata extractor", "zeta metadata", "metadata osint"], category: "Digital Forensics", description: "A Python CLI/GUI that extracts authors, dates, software, geolocation and meta-metadata from PDFs, DOCX files, images and other supported files.", technologies: ["Python", "PyPDF", "Pillow", "python-docx"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/meta-data-extractor-zeta" }] },
+    { id: "wifi-deauth-detector", name: "Wi-Fi Deauth Detector NodeMCU (Fork)", aliases: ["wifi deauth detector", "wi-fi deauth detector", "nodemcu detector"], category: "Wireless Defense", description: "A forked NodeMCU/ESP8266 sketch that detects Wi-Fi deauthentication activity without external LEDs for wireless-monitoring research.", technologies: ["NodeMCU", "ESP8266", "Arduino/C++", "802.11"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/WiFiDeauthDetectorNodeMCU" }] },
+    { id: "watermark-remover", name: "AI Video Watermark Remover Pro", aliases: ["watermark remover", "ai video watermark", "image watermark remover"], category: "AI & Vision Application", description: "An identified AI video watermark-removal repository whose published files currently contain a title-only README; no implementation, capability or output is presently documented. Use only with owned or licensed media.", technologies: ["Not documented"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/AI-Video-Watermark-Remover-Pro" }] },
+    { id: "slowloris-advanced", name: "Slowloris Advanced Version", aliases: ["slowloris advanced", "dos simulator", "stress testing simulator"], category: "Stress Testing", description: "A Python Slowloris implementation that holds incomplete HTTP connections open, sends periodic headers and replaces closed sockets for authorized lab resilience testing only.", technologies: ["Python", "Sockets", "HTTP", "Slowloris"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/slowlorisAdvancedVersion" }] },
+    { id: "endpoint-detectors", name: "Live Website & Proxy Detectors", aliases: ["live website detector", "live proxy detector", "website proxy detectors"], category: "Recon & Network Security", description: "A website checker and concurrent proxy checker that classifies HTTP 200 URLs, tests proxies with timeouts and writes good/bad URL lists and live proxies to files.", technologies: ["Python", "Requests", "ThreadPoolExecutor", "File Output"], sources: [{ label: "Website source", url: "https://github.com/mahmedtalha/live-website-detector" }, { label: "Proxy source", url: "https://github.com/mahmedtalha/live-proxy-detector" }] },
+    { id: "prodigy-suite", name: "Prodigy CyberSecurity Research Suite", aliases: ["prodigy suite", "packet sniffer", "endpoint telemetry", "pixel image encryption"], category: "Grouped Security Suite", description: "Three controlled-lab Python GUIs for packet sniffing, endpoint keystroke telemetry and image encryption by pixel manipulation, producing packet logs, key logs and encrypted/decrypted images.", technologies: ["Python", "Scapy", "Tkinter", "Pynput/Pillow"], sources: [{ label: "Sniffer source", url: "https://github.com/mahmedtalha/PRODIGY_CS_05_packet_sniffer" }, { label: "Telemetry source", url: "https://github.com/mahmedtalha/PRODIGY_CS_04_keylogger" }, { label: "Encryption source", url: "https://github.com/mahmedtalha/PRODIGY_CS_02_Pixel_Manipulation_Image_Encryption" }] }
   ].map((project) => Object.freeze({ ...project, aliases: Object.freeze(project.aliases), technologies: Object.freeze(project.technologies), sources: Object.freeze(project.sources.map(Object.freeze)) }));
 
   const videos = [
@@ -56,7 +56,7 @@
     inrCurrency: "INR",
     inrPrice: 799,
     technologyCount: 26,
-    videoLessonCount: 46,
+    videoLessonCount: 50,
     numberedModuleCount: 21,
     labLessonCount: 4,
     description: "A practical introduction to ethical hacking, cybersecurity fundamentals, lab setup, reconnaissance, vulnerability assessment, network security, web security, wireless security, IoT, cryptography and continued security research.",
@@ -222,17 +222,51 @@
     }),
     founder: Object.freeze({
       name: "Muhammad Ahmed Talha",
-      title: "Founder & Lead · HackStark",
-      role: "Cybersecurity & IT Infrastructure Professional",
-      website: "https://talha.dpdns.org/",
+      title: "Founder & CEO of HackStark",
+      role: "CyberSecurity & IT Infrastructure Professional | Instructor & Infrastructure Manager",
+      location: "Rahim Yar Khan, Pakistan",
+      email: "ahmedtalha470@gmail.com",
+      phone: "+92 3023070227",
+      availability: "Open to CyberSecurity, VAPT, Red Team and IT Infrastructure opportunities",
+      summary: "CyberSecurity instructor and IT infrastructure manager with 6+ years of experience spanning security training, hands-on projects, penetration testing and enterprise IT operations. Most recently served as IT Assistant Manager at Toyota Royal Motors.",
+      website: "https://mahmedtalha.github.io/portfolio/",
       linkedin: "https://linkedin.com/in/ahmedtalha470",
+      github: "https://github.com/mahmedtalha",
+      education: Object.freeze({ degree: "BS Cyber Security", institution: "Islamia University of Bahawalpur (RYK)", cgpa: "3.5 / 4.0", years: "2020 – 2024" }),
       evidence: Object.freeze({
-        students: "https://talha.dpdns.org/#stats",
-        projects: "https://talha.dpdns.org/#projects",
-        speaking: "https://talha.dpdns.org/#speaking",
-        education: "https://talha.dpdns.org/#certifications"
+        students: "https://mahmedtalha.github.io/portfolio/#stats",
+        projects: "https://mahmedtalha.github.io/portfolio/#projects",
+        speaking: "https://mahmedtalha.github.io/portfolio/#speaking",
+        education: "https://mahmedtalha.github.io/portfolio/#certifications"
       })
     }),
+    founderSkills: Object.freeze({
+      cybersecurity: Object.freeze(["Penetration Testing", "Red Teaming", "Vulnerability Assessment (VAPT)", "Digital Forensics", "OWASP Top 10", "WAPT", "OSINT", "Security Auditing"]),
+      tools: Object.freeze(["Metasploit", "Nmap", "Nessus", "OpenVAS", "Wireshark", "Recon-ng", "Aircrack-ng", "Hashcat"]),
+      infrastructure: Object.freeze(["TCP/IP & Subnetting", "VLANs & VPNs", "DHCP / DNS", "Fortinet Firewall", "pfSense & MikroTik", "Active Directory", "Group Policy (GPO)", "Windows Server", "Linux System Administration", "IP CCTV & NVR"]),
+      exposure: Object.freeze(["Python (Scapy/PyQt)", "PowerShell", "Bash Scripting", "AWS", "Microsoft Azure", "Google Cloud", "VMware / Hyper-V", "Splunk", "Microsoft Sentinel", "CrowdStrike Falcon", "Wazuh", "Ghidra", "Git & GitHub", "Acronis Backup"])
+    }),
+    founderExperience: Object.freeze([
+      Object.freeze({ role: "IT Assistant Manager", organization: "Toyota Royal Motors", location: "Rahim Yar Khan", period: "2025 – 2026", summary: "Managed three network environments, SQL-based Windows servers, NAS, routers, endpoints, backup and disaster recovery, centralized VNC support, Google Workspace, attendance systems, IP CCTV/NVR and staff CyberSecurity awareness." }),
+      Object.freeze({ role: "IT Assistant", organization: "Chaudhry Sugar Mills Ltd", period: "2024 – 2025", summary: "Led network and system upgrades across three weighbridges and 70+ workstations; supported Active Directory, Group Policy, Windows, pfSense, MikroTik, Fortinet and NETGATE environments." }),
+      Object.freeze({ role: "Internship Trainee (CyberSecurity)", organization: "ITSOLERA PVT LTD", period: "2024", summary: "Performed web application penetration testing and vulnerability assessment, led Team Zeta in Red Team exercises, and built Python/Bash OSINT, metadata and reconnaissance tools." }),
+      Object.freeze({ role: "CyberSecurity Instructor", organization: "TechFly, Multan", period: "2026", summary: "Delivers the 16-lecture CyberStart Level 1 program covering safe ethical-hacking practice, Linux, recon, VAPT, networks, firewalls, monitoring and authorized web-security labs." }),
+      Object.freeze({ role: "Teaching Assistant (CyberSecurity)", organization: "NAVTTC, IUB-RYK Campus", period: "2022", summary: "Facilitated hands-on VAPT, scanning, controlled exploitation and malware-analysis instruction while mentoring 50+ students." }),
+      Object.freeze({ role: "CyberSecurity Project Intern", organization: "Prodigy InfoTech", period: "2024", summary: "Developed controlled-lab Python tools for image encryption, packet analysis and endpoint event capture." }),
+      Object.freeze({ role: "Project Experience", organization: "CodeAlpha", period: "2024", summary: "Completed Python and CyberSecurity-focused project work as additional technical experience." }),
+      Object.freeze({ role: "IT Administration", organization: "DevCastle BuiltinSoft", period: "2024", summary: "Managed IT support, computer-lab operations, network configuration and office administration for a software house." }),
+      Object.freeze({ role: "Course Instructor", organization: "Udemy", period: "2021 – 2024", summary: "Developed and delivered 30+ hands-on CEH v11 modules and virtual labs for 3,000+ enrolled students." }),
+      Object.freeze({ role: "Founder & CEO", organization: "HackStark", period: "Ongoing", summary: "Leads CyberSecurity education, open-source initiatives, research, practical labs and a structured beginner ethical-hacking course with 50+ lessons covering 25+ tools and platforms." })
+    ]),
+    founderTraining: Object.freeze([
+      Object.freeze({ type: "Degree", name: "BS Cyber Security", provider: "Islamia University of Bahawalpur (RYK)", detail: "CGPA 3.5 / 4.0 | 2020 – 2024" }),
+      Object.freeze({ type: "Government training certificate", name: "Certificate in Cyber Security", provider: "NAVTTC Govt. Pakistan", detail: "Mar 2022 – Dec 2022" }),
+      Object.freeze({ type: "Professional training", name: "Offensive Penetration Testing", provider: "Cybrary.com", detail: "15 hours | Dec 3, 2020" }),
+      Object.freeze({ type: "Professional training", name: "Advanced Penetration Testing", provider: "Cybrary.com", detail: "15 hours | Dec 4, 2020" }),
+      Object.freeze({ type: "Certification training", name: "Certified in CyberSecurity (CC) Training", provider: "(ISC)²", detail: "Official self-paced training | Jun 12, 2023" }),
+      Object.freeze({ type: "Course completion", name: "Ethical Hacking Essentials", provider: "Code Red | EC-Council", detail: "Fundamental Pen-Testing Credential" })
+    ]),
+    speaking: Object.freeze({ event: "BZU Multan CIT Conference", date: "Aug 2026", role: "CyberSecurity Panelist & Speaker", topics: Object.freeze(["AI-enhanced cyber threats", "Quantum computing implications for cryptography and password security", "Human-firewall strategies", "Digital defense"]) }),
     socials: Object.freeze({ github: githubProfile, founderGithub: "https://github.com/mahmedtalha", contactForm: "https://docs.google.com/forms/d/e/1FAIpQLScdbT_vnWj5tRU2b-XP_PdamjncAMHc3sgl6rGEUI8EHMe4QQ/viewform?usp=sharing", youtube: "https://www.youtube.com/@hackstark8829", facebook: "https://facebook.com/hackstarkk/", telegramChannel: "https://t.me/hackstarkofficial", telegramContact: "https://t.me/hackstarkk", instagram: "https://www.instagram.com/hackstark/" }),
     projects: Object.freeze(projects),
     portfolioProjects: Object.freeze(portfolioProjects),
@@ -245,7 +279,7 @@
       Object.freeze({ id: "harden", number: "03", name: "Harden", summary: "Defensive action", label: "Security mindset / Harden", title: "Strengthen defenses.", description: "Remediate findings, verify fixes and document defensive evidence." })
     ]),
     courseAreas: Object.freeze(["virtualization and Kali Linux lab setup", "ethical hacking foundations and authorization", "footprinting, reconnaissance and OSINT", "network scanning and enumeration", "vulnerability analysis", "system and endpoint security", "malware threats and defensive analysis", "traffic analysis and sniffing", "social engineering awareness", "denial of service resilience", "session security", "IDS, firewalls and honeypots", "web server and web application security", "DVWA, WebGoat, XSS and SQL injection concepts", "wireless security", "mobile platform security", "IoT security", "cloud computing and VPS fundamentals", "cryptography", "continued research and responsible practice"]),
-    statistics: Object.freeze({ snapshotDate: "2026-09-07", publicRepositories: projects.length, projectRecords: "15+", githubFollowers: 9, publicGists: 0, featuredVideos: videos.length, courseLessons: 46, courseModules: 21, labLessons: 4, linkedCourseLessons: 4, trainedStudentsClaim: "3,000+", securityToolsAndProjectsClaim: "15+" }),
+    statistics: Object.freeze({ snapshotDate: "2026-09-07", publicRepositories: projects.length, projectRecords: "15+", githubFollowers: 9, publicGists: 0, featuredVideos: videos.length, courseLessons: 50, courseModules: 21, labLessons: 4, linkedCourseLessons: 4, experienceClaim: "6+", managedWorkstationsClaim: "400+", trainedStudentsClaim: "3,000+", securityToolsAndProjectsClaim: "15+" }),
     history: Object.freeze({ source: "HackStark.txt", communitySince: 2015, originalDescription: "A community sharing knowledge of IoT (Internet of Things) in penetration testing.", originalGoal: "Teach people what they can do with their gadgets, improve their internet skills and develop clearer concepts about hacking and the internet.", learningPromise: "No previous programming experience is needed to begin the ethical hacking learning path.", historicalHandles: Object.freeze({ facebook: "facebook.com/hackstarkofficial", telegramGroup: "@hackstarkk", telegramChannel: "@hackstarkofficial", instagram: "@hackstark", github: "@hackstarkofficial", twitter: "@HackStarkk" }), historicalWhatsAppCommunities: Object.freeze(["HackStark Official", "HackStark 2.O Official", "Hacking Courses 4 Free"]) }),
     runtime: { repositories: null, githubLoadedAt: null }
   };

@@ -133,7 +133,7 @@
       section.hidden = sectionCount === 0;
     });
     const status = document.querySelector("#curriculum-status");
-    const lessonCountLabel = !query && activeFilter === "all" ? `${visibleLessons}+` : String(visibleLessons);
+    const lessonCountLabel = String(visibleLessons);
     if (status) status.textContent = visibleModules
       ? `${visibleModules} module${visibleModules === 1 ? "" : "s"} · ${lessonCountLabel} lesson${visibleLessons === 1 ? "" : "s"} shown`
       : "No lessons match your search.";
@@ -160,7 +160,7 @@
     const bar = document.querySelector("#course-progress-bar");
     const track = bar?.parentElement;
     const percentage = document.querySelector("#course-progress-percent");
-    if (text) text.textContent = `${completed} of ${allLessons.length}+ lessons completed`;
+    if (text) text.textContent = `${completed} of ${allLessons.length} catalog lessons completed`;
     if (bar) bar.style.width = `${percent}%`;
     if (track) track.setAttribute("aria-valuenow", String(completed));
     if (percentage) percentage.textContent = `${percent}%`;

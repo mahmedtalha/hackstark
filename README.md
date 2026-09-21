@@ -42,7 +42,7 @@ A lightweight, responsive website for HackStark—a cybersecurity education and 
 - Ask JARVIS for local guidance across the 46-lesson beginner curriculum, progress controls, current and pending video links, project records, HackStark history, official channels and responsible-use guidance
 - Reduced-motion, higher-contrast and print accommodations
 - Semantic metadata, JSON-LD, sitemap, robots file and social-card support
-- Consistent SVG/PNG favicon and Open Graph social-card metadata across every HTML page
+- Consistent PNG/ICO favicon and Open Graph social-card metadata across every HTML page
 - Privacy-minded system font stacks with no third-party font request
 - Linked web app manifest with 192 × 192, 512 × 512 and maskable install icons
 - RFC 9116 security contact at `/.well-known/security.txt`
@@ -89,7 +89,7 @@ Upload the root-level website files. No server runtime, database or build step i
 - Design tokens and theme colors are at the top of `style.css`.
 - The production style follows the supplied portfolio reference: near-black navy surfaces, emerald actions, cyan highlights, glass navigation and compact rounded cards.
 - Typography uses privacy-minded system font stacks for headings, body copy and technical labels; no external font service is contacted.
-- Current branding uses `hackstark-logo.svg`, `hackstark-mark.svg`, `hackstark-mark-mono.svg` and `favicon.svg`; legacy PNG variants remain in the project root for compatibility.
+- Current branding uses the supplied circular artwork in `hackstark-brand.png`, with dedicated ICO/PNG browser favicons, an Apple touch icon, Android/PWA icons and a mask-safe install icon.
 - Organization, founder, social, HackStark repository, founder project, video, course, statistics and history records live in the shared `hackstark-data.js` source consumed by both the page and JARVIS.
 - The complete beginner course is integrated into `index.html`; its presentation and interaction live in `course.css` and `course.js`.
 - JARVIS behavior and presentation live in `jarvis-aichatbot.js` and `jarvis-aichatbot.css`.

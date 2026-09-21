@@ -54,7 +54,7 @@
         ui: { ClerkUI: window.__internal_ClerkUICtor },
         appearance: {
           options: {
-            logoImageUrl: new URL("hackstark-logo.svg", window.location.href).href,
+            logoImageUrl: new URL("hackstark-brand.png", window.location.href).href,
             logoLinkUrl: window.location.origin,
             logoPlacement: "inside",
             privacyPageUrl: new URL("privacy.html", document.baseURI).href,
@@ -82,8 +82,8 @@
               textAlign: "center"
             },
             headerSubtitle: { display: "none" },
-            logoBox: { height: "2.15rem", margin: "0 auto .1rem" },
-            logoImage: { maxWidth: "8.5rem", maxHeight: "2.15rem" },
+            logoBox: { height: "3rem", margin: "0 auto .1rem" },
+            logoImage: { width: "3rem", height: "3rem", objectFit: "contain" },
             main: { gap: ".7rem" },
             socialButtons: { gap: ".45rem" },
             socialButtonsBlockButton: { minHeight: "2.45rem" },
