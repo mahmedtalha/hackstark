@@ -1,7 +1,6 @@
 (() => {
   "use strict";
 
-  const signedOutGroups = () => document.querySelectorAll("[data-clerk-signed-out]");
   const signedInGroup = document.querySelector("[data-clerk-signed-in]");
   const loadingIndicator = document.querySelector("[data-clerk-loading]");
   const status = document.querySelector("[data-clerk-status]");
@@ -9,8 +8,13 @@
   const authDialog = document.querySelector("#auth-dialog");
   const authMount = document.querySelector("#clerk-auth-mount");
   let userButtonMounted = false;
-  let pendingAuthAction = false;
+  let clerkReady = false;
+  let pendingAuthRequest = null;
+  let pendingAuthTimer = 0;
+  let authOpenToken = 0;
   let mountedAuthView = "";
+
+  const accountAnimationDuration = 280;
 
   const setStatus = (message = "", isError = false) => {
     if (!status) return;
@@ -22,8 +26,7 @@
   const renderAuthState = () => {
     const signedIn = Boolean(window.Clerk?.isSignedIn);
 
-    if (loadingIndicator) loadingIndicator.hidden = true;
-    signedOutGroups().forEach((group) => { group.hidden = signedIn; });
+    if (loadingIndicator) loadingIndicator.hidden = signedIn;
     if (signedInGroup) signedInGroup.hidden = !signedIn;
 
     if (signedIn && userButton && !userButtonMounted) {
@@ -43,30 +46,105 @@
     window.dispatchEvent(new CustomEvent("hackstark:auth-change", { detail: { signedIn } }));
   };
 
-  const unmountAuthView = () => {
+  const unmountAuthView = async () => {
     if (!authMount || !mountedAuthView || !window.Clerk) return;
-    if (mountedAuthView === "signUp") window.Clerk.unmountSignUp(authMount);
-    else window.Clerk.unmountSignIn(authMount);
+    const unmountResult = mountedAuthView === "signUp"
+      ? window.Clerk.unmountSignUp(authMount)
+      : window.Clerk.unmountSignIn(authMount);
     mountedAuthView = "";
-    authMount.replaceChildren();
+    if (unmountResult && typeof unmountResult.then === "function") await unmountResult;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
   };
 
-  const openAuthDialog = (view = "signIn") => {
-    if (!authDialog || !authMount || !window.Clerk) return;
-    unmountAuthView();
-    if (!authDialog.open) authDialog.showModal();
+  const setAccountLoading = (isLoading) => {
+    if (!loadingIndicator) return;
+    loadingIndicator.classList.toggle("is-pending", isLoading);
+    loadingIndicator.setAttribute("aria-busy", String(isLoading));
+    loadingIndicator.setAttribute("aria-label", isLoading ? "Opening account" : "Open account");
+  };
+
+  const updateAuthSwitcher = (view) => {
+    document.querySelectorAll("[data-auth-view]").forEach((button) => {
+      const isActive = button.dataset.authView === view;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+  };
+
+  const waitForAuthMarkup = (token) => new Promise((resolve) => {
+    if (!authMount || authMount.childElementCount) {
+      resolve(Boolean(authMount?.childElementCount));
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (token !== authOpenToken || !authMount.childElementCount) return;
+      observer.disconnect();
+      clearTimeout(timeout);
+      resolve(true);
+    });
+    observer.observe(authMount, { childList: true, subtree: true });
+    const timeout = window.setTimeout(() => {
+      observer.disconnect();
+      resolve(Boolean(authMount.childElementCount));
+    }, 4000);
+  });
+
+  const openAuthDialog = async (view = "signIn") => {
+    if (!authDialog || !authMount || !window.Clerk || !clerkReady) return false;
+    const token = ++authOpenToken;
+    authDialog.classList.add("is-switching");
+    await unmountAuthView();
+    updateAuthSwitcher(view);
     mountedAuthView = view;
     const options = { routing: "virtual" };
     if (view === "signUp") window.Clerk.mountSignUp(authMount, options);
     else window.Clerk.mountSignIn(authMount, options);
+    const hasMarkup = await waitForAuthMarkup(token);
+    if (token !== authOpenToken || !hasMarkup || window.Clerk.isSignedIn) return false;
+    authDialog.classList.remove("is-switching");
+    if (!authDialog.open) authDialog.showModal();
+    return true;
   };
 
-  window.hackstarkOpenAuth = openAuthDialog;
+  const tryOpenPendingAuth = async () => {
+    if (!pendingAuthRequest?.animationComplete || !clerkReady) return;
+    const request = pendingAuthRequest;
+    pendingAuthRequest = null;
+    const opened = await openAuthDialog(request.view);
+    if (request.animate) setAccountLoading(false);
+    if (!opened && !window.Clerk?.isSignedIn) setStatus("Account form unavailable. Please try again.", true);
+  };
+
+  const requestAuthDialog = (view = "signIn", { animate = false } = {}) => {
+    window.clearTimeout(pendingAuthTimer);
+    pendingAuthRequest = { view, animate, animationComplete: !animate };
+    if (animate) {
+      setStatus();
+      setAccountLoading(true);
+      pendingAuthTimer = window.setTimeout(() => {
+        if (!pendingAuthRequest) return;
+        pendingAuthRequest.animationComplete = true;
+        tryOpenPendingAuth();
+      }, accountAnimationDuration);
+    } else {
+      tryOpenPendingAuth();
+    }
+  };
+
+  window.hackstarkOpenAuth = (view = "signIn") => requestAuthDialog(view);
   document.querySelector("[data-auth-dialog-close]")?.addEventListener("click", () => authDialog?.close());
   authDialog?.addEventListener("click", (event) => {
     if (event.target === authDialog) authDialog.close();
   });
-  authDialog?.addEventListener("close", unmountAuthView);
+  authDialog?.addEventListener("close", () => {
+    authOpenToken += 1;
+    authDialog.classList.remove("is-switching");
+    void unmountAuthView();
+  });
+  document.querySelectorAll("[data-auth-view]").forEach((button) => {
+    button.addEventListener("click", () => requestAuthDialog(button.dataset.authView || "signIn"));
+  });
 
   const initialize = async () => {
     if (!window.Clerk || !window.__internal_ClerkUICtor) {
@@ -130,23 +208,17 @@
         }
       });
 
-      document.querySelectorAll("[data-clerk-sign-in]").forEach((button) => {
-        button.addEventListener("click", () => openAuthDialog("signIn"));
-      });
-      document.querySelectorAll("[data-clerk-sign-up]").forEach((button) => {
-        button.addEventListener("click", () => openAuthDialog("signUp"));
-      });
-
+      clerkReady = true;
       setStatus();
       renderAuthState();
       window.Clerk.addListener(renderAuthState);
-
-      if (pendingAuthAction && !window.Clerk.isSignedIn) {
-        pendingAuthAction = false;
-        openAuthDialog("signIn");
-      }
+      tryOpenPendingAuth();
     } catch (error) {
       console.error("Clerk authentication failed to initialize.", error);
+      clerkReady = false;
+      pendingAuthRequest = null;
+      window.clearTimeout(pendingAuthTimer);
+      setAccountLoading(false);
       if (loadingIndicator) {
         loadingIndicator.hidden = false;
         loadingIndicator.setAttribute("aria-busy", "false");
@@ -158,9 +230,7 @@
   };
 
   loadingIndicator?.addEventListener("click", () => {
-    pendingAuthAction = true;
-    loadingIndicator.classList.add("is-pending");
-    loadingIndicator.setAttribute("aria-label", "Opening account");
+    requestAuthDialog("signIn", { animate: true });
   });
 
   initialize();

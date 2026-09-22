@@ -42,14 +42,14 @@
   <link rel="dns-prefetch" href="//premium-cow-1150.clerk.accounts.dev">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=20260922c">
+  <link rel="stylesheet" href="style.css?v=20260922d">
   <link rel="stylesheet" href="course.css?v=20260922d">
   <link rel="stylesheet" href="jarvis-aichatbot.css?v=20260922">
   <script defer fetchpriority="high" crossorigin="anonymous" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"></script>
   <script defer fetchpriority="high" crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJlbWl1bS1jb3ctMTE1MC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
-  <script src="clerk-auth.js?v=20260922" defer></script>
+  <script src="clerk-auth.js?v=20260922c" defer></script>
   <script src="hackstark-data.js?v=20260921" defer></script>
-  <script src="script.js?v=20260922c" defer></script>
+  <script src="script.js?v=20260922d" defer></script>
   <script src="course.js?v=20260922" defer></script>
   <script src="whatsapp-enrollment.js?v=20260922" defer></script>
   <script src="jarvis-aichatbot.js?v=20260922" defer></script>
@@ -179,13 +179,9 @@
       <div class="header-actions">
         <a class="button button--small button--outline-accent header-resume header-cta" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf" aria-label="Download Muhammad Ahmed Talha's resume as a PDF"><svg aria-hidden="true"><use href="#icon-download"></use></svg><span>Resume</span></a>
         <div class="auth-controls" id="clerk-auth-controls" aria-live="polite">
-          <button class="auth-loading" data-clerk-loading type="button" aria-label="Open account" aria-busy="true" title="Account">
+          <button class="auth-loading" data-clerk-loading type="button" aria-label="Open account" aria-busy="false" title="Sign in or create an account">
             <svg aria-hidden="true"><use href="#icon-user"></use></svg>
           </button>
-          <div class="auth-signed-out" data-clerk-signed-out hidden>
-            <button class="auth-link" type="button" data-clerk-sign-in aria-label="Sign in to HackStark"><svg aria-hidden="true"><use href="#icon-user"></use></svg><span>Sign in</span></button>
-            <button class="button button--small button--outline-accent auth-sign-up" type="button" data-clerk-sign-up><svg aria-hidden="true"><use href="#icon-lock"></use></svg><span>Sign up</span></button>
-          </div>
           <div class="auth-signed-in" data-clerk-signed-in hidden>
             <span class="sr-only">Signed in account menu</span>
             <div id="clerk-user-button"></div>
@@ -213,10 +209,6 @@
         <a href="#credentials">Certificates</a>
         <a href="#community">Community &amp; Contact</a>
         <a class="mobile-resume-link" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf"><svg aria-hidden="true"><use href="#icon-download"></use></svg> Download Resume / CV</a>
-        <div class="mobile-auth" data-clerk-signed-out hidden>
-          <button type="button" data-clerk-sign-in>Sign in</button>
-          <button type="button" data-clerk-sign-up>Create account</button>
-        </div>
       </div>
     </nav>
   </header>
@@ -996,12 +988,19 @@
   <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="auth-dialog-title">
     <div class="auth-dialog__card">
       <button class="auth-dialog__close" type="button" data-auth-dialog-close aria-label="Close account dialog">×</button>
-      <h2 class="sr-only" id="auth-dialog-title">HackStark account</h2>
-      <div id="clerk-auth-mount"></div>
-      <div class="auth-purchase-help">
-        <span>Purchasing the course?</span>
-        <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20signing%20in%20or%20purchasing%20the%20HackStark%20course." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span><strong>Contact on WhatsApp</strong><small>+92 302 3070227</small></span></a>
+      <div class="auth-dialog__intro">
+        <span class="mono-label">HackStark account</span>
+        <h2 id="auth-dialog-title">Welcome to HackStark</h2>
+        <p>Sign in or create an account to continue with course enrollment.</p>
       </div>
+      <div class="auth-dialog__switcher" role="group" aria-label="Choose account action">
+        <button type="button" class="is-active" data-auth-view="signIn" aria-pressed="true"><svg aria-hidden="true"><use href="#icon-user"></use></svg><span><strong>Sign In</strong><small>Existing account</small></span></button>
+        <button type="button" data-auth-view="signUp" aria-pressed="false"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><span><strong>Sign Up</strong><small>Create account</small></span></button>
+      </div>
+      <div class="auth-purchase-help">
+        <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20signing%20in%20or%20purchasing%20the%20HackStark%20course." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span><strong>Contact on WhatsApp</strong><small>Account and course purchase help</small></span><svg class="auth-purchase-help__arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+      </div>
+      <div id="clerk-auth-mount"></div>
     </div>
   </dialog>
 

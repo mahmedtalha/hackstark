@@ -29,6 +29,7 @@
 
   const HackStarkApp = {
     init() {
+      this.arrangePrimarySections();
       this.applyConfiguredLinks();
       this.hydrateSharedData();
       this.theme();
@@ -47,6 +48,12 @@
       this.backToTop();
       this.videoExpansion();
       this.imageFallbacks();
+    },
+
+    arrangePrimarySections() {
+      const course = document.querySelector("#course-top");
+      const projects = document.querySelector("#projects");
+      if (course && projects && course.nextElementSibling !== projects) projects.before(course);
     },
 
     applyConfiguredLinks() {
