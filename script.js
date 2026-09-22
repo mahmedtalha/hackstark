@@ -271,7 +271,7 @@
     },
 
     animatedFacts() {
-      const facts = [...document.querySelectorAll(".fact-card--key strong, .course-instructor__stats strong, .founder-highlights strong")]
+      const facts = [...document.querySelectorAll("[data-count-up]")]
         .filter((item) => /^\d[\d,]*\+?$/.test(item.textContent.trim()));
       if (!facts.length || prefersReducedMotion() || !("IntersectionObserver" in window)) return;
       const observer = new IntersectionObserver((entries, currentObserver) => {
@@ -285,7 +285,7 @@
           const started = performance.now();
           item.classList.add("is-counting");
           const animate = (time) => {
-            const progress = Math.min(1, (time - started) / 420);
+            const progress = Math.min(1, (time - started) / 240);
             const value = Math.round(target * (1 - Math.pow(1 - progress, 4)));
             item.textContent = `${value.toLocaleString("en-US")}${suffix}`;
             if (progress < 1) requestAnimationFrame(animate);
@@ -300,7 +300,7 @@
 
     scrollSpy() {
       const links = [...document.querySelectorAll(selectors.navLinks)];
-      const sections = [...document.querySelectorAll("main section[id]")]
+      const sections = [...document.querySelectorAll("main section[id], main [data-nav-section][id]")]
         .filter((section) => links.some((link) => link.hash === `#${section.id}`));
       if (!links.length || !sections.length || !("IntersectionObserver" in window)) return;
 

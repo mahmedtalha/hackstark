@@ -115,3 +115,58 @@
 .community-contact { padding-top: 1.5rem; scroll-margin-top: calc(var(--header-height) + 1rem); }
 @media (max-width: 980px) { .course-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .course-tools-grid { grid-template-columns: 1fr; } .payment-summary > div strong { font-size: .9rem; } }
+
+/* Course trust, proof and controlled-lab presentation. */
+.course-enrollment__content .course-enrollment__highlights { gap: .55rem; margin-top: 1rem; }
+.course-enrollment__content .course-enrollment__highlights li { padding: .5rem .68rem; font-size: .72rem; line-height: 1.2; }
+.course-purchase-details { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .55rem; margin: 1rem 0 0; }
+.course-purchase-details div { padding: .65rem .7rem; border: 1px solid var(--border); border-radius: .65rem; background: var(--surface-soft); }
+.course-purchase-details dt { color: var(--secondary-text); font-size: .68rem; font-weight: 800; }
+.course-purchase-details dd { margin: .25rem 0 0; color: var(--muted); font-size: .66rem; line-height: 1.45; }
+.course-account-help { display: grid; gap: .35rem; margin-top: .8rem; padding-top: .75rem; border-top: 1px solid var(--border); }
+.course-account-help > span { color: var(--muted); font-size: .65rem; font-weight: 700; }
+.course-account-help a { display: inline-flex; align-items: center; gap: .4rem; color: var(--secondary-text); font-size: .72rem; font-weight: 800; }
+.course-account-help svg { width: 1rem; height: 1rem; }
+.course-account-help a:hover { text-decoration: underline; }
+.course-instructor__stats strong { color: var(--accent-text); font-size: clamp(1.45rem,2.2vw,1.85rem); line-height: 1; }
+.course-instructor__stats span { margin-top: .3rem; color: var(--muted); font-size: .72rem; font-weight: 700; line-height: 1.25; }
+.course-proof { display: grid; grid-template-columns: minmax(14rem,.75fr) minmax(0,1.5fr); gap: 1rem; align-items: center; margin-top: 1rem; padding: 1rem; border: 1px solid var(--course-line); border-radius: var(--radius-lg); background: var(--surface); }
+.course-proof__intro h3 { margin: .35rem 0 .4rem; font-size: 1.15rem; }
+.course-proof__intro > p:last-child { margin: 0; color: var(--muted); font-size: .72rem; line-height: 1.5; }
+.course-proof__grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .6rem; }
+.course-proof__grid a { display: flex; min-height: 5.5rem; align-items: flex-start; gap: .6rem; padding: .8rem; border: 1px solid var(--border); border-radius: .7rem; background: var(--surface-soft); color: inherit; }
+.course-proof__grid a:hover { border-color: rgba(var(--accent-rgb),.45); }
+.course-proof__grid svg { width: 1.15rem; height: 1.15rem; flex: 0 0 auto; color: var(--accent-text); }
+.course-proof__grid strong,.course-proof__grid small { display: block; }
+.course-proof__grid strong { font-size: .76rem; }
+.course-proof__grid small { margin-top: .3rem; color: var(--muted); font-size: .64rem; line-height: 1.4; }
+.controlled-lab-panel { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(15rem,.8fr); gap: 1rem; align-items: center; margin-top: 1.25rem; padding: 1.15rem; border: 1px solid rgba(245,158,11,.3); border-radius: 1rem; background: rgba(245,158,11,.045); }
+.controlled-lab-panel h3 { margin: .55rem 0 .35rem; font-size: 1rem; }
+.controlled-lab-panel p { margin: 0; color: var(--muted); font-size: .76rem; line-height: 1.55; }
+.controlled-lab-panel details { padding: .8rem; border: 1px solid rgba(245,158,11,.22); border-radius: .75rem; background: var(--surface); }
+.controlled-lab-panel summary { color: #b86d06; font-size: .76rem; font-weight: 800; cursor: pointer; }
+.controlled-lab-panel .tag-list { margin-top: .75rem; }
+.curriculum-more { display: flex; justify-content: center; margin-top: 1.25rem; }
+.curriculum-more button[hidden] { display: none; }
+
+@media (max-width: 760px) {
+  .course-purchase-details,.course-proof,.course-proof__grid,.controlled-lab-panel { grid-template-columns: 1fr; }
+  .course-proof__grid a { min-height: 0; }
+  .course-instructor__stats li { padding: .8rem; }
+  .course-instructor__stats strong { font-size: 1.65rem; }
+}
+
+/* Enlarged course statistics and compact highlight figures. */
+.course-enrollment__content .course-enrollment__highlights li:has(.stat-number) {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .3rem;
+  padding: .55rem .78rem;
+}
+.course-enrollment__highlights .stat-number--compact { font-size: 1.18rem; line-height: .85; }
+.course-enrollment__highlights .stat-number--compact + span { font-size: .7rem; font-weight: 750; }
+.course-instructor__stats .stat-number { font-size: clamp(2rem,3vw,2.55rem); line-height: .86; }
+
+@media (max-width: 760px) {
+  .course-instructor__stats .stat-number { font-size: 2.15rem; }
+}

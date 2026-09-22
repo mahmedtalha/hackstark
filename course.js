@@ -15,6 +15,7 @@
   const allLessons = course.sections.flatMap((section) => section.modules.flatMap((module) => module.lessons));
   let activeFilter = "all";
   let searchTerm = "";
+  let fullCurriculum = false;
   let progress = loadProgress();
 
   function lessonState(id) {
@@ -132,10 +133,28 @@
       });
       section.hidden = sectionCount === 0;
     });
+    const previewMode = activeFilter === "all" && !query;
+    const visibleBeforePreview = [...mount.querySelectorAll(".course-module:not([hidden])")];
+    if (previewMode && !fullCurriculum) {
+      visibleBeforePreview.slice(6).forEach((module) => {
+        module.hidden = true;
+        module.dataset.previewHidden = "true";
+      });
+      mount.querySelectorAll("[data-course-section]").forEach((section) => {
+        section.hidden = !section.querySelector(".course-module:not([hidden])");
+      });
+    }
+    const previewButton = document.querySelector("#show-full-curriculum");
+    if (previewButton) {
+      previewButton.hidden = !previewMode;
+      previewButton.setAttribute("aria-expanded", String(fullCurriculum));
+      previewButton.innerHTML = `${fullCurriculum ? "Show Curriculum Preview" : "View Full Curriculum"} ${svg("arrow")}`;
+    }
     const status = document.querySelector("#curriculum-status");
     const lessonCountLabel = String(visibleLessons);
+    const shownModules = previewMode && !fullCurriculum ? Math.min(6, visibleModules) : visibleModules;
     if (status) status.textContent = visibleModules
-      ? `${visibleModules} module${visibleModules === 1 ? "" : "s"} · ${lessonCountLabel} lesson${visibleLessons === 1 ? "" : "s"} shown`
+      ? `${shownModules}${shownModules !== visibleModules ? ` of ${visibleModules}` : ""} module${visibleModules === 1 ? "" : "s"} · ${lessonCountLabel} lesson${visibleLessons === 1 ? "" : "s"} in the catalog`
       : "No lessons match your search.";
   }
 
@@ -210,6 +229,11 @@
 
   document.querySelector("#expand-curriculum")?.addEventListener("click", () => mount.querySelectorAll(".course-module:not([hidden])").forEach((module) => setModuleOpen(module, true)));
   document.querySelector("#collapse-curriculum")?.addEventListener("click", () => mount.querySelectorAll(".course-module:not([hidden])").forEach((module) => setModuleOpen(module, false)));
+  document.querySelector("#show-full-curriculum")?.addEventListener("click", () => {
+    fullCurriculum = !fullCurriculum;
+    applyFilters();
+    if (!fullCurriculum) document.querySelector("#curriculum-heading")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
   document.querySelector("#reset-course-progress")?.addEventListener("click", () => {
     progress = {};
     saveProgress();

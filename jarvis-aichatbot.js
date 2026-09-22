@@ -11,7 +11,7 @@
   const homeSection = (hash) => onCoursePage ? `../index.html${hash}` : hash;
   const URLS = Object.freeze({
     about: homeSection("#about"),
-    focus: homeSection("#focus"),
+    focus: homeSection("#course-tools"),
     projects: homeSection("#projects"),
     learn: onCoursePage ? "#course-top" : "#learn",
     course: "#course-top",
@@ -392,7 +392,12 @@
       this.el.launcher.setAttribute("aria-expanded", "false");
       this.el.launcher.setAttribute("aria-label", "Open JARVIS, HackStark Assistant");
       window.setTimeout(() => { if (!this.isOpen()) this.el.window.hidden = true; }, 260);
-      this.el.launcher.focus();
+      const hero = document.querySelector("#home");
+      const deferLauncher = window.innerWidth <= 480 && hero && window.scrollY < Math.max(240, hero.offsetHeight - 120);
+      document.body.classList.toggle("jarvis-launcher-deferred", Boolean(deferLauncher));
+      this.el.launcher.inert = Boolean(deferLauncher);
+      this.el.launcher.setAttribute("aria-hidden", String(Boolean(deferLauncher)));
+      if (!deferLauncher) this.el.launcher.focus();
     }
 
     toggleMinimize(force) {
@@ -410,7 +415,7 @@
         ["About", "What is HackStark?"],
         ["Experience", "Tell me about Muhammad Ahmed Talha's professional experience"],
         ["Skills", "What are Muhammad Ahmed Talha's technical skills?"],
-        ["Focus areas", "What does HackStark teach?"],
+        ["Learning topics", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],
         ["Beginner course", "Tell me about the beginner course"],
         ["Curriculum", "Show the full course curriculum"],
@@ -572,10 +577,16 @@
         document.documentElement.style.setProperty("--jarvis-viewport-height", `${height}px`);
         document.documentElement.style.setProperty("--jarvis-viewport-right", `${Math.max(0, layoutWidth - left - width)}px`);
         document.documentElement.style.setProperty("--jarvis-viewport-bottom", `${Math.max(0, layoutHeight - top - height)}px`);
+        const hero = document.querySelector("#home");
+        const deferLauncher = width <= 480 && hero && window.scrollY < Math.max(240, hero.offsetHeight - 120) && !this.isOpen();
+        document.body.classList.toggle("jarvis-launcher-deferred", Boolean(deferLauncher));
+        this.el.launcher.inert = Boolean(deferLauncher);
+        this.el.launcher.setAttribute("aria-hidden", String(Boolean(deferLauncher)));
       };
       const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
       update();
       window.addEventListener("resize", schedule, { passive: true });
+      window.addEventListener("scroll", schedule, { passive: true });
       window.addEventListener("orientationchange", schedule, { passive: true });
       window.visualViewport?.addEventListener("resize", schedule, { passive: true });
       window.visualViewport?.addEventListener("scroll", schedule, { passive: true });

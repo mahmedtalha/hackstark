@@ -4,6 +4,7 @@
 .jarvis-sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
 
 #jarvis-launcher { position: fixed; right: calc(18px + var(--jarvis-viewport-right,0px)); bottom: calc(max(16px,env(safe-area-inset-bottom)) + var(--jarvis-viewport-bottom,0px)); z-index: 9999; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.jarvis-launcher-deferred #jarvis-launcher { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px); }
 #jarvis-launcher .jarvis-btn-core { position: relative; display: flex; width: 38px; height: 38px; align-items: center; justify-content: center; border: 2px solid rgba(0,212,255,.5); border-radius: 50%; background: linear-gradient(135deg,#0a0f1e,#111827); box-shadow: 0 0 16px rgba(0,212,255,.3),0 0 40px rgba(0,212,255,.1),inset 0 0 20px rgba(0,212,255,.05); transition: transform .2s ease,box-shadow .2s ease,border-color .2s ease; }
 #jarvis-launcher .jarvis-btn-core svg { width: 16px; height: 16px; fill: none; stroke: #00d4ff; stroke-width: 1.5; filter: drop-shadow(0 0 6px rgba(0,212,255,.8)); }
 #jarvis-launcher .jarvis-ring,#jarvis-launcher .jarvis-ring-2 { position: absolute; top: 50%; left: 50%; border-radius: 50%; pointer-events: none; }
@@ -112,6 +113,7 @@
 
 @media (max-width:480px) {
   #jarvis-launcher { right: calc(12px + var(--jarvis-viewport-right,0px)); bottom: calc(max(12px,env(safe-area-inset-bottom)) + var(--jarvis-viewport-bottom,0px)); }
+  #jarvis-launcher .jarvis-label { display: none; }
   #jarvis-chat-window { right: calc(12px + var(--jarvis-viewport-right,0px)); bottom: calc(70px + var(--jarvis-viewport-bottom,0px)); width: min(330px,84vw,calc(var(--jarvis-viewport-width,100vw) - 40px)); height: min(75dvh,540px,calc(var(--jarvis-viewport-height,100vh) - 115px)); border-radius: 14px; }
   .jarvis-msg-text { font-size: 12px; }
   #jarvis-messages { padding: 13px; }

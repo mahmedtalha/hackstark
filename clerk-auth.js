@@ -6,8 +6,11 @@
   const loadingIndicator = document.querySelector("[data-clerk-loading]");
   const status = document.querySelector("[data-clerk-status]");
   const userButton = document.querySelector("#clerk-user-button");
+  const authDialog = document.querySelector("#auth-dialog");
+  const authMount = document.querySelector("#clerk-auth-mount");
   let userButtonMounted = false;
   let pendingAuthAction = false;
+  let mountedAuthView = "";
 
   const setStatus = (message = "", isError = false) => {
     if (!status) return;
@@ -35,8 +38,35 @@
       userButtonMounted = false;
     }
 
+    if (signedIn && authDialog?.open) authDialog.close();
+
     window.dispatchEvent(new CustomEvent("hackstark:auth-change", { detail: { signedIn } }));
   };
+
+  const unmountAuthView = () => {
+    if (!authMount || !mountedAuthView || !window.Clerk) return;
+    if (mountedAuthView === "signUp") window.Clerk.unmountSignUp(authMount);
+    else window.Clerk.unmountSignIn(authMount);
+    mountedAuthView = "";
+    authMount.replaceChildren();
+  };
+
+  const openAuthDialog = (view = "signIn") => {
+    if (!authDialog || !authMount || !window.Clerk) return;
+    unmountAuthView();
+    if (!authDialog.open) authDialog.showModal();
+    mountedAuthView = view;
+    const options = { routing: "virtual" };
+    if (view === "signUp") window.Clerk.mountSignUp(authMount, options);
+    else window.Clerk.mountSignIn(authMount, options);
+  };
+
+  window.hackstarkOpenAuth = openAuthDialog;
+  document.querySelector("[data-auth-dialog-close]")?.addEventListener("click", () => authDialog?.close());
+  authDialog?.addEventListener("click", (event) => {
+    if (event.target === authDialog) authDialog.close();
+  });
+  authDialog?.addEventListener("close", unmountAuthView);
 
   const initialize = async () => {
     if (!window.Clerk || !window.__internal_ClerkUICtor) {
@@ -54,7 +84,7 @@
         ui: { ClerkUI: window.__internal_ClerkUICtor },
         appearance: {
           options: {
-            logoImageUrl: new URL("hackstark-brand.png", window.location.href).href,
+            logoImageUrl: new URL("hackstark-brand.webp", window.location.href).href,
             logoLinkUrl: window.location.origin,
             logoPlacement: "inside",
             privacyPageUrl: new URL("privacy.html", document.baseURI).href,
@@ -71,18 +101,19 @@
           elements: {
             rootBox: { width: "min(92vw, 23.5rem)" },
             cardBox: { width: "100%", maxWidth: "23.5rem" },
-            card: { gap: ".7rem", padding: "1.15rem 1.2rem" },
-            header: { gap: ".25rem", alignItems: "center", textAlign: "center" },
+            card: { gap: ".7rem", padding: "1.15rem 1.2rem", marginInline: "auto" },
+            header: { display: "flex", width: "100%", flexDirection: "column", gap: ".25rem", alignItems: "center", justifyContent: "center", textAlign: "center" },
             headerTitle: {
               width: "100%",
               margin: "0",
+              alignSelf: "center",
               whiteSpace: "nowrap",
               fontSize: "clamp(1.05rem, 5vw, 1.35rem)",
               lineHeight: "1.15",
               textAlign: "center"
             },
             headerSubtitle: { display: "none" },
-            logoBox: { height: "3rem", margin: "0 auto .1rem" },
+            logoBox: { display: "flex", width: "100%", height: "3rem", margin: "0 auto .1rem", alignItems: "center", justifyContent: "center" },
             logoImage: { width: "3rem", height: "3rem", objectFit: "contain" },
             main: { gap: ".7rem" },
             socialButtons: { gap: ".45rem" },
@@ -100,10 +131,10 @@
       });
 
       document.querySelectorAll("[data-clerk-sign-in]").forEach((button) => {
-        button.addEventListener("click", () => window.Clerk.openSignIn());
+        button.addEventListener("click", () => openAuthDialog("signIn"));
       });
       document.querySelectorAll("[data-clerk-sign-up]").forEach((button) => {
-        button.addEventListener("click", () => window.Clerk.openSignUp());
+        button.addEventListener("click", () => openAuthDialog("signUp"));
       });
 
       setStatus();
@@ -112,7 +143,7 @@
 
       if (pendingAuthAction && !window.Clerk.isSignedIn) {
         pendingAuthAction = false;
-        window.Clerk.openSignIn();
+        openAuthDialog("signIn");
       }
     } catch (error) {
       console.error("Clerk authentication failed to initialize.", error);

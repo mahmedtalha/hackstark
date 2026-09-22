@@ -42,17 +42,17 @@
   <link rel="dns-prefetch" href="//premium-cow-1150.clerk.accounts.dev">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=20260921b">
-  <link rel="stylesheet" href="course.css?v=20260914">
-  <link rel="stylesheet" href="jarvis-aichatbot.css">
+  <link rel="stylesheet" href="style.css?v=20260922c">
+  <link rel="stylesheet" href="course.css?v=20260922d">
+  <link rel="stylesheet" href="jarvis-aichatbot.css?v=20260922">
   <script defer fetchpriority="high" crossorigin="anonymous" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"></script>
   <script defer fetchpriority="high" crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJlbWl1bS1jb3ctMTE1MC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
-  <script src="clerk-auth.js?v=20260921b" defer></script>
+  <script src="clerk-auth.js?v=20260922" defer></script>
   <script src="hackstark-data.js?v=20260921" defer></script>
-  <script src="script.js?v=20260914b" defer></script>
-  <script src="course.js?v=20260921" defer></script>
-  <script src="whatsapp-enrollment.js" defer></script>
-  <script src="jarvis-aichatbot.js?v=20260921b" defer></script>
+  <script src="script.js?v=20260922c" defer></script>
+  <script src="course.js?v=20260922" defer></script>
+  <script src="whatsapp-enrollment.js?v=20260922" defer></script>
+  <script src="jarvis-aichatbot.js?v=20260922" defer></script>
 
   <script type="application/ld+json">
   {
@@ -130,6 +130,7 @@
     <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13Z"/><path d="M4 19.5v-13M8 8h8M8 12h6"/></symbol>
     <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/></symbol>
     <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
     <symbol id="icon-external" viewBox="0 0 24 24"><path d="M15 4h5v5M20 4l-9 9"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/></symbol>
     <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
     <symbol id="icon-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7.4A5.8 5.8 0 0 0 19.3 3 5.4 5.4 0 0 0 19.1.1S17.9-.3 15 1.6a13.4 13.4 0 0 0-6 0C6.1-.3 4.9.1 4.9.1A5.4 5.4 0 0 0 4.7 3a5.8 5.8 0 0 0-1.5 4.1c0 5.8 3.5 7 6.8 7.4A4.8 4.8 0 0 0 9 18v4"/><path d="M9 19c-3 .9-3-1.5-4-2"/></symbol>
@@ -160,17 +161,15 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a class="brand" href="#home" aria-label="HackStark home">
-        <span class="brand-mark" aria-hidden="true"><img src="hackstark-brand.png" width="36" height="36" alt=""></span>
+        <span class="brand-mark" aria-hidden="true"><img src="icon-48.png" width="36" height="36" alt=""></span>
         <span>Hack<span>Stark</span></span>
       </a>
 
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#home" class="is-active">Home</a>
         <a href="#about">About</a>
+        <a href="#enroll">Course</a>
         <a href="#projects">Projects</a>
-        <a href="#about-course">Course &amp; Academy</a>
-        <a href="#curriculum">Curriculum</a>
-        <a href="#focus">Focus</a>
         <a href="#founder">Founder</a>
         <a href="#experience">Experience</a>
         <a href="#credentials">Certificates</a>
@@ -178,6 +177,7 @@
       </nav>
 
       <div class="header-actions">
+        <a class="button button--small button--outline-accent header-resume header-cta" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf" aria-label="Download Muhammad Ahmed Talha's resume as a PDF"><svg aria-hidden="true"><use href="#icon-download"></use></svg><span>Resume</span></a>
         <div class="auth-controls" id="clerk-auth-controls" aria-live="polite">
           <button class="auth-loading" data-clerk-loading type="button" aria-label="Open account" aria-busy="true" title="Account">
             <svg aria-hidden="true"><use href="#icon-user"></use></svg>
@@ -206,14 +206,13 @@
       <div class="mobile-nav__inner">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#enroll">Course</a>
         <a href="#projects">Projects</a>
-        <a href="#about-course">Course &amp; Academy</a>
-        <a href="#curriculum">Curriculum</a>
-        <a href="#focus">Focus Areas</a>
         <a href="#founder">Founder</a>
         <a href="#experience">Experience</a>
         <a href="#credentials">Certificates</a>
         <a href="#community">Community &amp; Contact</a>
+        <a class="mobile-resume-link" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf"><svg aria-hidden="true"><use href="#icon-download"></use></svg> Download Resume / CV</a>
         <div class="mobile-auth" data-clerk-signed-out hidden>
           <button type="button" data-clerk-sign-in>Sign in</button>
           <button type="button" data-clerk-sign-up>Create account</button>
@@ -232,7 +231,10 @@
         <section class="hero-visual featured-course" aria-labelledby="featured-course-title">
           <div class="featured-course__brand">
             <div class="featured-course__brand-top">
-              <img class="hero-brand-logo" src="hackstark-brand.png" width="1024" height="1024" alt="HackStark" fetchpriority="high">
+              <picture>
+                <source srcset="hackstark-brand.webp" type="image/webp">
+                <img class="hero-brand-logo" src="hackstark-brand.png" width="1024" height="1024" alt="HackStark" fetchpriority="high">
+              </picture>
               <p class="eyebrow hero-status"><span></span> Enrollment open • Free previews</p>
             </div>
             <div class="featured-course__brand-body">
@@ -241,8 +243,8 @@
                 <a class="hero-founder-link" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer"><span>Founded and led by</span> Muhammad Ahmed Talha <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
               </div>
               <div class="hero-actions">
-                <a class="button button--ghost" href="#projects"><svg aria-hidden="true"><use href="#icon-code"></use></svg> Explore Projects</a>
-                <a class="text-link" href="#about">Meet HackStark <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                <button class="button button--primary" type="button" data-featured-course-cta>Enroll Now <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button>
+                <a class="text-link" href="#learn"><svg aria-hidden="true"><use href="#icon-play"></use></svg> Watch Free Preview</a>
               </div>
             </div>
           </div>
@@ -254,10 +256,10 @@
             </div>
             <h2 id="featured-course-title">Ethical Hacking Course for Beginners</h2>
             <div class="featured-course__metrics" aria-label="Course highlights">
-              <a href="#curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg><strong>50+ Lessons</strong></a>
-              <a href="#about-course"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><strong>Beginner</strong></a>
-              <a href="#curriculum" data-course-filter-link="foundation"><svg aria-hidden="true"><use href="#icon-terminal"></use></svg><strong>Practical Labs</strong></a>
-              <a href="#course-tools"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><strong>25+ Tools &amp; Platforms</strong></a>
+              <a href="#curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg><strong><span class="stat-number" data-count-up>50+</span><span class="stat-label">Lessons</span></strong></a>
+              <a href="#about-course"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><strong>Beginner Level</strong></a>
+              <a class="featured-course__metric-secondary" href="#curriculum" data-course-filter-link="foundation"><svg aria-hidden="true"><use href="#icon-terminal"></use></svg><strong>Practical Labs</strong></a>
+              <a class="featured-course__metric-secondary" href="#course-tools"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><strong><span class="stat-number" data-count-up>25+</span><span class="stat-label">Tools &amp; Platforms</span></strong></a>
             </div>
 
             <div class="featured-course__purchase">
@@ -275,9 +277,9 @@
             <h3 class="featured-course__method-title">Learn → Practice → Defend</h3>
             <p class="featured-course__method-intro">Start building practical cybersecurity skills by mastering core concepts &amp; gaining hands-on experience in lab setup, reconnaissance, network analysis, web security &amp; defensive controls through guided, authorized practice.</p>
             <ol class="featured-course__steps">
-              <li><a href="#about-course"><strong>Understand the fundamentals</strong><span>Explore each concept, its purpose, and ethical scope.</span></a></li>
-              <li><a href="#curriculum" data-course-filter-link="foundation"><strong>Practice in guided labs</strong><span>Validate techniques in a controlled, authorized environment.</span></a></li>
-              <li><a href="#outcomes"><strong>Apply defensive skills</strong><span>Identify weaknesses and learn how to secure systems.</span></a></li>
+              <li><a href="#about-course" aria-label="Step 1: Understand the fundamentals"><span class="featured-course__step-number">01</span><strong>Understand the fundamentals</strong><span>Explore each concept, its purpose, and ethical scope.</span></a></li>
+              <li><a href="#curriculum" data-course-filter-link="foundation" aria-label="Step 2: Practice in guided labs"><span class="featured-course__step-number">02</span><strong>Practice in guided labs</strong><span>Validate techniques in a controlled, authorized environment.</span></a></li>
+              <li><a href="#outcomes" aria-label="Step 3: Apply defensive skills"><span class="featured-course__step-number">03</span><strong>Apply defensive skills</strong><span>Identify weaknesses and learn how to secure systems.</span></a></li>
             </ol>
           </div>
         </section>
@@ -303,9 +305,9 @@
         <div class="facts-grid reveal" aria-label="HackStark at a glance">
           <a class="fact-card linked-card" href="#community"><strong>2015</strong><span>Community roots</span><p>Active in practical security learning since the community’s early profile.</p></a>
           <a class="fact-card linked-card" href="#about-course"><strong>Beginner</strong><span>Friendly entry point</span><p>No previous programming experience is required to begin the learning path.</p></a>
-          <a class="fact-card linked-card" href="#focus"><strong>Cybersecurity</strong><span>Core specialty</span><p>Ethical hacking, defensive security and responsible practical learning define HackStark’s focus.</p></a>
-          <a class="fact-card fact-card--key linked-card" href="#projects"><strong data-total-projects>15+</strong><span>Projects</span><p>Security tools and open source projects.</p></a>
-          <a class="fact-card fact-card--key linked-card" href="#curriculum"><strong>50+</strong><span>Course lessons</span><p>A structured beginner curriculum spanning 25+ tools and platforms.</p></a>
+          <a class="fact-card linked-card" href="#course-tools"><strong>Cybersecurity</strong><span>Core specialty</span><p>Ethical hacking, defensive security and responsible practical learning define HackStark’s focus.</p></a>
+          <a class="fact-card fact-card--key linked-card" href="#projects"><strong class="stat-number" data-count-up data-total-projects>15+</strong><span>Projects</span><p>Security tools and open source projects.</p></a>
+          <a class="fact-card fact-card--key linked-card" href="#curriculum"><strong class="stat-number" data-count-up>50+</strong><span>Course lessons</span><p>A structured beginner curriculum spanning 25+ tools and platforms.</p></a>
         </div>
 
         <section class="about-compact reveal" aria-labelledby="practice-heading">
@@ -313,7 +315,7 @@
             <div class="system-status"><span></span> Controlled practice</div>
             <ol class="practice-flow">
               <li><a href="#curriculum" data-course-filter-link="foundation"><small>01 LAB</small><strong>Isolated systems</strong><span>Linux · IoT · Networks</span></a></li>
-              <li><a href="#focus"><small>02 ASSESS</small><strong>Authorized testing</strong><span>Observe · Validate · Record</span></a></li>
+              <li><a href="#responsible-security"><small>02 ASSESS</small><strong>Authorized testing</strong><span>Observe · Validate · Record</span></a></li>
               <li><a href="#outcomes"><small>03 DEFEND</small><strong>Harden systems</strong><span>Fix · Monitor · Share</span></a></li>
             </ol>
           </div>
@@ -362,7 +364,7 @@
           <button type="button" class="portfolio-filter-button" data-portfolio-filter="forensics" aria-pressed="false">Forensics</button>
           <button type="button" class="portfolio-filter-button" data-portfolio-filter="development" aria-pressed="false">Development</button>
           <a class="portfolio-filter-button portfolio-filter-link" href="#curriculum" data-course-filter-link="cloud">Cloud Deployments</a>
-          <a class="portfolio-filter-button portfolio-filter-link" href="#focus">MikroTik &amp; Fortinet</a>
+          <a class="portfolio-filter-button portfolio-filter-link" href="#founder">MikroTik &amp; Fortinet</a>
         </div>
         <p class="sr-only" id="portfolio-filter-status" aria-live="polite"></p>
 
@@ -471,7 +473,10 @@
           </article>
         </div>
 
-        <div class="repository-index-heading repository-index-heading--organization reveal">
+        <details class="projects-archive reveal">
+          <summary><span><strong>Explore More Open-Source Work</strong><small>Organization case studies and public repository collection</small></span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></summary>
+          <div class="projects-archive__content">
+        <div class="repository-index-heading repository-index-heading--organization">
           <div><span class="mono-label">HackStark open source</span><h3>Organization case studies</h3></div>
         </div>
 
@@ -602,6 +607,8 @@
             <a href="#responsible-security">Our responsible use principles <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
           </aside>
         </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -613,13 +620,13 @@
 
       <section class="section course-home-section course-overview" id="about-course" aria-labelledby="about-course-heading">
         <div class="container course-overview__grid">
-          <div><p class="eyebrow"><span></span> Course &amp; Academy</p><h2 id="about-course-heading">A structured path into cybersecurity.</h2></div>
+          <div><p class="eyebrow"><span></span> Beginner Course</p><h2 id="about-course-heading">A structured path into cybersecurity.</h2></div>
           <div class="course-overview__copy">
             <p><strong>Ethical Hacking Course for Beginners by HackStark</strong> combines 50+ self-paced lessons with practical demonstrations and supporting resources.</p>
             <p>Start with an isolated Kali Linux lab, then progress through reconnaissance, vulnerability assessment, systems, networks, web applications, wireless security, IoT, cloud computing and cryptography.</p>
           </div>
         </div>
-        <div class="container course-enrollment" id="enroll">
+        <div class="container course-enrollment" id="enroll" data-nav-section>
           <div class="course-enrollment__media">
             <img src="https://i.ytimg.com/vi/YnGy6A-ZPtE/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Ethical Hacking Course for Beginners preview">
             <a href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-play"></use></svg> Watch introduction <span>Free Preview</span></a>
@@ -628,7 +635,13 @@
             <p class="eyebrow"><span></span> Manual enrollment</p>
             <h3>Ethical Hacking Course for Beginners</h3>
             <p>Learn with 50+ self-paced lessons from Muhammad Ahmed Talha. Published previews remain free; complete course enrollment is verified manually.</p>
-            <ul><li>Beginner level</li><li>50+ lessons</li><li>25+ tools &amp; platforms</li><li>Self-paced access</li><li>Manual payment verification</li></ul>
+            <ul class="course-enrollment__highlights"><li>Beginner Level</li><li><strong class="stat-number stat-number--compact" data-count-up>50+</strong><span>Lessons</span></li><li><strong class="stat-number stat-number--compact" data-count-up>25+</strong><span>Tools &amp; Platforms</span></li><li>Self-Paced Access</li><li>Manual Payment Verification</li></ul>
+            <dl class="course-purchase-details" aria-label="Course purchase details">
+              <div><dt>What is included</dt><dd>50+ self-paced lessons, practical demonstrations, curriculum resources and local progress tracking.</dd></div>
+              <div><dt>Access activation</dt><dd>Access begins after HackStark verifies your payment and confirms approval.</dd></div>
+              <div><dt>Certification</dt><dd>Independent HackStark education; this course does not award EC-Council certification.</dd></div>
+              <div><dt>Refunds &amp; cancellations</dt><dd>Confirm eligibility with HackStark before paying; no automatic refund is promised.</dd></div>
+            </dl>
           </div>
           <div class="course-enrollment__purchase">
             <span>Course fee</span>
@@ -640,6 +653,10 @@
             <span class="course-discount">60% off PKR / USD pricing</span>
             <button class="button button--primary" type="button" data-course-enroll><svg aria-hidden="true"><use href="#icon-phone"></use></svg> Enroll Now</button>
             <small>Existing account required. Payment does not activate access automatically.</small>
+            <div class="course-account-help">
+              <span>Need help purchasing?</span>
+              <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20purchasing%20the%20HackStark%20Ethical%20Hacking%20Course." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg> WhatsApp +92 302 3070227</a>
+            </div>
             <p data-enrollment-status role="status" aria-live="polite"></p>
           </div>
         </div>
@@ -653,11 +670,23 @@
           </div>
           <p class="course-instructor__experience">Backed by practical experience across cybersecurity, penetration testing, IT infrastructure, networking, Windows and Linux administration, and security operations.</p>
           <ul class="course-instructor__stats" aria-label="Instructor experience">
-            <li><strong>6+</strong><span>Years experience</span></li>
-            <li><strong data-statistic="trainedStudentsClaim">3,000+</strong><span>Learners reached</span></li>
+            <li><strong class="stat-number" data-count-up>6+</strong><span>Years Experience</span></li>
+            <li><strong class="stat-number" data-count-up data-statistic="trainedStudentsClaim">3,000+</strong><span>Learners Reached</span></li>
           </ul>
           <a class="button button--ghost button--small" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed Talha's full professional portfolio">View Instructor Profile <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
         </aside>
+        <section class="container course-proof reveal" aria-labelledby="course-proof-heading">
+          <div class="course-proof__intro">
+            <p class="eyebrow"><span></span> Verify before enrolling</p>
+            <h3 id="course-proof-heading">Preview the teaching, curriculum and instructor.</h3>
+            <p>Review public evidence before making a payment. No testimonial or outcome is presented without a verifiable source.</p>
+          </div>
+          <div class="course-proof__grid">
+            <a href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-play"></use></svg><span><strong>Watch a Complete Preview</strong><small>See the instructor and lesson format on YouTube.</small></span></a>
+            <a href="#curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg><span><strong>Review the Curriculum</strong><small>Inspect lesson titles, categories and resource status.</small></span></a>
+            <a href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-user"></use></svg><span><strong>Verify the Instructor</strong><small>Open Muhammad Ahmed Talha’s professional portfolio.</small></span></a>
+          </div>
+        </section>
         <div class="container course-needs course-needs--compact">
           <div><p class="eyebrow"><span></span> Beginner friendly</p><h2>What you need</h2><p>No previous penetration testing experience is required.</p></div>
           <ul><li>Basic computer knowledge</li><li>Networking familiarity is helpful</li><li>A computer that supports virtualization</li><li>An internet connection</li><li>Curiosity and permission first thinking</li></ul>
@@ -718,16 +747,19 @@
 
       <section class="section course-home-section" id="course-tools" aria-labelledby="course-tools-heading">
         <div class="container">
-          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Inside the curriculum</p><h2 id="course-tools-heading">25+ tools &amp; platforms</h2><p>Explore 26 named technologies across course lessons: software tools, lab applications, security products and the Windows and Android platforms.</p></div>
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Inside the curriculum</p><h2 id="course-tools-heading"><span class="stat-number stat-number--heading" data-count-up>25+</span> Tools &amp; Platforms</h2><p>Explore 26 named technologies across course lessons: software tools, lab applications, security products and the Windows and Android platforms.</p></div>
           <div class="course-tools-grid">
             <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="foundation"><h3>Lab setup &amp; platforms</h3><ul class="tag-list"><li>VMware</li><li>Kali Linux</li><li>Windows</li><li>Android</li></ul></a>
             <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="vulnerability"><h3>Reconnaissance &amp; vulnerability assessment</h3><ul class="tag-list"><li>SpiderFoot</li><li>Nikto</li><li>Nexpose</li><li>InsightVM</li></ul></a>
             <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="networking"><h3>Network analysis &amp; monitoring</h3><ul class="tag-list"><li>Wireshark</li><li>Ettercap</li><li>PRTG</li><li>Omnipeek</li><li>NetFlow Analyzer</li></ul></a>
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="web"><h3>Web labs &amp; resilience</h3><ul class="tag-list"><li>DVWA</li><li>WebGoat</li><li>LOIC</li><li>ZDoser</li><li>Slowloris</li></ul></a>
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="web"><h3>Web application security</h3><ul class="tag-list"><li>DVWA</li><li>WebGoat</li><li>HTTP</li><li>XSS Defense</li><li>Secure Sessions</li></ul></a>
             <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="wireless"><h3>Wireless &amp; password security</h3><ul class="tag-list"><li>Aircrack ng</li><li>John the Ripper</li><li>Linset</li><li>WifiSlax</li></ul></a>
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="mobile"><h3>Mobile &amp; endpoint security</h3><ul class="tag-list"><li>AhMyth</li><li>TheFatRat</li><li>Evil Droid</li><li>Google Play Protect</li></ul></a>
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="mobile"><h3>Mobile &amp; endpoint security</h3><ul class="tag-list"><li>Android</li><li>Endpoint Hardening</li><li>Malware Defense</li><li>Google Play Protect</li></ul></a>
           </div>
-          <p class="course-tools-note">Includes foundational and legacy demonstrations. Practice in isolated, authorized labs; individual lessons identify legacy content and resource availability.</p>
+          <aside class="controlled-lab-panel" aria-labelledby="controlled-lab-heading">
+            <div><span class="course-badge course-badge--legacy">Controlled lab only</span><h3 id="controlled-lab-heading">Legacy and potentially disruptive tools</h3><p>Availability-testing, payload-generation and endpoint-capture demonstrations are separated from the beginner toolkit. Study them only for defensive analysis on isolated systems you own or are explicitly authorized to test.</p></div>
+            <details><summary>View controlled-lab topics</summary><ul class="tag-list"><li>LOIC</li><li>ZDoser</li><li>Slowloris</li><li>AhMyth</li><li>TheFatRat</li><li>Evil Droid</li><li>Keylogger demonstrations</li></ul></details>
+          </aside>
         </div>
       </section>
 
@@ -749,7 +781,7 @@
 
       <section class="section course-home-section course-curriculum-section" id="curriculum" aria-labelledby="curriculum-heading">
         <div class="container">
-          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> 50+ lesson curriculum</p><h2 id="curriculum-heading">Course Curriculum</h2><p>Search, filter and expand the learning path. Available videos open on YouTube; lessons still being published are clearly marked.</p></div>
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> <strong class="stat-number stat-number--eyebrow" data-count-up>50+</strong> Lesson Curriculum</p><h2 id="curriculum-heading">Course Curriculum</h2><p>Search, filter and expand the learning path. Available videos open on YouTube; lessons still being published are clearly marked.</p></div>
           <div class="course-progress-panel" aria-labelledby="course-progress-heading">
             <div><span class="mono-label">Stored on this device</span><h3 id="course-progress-heading">Course Progress</h3><p id="course-progress-text" aria-live="polite">0 catalog lessons completed</p></div>
             <div class="course-progress-track" role="progressbar" aria-label="Course completion" aria-valuemin="0" aria-valuemax="46" aria-valuenow="0"><span id="course-progress-bar"></span></div>
@@ -764,6 +796,7 @@
           </div>
           <p class="curriculum-status" id="curriculum-status" role="status" aria-live="polite"></p>
           <div id="course-curriculum-list"></div>
+          <div class="curriculum-more"><button class="button button--ghost" type="button" id="show-full-curriculum" aria-expanded="false">View Full Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
           <noscript><div class="course-noscript"><h3>Course curriculum</h3><p>Enable JavaScript to search, filter and expand the 50+ lesson learning program. The structured catalog includes four lab setup lessons and 21 numbered modules.</p></div></noscript>
         </div>
       </section>
@@ -784,70 +817,6 @@
       </section>
     </div>
 
-    <!-- Focus Areas -->
-    <section class="section section--tinted" id="focus" aria-labelledby="focus-heading">
-      <div class="container">
-        <div class="section-intro reveal">
-          <p class="eyebrow"><span></span> What we explore</p>
-          <h2 id="focus-heading">Core focus areas</h2>
-          <p>Skills and disciplines for understanding systems, assessing risk and building stronger defenses.</p>
-        </div>
-
-        <div class="focus-grid">
-          <article class="focus-card reveal">
-            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-shield"></use></svg></div><span>01</span></div>
-            <h3>Ethical Hacking &amp; Penetration Testing</h3>
-            <p>Authorized testing methodology, reconnaissance and vulnerability validation in controlled environments.</p>
-            <ul class="mini-list"><li>Methodology</li><li>Vulnerability assessment</li></ul>
-          </article>
-          <article class="focus-card reveal">
-            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-network"></use></svg></div><span>02</span></div>
-            <h3>Network Security</h3>
-            <p>Network discovery, infrastructure security, protocol analysis and defensive monitoring.</p>
-            <ul class="mini-list"><li>Nmap</li><li>Protocol analysis</li></ul>
-          </article>
-          <article class="focus-card reveal">
-            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-wifi"></use></svg></div><span>03</span></div>
-            <h3>IoT &amp; Wireless Security</h3>
-            <p>Embedded devices, wireless networks and authorized IoT security assessment.</p>
-            <ul class="mini-list"><li>Wireless labs</li><li>Device security</li></ul>
-          </article>
-          <article class="focus-card reveal">
-            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-search"></use></svg></div><span>04</span></div>
-            <h3>OSINT &amp; Reconnaissance</h3>
-            <p>Responsible collection and analysis of publicly available information.</p>
-            <ul class="mini-list"><li>Footprinting</li><li>Open source intelligence</li></ul>
-          </article>
-          <article class="focus-card reveal">
-            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-code"></use></svg></div><span>05</span></div>
-            <h3>Security Automation</h3>
-            <p>Python and scripting for reconnaissance, network analysis and repeatable security workflows.</p>
-            <ul class="mini-list"><li>Python</li><li>Workflow automation</li></ul>
-          </article>
-          <article class="focus-card reveal">
-            <div class="focus-card__top"><div class="icon-box"><svg aria-hidden="true"><use href="#icon-terminal"></use></svg></div><span>06</span></div>
-            <h3>Linux &amp; Security Labs</h3>
-            <p>Kali Linux, virtualization, security tooling and controlled laboratory exercises.</p>
-            <ul class="mini-list"><li>Linux</li><li>Virtual labs</li></ul>
-          </article>
-        </div>
-
-        <div class="learning-roadmap reveal" aria-labelledby="roadmap-heading">
-          <div class="learning-roadmap__intro">
-            <p class="eyebrow"><span></span> Suggested learning path</p>
-            <h3 id="roadmap-heading">From first lab to defensive practice.</h3>
-            <p>The broader historical curriculum is organized here as a safe, modern roadmap. Every practical exercise belongs in an isolated environment or on systems you are explicitly authorized to assess.</p>
-          </div>
-          <ol class="roadmap-steps">
-            <li><a href="#curriculum" data-course-filter-link="foundation"><span>01</span><div><strong>Prepare the lab</strong><p>Virtualization, Kali Linux setup, repositories, networking basics and ethical hacking foundations.</p></div></a></li>
-            <li><a href="#curriculum" data-course-filter-link="osint"><span>02</span><div><strong>Understand exposure</strong><p>Footprinting, lawful OSINT, network scanning, enumeration and vulnerability analysis.</p></div></a></li>
-            <li><a href="#curriculum" data-course-filter-link="networking"><span>03</span><div><strong>Strengthen defenses</strong><p>Traffic analysis, malware awareness, social engineering defense, availability, sessions, IDS, firewalls and honeypots.</p></div></a></li>
-            <li><a href="#curriculum"><span>04</span><div><strong>Explore specializations</strong><p>Web applications, wireless, mobile, IoT, cloud platforms, cryptography and security automation.</p></div></a></li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
     <!-- Founder Section -->
     <section class="section section--roomy" id="founder" aria-labelledby="founder-heading">
       <div class="container founder-layout">
@@ -857,7 +826,7 @@
             <div class="portrait-fallback" aria-hidden="true"><span>MAT</span></div>
             <span class="portrait-label">Founder / CEO</span>
           </div>
-          <div class="founder-signal"><span></span><p><strong>6+ years</strong> CyberSecurity &amp; IT infrastructure experience</p></div>
+          <div class="founder-signal"><span></span><p><strong><span class="stat-number" data-count-up>6+</span> Years</strong> CyberSecurity &amp; IT infrastructure experience</p></div>
         </div>
 
         <div class="founder-copy reveal">
@@ -879,14 +848,15 @@
           </div>
 
           <div class="founder-highlights" aria-label="Founder highlights">
-            <a href="https://mahmedtalha.github.io/portfolio/#experience" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed Talha's professional experience"><strong>6+</strong><span>Years experience</span></a>
-            <a href="#experience" aria-label="View infrastructure experience supporting more than 400 workstations"><strong>400+</strong><span>Workstations managed</span></a>
-            <a href="https://mahmedtalha.github.io/portfolio/#stats" target="_blank" rel="noopener noreferrer" data-founder-evidence="students" aria-label="Open professional profile for the 3,000 plus learners reached statistic"><strong data-statistic="trainedStudentsClaim">3,000+</strong><span>Learners reached</span></a>
-            <a href="https://mahmedtalha.github.io/portfolio/#projects" target="_blank" rel="noopener noreferrer" data-founder-evidence="projects" aria-label="Open professional projects for the 15 plus security tools and projects statistic"><strong data-statistic="securityToolsAndProjectsClaim">15+</strong><span>Security tools &amp; projects</span></a>
-            <a href="#curriculum"><strong>50+</strong><span>Course lessons</span></a>
+            <a href="https://mahmedtalha.github.io/portfolio/#experience" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed Talha's professional experience"><strong class="stat-number" data-count-up>6+</strong><span>Years Experience</span></a>
+            <a href="#experience" aria-label="View infrastructure experience supporting more than 400 workstations"><strong class="stat-number" data-count-up>400+</strong><span>Workstations Managed</span></a>
+            <a href="https://mahmedtalha.github.io/portfolio/#stats" target="_blank" rel="noopener noreferrer" data-founder-evidence="students" aria-label="Open professional profile for the 3,000 plus learners reached statistic"><strong class="stat-number" data-count-up data-statistic="trainedStudentsClaim">3,000+</strong><span>Learners Reached</span></a>
+            <a href="https://mahmedtalha.github.io/portfolio/#projects" target="_blank" rel="noopener noreferrer" data-founder-evidence="projects" aria-label="Open professional projects for the 15 plus security tools and projects statistic"><strong class="stat-number" data-count-up data-statistic="securityToolsAndProjectsClaim">15+</strong><span>Security Tools &amp; Projects</span></a>
+            <a href="#curriculum"><strong class="stat-number" data-count-up>50+</strong><span>Course Lessons</span></a>
           </div>
           <div class="founder-actions">
             <a class="button button--primary" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">View Full Professional Portfolio <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+            <a class="button button--ghost" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf"><svg aria-hidden="true"><use href="#icon-download"></use></svg> Download Resume / CV</a>
             <a class="button button--ghost" href="https://linkedin.com/in/ahmedtalha470" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-linkedin"></use></svg> View LinkedIn <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
           </div>
         </div>
@@ -1023,6 +993,18 @@
 
   </main>
 
+  <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="auth-dialog-title">
+    <div class="auth-dialog__card">
+      <button class="auth-dialog__close" type="button" data-auth-dialog-close aria-label="Close account dialog">×</button>
+      <h2 class="sr-only" id="auth-dialog-title">HackStark account</h2>
+      <div id="clerk-auth-mount"></div>
+      <div class="auth-purchase-help">
+        <span>Purchasing the course?</span>
+        <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20signing%20in%20or%20purchasing%20the%20HackStark%20course." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span><strong>Contact on WhatsApp</strong><small>+92 302 3070227</small></span></a>
+      </div>
+    </div>
+  </dialog>
+
   <dialog class="payment-dialog" id="payment-dialog" aria-labelledby="payment-dialog-title">
     <form method="dialog" class="payment-dialog__card">
       <button class="payment-dialog__close" value="cancel" aria-label="Close payment instructions">×</button>
@@ -1055,7 +1037,7 @@
         <dl><div><dt>Account Title</dt><dd>Muhammad Ahmed Talha</dd></div><div><dt>JazzCash Number</dt><dd>03238621733</dd></div><div><dt>Amount to Pay</dt><dd>PKR 1,999 · ₹799 INR · USD $7.99</dd></div></dl>
       </div>
 
-      <div class="payment-notice"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><p><strong>Manual approval only</strong> Sending a message or screenshot does not mark the payment as approved. HackStark will verify the transaction before providing course access.</p></div>
+      <div class="payment-notice"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><p><strong>Manual approval only</strong> Sending a message or screenshot does not mark the payment as approved. Access begins after HackStark verifies the transaction. Ask about refund eligibility before paying; no automatic refund is promised.</p></div>
       <a class="button button--primary payment-whatsapp" data-payment-whatsapp href="#" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg> Send Screenshot on WhatsApp</a>
       <p class="payment-whatsapp-number">WhatsApp: <strong>03023070227</strong></p>
     </form>
@@ -1064,14 +1046,14 @@
   <footer class="site-footer">
     <div class="container footer-main">
       <div class="footer-brand">
-        <a class="brand brand--footer" href="#home" aria-label="HackStark home"><span class="brand-mark" aria-hidden="true"><img src="hackstark-brand.png" width="36" height="36" alt=""></span><span>Hack<span>Stark</span></span></a>
+        <a class="brand brand--footer" href="#home" aria-label="HackStark home"><span class="brand-mark" aria-hidden="true"><img src="icon-48.png" width="36" height="36" alt=""></span><span>Hack<span>Stark</span></span></a>
         <p>Cybersecurity Education &amp;<br>Open Source Organization</p>
         <a class="footer-founder" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Founded and led by Muhammad Ahmed Talha <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
       </div>
       <div class="footer-links">
-        <div><h2>Explore</h2><a href="#about">About</a><a href="#focus">Focus Areas</a><a href="#projects">Projects</a><a href="#founder">Founder</a></div>
-        <div><h2>Connect</h2><a href="#founder">Founder</a><a href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Founder Portfolio ↗</a><a href="#community">Community &amp; Contact</a><a href="mailto:hackstarkofficial@gmail.com">Email</a></div>
-        <div><h2>Academy</h2><a href="#about-course">Course Overview</a><a href="#learn">Free previews</a><a href="#course-tools">25+ Tools</a><a href="#outcomes">Outcomes</a><a href="#curriculum">Curriculum</a><a href="#faq">FAQ</a></div>
+        <div><h2>Explore</h2><a href="#about">About</a><a href="#projects">Projects</a><a href="#founder">Founder</a></div>
+        <div><h2>Connect</h2><a href="#founder">Founder</a><a href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Founder Portfolio ↗</a><a href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf">Download Resume / CV</a><a href="#community">Community &amp; Contact</a><a href="mailto:hackstarkofficial@gmail.com">Email</a></div>
+        <div><h2>Course</h2><a href="#about-course">Course Overview</a><a href="#learn">Free Previews</a><a href="#course-tools">25+ Tools</a><a href="#outcomes">Outcomes</a><a href="#curriculum">Curriculum</a><a href="#faq">FAQ</a></div>
         <div><h2>Legal</h2><a href="#responsible-security">Responsible Security</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
       </div>
     </div>
@@ -1107,8 +1089,8 @@
           <svg viewBox="0 0 24 24"><path d="M9 3h6M12 3v3M7 7h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3Z"/><path d="M8 12h.01M16 12h.01M8.5 16h7"/></svg>
         </div>
         <div class="jarvis-header-info">
-          <h2 id="jarvis-dialog-title">JARVIS: HackStark Assistant</h2>
-          <p id="jarvis-dialog-subtitle">Ask about HackStark, Muhammad Ahmed Talha, projects, experience or courses.</p>
+          <h2 id="jarvis-dialog-title">JARVIS: Local Site Guide</h2>
+          <p id="jarvis-dialog-subtitle">Rule-based help for HackStark, projects, experience and courses.</p>
           <span class="jarvis-online-badge"><span class="jarvis-online-dot"></span>Local</span>
         </div>
         <div class="jarvis-header-controls">

@@ -148,7 +148,8 @@
     if (!window.Clerk.isSignedIn) {
       waitingForSignIn = true;
       if (status) status.textContent = "Sign in with your existing HackStark account to continue.";
-      window.Clerk.openSignIn();
+      if (typeof window.hackstarkOpenAuth === "function") window.hackstarkOpenAuth("signIn");
+      else window.Clerk.openSignIn();
       return;
     }
     waitingForSignIn = false;
