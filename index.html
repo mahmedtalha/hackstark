@@ -42,12 +42,12 @@
   <link rel="dns-prefetch" href="//premium-cow-1150.clerk.accounts.dev">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=20260922d">
+  <link rel="stylesheet" href="style.css?v=20260922l">
   <link rel="stylesheet" href="course.css?v=20260922d">
   <link rel="stylesheet" href="jarvis-aichatbot.css?v=20260922">
   <script defer fetchpriority="high" crossorigin="anonymous" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"></script>
   <script defer fetchpriority="high" crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJlbWl1bS1jb3ctMTE1MC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
-  <script src="clerk-auth.js?v=20260922c" defer></script>
+  <script src="clerk-auth.js?v=20260922g" defer></script>
   <script src="hackstark-data.js?v=20260921" defer></script>
   <script src="script.js?v=20260922d" defer></script>
   <script src="course.js?v=20260922" defer></script>
@@ -991,14 +991,14 @@
       <div class="auth-dialog__intro">
         <span class="mono-label">HackStark account</span>
         <h2 id="auth-dialog-title">Welcome to HackStark</h2>
-        <p>Sign in or create an account to continue with course enrollment.</p>
+        <p><span>Sign in or create an account</span><span>to continue with course enrollment.</span></p>
       </div>
       <div class="auth-dialog__switcher" role="group" aria-label="Choose account action">
         <button type="button" class="is-active" data-auth-view="signIn" aria-pressed="true"><svg aria-hidden="true"><use href="#icon-user"></use></svg><span><strong>Sign In</strong><small>Existing account</small></span></button>
         <button type="button" data-auth-view="signUp" aria-pressed="false"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><span><strong>Sign Up</strong><small>Create account</small></span></button>
       </div>
       <div class="auth-purchase-help">
-        <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20signing%20in%20or%20purchasing%20the%20HackStark%20course." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span><strong>Contact on WhatsApp</strong><small>Account and course purchase help</small></span><svg class="auth-purchase-help__arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+        <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20signing%20in%20or%20purchasing%20the%20HackStark%20course." target="_blank" rel="noopener noreferrer" aria-label="Contact HackStark on WhatsApp at +92 302 3070227 for account and course purchase help"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span><strong>Contact on WhatsApp</strong><small>Account &amp; Course Purchase Help</small><em>+92 302 3070227</em></span><svg class="auth-purchase-help__arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
       </div>
       <div id="clerk-auth-mount"></div>
     </div>

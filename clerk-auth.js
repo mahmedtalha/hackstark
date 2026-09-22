@@ -13,8 +13,12 @@
   let pendingAuthTimer = 0;
   let authOpenToken = 0;
   let mountedAuthView = "";
+  let initializePromise = null;
+  let clerkListenerAdded = false;
+  let reportInitializationError = false;
 
   const accountAnimationDuration = 280;
+  const unavailableMessage = "Account form unavailable, please refresh the page.";
 
   const setStatus = (message = "", isError = false) => {
     if (!status) return;
@@ -64,6 +68,7 @@
   };
 
   const updateAuthSwitcher = (view) => {
+    if (authDialog) authDialog.dataset.authView = view;
     document.querySelectorAll("[data-auth-view]").forEach((button) => {
       const isActive = button.dataset.authView === view;
       button.classList.toggle("is-active", isActive);
@@ -87,7 +92,7 @@
     const timeout = window.setTimeout(() => {
       observer.disconnect();
       resolve(Boolean(authMount.childElementCount));
-    }, 4000);
+    }, 6500);
   });
 
   const openAuthDialog = async (view = "signIn") => {
@@ -104,6 +109,7 @@
     if (token !== authOpenToken || !hasMarkup || window.Clerk.isSignedIn) return false;
     authDialog.classList.remove("is-switching");
     if (!authDialog.open) authDialog.showModal();
+    authDialog.scrollTop = 0;
     return true;
   };
 
@@ -111,9 +117,13 @@
     if (!pendingAuthRequest?.animationComplete || !clerkReady) return;
     const request = pendingAuthRequest;
     pendingAuthRequest = null;
-    const opened = await openAuthDialog(request.view);
+    let opened = await openAuthDialog(request.view);
+    if (!opened && !window.Clerk?.isSignedIn) {
+      await new Promise((resolve) => window.setTimeout(resolve, 180));
+      opened = await openAuthDialog(request.view);
+    }
     if (request.animate) setAccountLoading(false);
-    if (!opened && !window.Clerk?.isSignedIn) setStatus("Account form unavailable. Please try again.", true);
+    if (!opened && !window.Clerk?.isSignedIn) setStatus(unavailableMessage, true);
   };
 
   const requestAuthDialog = (view = "signIn", { animate = false } = {}) => {
@@ -146,73 +156,90 @@
     button.addEventListener("click", () => requestAuthDialog(button.dataset.authView || "signIn"));
   });
 
-  const initialize = async () => {
-    if (!window.Clerk || !window.__internal_ClerkUICtor) {
-      if (loadingIndicator) {
-        loadingIndicator.setAttribute("aria-busy", "false");
-        loadingIndicator.setAttribute("aria-label", "Account unavailable");
-        loadingIndicator.title = "Account unavailable";
-      }
-      setStatus("Sign in unavailable", true);
+  const waitForClerkScripts = (timeout = 6500) => new Promise((resolve) => {
+    if (window.Clerk && window.__internal_ClerkUICtor) {
+      resolve(true);
       return;
     }
+    const startedAt = performance.now();
+    const check = () => {
+      if (window.Clerk && window.__internal_ClerkUICtor) resolve(true);
+      else if (performance.now() - startedAt >= timeout) resolve(false);
+      else window.setTimeout(check, 120);
+    };
+    check();
+  });
 
-    try {
-      await window.Clerk.load({
-        ui: { ClerkUI: window.__internal_ClerkUICtor },
-        appearance: {
-          options: {
-            logoImageUrl: new URL("hackstark-brand.webp", window.location.href).href,
-            logoLinkUrl: window.location.origin,
-            logoPlacement: "inside",
-            privacyPageUrl: new URL("privacy.html", document.baseURI).href,
-            termsPageUrl: new URL("terms.html", document.baseURI).href,
-            unsafe_disableDevelopmentModeWarnings: true
-          },
-          variables: {
-            colorPrimary: "#00d68f",
-            colorBackground: "#0b1118",
-            colorText: "#f5f7fb",
-            colorTextSecondary: "#9aa8ba",
-            borderRadius: "0.8rem"
-          },
-          elements: {
-            rootBox: { width: "min(92vw, 23.5rem)" },
-            cardBox: { width: "100%", maxWidth: "23.5rem" },
-            card: { gap: ".7rem", padding: "1.15rem 1.2rem", marginInline: "auto" },
-            header: { display: "flex", width: "100%", flexDirection: "column", gap: ".25rem", alignItems: "center", justifyContent: "center", textAlign: "center" },
-            headerTitle: {
-              width: "100%",
-              margin: "0",
-              alignSelf: "center",
-              whiteSpace: "nowrap",
-              fontSize: "clamp(1.05rem, 5vw, 1.35rem)",
-              lineHeight: "1.15",
-              textAlign: "center"
+  const initialize = ({ showError = false } = {}) => {
+    reportInitializationError ||= showError;
+    if (clerkReady) return Promise.resolve(true);
+    if (initializePromise) return initializePromise;
+
+    initializePromise = (async () => {
+      try {
+        const scriptsReady = await waitForClerkScripts();
+        if (!scriptsReady) throw new Error("Clerk scripts did not become available.");
+        await window.Clerk.load({
+          ui: { ClerkUI: window.__internal_ClerkUICtor },
+          appearance: {
+            options: {
+              logoImageUrl: new URL("hackstark-brand.webp", window.location.href).href,
+              logoLinkUrl: window.location.origin,
+              logoPlacement: "inside",
+              privacyPageUrl: new URL("privacy.html", document.baseURI).href,
+              termsPageUrl: new URL("terms.html", document.baseURI).href,
+              unsafe_disableDevelopmentModeWarnings: true
             },
-            headerSubtitle: { display: "none" },
-            logoBox: { display: "flex", width: "100%", height: "3rem", margin: "0 auto .1rem", alignItems: "center", justifyContent: "center" },
-            logoImage: { width: "3rem", height: "3rem", objectFit: "contain" },
-            main: { gap: ".7rem" },
-            socialButtons: { gap: ".45rem" },
-            socialButtonsBlockButton: { minHeight: "2.45rem" },
-            dividerRow: { margin: ".05rem 0" },
-            form: { gap: ".65rem" },
-            formFieldRow: { gap: ".25rem" },
-            formFieldLabel: { fontSize: ".72rem" },
-            formFieldInput: { minHeight: "2.5rem" },
-            formButtonPrimary: { minHeight: "2.5rem" },
-            footer: { paddingTop: ".5rem" },
-            footerAction: { marginTop: "0" }
+            variables: {
+              colorPrimary: "#00d68f",
+              colorBackground: "#0b1118",
+              colorText: "#f5f7fb",
+              colorTextSecondary: "#9aa8ba",
+              borderRadius: "0.8rem"
+            },
+            elements: {
+              rootBox: { width: "min(94vw, 27rem)" },
+              cardBox: { width: "100%", maxWidth: "27rem" },
+              card: { width: "100%", maxWidth: "none", gap: ".8rem", padding: "1.2rem 1.35rem", marginInline: "auto" },
+              header: { display: "flex", width: "100%", flexDirection: "column", gap: ".25rem", alignItems: "center", justifyContent: "center", textAlign: "center" },
+              headerTitle: {
+                width: "100%",
+                margin: "0",
+                alignSelf: "center",
+                whiteSpace: "nowrap",
+                maxWidth: "none",
+                fontSize: "clamp(1.15rem, 5vw, 1.5rem)",
+                lineHeight: "1.15",
+                textAlign: "center"
+              },
+              headerSubtitle: { display: "none" },
+              logoBox: { display: "flex", width: "100%", height: "3rem", margin: "0 auto .1rem", alignItems: "center", justifyContent: "center" },
+              logoImage: { width: "3rem", height: "3rem", objectFit: "contain" },
+              main: { width: "100%", gap: ".75rem" },
+              socialButtons: { gap: ".45rem" },
+              socialButtonsBlockButton: { minHeight: "2.45rem" },
+              dividerRow: { margin: ".05rem 0" },
+              form: { width: "100%", gap: ".7rem" },
+              formFieldRow: { gap: ".25rem" },
+              formFieldLabel: { fontSize: ".72rem" },
+              formFieldInput: { width: "100%", minHeight: "2.75rem" },
+              formButtonPrimary: { width: "100%", minHeight: "2.75rem" },
+              footer: { paddingTop: ".5rem" },
+              footerAction: { marginTop: "0" }
+            }
           }
-        }
-      });
+        });
 
       clerkReady = true;
       setStatus();
+      if (loadingIndicator) loadingIndicator.title = "Sign in or create an account";
       renderAuthState();
-      window.Clerk.addListener(renderAuthState);
-      tryOpenPendingAuth();
+      if (!clerkListenerAdded) {
+        window.Clerk.addListener(renderAuthState);
+        clerkListenerAdded = true;
+      }
+      await tryOpenPendingAuth();
+      return true;
     } catch (error) {
       console.error("Clerk authentication failed to initialize.", error);
       clerkReady = false;
@@ -222,16 +249,24 @@
       if (loadingIndicator) {
         loadingIndicator.hidden = false;
         loadingIndicator.setAttribute("aria-busy", "false");
-        loadingIndicator.setAttribute("aria-label", "Account unavailable");
-        loadingIndicator.title = "Account unavailable";
+        loadingIndicator.setAttribute("aria-label", "Open account");
+        loadingIndicator.title = unavailableMessage;
       }
-      setStatus("Sign in unavailable", true);
+      if (reportInitializationError) setStatus(unavailableMessage, true);
+      return false;
+    } finally {
+      initializePromise = null;
+      reportInitializationError = false;
     }
+    })();
+
+    return initializePromise;
   };
 
   loadingIndicator?.addEventListener("click", () => {
     requestAuthDialog("signIn", { animate: true });
+    if (!clerkReady) void initialize({ showError: true });
   });
 
-  initialize();
+  void initialize();
 })();
