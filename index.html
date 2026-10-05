@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HackStark is a cybersecurity education and open source organization founded by cybersecurity and IT infrastructure professional Muhammad Ahmed Talha, providing practical ethical hacking, security research, projects and learning resources.">
+  <meta name="description" content="HackStark showcases cybersecurity education by Muhammad Ahmed Talha, including the self-paced Ethical Hacking Course and training programs delivered with independent partners TechFly and Oxege Technologies.">
   <meta name="theme-color" content="#06090e">
   <meta name="color-scheme" content="dark light">
   <meta name="application-name" content="HackStark">
@@ -42,17 +42,22 @@
   <link rel="dns-prefetch" href="//premium-cow-1150.clerk.accounts.dev">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=20260922l">
-  <link rel="stylesheet" href="course.css?v=20260922d">
+  <link rel="stylesheet" href="style.css?v=20261005">
+  <link rel="stylesheet" href="course.css?v=20261005b">
+  <link rel="stylesheet" href="cyberstart.css?v=20261004c">
+  <link rel="stylesheet" href="oxege-course.css?v=20261004b">
   <link rel="stylesheet" href="jarvis-aichatbot.css?v=20260922">
   <script defer fetchpriority="high" crossorigin="anonymous" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"></script>
   <script defer fetchpriority="high" crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJlbWl1bS1jb3ctMTE1MC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
   <script src="clerk-auth.js?v=20260922g" defer></script>
-  <script src="hackstark-data.js?v=20260921" defer></script>
-  <script src="script.js?v=20260922d" defer></script>
-  <script src="course.js?v=20260922" defer></script>
+  <script src="oxege-curriculum-data.js?v=20261004" defer></script>
+  <script src="hackstark-data.js?v=20261005" defer></script>
+  <script src="script.js?v=20261004" defer></script>
+  <script src="course.js?v=20261005" defer></script>
+  <script src="cyberstart.js?v=20261005" defer></script>
+  <script src="oxege-course.js?v=20261005" defer></script>
   <script src="whatsapp-enrollment.js?v=20260922" defer></script>
-  <script src="jarvis-aichatbot.js?v=20260922" defer></script>
+  <script src="jarvis-aichatbot.js?v=20261005" defer></script>
 
   <script type="application/ld+json">
   {
@@ -114,7 +119,45 @@
           "courseMode": "online, self-paced",
           "instructor": { "@id": "https://mahmedtalha.github.io/hackstark/#founder" }
         },
+        "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "1999" },
         "provider": { "@id": "https://mahmedtalha.github.io/hackstark/#organization" }
+      },
+      {
+        "@type": "Course",
+        "@id": "https://mahmedtalha.github.io/hackstark/#cyberstart",
+        "name": "CyberStart Level 1",
+        "alternateName": "Cyber Security Engineer Foundation Program",
+        "description": "A 16-lecture online instructor-led cybersecurity foundation program delivered within a two-month weekend format, covering cybersecurity fundamentals, Linux, ethical hacking, network scanning, Fortinet-oriented firewall and network security, cyber defense, supervised practical labs, case studies, career guidance and an integrated practical assessment.",
+        "url": "https://mahmedtalha.github.io/hackstark/#cyberstart",
+        "educationalLevel": "Foundation",
+        "timeRequired": "PT16H",
+        "inLanguage": "en",
+        "provider": { "@type": "Organization", "name": "TechFly", "address": { "@type": "PostalAddress", "addressLocality": "Multan", "addressCountry": "PK" } },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Online instructor-led weekend training",
+          "instructor": { "@id": "https://mahmedtalha.github.io/hackstark/#founder" }
+        },
+        "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "9999" }
+      },
+      {
+        "@type": "Course",
+        "@id": "https://mahmedtalha.github.io/hackstark/#oxege-training",
+        "name": "Professional Cybersecurity & Ethical Hacking Program",
+        "alternateName": "CEH v13 / CEH AI-Aligned Curriculum",
+        "description": "An independent three-month professional cybersecurity curriculum aligned with relevant CEH v13 and CEH AI subject areas. It is not official EC-Council courseware or an EC-Council-authorized training program.",
+        "url": "https://mahmedtalha.github.io/hackstark/#oxege-training",
+        "educationalLevel": "Beginner to professional",
+        "timeRequired": "P3M",
+        "inLanguage": "en",
+        "provider": { "@type": "Organization", "name": "Oxege Technologies" },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": ["Online", "Physical classroom in Rahim Yar Khan"],
+          "location": { "@type": "Place", "name": "Rahim Yar Khan", "address": { "@type": "PostalAddress", "addressLocality": "Rahim Yar Khan", "addressCountry": "PK" } },
+          "instructor": { "@id": "https://mahmedtalha.github.io/hackstark/#founder" }
+        },
+        "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "44999" }
       }
     ]
   }
@@ -145,6 +188,7 @@
     <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A8.4 8.4 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></symbol>
     <symbol id="icon-network" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="m7 7 4 9M17 7l-4 9M7 6h10"/></symbol>
     <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48a9 9 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.21 5.1 4.5.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35ZM12.04 2a9.84 9.84 0 0 0-8.4 14.95L2.05 22l5.18-1.53A9.9 9.9 0 1 0 12.04 2Zm0 17.98a8 8 0 0 1-4.08-1.12l-.29-.17-3.08.91.92-3-.19-.31a8.05 8.05 0 1 1 6.72 3.69Z"/></symbol>
     <symbol id="icon-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4V8Z"/></symbol>
     <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
     <symbol id="icon-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6"/></symbol>
@@ -168,7 +212,7 @@
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#home" class="is-active">Home</a>
         <a href="#about">About</a>
-        <a href="#enroll">Course</a>
+        <a href="#courses">Courses</a>
         <a href="#projects">Projects</a>
         <a href="#founder">Founder</a>
         <a href="#experience">Experience</a>
@@ -202,7 +246,7 @@
       <div class="mobile-nav__inner">
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#enroll">Course</a>
+        <a href="#courses">Courses</a>
         <a href="#projects">Projects</a>
         <a href="#founder">Founder</a>
         <a href="#experience">Experience</a>
@@ -287,50 +331,542 @@
           </div>
           <figure class="about-heritage">
             <img src="HackStark.JPG" width="489" height="715" loading="lazy" decoding="async" alt="Two early HackStark community members wearing masks beside the HackStark logo">
-            <figcaption><span>Archive / 2015</span> Community roots</figcaption>
+            <figcaption><span>Archive / 2018</span> Community roots</figcaption>
           </figure>
           <div class="section-copy">
-            <p>HackStark is an independent CyberSecurity education and open-source organization founded and led by <a href="#founder">Muhammad Ahmed Talha</a>. Its 50+ lesson beginner course covers ethical hacking, Linux, networks, IoT, OSINT and defensive automation through authorized practice.</p>
+            <p>HackStark is an independent CyberSecurity education and open-source organization founded and led by <a href="#founder">Muhammad Ahmed Talha</a>. Its 50+ lesson beginner course covers ethical hacking, Linux, networks, IoT, OSINT and defensive automation through authorized practice. <strong>Mission 2026+:</strong> put practical skills to work for safer digital environments.</p>
           </div>
         </div>
 
         <div class="facts-grid reveal" aria-label="HackStark at a glance">
-          <a class="fact-card linked-card" href="#community"><strong>2015</strong><span>Community roots</span><p>Active in practical security learning since the community’s early profile.</p></a>
+          <a class="fact-card linked-card" href="#community"><strong>2018</strong><span>Community roots</span><p>Active in practical security learning since the community’s early profile.</p></a>
           <a class="fact-card linked-card" href="#about-course"><strong>Beginner</strong><span>Friendly entry point</span><p>No previous programming experience is required to begin the learning path.</p></a>
-          <a class="fact-card linked-card" href="#course-tools"><strong>Cybersecurity</strong><span>Core specialty</span><p>Ethical hacking, defensive security and responsible practical learning define HackStark’s focus.</p></a>
+          <a class="fact-card linked-card" href="#responsible-security"><strong>Defensive</strong><span>Practice with purpose</span><p>Learn systems, test with permission, document findings and strengthen defenses.</p></a>
           <a class="fact-card fact-card--key linked-card" href="#projects"><strong class="stat-number" data-count-up data-total-projects>15+</strong><span>Projects</span><p>Security tools and open source projects.</p></a>
           <a class="fact-card fact-card--key linked-card" href="#curriculum"><strong class="stat-number" data-count-up>50+</strong><span>Course lessons</span><p>A structured beginner curriculum spanning 25+ tools and platforms.</p></a>
         </div>
 
-        <section class="about-compact reveal" aria-labelledby="practice-heading">
-          <div class="about-compact__flow" role="img" aria-label="Controlled security practice from isolated lab to authorized assessment and defense">
-            <div class="system-status"><span></span> Controlled practice</div>
-            <ol class="practice-flow">
-              <li><a href="#curriculum" data-course-filter-link="foundation"><small>01 LAB</small><strong>Isolated systems</strong><span>Linux · IoT · Networks</span></a></li>
-              <li><a href="#responsible-security"><small>02 ASSESS</small><strong>Authorized testing</strong><span>Observe · Validate · Record</span></a></li>
-              <li><a href="#outcomes"><small>03 DEFEND</small><strong>Harden systems</strong><span>Fix · Monitor · Share</span></a></li>
-            </ol>
-          </div>
+        <p class="about-practice-summary reveal"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><span><strong>Controlled practice:</strong> isolated labs · authorized assessment · defensive outcomes.</span><a href="#responsible-security">Permission-first principles <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a></p>
+      </div>
+    </section>
 
-          <div class="about-compact__copy">
-            <p class="eyebrow"><span></span> Practice with purpose</p>
-            <h3 id="practice-heading">Build skills for defense.</h3>
-            <p>Learn systems, test with permission, document results and strengthen defenses.</p>
-            <div class="about-compact__notes">
-              <div class="compact-note compact-note--inline compact-note--mission">
-                <span class="mono-label">Mission 2026+</span>
-                <strong>Put skills into practice.</strong>
-                <p>Build capable learners and safer digital environments.</p>
-              </div>
-              <div class="compact-note compact-note--inline">
-                <span class="mono-label">Community since 2015</span>
-                <strong>Built through practical learning.</strong>
-                <p>HackStark is a cybersecurity education and open source organization.</p>
-              </div>
+    <!-- Learning Programs -->
+    <section class="section programs-showcase" id="courses" aria-labelledby="courses-heading">
+      <div class="container">
+        <div class="section-intro section-intro--center reveal"><p class="eyebrow"><span></span> Learning Programs</p><h2 id="courses-heading">Compare three cybersecurity paths</h2><p>HackStark offers its own beginner course, while Muhammad Ahmed Talha also delivers programs through independent training partnerships with TechFly and Oxege Technologies.</p></div>
+        <p class="programs-partner-note reveal"><svg aria-hidden="true"><use href="#icon-network"></use></svg><span><strong>Training partnerships:</strong> TechFly and Oxege Technologies are independent partner organizations. Neither company is owned by Muhammad Ahmed Talha or HackStark.</span></p>
+        <div class="program-banner-list">
+          <article class="program-banner reveal">
+            <div class="program-banner__index" aria-hidden="true">01</div>
+            <div class="program-banner__content">
+              <span class="program-banner__type">HackStark · Self-Paced</span>
+              <h3>Ethical Hacking Course for Beginners</h3>
+              <p>A flexible entry point covering practical cybersecurity foundations through independent online study.</p>
+              <dl class="program-banner__details">
+                <div><dt>Provider</dt><dd>HackStark</dd></div>
+                <div><dt>Level</dt><dd>Beginner</dd></div>
+                <div><dt>Format</dt><dd>Self-paced online</dd></div>
+                <div><dt>Curriculum</dt><dd>50+ lessons · 25+ tools</dd></div>
+                <div><dt>Best for</dt><dd>First-time ethical-hacking learners</dd></div>
+                <div><dt>Key focus</dt><dd>Ethical hacking, Linux, networks, web security and IoT</dd></div>
+                <div><dt>Learning style</dt><dd>Independent lessons and demonstrations</dd></div>
+              </dl>
+            </div>
+            <div class="program-banner__price" aria-label="Ethical Hacking Course pricing"><small>Course fee · 60% off</small><span><del>PKR 4,999</del><strong>PKR 1,999</strong></span><em>Approx. USD $7.99 · ₹799 INR</em></div>
+            <div class="program-banner__actions"><a class="button button--primary" href="#curriculum" data-course-filter-link="all">View Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a><a class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20HackStark%20Ethical%20Hacking%20Course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20schedule%2C%20and%20enrollment%20details." target="_blank" rel="noopener noreferrer" aria-label="Ask on WhatsApp about the HackStark Ethical Hacking Course"><svg class="whatsapp-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg><span>WhatsApp</span></a></div>
+          </article>
+          <article class="program-banner program-banner--training reveal">
+            <div class="program-banner__index" aria-hidden="true">02</div>
+            <div class="program-banner__content">
+              <span class="program-banner__type">Training Partner · TechFly · Online Weekend</span>
+              <h3>CyberStart Level 1</h3>
+              <p>A guided Cyber Security Engineer foundation track with supervised labs, case studies and a final practical assessment.</p>
+              <dl class="program-banner__details">
+                <div><dt>Training partner</dt><dd>TechFly, Multan</dd></div>
+                <div><dt>Level</dt><dd>Beginner to intermediate</dd></div>
+                <div><dt>Format</dt><dd>Online instructor-led weekend training</dd></div>
+                <div><dt>Curriculum</dt><dd>16 lectures · 16 hours · 51 topics</dd></div>
+                <div><dt>Schedule</dt><dd>2 months · Friday–Sunday · 7:00–8:30 PM PKT</dd></div>
+                <div><dt>Best for</dt><dd>Guided fundamentals and supervised labs</dd></div>
+                <div><dt>Key focus</dt><dd>Red team, blue team, Fortinet and cyber defense</dd></div>
+              </dl>
+            </div>
+            <div class="program-banner__price" aria-label="CyberStart Level 1 pricing"><small>Program fee · 60% off</small><span><del>PKR 24,999</del><strong>PKR 9,999</strong></span><em>Approx. USD $35.99 · ₹3,499 INR</em></div>
+            <div class="program-banner__actions"><a class="button button--primary" href="#cyberstart-curriculum">View Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a><a class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20TechFly%20CyberStart%20Level%201%20course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20weekend%20schedule%2C%20and%20enrollment%20details." target="_blank" rel="noopener noreferrer" aria-label="Ask on WhatsApp about TechFly CyberStart Level 1"><svg class="whatsapp-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg><span>WhatsApp</span></a></div>
+          </article>
+          <article class="program-banner program-banner--professional reveal">
+            <div class="program-banner__index" aria-hidden="true">03</div>
+            <div class="program-banner__content">
+              <span class="program-banner__type">Training Partner · Oxege Technologies</span>
+              <h3>Professional Cybersecurity &amp; Ethical Hacking Program</h3>
+              <p>A comprehensive three-month path connecting ethical hacking with enterprise defense and career-focused practice.</p>
+              <dl class="program-banner__details">
+                <div><dt>Training partner</dt><dd>Oxege Technologies</dd></div>
+                <div><dt>Level</dt><dd>Foundation to professional</dd></div>
+                <div><dt>Format</dt><dd>Online + physical in Rahim Yar Khan</dd></div>
+                <div><dt>Curriculum</dt><dd>32 modules · 587 topics</dd></div>
+                <div><dt>Best for</dt><dd>Career-focused, comprehensive training</dd></div>
+                <div><dt>Key focus</dt><dd>CEH-aligned core + SOC, DFIR, cloud and AI</dd></div>
+              </dl>
+            </div>
+            <div class="program-banner__price" aria-label="Oxege professional program pricing"><small>Program fee · 50% off</small><span><del>PKR 89,999</del><strong>PKR 44,999</strong></span><em>Approx. USD $159 · ₹15,499 INR</em></div>
+            <div class="program-banner__actions"><a class="button button--primary" href="#oxege-curriculum">View Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a><a class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20Oxege%20Professional%20Cybersecurity%20and%20Ethical%20Hacking%20Program.%20Please%20share%20the%20curriculum%2C%20fees%2C%20class%20schedule%2C%20and%20enrollment%20details." target="_blank" rel="noopener noreferrer" aria-label="Ask on WhatsApp about the Oxege Professional Cybersecurity Program"><svg class="whatsapp-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg><span>WhatsApp</span></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Section -->
+    <div class="course-academy" id="course-top">
+      <nav class="course-subnav" aria-label="Ethical hacking course navigation">
+        <div class="container"><a href="#about-course">Overview</a><a href="#learn">Free previews</a><a href="#course-tools">25+ Tools</a><a href="#outcomes">Outcomes</a><a href="#curriculum">Curriculum</a><a href="#faq">FAQ</a></div>
+      </nav>
+
+      <section class="section course-home-section course-overview" id="about-course" aria-labelledby="about-course-heading">
+        <div class="container course-overview__grid">
+          <div><p class="eyebrow"><span></span> Beginner Course</p><h2 id="about-course-heading">A structured path into cybersecurity.</h2></div>
+          <div class="course-overview__copy">
+            <p><strong>Ethical Hacking Course for Beginners by HackStark</strong> combines 50+ self-paced lessons with practical demonstrations and supporting resources.</p>
+            <p>Start with an isolated Kali Linux lab, then progress through reconnaissance, vulnerability assessment, systems, networks, web applications, wireless security, IoT, cloud computing and cryptography.</p>
+          </div>
+        </div>
+        <div class="container course-enrollment" id="enroll" data-nav-section>
+          <div class="course-enrollment__media">
+            <img src="https://i.ytimg.com/vi/YnGy6A-ZPtE/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Ethical Hacking Course for Beginners preview">
+            <a href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-play"></use></svg> Watch introduction <span>Free Preview</span></a>
+          </div>
+          <div class="course-enrollment__content">
+            <p class="eyebrow"><span></span> Manual enrollment</p>
+            <h3>Ethical Hacking Course for Beginners</h3>
+            <p>Learn with 50+ self-paced lessons from Muhammad Ahmed Talha. Published previews remain free; complete course enrollment is verified manually.</p>
+            <ul class="course-enrollment__highlights"><li>Beginner Level</li><li><strong class="stat-number stat-number--compact" data-count-up>50+</strong><span>Lessons</span></li><li><strong class="stat-number stat-number--compact" data-count-up>25+</strong><span>Tools &amp; Platforms</span></li><li>Self-Paced Access</li><li>Manual Payment Verification</li></ul>
+            <dl class="course-purchase-details" aria-label="Course purchase details">
+              <div><dt>What is included</dt><dd>50+ self-paced lessons, practical demonstrations and curriculum resources.</dd></div>
+              <div><dt>Access activation</dt><dd>Access begins after HackStark verifies your payment and confirms approval.</dd></div>
+              <div><dt>Certification</dt><dd>Independent HackStark education; this course does not award EC-Council certification.</dd></div>
+              <div><dt>Refunds &amp; cancellations</dt><dd>Confirm eligibility with HackStark before paying; no automatic refund is promised.</dd></div>
+            </dl>
+          </div>
+          <div class="course-enrollment__purchase">
+            <span>Course fee</span>
+            <div class="course-price-pairs" aria-label="Course pricing in Pakistani rupees, Indian rupees and US dollars">
+              <div><small>PKR</small><del>PKR 4,999</del><strong>PKR 1,999</strong></div>
+              <div class="course-price-inr"><small>INR</small><strong>₹799 INR</strong></div>
+              <div><small>USD</small><del>USD $20</del><strong>USD $7.99</strong></div>
+            </div>
+            <span class="course-discount">60% off PKR / USD pricing</span>
+            <button class="button button--primary" type="button" data-course-enroll><svg aria-hidden="true"><use href="#icon-phone"></use></svg> Enroll Now</button>
+            <small>Existing account required. Payment does not activate access automatically.</small>
+            <div class="course-account-help">
+              <span>Need help purchasing?</span>
+              <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20purchasing%20the%20HackStark%20Ethical%20Hacking%20Course." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg> WhatsApp +92 302 3070227</a>
+            </div>
+            <p data-enrollment-status role="status" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="container course-enrollment course-enrollment--techfly" id="enroll-techfly">
+          <div class="course-enrollment__media course-enrollment__media--poster">
+            <img src="techfly-cyber-security-engineer-poster.png" width="1024" height="1536" loading="lazy" decoding="async" alt="TechFly Cyber Security Engineer online weekend program poster">
+            <a href="techfly-cyber-security-engineer-poster.png" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-eye"></use></svg> View program poster <span>TechFly</span></a>
+          </div>
+          <div class="course-enrollment__content">
+            <p class="eyebrow"><span></span> Course 02 · Online weekend training</p>
+            <h3>TechFly CyberStart Level 1</h3>
+            <p>Learn through a guided Cyber Security Engineer foundation track combining instructor-led concepts, supervised practical labs, case studies and a final applied assessment.</p>
+            <ul class="course-enrollment__highlights"><li>Beginner to Intermediate</li><li><strong class="stat-number stat-number--compact" data-count-up>16</strong><span>Lectures</span></li><li><strong class="stat-number stat-number--compact" data-count-up>51</strong><span>Topics</span></li><li>2-Month Weekend Batch</li><li>Live Online</li></ul>
+            <dl class="course-purchase-details" aria-label="TechFly course purchase details">
+              <div><dt>What is included</dt><dd>16 lectures covering Linux, ethical hacking, networks, Fortinet, blue-team defense, labs and career preparation.</dd></div>
+              <div><dt>Schedule</dt><dd>Friday, Saturday and Sunday from 7:00 PM to 8:30 PM PKT.</dd></div>
+              <div><dt>Program support</dt><dd>The supplied poster lists live classes, study material, lab access, expert mentors and certificate or career support.</dd></div>
+              <div><dt>Enrollment terms</dt><dd>Confirm the active batch, seat availability and certificate terms directly before paying.</dd></div>
+            </dl>
+          </div>
+          <div class="course-enrollment__purchase">
+            <span>Program fee</span>
+            <div class="course-price-pairs" aria-label="TechFly pricing in Pakistani rupees, Indian rupees and US dollars">
+              <div><small>PKR</small><del>PKR 24,999</del><strong>PKR 9,999</strong></div>
+              <div class="course-price-inr"><small>INR</small><strong>₹3,499 INR</strong></div>
+              <div><small>USD</small><strong>USD $35.99</strong></div>
+            </div>
+            <span class="course-discount">60% off PKR pricing</span>
+            <div class="course-enrollment__actions">
+              <a class="button button--primary" href="#cyberstart-curriculum">View Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="button button--ghost enrollment-whatsapp" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20information%20about%20the%20TechFly%20CyberStart%20Level%201%20program.%20Please%20share%20the%20active%20batch%2C%20fees%2C%20schedule%2C%20and%20enrollment%20details." target="_blank" rel="noopener noreferrer"><svg class="whatsapp-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> WhatsApp</a>
+            </div>
+            <small>Confirm the current batch and enrollment terms directly with the training provider.</small>
+          </div>
+        </div>
+
+        <div class="container course-enrollment course-enrollment--oxege" id="enroll-oxege">
+          <div class="course-enrollment__media course-enrollment__media--oxege">
+            <div class="course-enrollment__graphic" aria-hidden="true"><svg><use href="#icon-shield"></use></svg><span>OXEGE</span><strong>Professional Cybersecurity</strong><small>Online + Physical · Rahim Yar Khan</small></div>
+            <a href="#oxege-curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg> Explore 32 modules <span>587 Topics</span></a>
+          </div>
+          <div class="course-enrollment__content">
+            <p class="eyebrow"><span></span> Course 03 · Professional training</p>
+            <h3>Oxege Professional Cybersecurity &amp; Ethical Hacking Program</h3>
+            <p>A comprehensive three-month path connecting ethical-hacking foundations with SOC operations, DFIR, cloud, DevSecOps, AI security, professional reporting and career development.</p>
+            <ul class="course-enrollment__highlights"><li>Foundation to Professional</li><li><strong class="stat-number stat-number--compact" data-count-up>32</strong><span>Modules</span></li><li><strong class="stat-number stat-number--compact" data-count-up>587</strong><span>Topics</span></li><li>3-Month Program</li><li>Online + Physical</li></ul>
+            <dl class="course-purchase-details" aria-label="Oxege course purchase details">
+              <div><dt>What is included</dt><dd>Two learning tracks spanning ethical hacking, enterprise defense, SOC, DFIR, cloud, AI security and capstone reporting.</dd></div>
+              <div><dt>Delivery</dt><dd>Online instruction plus physical classes in Rahim Yar Khan.</dd></div>
+              <div><dt>Curriculum position</dt><dd>Independent training aligned with relevant CEH v13 and CEH AI subject areas.</dd></div>
+              <div><dt>Certification</dt><dd>Not presented as official EC-Council courseware or as awarding CEH certification.</dd></div>
+            </dl>
+          </div>
+          <div class="course-enrollment__purchase">
+            <span>Program fee</span>
+            <div class="course-price-pairs" aria-label="Oxege pricing in Pakistani rupees, Indian rupees and US dollars">
+              <div><small>PKR</small><del>PKR 89,999</del><strong>PKR 44,999</strong></div>
+              <div class="course-price-inr"><small>INR</small><strong>₹15,499 INR</strong></div>
+              <div><small>USD</small><strong>USD $159</strong></div>
+            </div>
+            <span class="course-discount">50% off PKR pricing</span>
+            <div class="course-enrollment__actions">
+              <a class="button button--primary" href="#oxege-curriculum">View Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="button button--ghost enrollment-whatsapp" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20information%20about%20the%20Oxege%20Professional%20Cybersecurity%20and%20Ethical%20Hacking%20Program.%20Please%20share%20the%20fees%2C%20online%20or%20physical%20schedule%2C%20and%20enrollment%20details." target="_blank" rel="noopener noreferrer"><svg class="whatsapp-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> WhatsApp</a>
+            </div>
+            <small>Ask about the online or Rahim Yar Khan physical-class schedule before enrolling.</small>
+          </div>
+        </div>
+        <aside class="container course-instructor reveal" aria-labelledby="course-instructor-heading">
+          <img src="muhammad-ahmed-talha.webp" width="160" height="176" loading="lazy" decoding="async" alt="Muhammad Ahmed Talha, founder and instructor at HackStark">
+          <div class="course-instructor__identity">
+            <span class="mono-label">Your instructor</span>
+            <h3 id="course-instructor-heading">Muhammad Ahmed Talha</h3>
+            <p class="course-instructor__role">Founder &amp; CEO · HackStark</p>
+            <p>CyberSecurity &amp; IT Infrastructure Professional · Instructor &amp; Infrastructure Manager</p>
+          </div>
+          <p class="course-instructor__experience">Backed by practical experience across cybersecurity, penetration testing, IT infrastructure, networking, Windows and Linux administration, and security operations.</p>
+          <ul class="course-instructor__stats" aria-label="Instructor experience">
+            <li><strong class="stat-number" data-count-up>6+</strong><span>Years Experience</span></li>
+            <li><strong class="stat-number" data-count-up data-statistic="trainedStudentsClaim">5,000+</strong><span>Students Trained</span></li>
+          </ul>
+          <a class="button button--ghost button--small" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed Talha's professional portfolio">View Instructor Profile <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+        </aside>
+        <section class="container course-proof reveal" aria-labelledby="course-proof-heading">
+          <div class="course-proof__intro">
+            <p class="eyebrow"><span></span> Verify before enrolling</p>
+            <h3 id="course-proof-heading">Preview the teaching, curriculum and instructor.</h3>
+            <p>Review public evidence before making a payment. No testimonial or outcome is presented without a verifiable source.</p>
+          </div>
+          <div class="course-proof__grid">
+            <a href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-play"></use></svg><span><strong>Watch a Complete Preview</strong><small>See the instructor and lesson format on YouTube.</small></span></a>
+            <a href="#curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg><span><strong>Review the Curriculum</strong><small>Inspect lesson titles, categories and resource status.</small></span></a>
+            <a href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-user"></use></svg><span><strong>Verify the Instructor</strong><small>Open Muhammad Ahmed Talha’s professional portfolio.</small></span></a>
+          </div>
+        </section>
+        <div class="container course-needs course-needs--compact">
+          <div><p class="eyebrow"><span></span> Beginner friendly</p><h2>What you need</h2><p>No previous penetration testing experience is required.</p></div>
+          <ul><li>Basic computer knowledge</li><li>Networking familiarity is helpful</li><li>A computer that supports virtualization</li><li>An internet connection</li><li>Curiosity and permission first thinking</li></ul>
+        </div>
+      </section>
+
+    <!-- Academy free previews -->
+    <section class="section academy" id="learn" aria-labelledby="learn-heading">
+      <div class="academy-grid" aria-hidden="true"></div>
+      <div class="container">
+        <div class="academy-library-heading reveal">
+          <div><span class="video-topic">Free video lessons</span><h2 id="learn-heading">Watch practical demonstrations</h2></div>
+          <a class="text-link text-link--light" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube">View all tutorials <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+        </div>
+
+        <div class="video-grid" id="video-grid">
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer" aria-label="Watch Introduction to Ethical Hacking Course on YouTube">
+              <img src="https://i.ytimg.com/vi/YnGy6A-ZPtE/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for HackStark ethical hacking course introduction">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">01</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Course</span><h3>Introduction to Ethical Hacking Course</h3><p>An introduction to HackStark's ethical hacking learning series.</p></div>
+          </article>
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=7Tl3fexB3yk" target="_blank" rel="noopener noreferrer" aria-label="Watch Install Kali Linux on VMware on YouTube">
+              <img src="https://i.ytimg.com/vi/7Tl3fexB3yk/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for installing Kali Linux on VMware">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
+              <span class="video-number">02</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Security labs</span><h3>Install Kali Linux on VMware</h3><p>Build a virtualized cybersecurity learning laboratory step by step.</p></div>
+          </article>
+          <article class="video-card reveal">
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=Z9Hs6R5t4Eg" target="_blank" rel="noopener noreferrer" aria-label="Watch Kali Linux Repository and Root User Setup on YouTube">
+              <img src="https://i.ytimg.com/vi/Z9Hs6R5t4Eg/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for Kali Linux repository setup tutorial">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">03</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Kali Linux</span><h3>Kali Repository &amp; Root User Setup</h3><p>Package repository and administrative environment concepts.</p></div>
+          </article>
+          <article class="video-card video-card--more reveal" hidden>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=x6ICJDVH1Xw" target="_blank" rel="noopener noreferrer" aria-label="Watch XSS Reflected Attack Demonstration on YouTube">
+              <img src="https://i.ytimg.com/vi/x6ICJDVH1Xw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for reflected XSS security demonstration">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">04</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Web security</span><h3>XSS Reflected Attack Demonstration</h3><p>Reflected XSS concepts in controlled and authorized environments.</p><span class="video-safety">Educational security testing only.</span></div>
+          </article>
+          <article class="video-card video-card--more reveal" hidden>
+            <a class="video-thumb" href="https://www.youtube.com/watch?v=84NSaznk-bw" target="_blank" rel="noopener noreferrer" aria-label="Watch How to Play RIO Encrypted Video Files on YouTube">
+              <img src="https://i.ytimg.com/vi/84NSaznk-bw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for How to Play RIO Encrypted Video Files">
+              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">05</span>
+            </a>
+            <div class="video-card__body"><span class="video-topic">Encrypted media</span><h3>How to Play RIO Encrypted Video Files</h3><p>A practical guide to playing RIO encrypted video files.</p></div>
+          </article>
+        </div>
+        <div class="show-more-wrap"><button class="button button--outline-light" type="button" id="show-more-videos" aria-expanded="false">Show 2 more lessons <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
+      </div>
+    </section>
+
+      <section class="section course-home-section" id="course-tools" aria-labelledby="course-tools-heading">
+        <div class="container">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Inside the curriculum</p><h2 id="course-tools-heading"><span class="stat-number stat-number--heading" data-count-up>25+</span> Tools &amp; Platforms</h2><p>Explore 26 named technologies across course lessons: software tools, lab applications, security products and the Windows and Android platforms.</p></div>
+          <div class="course-tools-grid">
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="foundation"><h3>Lab setup &amp; platforms</h3><ul class="tag-list"><li>VMware</li><li>Kali Linux</li><li>Windows</li><li>Android</li></ul></a>
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="vulnerability"><h3>Reconnaissance &amp; vulnerability assessment</h3><ul class="tag-list"><li>SpiderFoot</li><li>Nikto</li><li>Nexpose</li><li>InsightVM</li></ul></a>
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="networking"><h3>Network analysis &amp; monitoring</h3><ul class="tag-list"><li>Wireshark</li><li>Ettercap</li><li>PRTG</li><li>Omnipeek</li><li>NetFlow Analyzer</li></ul></a>
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="web"><h3>Web application security</h3><ul class="tag-list"><li>DVWA</li><li>WebGoat</li><li>HTTP</li><li>XSS Defense</li><li>Secure Sessions</li></ul></a>
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="wireless"><h3>Wireless &amp; password security</h3><ul class="tag-list"><li>Aircrack ng</li><li>John the Ripper</li><li>Linset</li><li>WifiSlax</li></ul></a>
+            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="mobile"><h3>Mobile &amp; endpoint security</h3><ul class="tag-list"><li>Android</li><li>Endpoint Hardening</li><li>Malware Defense</li><li>Google Play Protect</li></ul></a>
+          </div>
+          <aside class="controlled-lab-panel" aria-labelledby="controlled-lab-heading">
+            <div><span class="course-badge course-badge--legacy">Controlled lab only</span><h3 id="controlled-lab-heading">Legacy and potentially disruptive tools</h3><p>Availability-testing, payload-generation and endpoint-capture demonstrations are separated from the beginner toolkit. Study them only for defensive analysis on isolated systems you own or are explicitly authorized to test.</p></div>
+            <details><summary>View controlled-lab topics</summary><ul class="tag-list"><li>LOIC</li><li>ZDoser</li><li>Slowloris</li><li>AhMyth</li><li>TheFatRat</li><li>Evil Droid</li><li>Keylogger demonstrations</li></ul></details>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section course-home-section section--tinted" id="outcomes" aria-labelledby="outcomes-heading">
+        <div class="container">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Course outcomes</p><h2 id="outcomes-heading">What you'll learn</h2></div>
+          <div class="course-card-grid course-card-grid--four">
+            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="foundation"><svg aria-hidden="true"><use href="#icon-terminal"></use></svg><h3>Build a Security Lab</h3><p>Create a virtualized Kali Linux environment for controlled practice.</p></a>
+            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="osint"><svg aria-hidden="true"><use href="#icon-search"></use></svg><h3>Understand Reconnaissance</h3><p>Learn information gathering, footprinting, OSINT and enumeration.</p></a>
+            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="networking"><svg aria-hidden="true"><use href="#icon-network"></use></svg><h3>Analyze Networks</h3><p>Understand scanning, services, traffic capture and monitoring.</p></a>
+            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="vulnerability"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><h3>Assess Vulnerabilities</h3><p>Learn assessment concepts and common validation tooling.</p></a>
+            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="system"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><h3>Secure Systems</h3><p>Explore Windows, Android and endpoint concepts in controlled labs.</p></a>
+            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="web"><svg aria-hidden="true"><use href="#icon-code"></use></svg><h3>Explore Web Security</h3><p>Study applications, servers, sessions and injection defenses.</p></a>
+            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="wireless"><svg aria-hidden="true"><use href="#icon-wifi"></use></svg><h3>Wireless &amp; IoT</h3><p>Explore WiFi, mobile platforms and connected device security.</p></a>
+            <a class="course-outcome-card linked-card" href="#projects"><svg aria-hidden="true"><use href="#icon-book"></use></svg><h3>Research Responsibly</h3><p>Continue through labs, documentation, CTFs and open source.</p></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section course-home-section course-curriculum-section" id="curriculum" aria-labelledby="curriculum-heading">
+        <div class="container">
+          <div class="section-intro section-intro--center"><span class="curriculum-sequence">Course 01 of 03</span><p class="eyebrow"><span></span> HackStark</p><h2 id="curriculum-heading">Ethical Hacking Course for Beginners</h2><p class="curriculum-count"><strong class="stat-number stat-number--eyebrow" data-count-up>50+</strong> lessons</p><p>A structured beginner path from Kali Linux lab setup through ethical hacking, networks, systems, web security, wireless, IoT, cloud and cryptography.</p></div>
+          <div id="course-curriculum-list"></div>
+          <div class="curriculum-more"><button class="button button--primary" type="button" id="show-full-curriculum" aria-expanded="false" aria-controls="course-curriculum-list">View Full Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
+          <noscript><div class="course-noscript"><h3>Course curriculum</h3><p>Enable JavaScript to view the complete 50+ lesson curriculum.</p></div></noscript>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- CyberStart Level 1: separate instructor-led professional training program -->
+    <section class="section cyberstart" id="cyberstart" aria-labelledby="cyberstart-heading">
+      <div class="container">
+        <div class="cyberstart-hero reveal">
+          <div class="cyberstart-hero__copy">
+            <p class="eyebrow"><span></span> Instructor-Led Training</p>
+            <p class="cyberstart-program-label">Professional Training Delivered with Partner TechFly</p>
+            <h2 id="cyberstart-heading">CyberStart <em>Level 1</em></h2>
+            <p class="cyberstart-subtitle">Cyber Security Engineer · Beginner to Intermediate</p>
+            <p class="cyberstart-lead">A focused cybersecurity foundation program covering cybersecurity fundamentals, Linux, ethical hacking, network scanning, Fortinet-oriented firewall and network security, cyber defense, practical labs, real-world case studies and career development.</p>
+            <p>The program combines concepts, demonstrations, supervised laboratory exercises, applied discussion and a final practical assessment.</p>
+            <div class="cyberstart-actions">
+              <a class="button button--primary" href="#cyberstart-curriculum">Explore 16-Lecture Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="button button--ghost" href="techfly-cyber-security-engineer-poster.png" target="_blank" rel="noopener noreferrer">View Program Poster <svg aria-hidden="true"><use href="#icon-eye"></use></svg></a>
+              <a class="button button--ghost" href="#experience">View Training Experience</a>
             </div>
           </div>
-          <p class="about-compact__safety"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><span><strong>Permission first.</strong> Use only owned or explicitly authorized systems. Document findings and share responsibly.</span></p>
-        </section>
+          <aside class="cyberstart-credential" aria-label="CyberStart delivery details">
+            <span class="cyberstart-credential__badge">Professional Training</span>
+            <a class="cyberstart-poster" href="techfly-cyber-security-engineer-poster.png" target="_blank" rel="noopener noreferrer" aria-label="Open the cleaned TechFly Cyber Security Engineer program poster">
+              <img src="techfly-cyber-security-engineer-poster.png" width="1024" height="1536" loading="lazy" decoding="async" alt="Cleaned TechFly Cyber Security Engineer promotional poster showing the online weekend program">
+              <span><strong>Cyber Security Engineer</strong><small>Cleaned source poster · View full image</small></span>
+            </a>
+            <h3>Delivered by<br>Muhammad Ahmed Talha</h3>
+            <p>CyberSecurity Instructor / Trainer</p>
+            <dl>
+              <div><dt>Training partner</dt><dd>TechFly, Multan</dd></div>
+              <div><dt>Engagement</dt><dd>Part-Time / Contract</dd></div>
+              <div><dt>Year</dt><dd>2026</dd></div>
+              <div><dt>Format</dt><dd>Online · Instructor-Led</dd></div>
+              <div><dt>Batch</dt><dd>2-Month Weekend</dd></div>
+              <div><dt>Schedule</dt><dd>Fri–Sun · 7:00–8:30 PM PKT</dd></div>
+            </dl>
+          </aside>
+        </div>
+
+        <div class="cyberstart-stats" aria-label="CyberStart program highlights">
+          <div><strong>16</strong><span>Lectures</span></div><div><strong>16</strong><span>Hours</span></div><div><strong>51</strong><span>Topics</span></div><div><strong>60</strong><span>Minutes each</span></div>
+        </div>
+        <ul class="cyberstart-badges" aria-label="Program attributes">
+          <li>Beginner to Intermediate</li><li>Hands-on Labs</li><li>Live Online</li><li>2-Month Weekend Batch</li><li>Partner · TechFly</li>
+        </ul>
+
+        <div class="cyberstart-block" aria-labelledby="cyberstart-covers-heading">
+          <div class="section-intro section-intro--center">
+            <p class="eyebrow"><span></span> Eight Learning Areas</p>
+            <h3 id="cyberstart-covers-heading">What the program covers</h3>
+          </div>
+          <ol class="cyberstart-area-grid" id="cyberstart-learning-areas"></ol>
+        </div>
+
+        <div class="cyberstart-split cyberstart-block">
+          <article class="cyberstart-panel" aria-labelledby="cyberstart-labs-heading">
+            <p class="mono-label">Supervised practice</p>
+            <h3 id="cyberstart-labs-heading">Practical labs</h3>
+            <p>Supervised, authorized laboratory exercises use isolated systems and intentionally vulnerable training environments.</p>
+            <ul class="cyberstart-check-list" id="cyberstart-labs"></ul>
+            <p class="cyberstart-platforms"><strong>Training environments:</strong> DVWA · WebGoat · OWASP Juice Shop</p>
+          </article>
+          <article class="cyberstart-panel" aria-labelledby="cyberstart-tools-heading">
+            <p class="mono-label">Curriculum-supported</p>
+            <h3 id="cyberstart-tools-heading">Technologies &amp; concepts</h3>
+            <ul class="cyberstart-tool-list" id="cyberstart-tools"></ul>
+          </article>
+        </div>
+
+        <div class="cyberstart-block" aria-labelledby="cyberstart-outcomes-heading">
+          <div class="section-intro section-intro--center">
+            <p class="eyebrow"><span></span> Foundation-Level Ability</p>
+            <h3 id="cyberstart-outcomes-heading">Learning outcomes</h3>
+            <p>Students develop foundational understanding and supervised practical ability across the following areas.</p>
+          </div>
+          <ul class="cyberstart-outcomes" id="cyberstart-outcomes"></ul>
+        </div>
+
+        <div class="cyberstart-block cyberstart-curriculum" id="cyberstart-curriculum" aria-labelledby="cyberstart-curriculum-heading">
+          <div class="section-intro section-intro--center">
+            <span class="curriculum-sequence">Course 02 of 03</span>
+            <p class="eyebrow"><span></span> TechFly Partner Curriculum</p>
+            <h3 id="cyberstart-curriculum-heading">CyberStart Level 1</h3>
+            <p class="curriculum-count"><strong>16</strong> lectures · <strong>51</strong> topics</p>
+            <p>Preview the opening lectures, then expand the complete searchable curriculum.</p>
+          </div>
+          <div class="cyberstart-curriculum__tools" hidden>
+            <label class="cyberstart-search"><span>Search CyberStart curriculum</span><span><svg aria-hidden="true"><use href="#icon-search"></use></svg><input type="search" id="cyberstart-search" placeholder="Search lectures, topics or tools" autocomplete="off"></span></label>
+            <div class="cyberstart-actions--compact"><button type="button" id="cyberstart-expand">Expand All</button><button type="button" id="cyberstart-collapse">Collapse All</button></div>
+          </div>
+          <div class="cyberstart-filters" id="cyberstart-filters" role="group" aria-label="Filter CyberStart curriculum by learning area" hidden></div>
+          <p class="cyberstart-status" id="cyberstart-status" role="status" aria-live="polite"></p>
+          <div class="cyberstart-lecture-list" id="cyberstart-lecture-list"></div>
+          <div class="curriculum-more"><button class="button button--primary" type="button" id="cyberstart-full-toggle" aria-expanded="false" aria-controls="cyberstart-lecture-list">View Full Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
+          <noscript><p class="course-noscript">Enable JavaScript to use curriculum search, filters and accessible lecture accordions.</p></noscript>
+        </div>
+
+        <div class="cyberstart-assessment cyberstart-block" aria-labelledby="cyberstart-assessment-heading">
+          <div><p class="mono-label">Lecture 16 · Final practical</p><h3 id="cyberstart-assessment-heading">Integrated Practical Assessment</h3><p>Network discovery, service identification, vulnerability assessment and defensive review, followed by security analysis, findings and a remediation report.</p></div>
+          <ul><li>Network discovery</li><li>Service identification</li><li>Vulnerability assessment</li><li>Defensive review</li><li>Security analysis</li><li>Findings</li><li>Remediation report</li></ul>
+        </div>
+
+        <aside class="cyberstart-safety" aria-labelledby="cyberstart-safety-heading">
+          <svg aria-hidden="true"><use href="#icon-shield"></use></svg>
+          <div><p class="mono-label">Permission first</p><h3 id="cyberstart-safety-heading">Authorized learning environments only</h3><p>Practical exercises are intended only for isolated laboratory environments, systems owned by the learner, or systems for which explicit authorization has been provided.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Oxege Technologies: independent professional training program -->
+    <section class="section oxege" id="oxege-training" aria-labelledby="oxege-heading">
+      <div class="container">
+        <div class="oxege-hero reveal">
+          <div class="oxege-hero__copy">
+            <p class="eyebrow"><span></span> Professional Training Partner · Oxege Technologies</p>
+            <p class="oxege-program-label">Independent CEH v13 / CEH AI-Aligned Curriculum</p>
+            <h2 id="oxege-heading">Professional Cybersecurity &amp; <em>Ethical Hacking</em> Program</h2>
+            <p class="oxege-lead">A three-month instructor-led program available online and through physical classes in Rahim Yar Khan, combining ethical-hacking foundations with professional cybersecurity practice across defense, SOC operations, threat hunting, DFIR, cloud, DevSecOps, AI security, reporting and career development.</p>
+            <div class="oxege-actions">
+              <a class="button button--primary" href="#oxege-curriculum">Explore All 587 Topics <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="button button--ghost" href="#experience">View Instructor Experience</a>
+            </div>
+          </div>
+          <aside class="oxege-credential" aria-label="Oxege program delivery details">
+            <span class="oxege-credential__badge">Three-Month Program</span>
+            <h3>Muhammad Ahmed Talha</h3>
+            <p>CyberSecurity Specialist &amp; Instructor</p>
+            <dl>
+              <div><dt>Training partner</dt><dd>Oxege Technologies</dd></div>
+              <div><dt>Engagement</dt><dd>Part-Time / Contract</dd></div>
+              <div><dt>Year</dt><dd>2026</dd></div>
+              <div><dt>Format</dt><dd>Online + Physical</dd></div>
+              <div><dt>Physical Venue</dt><dd>Rahim Yar Khan</dd></div>
+            </dl>
+          </aside>
+        </div>
+
+        <div class="oxege-stats" aria-label="Oxege program highlights">
+          <div><strong>3</strong><span>Months</span></div><div><strong>32</strong><span>Modules</span></div><div><strong>587</strong><span>Topics</span></div><div><strong>2</strong><span>Learning Tracks</span></div>
+        </div>
+
+        <aside class="oxege-disclaimer" aria-label="Program independence notice">
+          <svg aria-hidden="true"><use href="#icon-shield"></use></svg>
+          <p><strong>Independent curriculum:</strong> aligned with relevant CEH v13 / CEH AI subject areas, but not presented as official EC-Council courseware or an EC-Council-authorized training program.</p>
+        </aside>
+
+        <div class="oxege-block" aria-labelledby="oxege-tracks-heading">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Two-Part Learning Path</p><h3 id="oxege-tracks-heading">Core ethical hacking to professional practice</h3></div>
+          <div class="oxege-track-grid" id="oxege-tracks"></div>
+        </div>
+
+        <div class="oxege-block" aria-labelledby="oxege-outcomes-heading">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Program Coverage</p><h3 id="oxege-outcomes-heading">Seven professional capability areas</h3></div>
+          <div class="oxege-outcome-grid" id="oxege-outcomes"></div>
+        </div>
+
+        <div class="oxege-ai-feature oxege-block">
+          <div><p class="mono-label">Modern security focus</p><h3>AI &amp; Machine Learning Security</h3><p>Module 30 examines offensive and defensive AI use, prompt injection, sensitive-data leakage, adversarial machine learning, deepfakes, governance and secure enterprise use of generative AI.</p></div>
+          <ul><li>AI-assisted analysis</li><li>Prompt injection security</li><li>Model &amp; data protection</li><li>Responsible AI governance</li></ul>
+        </div>
+
+        <div class="oxege-block" aria-labelledby="oxege-tools-heading">
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Curriculum-Supported Tools</p><h3 id="oxege-tools-heading">Platforms grouped by practice area</h3><p>Tools appear as learning references inside the curriculum and are used only in appropriate, authorized environments.</p></div>
+          <div class="oxege-tool-grid" id="oxege-tools"></div>
+        </div>
+
+        <div class="oxege-block oxege-curriculum" id="oxege-curriculum" aria-labelledby="oxege-curriculum-heading">
+          <div class="section-intro section-intro--center"><span class="curriculum-sequence">Course 03 of 03</span><p class="eyebrow"><span></span> Oxege Technologies · Complete Curriculum</p><h3 id="oxege-curriculum-heading">Professional Cybersecurity &amp; Ethical Hacking Program</h3><p class="curriculum-count"><strong>32</strong> modules · <strong>587</strong> topics</p><p>Preview the opening program sections, then expand the complete searchable curriculum.</p></div>
+          <div class="oxege-curriculum__tools" hidden>
+            <label class="oxege-search"><span>Search professional curriculum</span><span><svg aria-hidden="true"><use href="#icon-search"></use></svg><input type="search" id="oxege-search" placeholder="Search topics, tools or concepts" autocomplete="off"></span></label>
+            <div class="oxege-actions--compact"><button type="button" id="oxege-expand">Expand All</button><button type="button" id="oxege-collapse">Collapse All</button></div>
+          </div>
+          <div class="oxege-filters" id="oxege-filters" role="group" aria-label="Filter Oxege curriculum by track" hidden></div>
+          <p class="oxege-status" id="oxege-status" role="status" aria-live="polite"></p>
+          <div class="oxege-module-list" id="oxege-module-list"></div>
+          <div class="curriculum-more"><button class="button button--primary" type="button" id="oxege-full-toggle" aria-expanded="false" aria-controls="oxege-module-list">View Full Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
+          <noscript><p class="course-noscript">Enable JavaScript to search and expand the complete 587-topic curriculum.</p></noscript>
+        </div>
+
+        <div class="oxege-capstone oxege-block" aria-labelledby="oxege-capstone-heading">
+          <div><p class="mono-label">Module 32 · Professional finish</p><h3 id="oxege-capstone-heading">Capstone, reporting &amp; career development</h3><p>Students connect assessment workflows with evidence, CVSS prioritization, remediation planning, professional reports, portfolio projects, interview preparation and role-specific career roadmaps.</p></div>
+          <a class="button button--ghost" href="#oxege-module-32" data-oxege-open-module="module-32">Open Module 32</a>
+        </div>
+
+        <div class="oxege-references" aria-label="External curriculum references">
+          <span>Reference frameworks</span>
+          <a href="https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/" target="_blank" rel="noopener noreferrer">EC-Council CEH ↗</a>
+          <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer">NIST CSF 2.0 ↗</a>
+          <a href="https://attack.mitre.org/" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK ↗</a>
+          <a href="https://owasp.org/API-Security/" target="_blank" rel="noopener noreferrer">OWASP API Security ↗</a>
+        </div>
+
+        <aside class="oxege-safety" aria-labelledby="oxege-safety-heading">
+          <svg aria-hidden="true"><use href="#icon-lock"></use></svg>
+          <div><p class="mono-label">Authorization required</p><h3 id="oxege-safety-heading">Practice only on systems you own or have written permission to test</h3><p>Offensive-security exercises, attack simulations, password auditing, wireless testing, malware analysis, availability testing and social-engineering simulations belong in isolated labs or explicitly authorized environments.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section course-home-section section--tinted course-faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Course questions</p><h2 id="faq-heading">Frequently Asked Questions</h2></div>
+        <div class="faq-list">
+          <details><summary>Is this suitable for beginners?</summary><p>Yes. It begins with virtualization and Kali Linux setup before introducing cybersecurity topics.</p></details>
+          <details><summary>Do I need previous experience?</summary><p>No. Basic computer knowledge is sufficient; networking knowledge is helpful.</p></details>
+          <details><summary>Is this an official CEH course?</summary><p>No. It is independent HackStark education and does not award EC Council certification.</p></details>
+          <details><summary>Are TechFly and Oxege Technologies owned by HackStark?</summary><p>No. They are independent training partners. Neither Muhammad Ahmed Talha nor HackStark owns either organization.</p></details>
+          <details><summary>Does it include practical demonstrations?</summary><p>Yes. Lab demonstrations must only be reproduced in controlled, authorized environments.</p></details>
+          <details><summary>Is all content current?</summary><p>Foundational and legacy lessons are clearly labeled, with current official documentation linked where available.</p></details>
+          <details><summary>Can I practice on public websites?</summary><p>No. Use your own systems, intentionally vulnerable labs, CTFs or explicitly authorized targets only.</p></details>
+        </div>
       </div>
     </section>
 
@@ -604,211 +1140,6 @@
       </div>
     </section>
 
-    <!-- Course Section -->
-    <div class="course-academy" id="course-top">
-      <nav class="course-subnav" aria-label="Ethical hacking course navigation">
-        <div class="container"><a href="#about-course">Overview</a><a href="#learn">Free previews</a><a href="#course-tools">25+ Tools</a><a href="#outcomes">Outcomes</a><a href="#curriculum">Curriculum</a><a href="#faq">FAQ</a></div>
-      </nav>
-
-      <section class="section course-home-section course-overview" id="about-course" aria-labelledby="about-course-heading">
-        <div class="container course-overview__grid">
-          <div><p class="eyebrow"><span></span> Beginner Course</p><h2 id="about-course-heading">A structured path into cybersecurity.</h2></div>
-          <div class="course-overview__copy">
-            <p><strong>Ethical Hacking Course for Beginners by HackStark</strong> combines 50+ self-paced lessons with practical demonstrations and supporting resources.</p>
-            <p>Start with an isolated Kali Linux lab, then progress through reconnaissance, vulnerability assessment, systems, networks, web applications, wireless security, IoT, cloud computing and cryptography.</p>
-          </div>
-        </div>
-        <div class="container course-enrollment" id="enroll" data-nav-section>
-          <div class="course-enrollment__media">
-            <img src="https://i.ytimg.com/vi/YnGy6A-ZPtE/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Ethical Hacking Course for Beginners preview">
-            <a href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-play"></use></svg> Watch introduction <span>Free Preview</span></a>
-          </div>
-          <div class="course-enrollment__content">
-            <p class="eyebrow"><span></span> Manual enrollment</p>
-            <h3>Ethical Hacking Course for Beginners</h3>
-            <p>Learn with 50+ self-paced lessons from Muhammad Ahmed Talha. Published previews remain free; complete course enrollment is verified manually.</p>
-            <ul class="course-enrollment__highlights"><li>Beginner Level</li><li><strong class="stat-number stat-number--compact" data-count-up>50+</strong><span>Lessons</span></li><li><strong class="stat-number stat-number--compact" data-count-up>25+</strong><span>Tools &amp; Platforms</span></li><li>Self-Paced Access</li><li>Manual Payment Verification</li></ul>
-            <dl class="course-purchase-details" aria-label="Course purchase details">
-              <div><dt>What is included</dt><dd>50+ self-paced lessons, practical demonstrations, curriculum resources and local progress tracking.</dd></div>
-              <div><dt>Access activation</dt><dd>Access begins after HackStark verifies your payment and confirms approval.</dd></div>
-              <div><dt>Certification</dt><dd>Independent HackStark education; this course does not award EC-Council certification.</dd></div>
-              <div><dt>Refunds &amp; cancellations</dt><dd>Confirm eligibility with HackStark before paying; no automatic refund is promised.</dd></div>
-            </dl>
-          </div>
-          <div class="course-enrollment__purchase">
-            <span>Course fee</span>
-            <div class="course-price-pairs" aria-label="Course pricing in Pakistani rupees, Indian rupees and US dollars">
-              <div><small>PKR</small><del>PKR 5,000</del><strong>PKR 1,999</strong></div>
-              <div class="course-price-inr"><small>INR</small><strong>₹799 INR</strong></div>
-              <div><small>USD</small><del>USD $20</del><strong>USD $7.99</strong></div>
-            </div>
-            <span class="course-discount">60% off PKR / USD pricing</span>
-            <button class="button button--primary" type="button" data-course-enroll><svg aria-hidden="true"><use href="#icon-phone"></use></svg> Enroll Now</button>
-            <small>Existing account required. Payment does not activate access automatically.</small>
-            <div class="course-account-help">
-              <span>Need help purchasing?</span>
-              <a href="https://wa.me/923023070227?text=Assalam%20o%20Alaikum.%20I%20need%20help%20purchasing%20the%20HackStark%20Ethical%20Hacking%20Course." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg> WhatsApp +92 302 3070227</a>
-            </div>
-            <p data-enrollment-status role="status" aria-live="polite"></p>
-          </div>
-        </div>
-        <aside class="container course-instructor reveal" aria-labelledby="course-instructor-heading">
-          <img src="muhammad-ahmed-talha.webp" width="160" height="176" loading="lazy" decoding="async" alt="Muhammad Ahmed Talha, founder and instructor at HackStark">
-          <div class="course-instructor__identity">
-            <span class="mono-label">Your instructor</span>
-            <h3 id="course-instructor-heading">Muhammad Ahmed Talha</h3>
-            <p class="course-instructor__role">Founder &amp; CEO · HackStark</p>
-            <p>CyberSecurity &amp; IT Infrastructure Professional · Instructor &amp; Infrastructure Manager</p>
-          </div>
-          <p class="course-instructor__experience">Backed by practical experience across cybersecurity, penetration testing, IT infrastructure, networking, Windows and Linux administration, and security operations.</p>
-          <ul class="course-instructor__stats" aria-label="Instructor experience">
-            <li><strong class="stat-number" data-count-up>6+</strong><span>Years Experience</span></li>
-            <li><strong class="stat-number" data-count-up data-statistic="trainedStudentsClaim">3,000+</strong><span>Learners Reached</span></li>
-          </ul>
-          <a class="button button--ghost button--small" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed Talha's full professional portfolio">View Instructor Profile <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
-        </aside>
-        <section class="container course-proof reveal" aria-labelledby="course-proof-heading">
-          <div class="course-proof__intro">
-            <p class="eyebrow"><span></span> Verify before enrolling</p>
-            <h3 id="course-proof-heading">Preview the teaching, curriculum and instructor.</h3>
-            <p>Review public evidence before making a payment. No testimonial or outcome is presented without a verifiable source.</p>
-          </div>
-          <div class="course-proof__grid">
-            <a href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-play"></use></svg><span><strong>Watch a Complete Preview</strong><small>See the instructor and lesson format on YouTube.</small></span></a>
-            <a href="#curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg><span><strong>Review the Curriculum</strong><small>Inspect lesson titles, categories and resource status.</small></span></a>
-            <a href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-user"></use></svg><span><strong>Verify the Instructor</strong><small>Open Muhammad Ahmed Talha’s professional portfolio.</small></span></a>
-          </div>
-        </section>
-        <div class="container course-needs course-needs--compact">
-          <div><p class="eyebrow"><span></span> Beginner friendly</p><h2>What you need</h2><p>No previous penetration testing experience is required.</p></div>
-          <ul><li>Basic computer knowledge</li><li>Networking familiarity is helpful</li><li>A computer that supports virtualization</li><li>An internet connection</li><li>Curiosity and permission first thinking</li></ul>
-        </div>
-      </section>
-
-    <!-- Academy free previews -->
-    <section class="section academy" id="learn" aria-labelledby="learn-heading">
-      <div class="academy-grid" aria-hidden="true"></div>
-      <div class="container">
-        <div class="academy-library-heading reveal">
-          <div><span class="video-topic">Free video lessons</span><h2 id="learn-heading">Watch practical demonstrations</h2></div>
-          <a class="text-link text-link--light" href="https://www.youtube.com/@hackstark8829" target="_blank" rel="noopener noreferrer" data-social="youtube">View all tutorials <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
-        </div>
-
-        <div class="video-grid" id="video-grid">
-          <article class="video-card reveal">
-            <a class="video-thumb" href="https://www.youtube.com/watch?v=YnGy6A-ZPtE" target="_blank" rel="noopener noreferrer" aria-label="Watch Introduction to Ethical Hacking Course on YouTube">
-              <img src="https://i.ytimg.com/vi/YnGy6A-ZPtE/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for HackStark ethical hacking course introduction">
-              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
-              <span class="video-number">01</span>
-            </a>
-            <div class="video-card__body"><span class="video-topic">Course</span><h3>Introduction to Ethical Hacking Course</h3><p>An introduction to HackStark's ethical hacking learning series.</p></div>
-          </article>
-          <article class="video-card reveal">
-            <a class="video-thumb" href="https://www.youtube.com/watch?v=7Tl3fexB3yk" target="_blank" rel="noopener noreferrer" aria-label="Watch Install Kali Linux on VMware on YouTube">
-              <img src="https://i.ytimg.com/vi/7Tl3fexB3yk/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for installing Kali Linux on VMware">
-              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span>
-              <span class="video-number">02</span>
-            </a>
-            <div class="video-card__body"><span class="video-topic">Security labs</span><h3>Install Kali Linux on VMware</h3><p>Build a virtualized cybersecurity learning laboratory step by step.</p></div>
-          </article>
-          <article class="video-card reveal">
-            <a class="video-thumb" href="https://www.youtube.com/watch?v=Z9Hs6R5t4Eg" target="_blank" rel="noopener noreferrer" aria-label="Watch Kali Linux Repository and Root User Setup on YouTube">
-              <img src="https://i.ytimg.com/vi/Z9Hs6R5t4Eg/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for Kali Linux repository setup tutorial">
-              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">03</span>
-            </a>
-            <div class="video-card__body"><span class="video-topic">Kali Linux</span><h3>Kali Repository &amp; Root User Setup</h3><p>Package repository and administrative environment concepts.</p></div>
-          </article>
-          <article class="video-card video-card--more reveal" hidden>
-            <a class="video-thumb" href="https://www.youtube.com/watch?v=x6ICJDVH1Xw" target="_blank" rel="noopener noreferrer" aria-label="Watch XSS Reflected Attack Demonstration on YouTube">
-              <img src="https://i.ytimg.com/vi/x6ICJDVH1Xw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for reflected XSS security demonstration">
-              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">04</span>
-            </a>
-            <div class="video-card__body"><span class="video-topic">Web security</span><h3>XSS Reflected Attack Demonstration</h3><p>Reflected XSS concepts in controlled and authorized environments.</p><span class="video-safety">Educational security testing only.</span></div>
-          </article>
-          <article class="video-card video-card--more reveal" hidden>
-            <a class="video-thumb" href="https://www.youtube.com/watch?v=84NSaznk-bw" target="_blank" rel="noopener noreferrer" aria-label="Watch How to Play RIO Encrypted Video Files on YouTube">
-              <img src="https://i.ytimg.com/vi/84NSaznk-bw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="Thumbnail for How to Play RIO Encrypted Video Files">
-              <span class="play-button" aria-hidden="true"><svg><use href="#icon-play"></use></svg></span><span class="video-number">05</span>
-            </a>
-            <div class="video-card__body"><span class="video-topic">Encrypted media</span><h3>How to Play RIO Encrypted Video Files</h3><p>A practical guide to playing RIO encrypted video files.</p></div>
-          </article>
-        </div>
-        <div class="show-more-wrap"><button class="button button--outline-light" type="button" id="show-more-videos" aria-expanded="false">Show 2 more lessons <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
-      </div>
-    </section>
-
-      <section class="section course-home-section" id="course-tools" aria-labelledby="course-tools-heading">
-        <div class="container">
-          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Inside the curriculum</p><h2 id="course-tools-heading"><span class="stat-number stat-number--heading" data-count-up>25+</span> Tools &amp; Platforms</h2><p>Explore 26 named technologies across course lessons: software tools, lab applications, security products and the Windows and Android platforms.</p></div>
-          <div class="course-tools-grid">
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="foundation"><h3>Lab setup &amp; platforms</h3><ul class="tag-list"><li>VMware</li><li>Kali Linux</li><li>Windows</li><li>Android</li></ul></a>
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="vulnerability"><h3>Reconnaissance &amp; vulnerability assessment</h3><ul class="tag-list"><li>SpiderFoot</li><li>Nikto</li><li>Nexpose</li><li>InsightVM</li></ul></a>
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="networking"><h3>Network analysis &amp; monitoring</h3><ul class="tag-list"><li>Wireshark</li><li>Ettercap</li><li>PRTG</li><li>Omnipeek</li><li>NetFlow Analyzer</li></ul></a>
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="web"><h3>Web application security</h3><ul class="tag-list"><li>DVWA</li><li>WebGoat</li><li>HTTP</li><li>XSS Defense</li><li>Secure Sessions</li></ul></a>
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="wireless"><h3>Wireless &amp; password security</h3><ul class="tag-list"><li>Aircrack ng</li><li>John the Ripper</li><li>Linset</li><li>WifiSlax</li></ul></a>
-            <a class="course-tool-card linked-card" href="#curriculum" data-course-filter-link="mobile"><h3>Mobile &amp; endpoint security</h3><ul class="tag-list"><li>Android</li><li>Endpoint Hardening</li><li>Malware Defense</li><li>Google Play Protect</li></ul></a>
-          </div>
-          <aside class="controlled-lab-panel" aria-labelledby="controlled-lab-heading">
-            <div><span class="course-badge course-badge--legacy">Controlled lab only</span><h3 id="controlled-lab-heading">Legacy and potentially disruptive tools</h3><p>Availability-testing, payload-generation and endpoint-capture demonstrations are separated from the beginner toolkit. Study them only for defensive analysis on isolated systems you own or are explicitly authorized to test.</p></div>
-            <details><summary>View controlled-lab topics</summary><ul class="tag-list"><li>LOIC</li><li>ZDoser</li><li>Slowloris</li><li>AhMyth</li><li>TheFatRat</li><li>Evil Droid</li><li>Keylogger demonstrations</li></ul></details>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section course-home-section section--tinted" id="outcomes" aria-labelledby="outcomes-heading">
-        <div class="container">
-          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Course outcomes</p><h2 id="outcomes-heading">What you'll learn</h2></div>
-          <div class="course-card-grid course-card-grid--four">
-            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="foundation"><svg aria-hidden="true"><use href="#icon-terminal"></use></svg><h3>Build a Security Lab</h3><p>Create a virtualized Kali Linux environment for controlled practice.</p></a>
-            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="osint"><svg aria-hidden="true"><use href="#icon-search"></use></svg><h3>Understand Reconnaissance</h3><p>Learn information gathering, footprinting, OSINT and enumeration.</p></a>
-            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="networking"><svg aria-hidden="true"><use href="#icon-network"></use></svg><h3>Analyze Networks</h3><p>Understand scanning, services, traffic capture and monitoring.</p></a>
-            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="vulnerability"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><h3>Assess Vulnerabilities</h3><p>Learn assessment concepts and common validation tooling.</p></a>
-            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="system"><svg aria-hidden="true"><use href="#icon-lock"></use></svg><h3>Secure Systems</h3><p>Explore Windows, Android and endpoint concepts in controlled labs.</p></a>
-            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="web"><svg aria-hidden="true"><use href="#icon-code"></use></svg><h3>Explore Web Security</h3><p>Study applications, servers, sessions and injection defenses.</p></a>
-            <a class="course-outcome-card linked-card" href="#curriculum" data-course-filter-link="wireless"><svg aria-hidden="true"><use href="#icon-wifi"></use></svg><h3>Wireless &amp; IoT</h3><p>Explore WiFi, mobile platforms and connected device security.</p></a>
-            <a class="course-outcome-card linked-card" href="#projects"><svg aria-hidden="true"><use href="#icon-book"></use></svg><h3>Research Responsibly</h3><p>Continue through labs, documentation, CTFs and open source.</p></a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section course-home-section course-curriculum-section" id="curriculum" aria-labelledby="curriculum-heading">
-        <div class="container">
-          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> <strong class="stat-number stat-number--eyebrow" data-count-up>50+</strong> Lesson Curriculum</p><h2 id="curriculum-heading">Course Curriculum</h2><p>Search, filter and expand the learning path. Available videos open on YouTube; lessons still being published are clearly marked.</p></div>
-          <div class="course-progress-panel" aria-labelledby="course-progress-heading">
-            <div><span class="mono-label">Stored on this device</span><h3 id="course-progress-heading">Course Progress</h3><p id="course-progress-text" aria-live="polite">0 catalog lessons completed</p></div>
-            <div class="course-progress-track" role="progressbar" aria-label="Course completion" aria-valuemin="0" aria-valuemax="46" aria-valuenow="0"><span id="course-progress-bar"></span></div>
-            <strong id="course-progress-percent">0%</strong><button type="button" class="course-text-button" id="reset-course-progress">Reset Progress</button>
-          </div>
-          <div class="curriculum-tools">
-            <label class="curriculum-search"><span>Search curriculum</span><span><svg aria-hidden="true"><use href="#icon-search"></use></svg><input type="search" id="curriculum-search" placeholder="Search lessons, for example Wireshark" autocomplete="off"></span></label>
-            <div class="curriculum-actions"><button type="button" id="expand-curriculum">Expand All</button><button type="button" id="collapse-curriculum">Collapse All</button></div>
-          </div>
-          <div class="curriculum-filters" role="group" aria-label="Filter curriculum by category">
-            <button type="button" class="is-active" data-course-filter="all" aria-pressed="true">All</button><button type="button" data-course-filter="foundation" aria-pressed="false">Foundation</button><button type="button" data-course-filter="networking" aria-pressed="false">Networking</button><button type="button" data-course-filter="osint" aria-pressed="false">OSINT</button><button type="button" data-course-filter="vulnerability" aria-pressed="false">Vulnerability</button><button type="button" data-course-filter="system" aria-pressed="false">Systems</button><button type="button" data-course-filter="web" aria-pressed="false">Web</button><button type="button" data-course-filter="wireless" aria-pressed="false">Wireless</button><button type="button" data-course-filter="mobile" aria-pressed="false">Mobile</button><button type="button" data-course-filter="iot" aria-pressed="false">IoT</button><button type="button" data-course-filter="cloud" aria-pressed="false">Cloud</button><button type="button" data-course-filter="cryptography" aria-pressed="false">Cryptography</button>
-          </div>
-          <p class="curriculum-status" id="curriculum-status" role="status" aria-live="polite"></p>
-          <div id="course-curriculum-list"></div>
-          <div class="curriculum-more"><button class="button button--ghost" type="button" id="show-full-curriculum" aria-expanded="false">View Full Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
-          <noscript><div class="course-noscript"><h3>Course curriculum</h3><p>Enable JavaScript to search, filter and expand the 50+ lesson learning program. The structured catalog includes four lab setup lessons and 21 numbered modules.</p></div></noscript>
-        </div>
-      </section>
-
-      <section class="section course-home-section section--tinted course-faq" id="faq" aria-labelledby="faq-heading">
-        <div class="container">
-          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Course questions</p><h2 id="faq-heading">Frequently Asked Questions</h2></div>
-          <div class="faq-list">
-            <details><summary>Is this suitable for beginners?</summary><p>Yes. It begins with virtualization and Kali Linux setup before introducing cybersecurity topics.</p></details>
-            <details><summary>Do I need previous experience?</summary><p>No. Basic computer knowledge is sufficient; networking knowledge is helpful.</p></details>
-            <details><summary>Is this an official CEH course?</summary><p>No. It is independent HackStark education and does not award EC Council certification.</p></details>
-            <details><summary>Does it include practical demonstrations?</summary><p>Yes. Lab demonstrations must only be reproduced in controlled, authorized environments.</p></details>
-            <details><summary>Is all content current?</summary><p>Foundational and legacy lessons are clearly labeled, with current official documentation linked where available.</p></details>
-            <details><summary>Can I practice on public websites?</summary><p>No. Use your own systems, intentionally vulnerable labs, CTFs or explicitly authorized targets only.</p></details>
-            <details><summary>Where is my course progress stored?</summary><p>Progress is stored only in your browser on this device. HackStark does not receive it, and you can reset it from the curriculum.</p></details>
-          </div>
-        </div>
-      </section>
-    </div>
-
     <!-- Founder Section -->
     <section class="section section--roomy" id="founder" aria-labelledby="founder-heading">
       <div class="container founder-layout">
@@ -842,12 +1173,12 @@
           <div class="founder-highlights" aria-label="Founder highlights">
             <a href="https://mahmedtalha.github.io/portfolio/#experience" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed Talha's professional experience"><strong class="stat-number" data-count-up>6+</strong><span>Years Experience</span></a>
             <a href="#experience" aria-label="View infrastructure experience supporting more than 400 workstations"><strong class="stat-number" data-count-up>400+</strong><span>Workstations Managed</span></a>
-            <a href="https://mahmedtalha.github.io/portfolio/#stats" target="_blank" rel="noopener noreferrer" data-founder-evidence="students" aria-label="Open professional profile for the 3,000 plus learners reached statistic"><strong class="stat-number" data-count-up data-statistic="trainedStudentsClaim">3,000+</strong><span>Learners Reached</span></a>
+            <a href="https://mahmedtalha.github.io/portfolio/#stats" target="_blank" rel="noopener noreferrer" data-founder-evidence="students" aria-label="Open professional profile for the 5,000 plus students trained statistic"><strong class="stat-number" data-count-up data-statistic="trainedStudentsClaim">5,000+</strong><span>Students Trained</span></a>
             <a href="https://mahmedtalha.github.io/portfolio/#projects" target="_blank" rel="noopener noreferrer" data-founder-evidence="projects" aria-label="Open professional projects for the 15 plus security tools and projects statistic"><strong class="stat-number" data-count-up data-statistic="securityToolsAndProjectsClaim">15+</strong><span>Security Tools &amp; Projects</span></a>
             <a href="#curriculum"><strong class="stat-number" data-count-up>50+</strong><span>Course Lessons</span></a>
           </div>
           <div class="founder-actions">
-            <a class="button button--primary" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">View Full Professional Portfolio <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
+            <a class="button button--primary" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">View Professional Portfolio <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
             <a class="button button--ghost" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf"><svg aria-hidden="true"><use href="#icon-download"></use></svg> Download Resume / CV</a>
             <a class="button button--ghost" href="https://linkedin.com/in/ahmedtalha470" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-linkedin"></use></svg> View LinkedIn <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
           </div>
@@ -880,10 +1211,11 @@
           <article><span>2025–2026</span><h4>IT Assistant Manager</h4><strong>Toyota Royal Motors · Rahim Yar Khan</strong><p>Managed three network environments, Windows/SQL servers, NAS, routers, endpoints, backup and disaster recovery, VNC support, Google Workspace, Time Office systems, IP CCTV/NVR and CyberSecurity awareness.</p></article>
           <article><span>2024–2025</span><h4>IT Assistant</h4><strong>Chaudhry Sugar Mills Ltd</strong><p>Led network and system upgrades across three weighbridges and 70+ workstations, supporting Active Directory, GPO, Windows, pfSense, MikroTik, Fortinet and NETGATE environments.</p></article>
           <article><span>2024</span><h4>CyberSecurity Internship Trainee</h4><strong>ITSOLERA PVT LTD</strong><p>Performed WAPT and vulnerability assessments, led Team Zeta in Red Team exercises, and developed Python/Bash OSINT, metadata, reconnaissance and analysis tools.</p></article>
-          <article><span>2026</span><h4>CyberSecurity Instructor</h4><strong>TechFly · Multan</strong><p>Delivers the 16-lecture CyberStart Level 1 program covering safe ethical-hacking practice, Linux, reconnaissance, VAPT, network defense, monitoring and authorized web-security labs.</p></article>
+          <article class="experience-oxege"><span>Training Partner Engagement · 2026</span><h4>CyberSecurity Specialist &amp; Instructor</h4><strong>Oxege Technologies</strong><p>Through this independent training partnership, delivers a three-month professional cybersecurity and ethical-hacking program spanning 32 modules and 587 topics.</p><a href="#oxege-training">View Oxege Program →</a></article>
+          <article class="experience-cyberstart"><span>Training Partner Engagement · 2026</span><h4>CyberSecurity Instructor / Trainer</h4><strong>TechFly, Multan</strong><p>Through this independent training partnership, delivers CyberStart Level 1 in an online two-month weekend format with supervised labs and a final practical assessment.</p><a href="#cyberstart">View CyberStart Curriculum →</a></article>
           <article><span>2022</span><h4>CyberSecurity Teaching Assistant</h4><strong>NAVTTC · IUB-RYK Campus</strong><p>Facilitated hands-on VAPT, network scanning, controlled exploitation and malware-analysis instruction while mentoring 50+ students.</p></article>
           <article><span>2024 · Additional technical experience</span><h4>Project &amp; IT Administration Roles</h4><strong>Prodigy InfoTech · CodeAlpha · DevCastle BuiltinSoft</strong><p>Built controlled-lab Python security tools, completed Python and CyberSecurity project work, and managed software-house IT support, lab operations, networking and office administration.</p></article>
-          <article><span>2021–2024</span><h4>Course Instructor</h4><strong>Udemy</strong><p>Developed and delivered 30+ hands-on CEH v11 modules and virtual labs for 3,000+ enrolled students.</p></article>
+          <article><span>2021–2024</span><h4>Course Instructor</h4><strong>Udemy</strong><p>Developed and delivered 30+ hands-on CEH v11 modules and virtual labs, contributing to 5,000+ students trained across his teaching work.</p></article>
         </div>
       </div>
 
@@ -957,7 +1289,7 @@
         <div class="cta-grid" aria-hidden="true"></div>
         <span class="mono-label">Your next step / Starts here</span>
         <h2>Ready to start learning?</h2>
-        <p>Begin with the structured course, track your progress locally and use the project collection to continue learning through real code.</p>
+        <p>Begin with the structured course, open the concise curriculum and use the project collection to continue learning through real code.</p>
         <div class="cta-actions">
           <a class="button button--light" href="#about-course"><svg aria-hidden="true"><use href="#icon-book"></use></svg> Start the Course</a>
           <a class="button button--outline-light" href="#curriculum"><svg aria-hidden="true"><use href="#icon-arrow"></use></svg> Browse Curriculum</a>
@@ -1013,7 +1345,7 @@
 
       <div class="payment-summary">
         <span>Ethical Hacking Course for Beginners</span>
-        <div><del>PKR 5,000 · USD $20</del><strong data-payment-current-price>PKR 1,999 · ₹799 INR · USD $7.99</strong></div>
+        <div><del>PKR 4,999 · USD $19.99</del><strong data-payment-current-price>PKR 1,999 · ₹799 INR · USD $7.99</strong></div>
       </div>
 
       <div class="payment-coupon" data-payment-coupon>
@@ -1050,9 +1382,9 @@
         <a class="footer-founder" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Founded and led by Muhammad Ahmed Talha <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
       </div>
       <div class="footer-links">
-        <div><h2>Explore</h2><a href="#about">About</a><a href="#projects">Projects</a><a href="#founder">Founder</a></div>
+        <div><h2>Explore</h2><a href="#about">About</a><a href="#projects">Projects</a><a href="#courses">Courses</a><a href="#founder">Founder</a></div>
         <div><h2>Connect</h2><a href="#founder">Founder</a><a href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Founder Portfolio ↗</a><a href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf">Download Resume / CV</a><a href="#community">Community &amp; Contact</a><a href="mailto:hackstarkofficial@gmail.com">Email</a></div>
-        <div><h2>Course</h2><a href="#about-course">Course Overview</a><a href="#learn">Free Previews</a><a href="#course-tools">25+ Tools</a><a href="#outcomes">Outcomes</a><a href="#curriculum">Curriculum</a><a href="#faq">FAQ</a></div>
+        <div><h2>Courses</h2><a href="#courses">All Programs</a><a href="#curriculum">HackStark Curriculum</a><a href="#cyberstart-curriculum">CyberStart Curriculum</a><a href="#oxege-training">Oxege Professional Program</a><a href="#oxege-curriculum">Oxege Curriculum</a></div>
         <div><h2>Legal</h2><a href="#responsible-security">Responsible Security</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
       </div>
     </div>

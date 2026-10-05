@@ -1,6 +1,6 @@
 # HackStark Official Website
 
-A lightweight, responsive website for HackStark—a cybersecurity education and open-source organization that grew from a learning community founded in 2015.
+A lightweight, responsive website for HackStark—a cybersecurity education and open-source organization that grew from a learning community founded in 2018.
 
 ## Technology
 

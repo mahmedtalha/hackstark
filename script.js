@@ -51,9 +51,9 @@
     },
 
     arrangePrimarySections() {
-      const course = document.querySelector("#course-top");
+      const faq = document.querySelector("#faq");
       const projects = document.querySelector("#projects");
-      if (course && projects && course.nextElementSibling !== projects) projects.before(course);
+      if (faq && projects && faq.nextElementSibling !== projects) faq.after(projects);
     },
 
     applyConfiguredLinks() {

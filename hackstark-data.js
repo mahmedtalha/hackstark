@@ -48,10 +48,10 @@
     level: "Beginner",
     delivery: "Self paced",
     currency: "PKR",
-    originalPrice: 5000,
+    originalPrice: 4999,
     price: 1999,
     usdCurrency: "USD",
-    usdOriginalPrice: 20,
+    usdOriginalPrice: 19.99,
     usdPrice: 7.99,
     inrCurrency: "INR",
     inrPrice: 799,
@@ -212,14 +212,227 @@
     })
   });
 
+  const cyberStartLecture = (number, title, learningArea, topics) => Object.freeze({
+    number, title, learningArea, durationMinutes: 60, topics: Object.freeze(topics)
+  });
+
+  const cyberStartCourse = Object.freeze({
+    id: "cyberstart-level-1",
+    name: "CyberStart Level 1",
+    subtitle: "Cybersecurity Foundation Program",
+    provider: "TechFly",
+    relationship: "Independent training partner",
+    location: "Multan",
+    instructor: "Muhammad Ahmed Talha",
+    instructorRole: "CyberSecurity Instructor / Trainer",
+    employmentType: "Part-Time / Contract",
+    year: 2026,
+    deliveryMode: "Online Instructor-Led Weekend Training",
+    batchDuration: "2 Months",
+    schedule: "Friday, Saturday & Sunday · 7:00 PM–8:30 PM PKT",
+    currency: "PKR",
+    originalPrice: 24999,
+    price: 9999,
+    approximateUsdPrice: 35.99,
+    approximateInrPrice: 3499,
+    durationHours: 16,
+    lectureCount: 16,
+    topicCount: 51,
+    level: "Foundation Level",
+    description: "A focused cybersecurity foundation program covering cybersecurity fundamentals, Linux, ethical hacking, network scanning, Fortinet-oriented firewall and network security, cyber defense, practical labs, real-world case studies and career development.",
+    deliveryDescription: "The program combines concepts, demonstrations, supervised laboratory exercises, applied discussion and a final practical assessment.",
+    learningAreas: Object.freeze([
+      "Introduction to Cybersecurity", "Linux Fundamentals", "Ethical Hacking Basics",
+      "Firewall & Network Security (Fortinet)", "Cyber Defense & Threat Prevention",
+      "Hands-on Practical Labs", "Real-world Case Studies", "Career Guidance & Next Steps"
+    ]),
+    tools: Object.freeze([
+      "Kali Linux", "VMware", "APT", "dpkg", "Nmap", "Nmap NSE", "Nikto", "OpenVAS",
+      "VLANs", "ACLs", "DMZ", "FortiGate", "NGFW", "NAC", "IPsec VPN", "SSL VPN",
+      "DNS Security", "DHCP Security", "Antivirus", "EDR/XDR", "Snort", "Suricata",
+      "Wireshark", "DVWA", "WebGoat", "OWASP Juice Shop", "Burp Suite", "OWASP ZAP"
+    ]),
+    practicalLabs: Object.freeze([
+      "Vulnerability Assessment Practical", "Wireshark Network Analysis Practical",
+      "Web Application Security Practical", "Integrated Practical Assessment"
+    ]),
+    safetyNotice: "Practical exercises are intended only for isolated laboratory environments, systems owned by the learner, or systems for which explicit authorization has been provided.",
+    assessment: Object.freeze({
+      title: "Integrated Practical Assessment",
+      areas: Object.freeze(["Network discovery", "Service identification", "Vulnerability assessment", "Defensive review", "Security analysis", "Findings", "Remediation report"])
+    }),
+    outcomes: Object.freeze([
+      "Explain core cybersecurity and information-security concepts, including the CIA triad and basic security principles.",
+      "Use Kali Linux in an isolated virtual lab and work with Linux users, permissions, files and packages.",
+      "Understand authorization, ethical-hacking scope and safe laboratory practice.",
+      "Perform introductory information gathering, reconnaissance, Nmap scanning and enumeration.",
+      "Understand vulnerability assessment, findings validation, evidence and remediation.",
+      "Understand network segmentation, VLANs, ACLs, DMZ architecture and FortiGate firewall fundamentals.",
+      "Understand VPN, DNS and DHCP security fundamentals.",
+      "Recognize malware and ransomware risks, endpoint defense, IDS/IPS and security-monitoring concepts.",
+      "Analyze network traffic using Wireshark and document suspicious findings.",
+      "Practice web-security assessment in intentionally vulnerable training applications.",
+      "Document security findings and remediation.",
+      "Understand cybersecurity career paths and skill-development options."
+    ]),
+    lectures: Object.freeze([
+      cyberStartLecture("01", "Cybersecurity Fundamentals", "Introduction to Cybersecurity", [
+        "1.1 Cybersecurity, Information Security & Ethical Hacking Overview",
+        "1.2 CIA Triad - Confidentiality, Integrity & Availability",
+        "1.3 Authentication, Authorization, Accountability & Non-Repudiation",
+        "1.4 Threats, Vulnerabilities, Risks, Exploits & Attack Surfaces"
+      ]),
+      cyberStartLecture("02", "Linux Fundamentals", "Linux Fundamentals", [
+        "2.1 Virtualization Overview & Installing Kali Linux on VMware",
+        "2.2 Kali Linux Repositories, Users, Updates & Basic System Setup",
+        "2.3 Linux Users, Groups, Files, Directories & Permissions",
+        "2.4 Linux File System Structure & Essential Directories"
+      ]),
+      cyberStartLecture("03", "Linux Package Management", "Linux Fundamentals", [
+        "3.1 Linux Package Management Fundamentals - APT & dpkg",
+        "3.2 Installing, Updating & Upgrading Linux Packages",
+        "3.3 Removing Packages, Dependencies & Package Maintenance"
+      ]),
+      cyberStartLecture("04", "Ethical Hacking Foundations", "Ethical Hacking Basics", [
+        "4.1 Ethical Hacking Ethics, Authorization, Scope & Lab Safety",
+        "4.2 Hacker Types, Attack Categories & Ethical Hacking Phases",
+        "4.3 Black-Box, Gray-Box & White-Box Testing",
+        "4.4 Isolated Ethical Hacking Lab, VM Networking & Snapshots"
+      ]),
+      cyberStartLecture("05", "Reconnaissance, Network Scanning & Enumeration", "Ethical Hacking Basics", [
+        "5.1 Information Gathering, Footprinting & Reconnaissance",
+        "5.2 Network Scanning with Nmap - Host Discovery, Ports, Services & Version Detection",
+        "5.3 Enumeration Fundamentals & Service Identification",
+        "5.4 Nmap NSE & Basic Network Service Enumeration"
+      ]),
+      cyberStartLecture("06", "Vulnerability Assessment Practical", "Hands-on Practical Labs", [
+        "6.1 Vulnerability Scanning vs Vulnerability Assessment vs Penetration Testing",
+        "6.2 Network & Web Vulnerability Discovery with Nmap & Nikto",
+        "6.3 OpenVAS Vulnerability Assessment - Findings Validation, Severity, False Positives, Evidence & Remediation"
+      ]),
+      cyberStartLecture("07", "Secure Network Architecture", "Firewall & Network Security (Fortinet)", [
+        "7.1 Secure Network Architecture & Network Segmentation Fundamentals",
+        "7.2 VLANs & Access Control Lists - ACLs",
+        "7.3 DMZ Architecture & Controlled Service Exposure"
+      ]),
+      cyberStartLecture("08", "Fortinet / FortiGate Firewall Security", "Firewall & Network Security (Fortinet)", [
+        "8.1 Firewall Types, NGFW Concepts & FortiGate Security Fundamentals",
+        "8.2 Firewall Policies, Rule Management & Secure Configuration",
+        "8.3 Network Access Control - NAC & Access Security Fundamentals"
+      ]),
+      cyberStartLecture("09", "VPN & Core Network Services Security", "Firewall & Network Security (Fortinet)", [
+        "9.1 VPN Fundamentals, IPsec/SSL VPN & Secure Remote Access",
+        "9.2 DNS Security Fundamentals",
+        "9.3 DHCP Security Fundamentals"
+      ]),
+      cyberStartLecture("10", "Malware, Ransomware & Endpoint Defense", "Cyber Defense & Threat Prevention", [
+        "10.1 Malware & Ransomware Threats - Malware Types & Indicators of Compromise",
+        "10.2 Endpoint Protection - Antivirus, EDR/XDR, Application Allowlisting & Security Baselines",
+        "10.3 Malware & Ransomware Detection, Prevention & Recovery"
+      ]),
+      cyberStartLecture("11", "IDS/IPS & Security Monitoring", "Cyber Defense & Threat Prevention", [
+        "11.1 IDS/IPS Concepts, Traffic Inspection, Snort & Suricata Fundamentals",
+        "11.2 Security Logs, Events, Alerts & Monitoring Fundamentals",
+        "11.3 Detection Logic, IOC/Behavior-Based Detection & Alert Triage"
+      ]),
+      cyberStartLecture("12", "Wireshark Network Analysis Practical", "Hands-on Practical Labs", [
+        "12.1 Wireshark Packet Capture & Network Traffic Analysis Fundamentals",
+        "12.2 Capture Filters, Display Filters & Protocol Analysis",
+        "12.3 Identifying Suspicious Network Traffic & Documenting Findings"
+      ]),
+      cyberStartLecture("13", "Web Application Security Practical", "Hands-on Practical Labs", [
+        "13.1 Web Security Lab Setup - DVWA, WebGoat & OWASP Juice Shop",
+        "13.2 Web Application Testing with Burp Suite & OWASP ZAP",
+        "13.3 Vulnerability Identification, Evidence & Remediation"
+      ]),
+      cyberStartLecture("14", "Real-World Cybersecurity Case Studies", "Real-world Case Studies", [
+        "14.1 Vulnerability Assessment & Web Security Case Study",
+        "14.2 Network, Firewall & Cyber Defense Case Study",
+        "14.3 SOC Incident Response, Lessons Learned & Remediation"
+      ]),
+      cyberStartLecture("15", "Cybersecurity Career Guidance & Skill Development", "Career Guidance & Next Steps", [
+        "15.1 Cybersecurity Career Paths & Role Selection",
+        "15.2 Practical Skill Development - Home Labs, CTFs, Portfolio & GitHub",
+        "15.3 Interviews, Certifications & Continuous Learning Roadmap"
+      ]),
+      cyberStartLecture("16", "Integrated Practical Assessment", "Hands-on Practical Labs / Next Steps", [
+        "16.1 Integrated Cybersecurity Practical - Network Discovery, Service Identification, Vulnerability Assessment & Defensive Review",
+        "16.2 Security Analysis, Findings & Remediation Report"
+      ])
+    ])
+  });
+
+  const oxegeSource = window.oxegeCurriculumSource;
+  const oxegeCybersecurityProgram = Object.freeze({
+    id: "oxege-professional-cybersecurity",
+    name: "Professional Cybersecurity & Ethical Hacking Program",
+    shortName: "Oxege Professional Cybersecurity Program",
+    subtitle: "CEH v13 / CEH AI-Aligned Curriculum",
+    organization: "Oxege Technologies",
+    relationship: "Independent training partner",
+    location: "Rahim Yar Khan, Pakistan",
+    instructor: "Muhammad Ahmed Talha",
+    role: "CyberSecurity Specialist & Instructor",
+    employmentType: "Part-Time / Contract",
+    year: 2026,
+    deliveryMode: "Online & Physical Instructor-Led Training",
+    physicalLocation: "Rahim Yar Khan",
+    currency: "PKR",
+    originalPrice: 89999,
+    price: 44999,
+    approximateUsdPrice: 159,
+    approximateInrPrice: 15499,
+    duration: "Three-Month Program",
+    alignment: "Curriculum aligned with CEH v13 / CEH AI topics",
+    officialDisclaimer: "This is an independent professional cybersecurity curriculum aligned with relevant CEH v13 / CEH AI subject areas. It is not presented as official EC-Council courseware or an EC-Council-authorized training program.",
+    coreModuleCount: 20,
+    professionalModuleCount: 12,
+    moduleCount: 32,
+    introductorySectionCount: 2,
+    topicCount: 587,
+    audience: Object.freeze(["Beginners", "Students", "Job seekers", "Aspiring cybersecurity professionals"]),
+    description: "A three-month instructor-led cybersecurity and ethical-hacking training program delivered in partnership with the independent organization Oxege Technologies, combining a CEH v13 / CEH AI-aligned ethical-hacking core with broader professional cybersecurity coverage across defensive security, SOC/SIEM, threat hunting, DFIR, cloud security, DevSecOps, AI security, practical assessments, reporting and career development.",
+    safetyNotice: "All offensive-security exercises, attack simulations, exploitation, password auditing, wireless testing, malware analysis, DoS simulation, social-engineering simulation and related activities are intended only for systems owned by the learner or systems for which explicit written authorization has been provided, preferably inside isolated lab environments.",
+    tracks: Object.freeze([
+      Object.freeze({ id: "core", number: "01", name: "CEH v13 / CEH AI-Aligned Core", moduleCount: 20, topics: Object.freeze(["Ethical hacking", "Reconnaissance", "Scanning", "Enumeration", "Vulnerability analysis", "System security", "Malware", "Network analysis", "Social engineering", "Availability", "Session security", "Network defense", "Web & API", "SQL", "Wireless", "Mobile", "IoT/OT", "Cloud", "Cryptography"]) }),
+      Object.freeze({ id: "professional", number: "02", name: "Professional Cybersecurity", moduleCount: 12, topics: Object.freeze(["GRC", "Network infrastructure", "IAM", "Endpoint security", "SOC/SIEM", "Threat intelligence", "Threat hunting", "DFIR", "Backup/DR", "DevSecOps", "AI security", "Penetration testing", "Purple team", "Reporting", "Career development"]) })
+    ]),
+    outcomeGroups: Object.freeze([
+      Object.freeze({ name: "Offensive Security", topics: Object.freeze(["Ethical hacking methodology", "Reconnaissance, scanning & enumeration", "Vulnerability assessment", "Authorized penetration testing", "Web/API & wireless security"]) }),
+      Object.freeze({ name: "Defensive Security", topics: Object.freeze(["Security hardening", "Endpoint & malware defense", "IDS/IPS & firewall architecture", "Detection & monitoring"]) }),
+      Object.freeze({ name: "Security Operations", topics: Object.freeze(["SOC & SIEM fundamentals", "Alert triage & detection logic", "Threat hunting", "Threat intelligence"]) }),
+      Object.freeze({ name: "Incident Response & DFIR", topics: Object.freeze(["Incident handling", "Evidence fundamentals", "Disk, memory & network forensics", "Forensic reporting"]) }),
+      Object.freeze({ name: "Enterprise Security", topics: Object.freeze(["GRC", "IAM & Active Directory", "Network security", "Backup, disaster recovery & continuity"]) }),
+      Object.freeze({ name: "Modern Security", topics: Object.freeze(["Cloud, containers & Kubernetes", "DevSecOps & software supply chain", "AI & machine learning security"]) }),
+      Object.freeze({ name: "Professional Development", topics: Object.freeze(["Assessment methodology", "Reporting & capstones", "Portfolio & GitHub projects", "Interviews & career roadmaps"]) })
+    ]),
+    toolGroups: Object.freeze([
+      Object.freeze({ name: "Reconnaissance", tools: Object.freeze(["Nmap", "Masscan", "SpiderFoot", "theHarvester", "Shodan"]) }),
+      Object.freeze({ name: "Vulnerability Management", tools: Object.freeze(["Nikto", "OpenVAS", "Nessus", "Rapid7 InsightVM"]) }),
+      Object.freeze({ name: "System Security", tools: Object.freeze(["John the Ripper", "Hashcat", "Hydra", "Metasploit", "BloodHound"]) }),
+      Object.freeze({ name: "Network & Defense", tools: Object.freeze(["Wireshark", "Snort", "Suricata", "Cowrie", "FortiGate", "pfSense"]) }),
+      Object.freeze({ name: "Web Security", tools: Object.freeze(["Burp Suite", "OWASP ZAP", "DVWA", "WebGoat", "OWASP Juice Shop", "sqlmap"]) }),
+      Object.freeze({ name: "Malware / DFIR", tools: Object.freeze(["Ghidra", "YARA", "Autopsy", "Volatility"]) }),
+      Object.freeze({ name: "SOC / SIEM", tools: Object.freeze(["Wazuh", "Splunk", "Elastic Security", "Security Onion", "Sigma"]) }),
+      Object.freeze({ name: "Mobile", tools: Object.freeze(["ADB", "JADX", "APKTool", "MobSF", "Frida"]) }),
+      Object.freeze({ name: "Cloud / DevSecOps", tools: Object.freeze(["AWS", "Azure", "Google Cloud", "Docker", "Trivy", "Kubernetes"]) })
+    ]),
+    curriculum: oxegeSource || Object.freeze({ counts: Object.freeze({}), sections: Object.freeze([]) }),
+    sources: Object.freeze(["EC-Council CEH program", "NIST Cybersecurity Framework 2.0", "MITRE ATT&CK", "OWASP API Security Project"])
+  });
+
   const data = {
     organization: Object.freeze({
       name: "HackStark",
       type: "Cybersecurity education and open source organization",
       email: "hackstarkofficial@gmail.com",
       description: "An independent cybersecurity education and open source organization focused on practical, ethical and responsible security learning.",
-      origin: "HackStark began as a cybersecurity learning community in 2015 and has since evolved into an organization while preserving its community roots."
+      origin: "HackStark began as a cybersecurity learning community in 2018 and has since evolved into an organization while preserving its community roots."
     }),
+    trainingPartners: Object.freeze([
+      Object.freeze({ name: "TechFly", relationship: "Independent training partner", program: "CyberStart Level 1" }),
+      Object.freeze({ name: "Oxege Technologies", relationship: "Independent training partner", program: "Professional Cybersecurity & Ethical Hacking Program" })
+    ]),
     founder: Object.freeze({
       name: "Muhammad Ahmed Talha",
       title: "Founder & CEO of HackStark",
@@ -250,12 +463,13 @@
       Object.freeze({ role: "IT Assistant Manager", organization: "Toyota Royal Motors", location: "Rahim Yar Khan", period: "2025 – 2026", summary: "Managed three network environments, SQL-based Windows servers, NAS, routers, endpoints, backup and disaster recovery, centralized VNC support, Google Workspace, attendance systems, IP CCTV/NVR and staff CyberSecurity awareness." }),
       Object.freeze({ role: "IT Assistant", organization: "Chaudhry Sugar Mills Ltd", period: "2024 – 2025", summary: "Led network and system upgrades across three weighbridges and 70+ workstations; supported Active Directory, Group Policy, Windows, pfSense, MikroTik, Fortinet and NETGATE environments." }),
       Object.freeze({ role: "Internship Trainee (CyberSecurity)", organization: "ITSOLERA PVT LTD", period: "2024", summary: "Performed web application penetration testing and vulnerability assessment, led Team Zeta in Red Team exercises, and built Python/Bash OSINT, metadata and reconnaissance tools." }),
-      Object.freeze({ role: "CyberSecurity Instructor", organization: "TechFly, Multan", period: "2026", summary: "Delivers the 16-lecture CyberStart Level 1 program covering safe ethical-hacking practice, Linux, recon, VAPT, networks, firewalls, monitoring and authorized web-security labs." }),
+      Object.freeze({ role: "CyberSecurity Specialist & Instructor", organization: "Oxege Technologies", employmentType: "Training Partner Engagement", period: "2026", summary: "Through an independent training partnership, delivers a three-month professional cybersecurity and ethical-hacking program with 32 modules and 587 topics." }),
+      Object.freeze({ role: "CyberSecurity Instructor / Trainer", organization: "TechFly, Multan", employmentType: "Training Partner Engagement", period: "2026", summary: "Through an independent training partnership, delivers CyberStart Level 1 in an online two-month weekend format with supervised labs and a final practical assessment." }),
       Object.freeze({ role: "Teaching Assistant (CyberSecurity)", organization: "NAVTTC, IUB-RYK Campus", period: "2022", summary: "Facilitated hands-on VAPT, scanning, controlled exploitation and malware-analysis instruction while mentoring 50+ students." }),
       Object.freeze({ role: "CyberSecurity Project Intern", organization: "Prodigy InfoTech", period: "2024", summary: "Developed controlled-lab Python tools for image encryption, packet analysis and endpoint event capture." }),
       Object.freeze({ role: "Project Experience", organization: "CodeAlpha", period: "2024", summary: "Completed Python and CyberSecurity-focused project work as additional technical experience." }),
       Object.freeze({ role: "IT Administration", organization: "DevCastle BuiltinSoft", period: "2024", summary: "Managed IT support, computer-lab operations, network configuration and office administration for a software house." }),
-      Object.freeze({ role: "Course Instructor", organization: "Udemy", period: "2021 – 2024", summary: "Developed and delivered 30+ hands-on CEH v11 modules and virtual labs for 3,000+ enrolled students." }),
+      Object.freeze({ role: "Course Instructor", organization: "Udemy", period: "2021 – 2024", summary: "Developed and delivered 30+ hands-on CEH v11 modules and virtual labs, contributing to 5,000+ students trained across his teaching work." }),
       Object.freeze({ role: "Founder & CEO", organization: "HackStark", period: "Ongoing", summary: "Leads CyberSecurity education, open-source initiatives, research, practical labs and a structured beginner ethical-hacking course with 50+ lessons covering 25+ tools and platforms." })
     ]),
     founderTraining: Object.freeze([
@@ -271,7 +485,9 @@
     projects: Object.freeze(projects),
     portfolioProjects: Object.freeze(portfolioProjects),
     videos: Object.freeze(videos),
-    courses: Object.freeze([ethicalHackingCourse]),
+    courses: Object.freeze([ethicalHackingCourse, cyberStartCourse, oxegeCybersecurityProgram]),
+    cyberStartCourse,
+    oxegeCybersecurityProgram,
     focusAreas: Object.freeze(["Ethical hacking and penetration testing", "Network security", "IoT and wireless security", "OSINT and reconnaissance", "Security automation", "Linux and controlled security labs"]),
     securityWorkflow: Object.freeze([
       Object.freeze({ id: "understand", number: "01", name: "Understand", summary: "Concept & scope", label: "Security mindset / Understand", title: "Understand before applying.", description: "Learn the concept, ethical scope and defensive purpose before using a technique." }),
@@ -279,8 +495,8 @@
       Object.freeze({ id: "harden", number: "03", name: "Harden", summary: "Defensive action", label: "Security mindset / Harden", title: "Strengthen defenses.", description: "Remediate findings, verify fixes and document defensive evidence." })
     ]),
     courseAreas: Object.freeze(["virtualization and Kali Linux lab setup", "ethical hacking foundations and authorization", "footprinting, reconnaissance and OSINT", "network scanning and enumeration", "vulnerability analysis", "system and endpoint security", "malware threats and defensive analysis", "traffic analysis and sniffing", "social engineering awareness", "denial of service resilience", "session security", "IDS, firewalls and honeypots", "web server and web application security", "DVWA, WebGoat, XSS and SQL injection concepts", "wireless security", "mobile platform security", "IoT security", "cloud computing and VPS fundamentals", "cryptography", "continued research and responsible practice"]),
-    statistics: Object.freeze({ snapshotDate: "2026-09-07", publicRepositories: projects.length, projectRecords: "15+", githubFollowers: 9, publicGists: 0, featuredVideos: videos.length, courseLessons: 50, courseModules: 21, labLessons: 4, linkedCourseLessons: 4, experienceClaim: "6+", managedWorkstationsClaim: "400+", trainedStudentsClaim: "3,000+", securityToolsAndProjectsClaim: "15+" }),
-    history: Object.freeze({ source: "HackStark.txt", communitySince: 2015, originalDescription: "A community sharing knowledge of IoT (Internet of Things) in penetration testing.", originalGoal: "Teach people what they can do with their gadgets, improve their internet skills and develop clearer concepts about hacking and the internet.", learningPromise: "No previous programming experience is needed to begin the ethical hacking learning path.", historicalHandles: Object.freeze({ facebook: "facebook.com/hackstarkofficial", telegramGroup: "@hackstarkk", telegramChannel: "@hackstarkofficial", instagram: "@hackstark", github: "@hackstarkofficial", twitter: "@HackStarkk" }), historicalWhatsAppCommunities: Object.freeze(["HackStark Official", "HackStark 2.O Official", "Hacking Courses 4 Free"]) }),
+    statistics: Object.freeze({ snapshotDate: "2026-09-07", publicRepositories: projects.length, projectRecords: "15+", githubFollowers: 9, publicGists: 0, featuredVideos: videos.length, courseLessons: 50, courseModules: 21, labLessons: 4, linkedCourseLessons: 4, experienceClaim: "6+", managedWorkstationsClaim: "400+", trainedStudentsClaim: "5,000+", securityToolsAndProjectsClaim: "15+" }),
+    history: Object.freeze({ source: "HackStark.txt", communitySince: 2018, originalDescription: "A community sharing knowledge of IoT (Internet of Things) in penetration testing.", originalGoal: "Teach people what they can do with their gadgets, improve their internet skills and develop clearer concepts about hacking and the internet.", learningPromise: "No previous programming experience is needed to begin the ethical hacking learning path.", historicalHandles: Object.freeze({ facebook: "facebook.com/hackstarkofficial", telegramGroup: "@hackstarkk", telegramChannel: "@hackstarkofficial", instagram: "@hackstark", github: "@hackstarkofficial", twitter: "@HackStarkk" }), historicalWhatsAppCommunities: Object.freeze(["HackStark Official", "HackStark 2.O Official", "Hacking Courses 4 Free"]) }),
     runtime: { repositories: null, githubLoadedAt: null }
   };
 

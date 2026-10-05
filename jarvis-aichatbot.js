@@ -16,6 +16,10 @@
     learn: onCoursePage ? "#course-top" : "#learn",
     course: "#course-top",
     curriculum: "#curriculum",
+    cyberstart: homeSection("#cyberstart"),
+    cyberstartCurriculum: homeSection("#cyberstart-curriculum"),
+    oxege: homeSection("#oxege-training"),
+    oxegeCurriculum: homeSection("#oxege-curriculum"),
     founder: homeSection("#founder"),
     experience: homeSection("#experience"),
     credentials: homeSection("#credentials"),
@@ -41,6 +45,9 @@
   const VIDEOS = DATA.videos;
   const COURSE_AREAS = DATA.courseAreas;
   const BEGINNER_COURSE = DATA.courses?.find((item) => item.id === "ethical-hacking-beginners");
+  const CYBERSTART = DATA.cyberStartCourse || DATA.courses?.find((item) => item.id === "cyberstart-level-1");
+  const OXEGE = DATA.oxegeCybersecurityProgram || DATA.courses?.find((item) => item.id === "oxege-professional-cybersecurity");
+  const TRAINING_PARTNERS = DATA.trainingPartners || [];
   const LINKED_COURSE_LESSONS = BEGINNER_COURSE?.sections
     .flatMap((section) => section.modules)
     .flatMap((module) => module.lessons)
@@ -129,13 +136,45 @@
         return response("HackStark’s current visual identity uses the circular HackStark artwork featuring two masked figures, a shield, circuit details and the blue-to-green HackStark wordmark. The same artwork is used for the site header, footer, sign-in experience, browser favicon, Apple touch icon, Android/PWA icons and social preview. The website pairs it with near-black navy surfaces, emerald-green actions and cyan-blue highlights.", [action("See HackStark", URLS.about)]);
       }
 
-      if (includesAny(q, ["history", "started", "start year", "when did", "founded", "since 2015", "how old", "visual roots", "identity"])) {
+      if (includesAny(q, ["history", "started", "start year", "when did", "founded", "since 2018", "how old", "visual roots", "identity"])) {
         return response(`According to ${HISTORICAL_PROFILE.source}, HackStark has been active since ${HISTORICAL_PROFILE.communitySince}. It began as a penetration testing learning community centered on IoT knowledge, gadgets and clearer internet skills. HackStark has since evolved into a cybersecurity education and open source organization while retaining its community roots. The public GitHub account was created on 19 May 2020.`, [
           action("See visual roots", URLS.about), action("Meet the founder", URLS.founder)
         ]);
       }
 
-      if (includesAny(q, ["professional experience", "work experience", "career", "employment", "resume", "cv", "toyota", "sugar mills", "itsolera", "techfly", "navttc", "udemy", "devcastle", "codealpha", "prodigy infotech"])) {
+      if (includesAny(q, ["partner", "partners", "partnership", "owned by", "own company", "own companies", "hackstark own", "relationship with techfly", "relationship with oxege"])) {
+        return response(`Muhammad Ahmed Talha works with two independent training partners: ${TRAINING_PARTNERS.map((partner) => partner.name).join(" and ")}. TechFly partners on ${CYBERSTART.name}, while Oxege Technologies partners on ${OXEGE.name}. Neither company is owned by Muhammad Ahmed Talha or HackStark.`, [action("Compare partner programs", homeSection("#courses")), action("Training experience", URLS.experience)]);
+      }
+
+      if (includesAny(q, ["oxege", "professional cybersecurity program", "ceh v13", "ceh ai", "587 topics", "three month program", "3 month program"])) {
+        if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${OXEGE.name} is listed at PKR ${OXEGE.price.toLocaleString("en-US")} after a reduction from PKR ${OXEGE.originalPrice.toLocaleString("en-US")}. Approximate international prices are USD $${OXEGE.approximateUsdPrice} or ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
+        if (includesAny(q, ["online", "physical", "classroom", "rahim yar khan", "location", "venue"])) return response(`${OXEGE.name} is available online and as physical instructor-led classes in ${OXEGE.physicalLocation}.`, [action("Oxege program", URLS.oxege)]);
+        if (includesAny(q, ["official", "authorized", "ec council", "certification", "accredited"])) return response(`${OXEGE.name} is independent professional training aligned with relevant CEH v13 / CEH AI subject areas. It is not official EC-Council courseware, is not presented as an EC-Council-authorized training program, and this website does not claim that it awards CEH certification.`, [action("Program context", URLS.oxege), action("Full curriculum", URLS.oxegeCurriculum)]);
+        if (includesAny(q, ["who teach", "instructor", "specialist", "provider", "where", "employment", "contract", "partner"])) return response(`${OXEGE.name} is delivered with independent training partner ${OXEGE.organization} by ${OXEGE.instructor}, ${OXEGE.role}. Oxege Technologies is not owned by HackStark. The engagement is listed for ${OXEGE.year}.`, [action("Oxege program", URLS.oxege), action("Instructor experience", URLS.experience)]);
+        if (includesAny(q, ["tool", "platform", "software"])) return response(`${OXEGE.name} references tools across ${OXEGE.toolGroups.length} practice groups, including ${OXEGE.toolGroups.flatMap((group) => group.tools).slice(0, 18).join(", ")}, and more. These are curriculum references for controlled, authorized learning.`, [action("Tools and curriculum", URLS.oxege), action("Responsible use", URLS.responsible)]);
+        if (includesAny(q, ["curriculum", "module", "topic", "outline", "cover", "how many", "track"])) return response(`${OXEGE.name} is a ${OXEGE.duration.toLowerCase()} with ${OXEGE.moduleCount} numbered modules and ${OXEGE.topicCount} topics, plus Course Introduction and Cybersecurity Lab Setup. Part I contains ${OXEGE.coreModuleCount} CEH v13 / CEH AI-aligned core modules; Part II contains ${OXEGE.professionalModuleCount} professional cybersecurity modules.`, [action("Search all 587 topics", URLS.oxegeCurriculum)]);
+        return response(`${OXEGE.name} is a ${OXEGE.duration.toLowerCase()} delivered with independent training partner ${OXEGE.organization}. Its ${OXEGE.moduleCount} modules and ${OXEGE.topicCount} topics connect ethical hacking with defensive security, SOC/SIEM, threat hunting, DFIR, enterprise security, cloud, DevSecOps, AI security, capstones and professional reporting. Oxege Technologies is not owned by HackStark.`, [action("Explore Oxege program", URLS.oxege), action("View curriculum", URLS.oxegeCurriculum)]);
+      }
+
+      if (includesAny(q, ["three courses", "three programs", "all courses", "all programs", "compare courses", "compare programs", "course options"])) {
+        return response(`The site presents three programs in this order:\n• HackStark — ${BEGINNER_COURSE.name}: PKR ${BEGINNER_COURSE.price.toLocaleString("en-US")}\n• Training partner TechFly — ${CYBERSTART.name}: PKR ${CYBERSTART.price.toLocaleString("en-US")}\n• Training partner Oxege Technologies — ${OXEGE.name}: PKR ${OXEGE.price.toLocaleString("en-US")}, available online and through physical classes in ${OXEGE.physicalLocation}\nTechFly and Oxege Technologies are independent partner organizations, not HackStark-owned companies.`, [action("All program boxes", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
+      }
+
+      if (includesAny(q, ["cyberstart", "cyber start", "techfly"])) {
+        const asksDifference = includesAny(q, ["same", "difference", "ethical hacking course", "hackstark course", "separate"]);
+        if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${CYBERSTART.name} is listed at PKR ${CYBERSTART.price.toLocaleString("en-US")} after a reduction from PKR ${CYBERSTART.originalPrice.toLocaleString("en-US")}. Approximate international prices are USD $${CYBERSTART.approximateUsdPrice} or ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("CyberStart curriculum", URLS.cyberstartCurriculum)]);
+        if (includesAny(q, ["schedule", "timing", "time", "weekend", "days", "online", "batch"])) return response(`${CYBERSTART.name} is presented as an online ${CYBERSTART.batchDuration.toLowerCase()} weekend batch delivered with training partner TechFly. The listed schedule is ${CYBERSTART.schedule}.`, [action("TechFly program", URLS.cyberstart), action("View curriculum", URLS.cyberstartCurriculum)]);
+        if (asksDifference) return response(`No. ${CYBERSTART.name}, the ${BEGINNER_COURSE.name}, and the Oxege professional program are separate. CyberStart is a ${CYBERSTART.durationHours}-hour instructor-led foundation program delivered with independent training partner TechFly. The HackStark course is HackStark's self-paced beginner program with ${BEGINNER_COURSE.videoLessonCount}+ lessons. Oxege is an independent training partner for the three-month professional program with ${OXEGE.moduleCount} modules and ${OXEGE.topicCount} topics.`, [action("CyberStart", URLS.cyberstart), action("All programs", homeSection("#courses"))]);
+        if (includesAny(q, ["tool", "technology", "platform"])) return response(`${CYBERSTART.name} includes curriculum-supported technologies and concepts such as ${CYBERSTART.tools.join(", ")}. Tools are used only in supervised, authorized labs and intentionally vulnerable training environments where applicable.`, [action("Explore CyberStart", URLS.cyberstart), action("Responsible use", URLS.responsible)]);
+        if (includesAny(q, ["assessment", "final practical", "final exam"])) return response(`${CYBERSTART.assessment.title} is Lecture 16. It covers ${CYBERSTART.assessment.areas.join(", ")}. The source curriculum does not state a grade, certificate or accreditation.`, [action("View Lecture 16", URLS.cyberstartCurriculum)]);
+        if (includesAny(q, ["lab", "practical", "hands on", "hands-on"])) return response(`Yes. ${CYBERSTART.name} includes supervised, authorized laboratory exercises: ${CYBERSTART.practicalLabs.join("; ")}. Web-security practice uses intentionally vulnerable training environments such as DVWA, WebGoat and OWASP Juice Shop. ${CYBERSTART.safetyNotice}`, [action("Practical labs", URLS.cyberstart), action("Responsible use", URLS.responsible)]);
+        if (includesAny(q, ["who teach", "instructor", "trainer", "where", "delivered", "techfly", "multan", "partner"])) return response(`${CYBERSTART.name} is delivered by ${CYBERSTART.instructor}, ${CYBERSTART.instructorRole}, with independent training partner ${CYBERSTART.provider} in ${CYBERSTART.location}. TechFly is not owned by HackStark. The partner engagement is listed for ${CYBERSTART.year}.`, [action("Training experience", URLS.experience), action("CyberStart", URLS.cyberstart)]);
+        if (includesAny(q, ["cover", "topic", "curriculum", "lecture", "how many", "outline"])) return response(`${CYBERSTART.name} contains ${CYBERSTART.lectureCount} lectures, ${CYBERSTART.durationHours} total hours and ${CYBERSTART.topicCount} topics. Its learning areas are:
+${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("Full 16-lecture curriculum", URLS.cyberstartCurriculum)]);
+        return response(`${CYBERSTART.name}: ${CYBERSTART.subtitle}. It is a ${CYBERSTART.durationHours}-hour instructor-led cybersecurity foundation program delivered by ${CYBERSTART.instructor} with independent training partner ${CYBERSTART.provider}, ${CYBERSTART.location}. It combines core concepts, demonstrations, supervised labs, real-world case studies, career guidance and an integrated practical assessment. TechFly is not owned by HackStark.`, [action("Explore CyberStart", URLS.cyberstart), action("View curriculum", URLS.cyberstartCurriculum)]);
+      }
+
+      if (includesAny(q, ["professional experience", "work experience", "career", "employment", "resume", "cv", "toyota", "sugar mills", "itsolera", "techfly", "oxege", "navttc", "udemy", "devcastle", "codealpha", "prodigy infotech"])) {
         const roles = DATA.founderExperience.map((item) => `• ${item.role}, ${item.organization} (${item.period}): ${item.summary}`).join("\n");
         return response(`${DATA.founder.name} has ${DATA.statistics.experienceClaim} years of experience across enterprise IT operations, CyberSecurity instruction, penetration testing and security projects. His professional record includes:\n${roles}`, [
           action("Professional experience", URLS.experience), action("LinkedIn", URLS.linkedin), action("Full portfolio", DATA.founder.website)
@@ -170,7 +209,7 @@
       }
 
       if (includesAny(q, ["founder", "ceo", "muhammad", "ahmed talha", "talha"])) {
-        return response(`${DATA.founder.name} is ${DATA.founder.title} and a ${DATA.founder.role}. ${DATA.founder.summary} His profile records ${DATA.statistics.managedWorkstationsClaim} workstations managed, ${DATA.statistics.trainedStudentsClaim} learners reached and ${DATA.statistics.securityToolsAndProjectsClaim} projects and custom security tools. He is based in ${DATA.founder.location} and is ${DATA.founder.availability.toLowerCase()}.`, [
+        return response(`${DATA.founder.name} is ${DATA.founder.title} and a ${DATA.founder.role}. ${DATA.founder.summary} His profile records ${DATA.statistics.managedWorkstationsClaim} workstations managed, ${DATA.statistics.trainedStudentsClaim} students trained and ${DATA.statistics.securityToolsAndProjectsClaim} projects and custom security tools. He is based in ${DATA.founder.location} and is ${DATA.founder.availability.toLowerCase()}.`, [
           action("Founder profile", URLS.founder), action("Founder website", DATA.founder.website), action("LinkedIn", URLS.linkedin)
         ]);
       }
@@ -215,11 +254,11 @@
       }
 
       if (includesAny(q, ["official ceh", "ceh certification", "ec council", "certification course"])) {
-        return response("The HackStark beginner course is independent education covering topics historically aligned with CEH v11-era domains. It is not official or authorized EC-Council certification training, and completion does not award CEH certification.", [action("Read course context", URLS.course), action("Official CEH information", BEGINNER_COURSE?.officialReferences?.ceh || "https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/")]);
+        return response("HackStark's beginner course and the Oxege professional program are independent education. The Oxege curriculum is aligned with relevant CEH v13 / CEH AI subject areas, but neither program is presented as official EC-Council courseware or authorized EC-Council training, and this site does not claim that completion awards CEH certification.", [action("Oxege program context", URLS.oxege), action("Official CEH information", BEGINNER_COURSE?.officialReferences?.ceh || "https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/")]);
       }
 
       if (includesAny(q, ["course progress", "lesson progress", "reset progress", "where is progress stored"])) {
-        return response("Course progress is stored only in this browser on this device. Each lesson can cycle through Not started, In progress and Completed. HackStark does not receive this progress data, and the curriculum’s Reset Progress control clears it.", [action("Open curriculum", URLS.curriculum)]);
+        return response("The streamlined HackStark curriculum no longer records lesson progress. Use the single View Full Curriculum button to browse the course outline; no completion status is stored.", [action("Open curriculum", URLS.curriculum)]);
       }
 
       if (includesAny(q, ["coming soon", "video unavailable", "missing video", "available lessons", "linked lessons"])) {
@@ -411,12 +450,15 @@
 
     showWelcome() {
       this.welcomed = true;
-      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can help with Muhammad Ahmed Talha’s experience, skills, education, projects and contact details, as well as HackStark’s course, community and responsible-use guidance."), [
+      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can explain HackStark’s beginner course and Muhammad Ahmed Talha’s programs delivered with independent training partners TechFly and Oxege Technologies. Neither partner company is owned by Muhammad Ahmed Talha or HackStark. I can also help with his experience, skills, projects and contact details."), [
         ["About", "What is HackStark?"],
         ["Experience", "Tell me about Muhammad Ahmed Talha's professional experience"],
         ["Skills", "What are Muhammad Ahmed Talha's technical skills?"],
         ["Learning topics", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],
+        ["CyberStart", "What is CyberStart Level 1?"],
+        ["Oxege program", "What is the Oxege professional cybersecurity program?"],
+        ["Compare programs", "Compare all three programs"],
         ["Beginner course", "Tell me about the beginner course"],
         ["Curriculum", "Show the full course curriculum"],
         ["GitHub facts", "Show GitHub stats"],
