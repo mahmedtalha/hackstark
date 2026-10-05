@@ -39,7 +39,7 @@
     resume: siteAsset(DATA.founder.resume),
     privacy: siteAsset(DATA.website.privacyPolicy),
     terms: siteAsset(DATA.website.termsOfService),
-    techflyPoster: siteAsset(DATA.cyberStartCourse?.poster || "techfly-cyber-security-engineer-poster.png"),
+    techflyPoster: siteAsset(DATA.cyberStartCourse?.poster || "techfly-cyber-security-engineer-poster.jpg"),
     oxegePoster: siteAsset(DATA.oxegeCybersecurityProgram?.poster || "oxege-cyber-security-workshop-poster.jpg"),
     email: `mailto:${DATA.organization.email}`,
     founderEmail: `mailto:${DATA.founder.email}`,
@@ -196,8 +196,8 @@
       if (includesAny(q, ["price", "prices", "fee", "fees", "cost", "costs", "charges"])) {
         return response(`Current listed prices are:
 • ${BEGINNER_COURSE.name}: PKR ${BEGINNER_COURSE.price.toLocaleString("en-US")} · ₹${BEGINNER_COURSE.inrPrice.toLocaleString("en-US")} INR · USD $${BEGINNER_COURSE.usdPrice}
-• ${CYBERSTART.name}: PKR ${CYBERSTART.price.toLocaleString("en-US")} · ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${CYBERSTART.approximateUsdPrice}
-• ${OXEGE.name}: PKR ${OXEGE.price.toLocaleString("en-US")} · ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${OXEGE.approximateUsdPrice}
+• ${CYBERSTART.name}: PKR ${CYBERSTART.originalPrice.toLocaleString("en-US")} → PKR ${CYBERSTART.price.toLocaleString("en-US")} · ₹${CYBERSTART.approximateInrOriginalPrice.toLocaleString("en-US")} → ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${CYBERSTART.approximateUsdOriginalPrice} → $${CYBERSTART.approximateUsdPrice}
+• ${OXEGE.name}: PKR ${OXEGE.originalPrice.toLocaleString("en-US")} → PKR ${OXEGE.price.toLocaleString("en-US")} · ₹${OXEGE.approximateInrOriginalPrice.toLocaleString("en-US")} → ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${OXEGE.approximateUsdOriginalPrice} → $${OXEGE.approximateUsdPrice}
 Confirm the active batch, seat availability, provider terms and current price before paying.`, [action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact)]);
       }
 
@@ -230,7 +230,7 @@ Confirm the active batch, seat availability, provider terms and current price be
       }
 
       if (includesAny(q, ["oxege", "oxage", "oxegee", "ogexe", "oche", "och", "professional cybersecurity program", "ceh v13", "ceh ai", "587 topics", "three month program", "3 month program"])) {
-        if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${OXEGE.name} is listed at PKR ${OXEGE.price.toLocaleString("en-US")} after a reduction from PKR ${OXEGE.originalPrice.toLocaleString("en-US")}. Approximate international prices are USD $${OXEGE.approximateUsdPrice} or ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
+        if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${OXEGE.name} is listed at PKR ${OXEGE.price.toLocaleString("en-US")} after a reduction from PKR ${OXEGE.originalPrice.toLocaleString("en-US")}. Approximate international pricing is USD $${OXEGE.approximateUsdPrice} after USD $${OXEGE.approximateUsdOriginalPrice}, or ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR after ₹${OXEGE.approximateInrOriginalPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
         if (includesAny(q, ["online", "physical", "classroom", "rahim yar khan", "location", "venue"])) return response(`${OXEGE.name} is available online and as physical instructor-led classes in ${OXEGE.physicalLocation}.`, [action("Oxege program", URLS.oxege)]);
         if (includesAny(q, ["official", "authorized", "ec council", "certification", "accredited"])) return response(`${OXEGE.name} is independent professional training aligned with relevant CEH v13 / CEH AI subject areas. It is not official EC-Council courseware, is not presented as an EC-Council-authorized training program, and this website does not claim that it awards CEH certification.`, [action("Program context", URLS.oxege), action("Full curriculum", URLS.oxegeCurriculum)]);
         if (includesAny(q, ["who teach", "instructor", "specialist", "provider", "where", "employment", "contract", "partner"])) return response(`${OXEGE.name} is delivered with independent training partner ${OXEGE.organization} by ${OXEGE.instructor}, ${OXEGE.role}. Oxege Technologies is not owned by HackStark. The engagement is listed for ${OXEGE.year}.`, [action("Oxege program", URLS.oxege), action("Instructor experience", URLS.experience)]);
@@ -245,7 +245,7 @@ Confirm the active batch, seat availability, provider terms and current price be
 
       if (includesAny(q, ["cyberstart", "cyber start", "cyberstert", "cybrstart", "techfly", "tech fly", "tekfly"])) {
         const asksDifference = includesAny(q, ["same", "difference", "ethical hacking course", "hackstark course", "separate"]);
-        if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${CYBERSTART.name} is listed at PKR ${CYBERSTART.price.toLocaleString("en-US")} after a reduction from PKR ${CYBERSTART.originalPrice.toLocaleString("en-US")}. Approximate international prices are USD $${CYBERSTART.approximateUsdPrice} or ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("CyberStart curriculum", URLS.cyberstartCurriculum)]);
+        if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${CYBERSTART.name} is listed at PKR ${CYBERSTART.price.toLocaleString("en-US")} after a reduction from PKR ${CYBERSTART.originalPrice.toLocaleString("en-US")}. Approximate international pricing is USD $${CYBERSTART.approximateUsdPrice} after USD $${CYBERSTART.approximateUsdOriginalPrice}, or ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR after ₹${CYBERSTART.approximateInrOriginalPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("CyberStart curriculum", URLS.cyberstartCurriculum)]);
         if (includesAny(q, ["schedule", "timing", "time", "weekend", "days", "online", "batch"])) return response(`${CYBERSTART.name} is presented as an online ${CYBERSTART.batchDuration.toLowerCase()} weekend batch delivered with training partner TechFly. The listed schedule is ${CYBERSTART.schedule}.`, [action("TechFly program", URLS.cyberstart), action("View curriculum", URLS.cyberstartCurriculum)]);
         if (asksDifference) return response(`No. ${CYBERSTART.name}, the ${BEGINNER_COURSE.name}, and the Oxege professional program are separate. CyberStart is a ${CYBERSTART.durationHours}-hour instructor-led foundation program delivered with independent training partner TechFly. The HackStark course is HackStark's self-paced beginner program with ${BEGINNER_COURSE.videoLessonCount}+ lessons. Oxege is an independent training partner for the three-month professional program with ${OXEGE.moduleCount} modules and ${OXEGE.topicCount} topics.`, [action("CyberStart", URLS.cyberstart), action("All programs", homeSection("#courses"))]);
         if (includesAny(q, ["tool", "technology", "platform"])) return response(`${CYBERSTART.name} includes curriculum-supported technologies and concepts such as ${CYBERSTART.tools.join(", ")}. Tools are used only in supervised, authorized labs and intentionally vulnerable training environments where applicable.`, [action("Explore CyberStart", URLS.cyberstart), action("Responsible use", URLS.responsible)]);
@@ -264,7 +264,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         ]);
       }
 
-      if (includesAny(q, ["founder skills", "talha skills", "technical expertise", "technical skills", "security tools", "infrastructure skills", "technology exposure", "active directory", "fortinet", "pfsense", "mikrotik", "powershell", "scapy", "sentinel", "crowdstrike", "wazuh"])) {
+      if (includesAny(q, ["skill", "skills", "skilz", "founder skills", "talha skills", "tahla skills", "talha skilz", "tahla skilz", "technical expertise", "technical skills", "security tools", "infrastructure skills", "technology exposure", "active directory", "fortinet", "pfsense", "mikrotik", "powershell", "scapy", "sentinel", "crowdstrike", "wazuh"])) {
         const groups = [
           ["CyberSecurity & VAPT", DATA.founderSkills.cybersecurity],
           ["Security tools", DATA.founderSkills.tools],
@@ -442,6 +442,11 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
       return contactTalha(`I couldn’t confidently match “${question.trim()}” to a verified answer in the HackStark knowledge base.`);
     }
   }
+
+  const knowledgeProvider = new HackStarkKnowledge();
+  window.JarvisHackStarkKnowledge = Object.freeze({
+    answer: (question) => knowledgeProvider.respond(String(question || ""))
+  });
 
   const safeUrl = (url) => {
     if (url.startsWith("#")) return url;

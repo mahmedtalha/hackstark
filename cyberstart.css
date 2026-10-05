@@ -36,3 +36,8 @@
 .cyberstart-lecture__panel{padding-bottom:1.1rem}
 .cyberstart-lecture__panel li{border-radius:.45rem;font-size:.84rem}
 @media(max-width:520px){.cyberstart-curriculum{padding:1rem}.cyberstart-curriculum__tools{padding:.75rem}.cyberstart-filters{margin-inline:-.25rem}.cyberstart-lecture:hover,.cyberstart-lecture:focus-within{transform:none}}
+
+/* Keep the compact course name together without forcing broader heading rules. */
+.cyberstart-hero h2{font-size:clamp(2.5rem,6vw,5.6rem);white-space:nowrap}
+.cyberstart-hero h2 em{display:inline}
+@media(max-width:520px){.cyberstart-hero h2{font-size:clamp(1.85rem,10vw,3.15rem)}}

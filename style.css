@@ -1399,7 +1399,7 @@ html[data-theme="light"] .theme-icon--moon { display: block; }
 .experience-oxege { border-top: 2px solid #58a5ff !important; }
 .experience-cyberstart { border-top: 2px solid var(--accent) !important; }
 .experience-oxege a,.experience-cyberstart a { display: inline-block; margin-top: .7rem; color: var(--accent-text); font-size: .7rem; font-weight: 750; }
-.curriculum-sequence { display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 1rem; padding: .48rem .78rem; border: 1px solid color-mix(in srgb,var(--accent) 45%,var(--border)); border-radius: 999px; background: color-mix(in srgb,var(--accent) 10%,var(--surface)); color: var(--accent-text); font: 800 .66rem/1 var(--font-mono); letter-spacing: .075em; text-transform: uppercase; }
+.curriculum-sequence { display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 1rem; padding: .62rem 1rem; border: 1px solid color-mix(in srgb,var(--accent) 45%,var(--border)); border-radius: 999px; background: color-mix(in srgb,var(--accent) 10%,var(--surface)); color: var(--accent-text); font: 800 .8rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .curriculum-count { margin: .8rem auto .45rem !important; color: var(--secondary-text) !important; font: 750 .82rem/1.4 var(--font-mono); letter-spacing: .02em; }
 .curriculum-count strong { color: var(--accent-text); font-size: 1.05em; }
 #courses-heading { max-width: none; white-space: nowrap; font-size: clamp(1rem,4.5vw,3.25rem); letter-spacing: -.045em; }
