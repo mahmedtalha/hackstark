@@ -131,7 +131,8 @@
 .course-enrollment--techfly { border-color: color-mix(in srgb,var(--accent) 42%,var(--border)); }
 .course-enrollment--oxege { border-color: color-mix(in srgb,#58a5ff 42%,var(--border)); background: linear-gradient(135deg,var(--surface),color-mix(in srgb,#58a5ff 5%,var(--surface))); }
 .course-enrollment__media--poster img { aspect-ratio: 16/10; object-position: center 12%; opacity: .92; }
-.course-enrollment__media--oxege { min-height: 12rem; background: radial-gradient(circle at 75% 25%,rgba(88,165,255,.25),transparent 42%),linear-gradient(135deg,#071526,#0b2d3d); }
+.course-enrollment__media--oxege { background: #10051c; }
+.course-enrollment__media--oxege img { aspect-ratio: 16/10; object-position: center 15%; opacity: .92; }
 .course-enrollment__graphic { display: grid; place-content: center; justify-items: start; min-height: 12rem; padding: 1.3rem; color: #fff; }
 .course-enrollment__graphic svg { width: 2.2rem; height: 2.2rem; margin-bottom: .7rem; color: #58a5ff; }
 .course-enrollment__graphic span { color: #8ac2ff; font: 800 .65rem/1 var(--font-mono); letter-spacing: .13em; }

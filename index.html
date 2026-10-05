@@ -42,22 +42,22 @@
   <link rel="dns-prefetch" href="//premium-cow-1150.clerk.accounts.dev">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
   <link rel="preload" href="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js" as="script" crossorigin="anonymous" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=20261005">
-  <link rel="stylesheet" href="course.css?v=20261005b">
+  <link rel="stylesheet" href="style.css?v=20261005b">
+  <link rel="stylesheet" href="course.css?v=20261005c">
   <link rel="stylesheet" href="cyberstart.css?v=20261004c">
-  <link rel="stylesheet" href="oxege-course.css?v=20261004b">
+  <link rel="stylesheet" href="oxege-course.css?v=20261005">
   <link rel="stylesheet" href="jarvis-aichatbot.css?v=20260922">
   <script defer fetchpriority="high" crossorigin="anonymous" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"></script>
   <script defer fetchpriority="high" crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJlbWl1bS1jb3ctMTE1MC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
   <script src="clerk-auth.js?v=20260922g" defer></script>
   <script src="oxege-curriculum-data.js?v=20261004" defer></script>
-  <script src="hackstark-data.js?v=20261005" defer></script>
+  <script src="hackstark-data.js?v=20261005b" defer></script>
   <script src="script.js?v=20261004" defer></script>
   <script src="course.js?v=20261005" defer></script>
   <script src="cyberstart.js?v=20261005" defer></script>
   <script src="oxege-course.js?v=20261005" defer></script>
   <script src="whatsapp-enrollment.js?v=20260922" defer></script>
-  <script src="jarvis-aichatbot.js?v=20261005" defer></script>
+  <script src="jarvis-aichatbot.js?v=20261005b" defer></script>
 
   <script type="application/ld+json">
   {
@@ -222,6 +222,7 @@
 
       <div class="header-actions">
         <a class="button button--small button--outline-accent header-resume header-cta" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf" aria-label="Download Muhammad Ahmed Talha's resume as a PDF"><svg aria-hidden="true"><use href="#icon-download"></use></svg><span>Resume</span></a>
+        <a class="icon-button header-linkedin header-cta" href="https://linkedin.com/in/ahmedtalha470" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed Talha's LinkedIn profile" title="View LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"></use></svg></a>
         <div class="auth-controls" id="clerk-auth-controls" aria-live="polite">
           <button class="auth-loading" data-clerk-loading type="button" aria-label="Open account" aria-busy="false" title="Sign in or create an account">
             <svg aria-hidden="true"><use href="#icon-user"></use></svg>
@@ -253,6 +254,7 @@
         <a href="#credentials">Certificates</a>
         <a href="#community">Community &amp; Contact</a>
         <a class="mobile-resume-link" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf"><svg aria-hidden="true"><use href="#icon-download"></use></svg> Download Resume / CV</a>
+        <a class="mobile-linkedin-link" href="https://linkedin.com/in/ahmedtalha470" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-linkedin"></use></svg> View LinkedIn</a>
       </div>
     </nav>
   </header>
@@ -424,7 +426,7 @@
 
       <section class="section course-home-section course-overview" id="about-course" aria-labelledby="about-course-heading">
         <div class="container course-overview__grid">
-          <div><p class="eyebrow"><span></span> Beginner Course</p><h2 id="about-course-heading">A structured path into cybersecurity.</h2></div>
+          <div><span class="curriculum-sequence">Course 01 of 03</span><p class="eyebrow"><span></span> Beginner Course</p><h2 id="about-course-heading">A structured path into cybersecurity.</h2></div>
           <div class="course-overview__copy">
             <p><strong>Ethical Hacking Course for Beginners by HackStark</strong> combines 50+ self-paced lessons with practical demonstrations and supporting resources.</p>
             <p>Start with an isolated Kali Linux lab, then progress through reconnaissance, vulnerability assessment, systems, networks, web applications, wireless security, IoT, cloud computing and cryptography.</p>
@@ -499,8 +501,8 @@
 
         <div class="container course-enrollment course-enrollment--oxege" id="enroll-oxege">
           <div class="course-enrollment__media course-enrollment__media--oxege">
-            <div class="course-enrollment__graphic" aria-hidden="true"><svg><use href="#icon-shield"></use></svg><span>OXEGE</span><strong>Professional Cybersecurity</strong><small>Online + Physical · Rahim Yar Khan</small></div>
-            <a href="#oxege-curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg> Explore 32 modules <span>587 Topics</span></a>
+            <img src="oxege-cyber-security-workshop-poster.jpg" width="688" height="1553" loading="lazy" decoding="async" alt="Oxege exclusive cybersecurity workshop and three-month practical training poster">
+            <a href="oxege-cyber-security-workshop-poster.jpg" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-eye"></use></svg> View program poster <span>Oxege</span></a>
           </div>
           <div class="course-enrollment__content">
             <p class="eyebrow"><span></span> Course 03 · Professional training</p>
@@ -650,7 +652,7 @@
 
       <section class="section course-home-section course-curriculum-section" id="curriculum" aria-labelledby="curriculum-heading">
         <div class="container">
-          <div class="section-intro section-intro--center"><span class="curriculum-sequence">Course 01 of 03</span><p class="eyebrow"><span></span> HackStark</p><h2 id="curriculum-heading">Ethical Hacking Course for Beginners</h2><p class="curriculum-count"><strong class="stat-number stat-number--eyebrow" data-count-up>50+</strong> lessons</p><p>A structured beginner path from Kali Linux lab setup through ethical hacking, networks, systems, web security, wireless, IoT, cloud and cryptography.</p></div>
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> HackStark</p><h2 id="curriculum-heading">Ethical Hacking Course for Beginners</h2><p class="curriculum-count"><strong class="stat-number stat-number--eyebrow" data-count-up>50+</strong> lessons</p><p>A structured beginner path from Kali Linux lab setup through ethical hacking, networks, systems, web security, wireless, IoT, cloud and cryptography.</p></div>
           <div id="course-curriculum-list"></div>
           <div class="curriculum-more"><button class="button button--primary" type="button" id="show-full-curriculum" aria-expanded="false" aria-controls="course-curriculum-list">View Full Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></button></div>
           <noscript><div class="course-noscript"><h3>Course curriculum</h3><p>Enable JavaScript to view the complete 50+ lesson curriculum.</p></div></noscript>
@@ -664,6 +666,7 @@
       <div class="container">
         <div class="cyberstart-hero reveal">
           <div class="cyberstart-hero__copy">
+            <span class="curriculum-sequence">Course 02 of 03</span>
             <p class="eyebrow"><span></span> Instructor-Led Training</p>
             <p class="cyberstart-program-label">Professional Training Delivered with Partner TechFly</p>
             <h2 id="cyberstart-heading">CyberStart <em>Level 1</em></h2>
@@ -736,7 +739,6 @@
 
         <div class="cyberstart-block cyberstart-curriculum" id="cyberstart-curriculum" aria-labelledby="cyberstart-curriculum-heading">
           <div class="section-intro section-intro--center">
-            <span class="curriculum-sequence">Course 02 of 03</span>
             <p class="eyebrow"><span></span> TechFly Partner Curriculum</p>
             <h3 id="cyberstart-curriculum-heading">CyberStart Level 1</h3>
             <p class="curriculum-count"><strong>16</strong> lectures · <strong>51</strong> topics</p>
@@ -770,6 +772,7 @@
       <div class="container">
         <div class="oxege-hero reveal">
           <div class="oxege-hero__copy">
+            <span class="curriculum-sequence">Course 03 of 03</span>
             <p class="eyebrow"><span></span> Professional Training Partner · Oxege Technologies</p>
             <p class="oxege-program-label">Independent CEH v13 / CEH AI-Aligned Curriculum</p>
             <h2 id="oxege-heading">Professional Cybersecurity &amp; <em>Ethical Hacking</em> Program</h2>
@@ -823,7 +826,7 @@
         </div>
 
         <div class="oxege-block oxege-curriculum" id="oxege-curriculum" aria-labelledby="oxege-curriculum-heading">
-          <div class="section-intro section-intro--center"><span class="curriculum-sequence">Course 03 of 03</span><p class="eyebrow"><span></span> Oxege Technologies · Complete Curriculum</p><h3 id="oxege-curriculum-heading">Professional Cybersecurity &amp; Ethical Hacking Program</h3><p class="curriculum-count"><strong>32</strong> modules · <strong>587</strong> topics</p><p>Preview the opening program sections, then expand the complete searchable curriculum.</p></div>
+          <div class="section-intro section-intro--center"><p class="eyebrow"><span></span> Oxege Technologies · Complete Curriculum</p><h3 id="oxege-curriculum-heading">Professional Cybersecurity &amp; Ethical Hacking Program</h3><p class="curriculum-count"><strong>32</strong> modules · <strong>587</strong> topics</p><p>Preview the opening program sections, then expand the complete searchable curriculum.</p></div>
           <div class="oxege-curriculum__tools" hidden>
             <label class="oxege-search"><span>Search professional curriculum</span><span><svg aria-hidden="true"><use href="#icon-search"></use></svg><input type="search" id="oxege-search" placeholder="Search topics, tools or concepts" autocomplete="off"></span></label>
             <div class="oxege-actions--compact"><button type="button" id="oxege-expand">Expand All</button><button type="button" id="oxege-collapse">Collapse All</button></div>
@@ -1180,7 +1183,6 @@
           <div class="founder-actions">
             <a class="button button--primary" href="https://mahmedtalha.github.io/portfolio/" target="_blank" rel="noopener noreferrer">View Professional Portfolio <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
             <a class="button button--ghost" href="M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2" download="M-Ahmed-Talha-Resume-2026.pdf"><svg aria-hidden="true"><use href="#icon-download"></use></svg> Download Resume / CV</a>
-            <a class="button button--ghost" href="https://linkedin.com/in/ahmedtalha470" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-linkedin"></use></svg> View LinkedIn <svg aria-hidden="true"><use href="#icon-external"></use></svg></a>
           </div>
         </div>
       </div>
@@ -1308,8 +1310,9 @@
           <h2 id="responsible-heading">Responsible security</h2>
         </div>
         <div class="responsible-copy">
-          <p>HackStark publishes cybersecurity content for education, defensive research and authorized security testing. Security techniques should only be used on systems, networks, applications or devices you own or have explicit permission to assess.</p>
-          <p>HackStark does not encourage unauthorized access, disruption, data theft or malicious activity.</p>
+          <p>HackStark publishes cybersecurity content for education, defensive research and authorized security testing. Use security techniques only on systems, networks, applications, accounts or devices you own or have explicit written permission to assess, and remain within the approved scope.</p>
+          <p>Do not use this website or its learning material for unauthorized access, credential or data theft, privacy invasion, malware deployment, evasion, deception, service disruption, harassment or unlawful activity. Potentially disruptive work belongs in isolated labs or intentionally vulnerable training environments.</p>
+          <p>Protect evidence and personal data, document findings accurately, report vulnerabilities privately, prioritize remediation and verify current official guidance before using legacy tools or workflows. See the <a href="terms.html#security-reporting">security-reporting terms</a> for HackStark-owned services.</p>
         </div>
       </div>
     </section>

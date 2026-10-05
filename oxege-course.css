@@ -104,7 +104,7 @@
 .oxege-curriculum { position: relative; overflow: hidden; padding: clamp(1.25rem,3.5vw,2.6rem); border-color: color-mix(in srgb,#58a5ff 34%,var(--border)); border-radius: clamp(1rem,2vw,1.5rem); background: linear-gradient(145deg,color-mix(in srgb,var(--surface) 94%,#58a5ff 6%),color-mix(in srgb,var(--bg-elevated) 88%,transparent)); box-shadow: var(--shadow-sm); }
 .oxege-curriculum:before { position: absolute; inset: 0 0 auto; height: .28rem; background: linear-gradient(90deg,#58a5ff,var(--accent)); content: ""; }
 .oxege-curriculum > .section-intro { max-width: 48rem; margin-inline: auto; padding-top: .45rem; }
-.oxege-curriculum .curriculum-sequence { border-color: color-mix(in srgb,#58a5ff 48%,var(--border)); background: color-mix(in srgb,#58a5ff 10%,var(--surface)); color: #8ac2ff; }
+.oxege .curriculum-sequence { border-color: color-mix(in srgb,#58a5ff 48%,var(--border)); background: color-mix(in srgb,#58a5ff 10%,var(--surface)); color: #8ac2ff; }
 .oxege-curriculum__tools { margin-top: 2rem; padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: color-mix(in srgb,var(--bg) 76%,transparent); }
 .oxege-search > span:last-child { min-height: 3.1rem; border-radius: .7rem; background: var(--surface); }
 .oxege-actions--compact button { min-height: 3.1rem; padding-inline: 1rem; }

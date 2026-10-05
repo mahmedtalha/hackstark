@@ -43,6 +43,7 @@
   const ethicalHackingCourse = Object.freeze({
     id: "ethical-hacking-beginners",
     name: "Ethical Hacking Course for Beginners",
+    sequence: 1,
     shortName: "EH Course 4 Beginners",
     provider: "HackStark",
     level: "Beginner",
@@ -219,6 +220,8 @@
   const cyberStartCourse = Object.freeze({
     id: "cyberstart-level-1",
     name: "CyberStart Level 1",
+    sequence: 2,
+    poster: "techfly-cyber-security-engineer-poster.png",
     subtitle: "Cybersecurity Foundation Program",
     provider: "TechFly",
     relationship: "Independent training partner",
@@ -366,6 +369,8 @@
   const oxegeCybersecurityProgram = Object.freeze({
     id: "oxege-professional-cybersecurity",
     name: "Professional Cybersecurity & Ethical Hacking Program",
+    sequence: 3,
+    poster: "oxege-cyber-security-workshop-poster.jpg",
     shortName: "Oxege Professional Cybersecurity Program",
     subtitle: "CEH v13 / CEH AI-Aligned Curriculum",
     organization: "Oxege Technologies",
@@ -435,6 +440,7 @@
     ]),
     founder: Object.freeze({
       name: "Muhammad Ahmed Talha",
+      nameAliases: Object.freeze(["Muhammad Ahmed Talha", "Muhammad Talha", "Ahmed Talha", "Talha", "M. Ahmed Talha"]),
       title: "Founder & CEO of HackStark",
       role: "CyberSecurity & IT Infrastructure Professional | Instructor & Infrastructure Manager",
       location: "Rahim Yar Khan, Pakistan",
@@ -443,6 +449,7 @@
       availability: "Open to CyberSecurity, VAPT, Red Team and IT Infrastructure opportunities",
       summary: "CyberSecurity instructor and IT infrastructure manager with 6+ years of experience spanning security training, hands-on projects, penetration testing and enterprise IT operations. Most recently served as IT Assistant Manager at Toyota Royal Motors.",
       website: "https://mahmedtalha.github.io/portfolio/",
+      resume: "M-Ahmed-Talha-Resume-2026.pdf?v=20260922-2",
       linkedin: "https://linkedin.com/in/ahmedtalha470",
       github: "https://github.com/mahmedtalha",
       education: Object.freeze({ degree: "BS Cyber Security", institution: "Islamia University of Bahawalpur (RYK)", cgpa: "3.5 / 4.0", years: "2020 – 2024" }),
@@ -481,6 +488,14 @@
       Object.freeze({ type: "Course completion", name: "Ethical Hacking Essentials", provider: "Code Red | EC-Council", detail: "Fundamental Pen-Testing Credential" })
     ]),
     speaking: Object.freeze({ event: "BZU Multan CIT Conference", date: "Aug 2026", role: "CyberSecurity Panelist & Speaker", topics: Object.freeze(["AI-enhanced cyber threats", "Quantum computing implications for cryptography and password security", "Human-firewall strategies", "Digital defense"]) }),
+    website: Object.freeze({
+      privacyPolicy: "privacy.html",
+      termsOfService: "terms.html",
+      responsibleUse: "#responsible-security",
+      jarvisPrivacy: "JARVIS answers from website data in the browser. Questions and conversation history are kept in memory for the current page session and are not sent to an external AI service by HackStark.",
+      accountProvider: "Clerk",
+      enrollment: "Course enrollment and transaction review are handled manually. A prepared WhatsApp message or payment proof does not itself confirm payment or activate access."
+    }),
     socials: Object.freeze({ github: githubProfile, founderGithub: "https://github.com/mahmedtalha", contactForm: "https://docs.google.com/forms/d/e/1FAIpQLScdbT_vnWj5tRU2b-XP_PdamjncAMHc3sgl6rGEUI8EHMe4QQ/viewform?usp=sharing", youtube: "https://www.youtube.com/@hackstark8829", facebook: "https://facebook.com/hackstarkk/", telegramChannel: "https://t.me/hackstarkofficial", telegramContact: "https://t.me/hackstarkk", instagram: "https://www.instagram.com/hackstark/" }),
     projects: Object.freeze(projects),
     portfolioProjects: Object.freeze(portfolioProjects),

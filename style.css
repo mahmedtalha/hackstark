@@ -296,6 +296,8 @@ h1 em, h2 em {
 .header-actions { display: flex; align-items: center; gap: .55rem; }
 .header-resume { min-height: 2.7rem; gap: .4rem; padding-inline: .72rem; white-space: nowrap; }
 .header-resume svg { width: 1rem; height: 1rem; }
+.header-linkedin { border-color: rgba(10,102,194,.5); color: #65aeea; }
+.header-linkedin:hover { border-color: #0a66c2; background: rgba(10,102,194,.12); color: #83c5f7; }
 .auth-controls,
 .auth-signed-out,
 .auth-signed-in { display: flex; align-items: center; }
@@ -350,6 +352,8 @@ html[data-theme="light"] .theme-icon--moon { display: block; }
 .mobile-nav .mobile-resume-link { gap: .5rem; color: var(--accent-text); }
 .mobile-nav .mobile-resume-link svg { width: 1.05rem; height: 1.05rem; }
 .mobile-nav .mobile-resume-link::after { content: "↓"; }
+.mobile-nav .mobile-linkedin-link { gap: .5rem; color: #65aeea; }
+.mobile-nav .mobile-linkedin-link svg { width: 1.05rem; height: 1.05rem; }
 
 /* =========================
    Hero

@@ -9,6 +9,7 @@
 
   const onCoursePage = document.body.classList.contains("course-page");
   const homeSection = (hash) => onCoursePage ? `../index.html${hash}` : hash;
+  const siteAsset = (path) => onCoursePage ? `../${path}` : path;
   const URLS = Object.freeze({
     about: homeSection("#about"),
     focus: homeSection("#course-tools"),
@@ -35,6 +36,11 @@
     founderGithub: DATA.socials.founderGithub,
     contactForm: DATA.socials.contactForm,
     linkedin: DATA.founder.linkedin,
+    resume: siteAsset(DATA.founder.resume),
+    privacy: siteAsset(DATA.website.privacyPolicy),
+    terms: siteAsset(DATA.website.termsOfService),
+    techflyPoster: siteAsset(DATA.cyberStartCourse?.poster || "techfly-cyber-security-engineer-poster.png"),
+    oxegePoster: siteAsset(DATA.oxegeCybersecurityProgram?.poster || "oxege-cyber-security-workshop-poster.jpg"),
     email: `mailto:${DATA.organization.email}`,
     founderEmail: `mailto:${DATA.founder.email}`,
     founderPhone: `tel:${DATA.founder.phone.replace(/[^+\d]/g, "")}`
@@ -61,7 +67,44 @@
   const normalize = (value) => value.toLowerCase().normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, "")
     .replace(/[^a-z0-9+#.\-/\s]/g, " ").replace(/\s+/g, " ").trim();
-  const includesAny = (text, phrases) => phrases.some((phrase) => text.includes(normalize(phrase)));
+  const tokens = (value) => normalize(value).split(" ").filter(Boolean);
+  const editDistance = (left, right) => {
+    if (left === right) return 0;
+    const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+    for (let row = 1; row <= left.length; row += 1) {
+      let diagonal = previous[0];
+      previous[0] = row;
+      for (let column = 1; column <= right.length; column += 1) {
+        const above = previous[column];
+        previous[column] = Math.min(
+          previous[column] + 1,
+          previous[column - 1] + 1,
+          diagonal + (left[row - 1] === right[column - 1] ? 0 : 1)
+        );
+        diagonal = above;
+      }
+    }
+    return previous[right.length];
+  };
+  const fuzzyTokenMatch = (input, expected) => {
+    if (input === expected) return true;
+    if (expected.length <= 3 || input.length <= 3) return false;
+    const tolerance = Math.max(input.length, expected.length) <= 6 ? 1 : 2;
+    return editDistance(input, expected) <= tolerance;
+  };
+  const phraseMatches = (text, phrase) => {
+    const normalizedText = normalize(text);
+    const normalizedPhrase = normalize(phrase);
+    if (!normalizedPhrase) return false;
+    if (normalizedText.includes(normalizedPhrase)) return true;
+    const textTokens = tokens(normalizedText);
+    const phraseTokens = tokens(normalizedPhrase);
+    return phraseTokens.every((expected) => textTokens.some((input) => fuzzyTokenMatch(input, expected)));
+  };
+  const includesAny = (text, phrases) => phrases.some((phrase) => phraseMatches(text, phrase));
+  const contactTalha = (lead = "I don’t have a reliable answer for that yet.") => response(`${lead} You can contact Talha (T-A-L-H-A), Muhammad Ahmed Talha, directly at ${DATA.founder.email}, by phone/WhatsApp at ${DATA.founder.phone}, or through LinkedIn.`, [
+    action("Email Talha", URLS.founderEmail), action("Call or WhatsApp", URLS.founderPhone), action("LinkedIn", URLS.linkedin), action("Contact form", URLS.contactForm)
+  ]);
   const formatDate = (value) => {
     const date = new Date(`${value}T00:00:00Z`);
     return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(date);
@@ -96,8 +139,8 @@
         ]);
       }
 
-      const portfolioProject = PORTFOLIO_PROJECTS.find((item) => item.aliases.some((alias) => q.includes(normalize(alias))));
-      const project = PROJECTS.find((item) => item.aliases.some((alias) => q.includes(alias)));
+      const portfolioProject = PORTFOLIO_PROJECTS.find((item) => includesAny(q, item.aliases));
+      const project = PROJECTS.find((item) => includesAny(q, item.aliases));
       if (project && !portfolioProject) {
         const metrics = projectMetrics(project);
         return response(`${project.name}: ${project.description}\nRepository details from ${metrics.source}: language ${metrics.language}; created ${formatDate(project.created)}; last repository update ${metrics.updated}; ${metrics.stars} stars; ${metrics.forks} forks; default branch ${metrics.branch}; license ${metrics.license}.`, [
@@ -113,13 +156,53 @@
         ]);
       }
 
-      const video = VIDEOS.find((item) => item.id.toLowerCase() === q || item.aliases.some((alias) => q.includes(alias)));
+      const video = VIDEOS.find((item) => item.id.toLowerCase() === q || includesAny(q, item.aliases));
       if (video && (video.id.toLowerCase() === q || includesAny(q, ["video", "watch", "lesson", "tutorial", "youtube", "demo"]))) return response(`${video.title}\n${video.topic}\nThis is one of ${VIDEOS.length} official HackStark lessons currently featured on this website.`, [
         action("Watch on YouTube", video.url), action("Browse Academy", URLS.learn)
       ]);
 
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
         return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; Muhammad Ahmed Talha’s profile, experience, skills, education, speaking and contact details; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Founder profile", URLS.founder), action("Projects", URLS.projects)]);
+      }
+
+      if (includesAny(q, ["jarvis privacy", "chat privacy", "chatbot privacy", "conversation data", "question data", "does jarvis store", "does jarvis send", "local assistant"])) {
+        return response(`${DATA.website.jarvisPrivacy} Clearing or reloading the page removes the visible conversation. JARVIS is a rule-based website assistant, so it can still misunderstand a question; use its source links or contact Talha when confirmation matters.`, [action("Privacy Policy", URLS.privacy), action("Contact Talha", URLS.contact)]);
+      }
+
+      if (includesAny(q, ["privacy", "privacy policy", "personal data", "data collection", "cookies", "local storage", "tracking"])) {
+        return response(`HackStark’s Privacy Policy explains account information processed through ${DATA.website.accountProvider}, communications you choose to send, basic technical information handled by hosting or authentication providers, browser preferences, external services, retention, security and privacy choices. HackStark says it does not currently sell personal information or use third-party advertising trackers.`, [action("Read Privacy Policy", URLS.privacy), action("Privacy contact", URLS.email)]);
+      }
+
+      if (includesAny(q, ["terms", "terms of service", "terms and conditions", "rules", "agreement"])) {
+        return response("HackStark’s Terms of Service cover account responsibility, education-only and authorized use, independent course and partner-program status, intellectual property, external services, manual enrollment and payment review, availability, disclaimers, liability and security reporting.", [action("Read Terms of Service", URLS.terms), action("Responsible use", URLS.responsible)]);
+      }
+
+      if (includesAny(q, ["resume", "cv", "download resume", "download cv"])) {
+        return response(`${DATA.founder.name}’s current website resume summarizes his CyberSecurity, VAPT, Red Team, instruction and IT infrastructure experience.`, [action("Download Resume / CV", URLS.resume), action("View experience", URLS.experience), action("LinkedIn", URLS.linkedin)]);
+      }
+
+      if (includesAny(q, ["linkedin", "linked in", "professional profile"])) {
+        return response(`${DATA.founder.name}’s LinkedIn profile is linkedin.com/in/ahmedtalha470.`, [action("View LinkedIn", URLS.linkedin), action("Download Resume / CV", URLS.resume)]);
+      }
+
+      if (includesAny(q, ["account", "accounts", "login", "log in", "signin", "sign in", "signup", "sign up", "clerk", "password"])) {
+        return response(`HackStark uses ${DATA.website.accountProvider} for sign-up, sign-in and account session management. Most public website content can be browsed without an account, but an existing signed-in account is required for HackStark course access activation. Passwords and external sign-in credentials are handled by Clerk or the selected identity provider, not by JARVIS.`, [action("Privacy Policy", URLS.privacy), action("Terms of Service", URLS.terms)]);
+      }
+
+      if (includesAny(q, ["poster", "course poster", "program poster", "flyer", "brochure"])) {
+        return response("The website includes supplied posters for the two instructor-led partner programs: TechFly CyberStart Level 1 and the Oxege Professional Cybersecurity & Ethical Hacking Program.", [action("TechFly poster", URLS.techflyPoster), action("Oxege poster", URLS.oxegePoster), action("Compare programs", homeSection("#courses"))]);
+      }
+
+      if (includesAny(q, ["price", "prices", "fee", "fees", "cost", "costs", "charges"])) {
+        return response(`Current listed prices are:
+• ${BEGINNER_COURSE.name}: PKR ${BEGINNER_COURSE.price.toLocaleString("en-US")} · ₹${BEGINNER_COURSE.inrPrice.toLocaleString("en-US")} INR · USD $${BEGINNER_COURSE.usdPrice}
+• ${CYBERSTART.name}: PKR ${CYBERSTART.price.toLocaleString("en-US")} · ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${CYBERSTART.approximateUsdPrice}
+• ${OXEGE.name}: PKR ${OXEGE.price.toLocaleString("en-US")} · ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${OXEGE.approximateUsdPrice}
+Confirm the active batch, seat availability, provider terms and current price before paying.`, [action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact)]);
+      }
+
+      if (includesAny(q, ["payment", "pay", "enroll", "enrol", "enrollment", "admission", "buy course", "purchase course", "refund", "cancellation"])) {
+        return response(`${DATA.website.enrollment} Confirm eligibility, current price, recipient details, active batch, seat availability, access or certificate terms, and any refund eligibility before paying. HackStark course access starts only after manual verification; partner-program enrollment terms should be confirmed directly.`, [action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact), action("Terms of Service", URLS.terms)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -146,7 +229,7 @@
         return response(`Muhammad Ahmed Talha works with two independent training partners: ${TRAINING_PARTNERS.map((partner) => partner.name).join(" and ")}. TechFly partners on ${CYBERSTART.name}, while Oxege Technologies partners on ${OXEGE.name}. Neither company is owned by Muhammad Ahmed Talha or HackStark.`, [action("Compare partner programs", homeSection("#courses")), action("Training experience", URLS.experience)]);
       }
 
-      if (includesAny(q, ["oxege", "professional cybersecurity program", "ceh v13", "ceh ai", "587 topics", "three month program", "3 month program"])) {
+      if (includesAny(q, ["oxege", "oxage", "oxegee", "ogexe", "oche", "och", "professional cybersecurity program", "ceh v13", "ceh ai", "587 topics", "three month program", "3 month program"])) {
         if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${OXEGE.name} is listed at PKR ${OXEGE.price.toLocaleString("en-US")} after a reduction from PKR ${OXEGE.originalPrice.toLocaleString("en-US")}. Approximate international prices are USD $${OXEGE.approximateUsdPrice} or ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
         if (includesAny(q, ["online", "physical", "classroom", "rahim yar khan", "location", "venue"])) return response(`${OXEGE.name} is available online and as physical instructor-led classes in ${OXEGE.physicalLocation}.`, [action("Oxege program", URLS.oxege)]);
         if (includesAny(q, ["official", "authorized", "ec council", "certification", "accredited"])) return response(`${OXEGE.name} is independent professional training aligned with relevant CEH v13 / CEH AI subject areas. It is not official EC-Council courseware, is not presented as an EC-Council-authorized training program, and this website does not claim that it awards CEH certification.`, [action("Program context", URLS.oxege), action("Full curriculum", URLS.oxegeCurriculum)]);
@@ -160,7 +243,7 @@
         return response(`The site presents three programs in this order:\n• HackStark — ${BEGINNER_COURSE.name}: PKR ${BEGINNER_COURSE.price.toLocaleString("en-US")}\n• Training partner TechFly — ${CYBERSTART.name}: PKR ${CYBERSTART.price.toLocaleString("en-US")}\n• Training partner Oxege Technologies — ${OXEGE.name}: PKR ${OXEGE.price.toLocaleString("en-US")}, available online and through physical classes in ${OXEGE.physicalLocation}\nTechFly and Oxege Technologies are independent partner organizations, not HackStark-owned companies.`, [action("All program boxes", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
       }
 
-      if (includesAny(q, ["cyberstart", "cyber start", "techfly"])) {
+      if (includesAny(q, ["cyberstart", "cyber start", "cyberstert", "cybrstart", "techfly", "tech fly", "tekfly"])) {
         const asksDifference = includesAny(q, ["same", "difference", "ethical hacking course", "hackstark course", "separate"]);
         if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${CYBERSTART.name} is listed at PKR ${CYBERSTART.price.toLocaleString("en-US")} after a reduction from PKR ${CYBERSTART.originalPrice.toLocaleString("en-US")}. Approximate international prices are USD $${CYBERSTART.approximateUsdPrice} or ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("CyberStart curriculum", URLS.cyberstartCurriculum)]);
         if (includesAny(q, ["schedule", "timing", "time", "weekend", "days", "online", "batch"])) return response(`${CYBERSTART.name} is presented as an online ${CYBERSTART.batchDuration.toLowerCase()} weekend batch delivered with training partner TechFly. The listed schedule is ${CYBERSTART.schedule}.`, [action("TechFly program", URLS.cyberstart), action("View curriculum", URLS.cyberstartCurriculum)]);
@@ -174,7 +257,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         return response(`${CYBERSTART.name}: ${CYBERSTART.subtitle}. It is a ${CYBERSTART.durationHours}-hour instructor-led cybersecurity foundation program delivered by ${CYBERSTART.instructor} with independent training partner ${CYBERSTART.provider}, ${CYBERSTART.location}. It combines core concepts, demonstrations, supervised labs, real-world case studies, career guidance and an integrated practical assessment. TechFly is not owned by HackStark.`, [action("Explore CyberStart", URLS.cyberstart), action("View curriculum", URLS.cyberstartCurriculum)]);
       }
 
-      if (includesAny(q, ["professional experience", "work experience", "career", "employment", "resume", "cv", "toyota", "sugar mills", "itsolera", "techfly", "oxege", "navttc", "udemy", "devcastle", "codealpha", "prodigy infotech"])) {
+      if (includesAny(q, ["experience", "professional experience", "work experience", "career", "employment", "job history", "work history", "toyota", "sugar mills", "itsolera", "techfly", "oxege", "navttc", "udemy", "devcastle", "codealpha", "prodigy infotech"])) {
         const roles = DATA.founderExperience.map((item) => `• ${item.role}, ${item.organization} (${item.period}): ${item.summary}`).join("\n");
         return response(`${DATA.founder.name} has ${DATA.statistics.experienceClaim} years of experience across enterprise IT operations, CyberSecurity instruction, penetration testing and security projects. His professional record includes:\n${roles}`, [
           action("Professional experience", URLS.experience), action("LinkedIn", URLS.linkedin), action("Full portfolio", DATA.founder.website)
@@ -208,7 +291,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         return response(`Contact ${DATA.founder.name} at ${DATA.founder.email}, phone/WhatsApp ${DATA.founder.phone}, or LinkedIn at linkedin.com/in/ahmedtalha470. He is based in ${DATA.founder.location}.`, [action("Email Muhammad", URLS.founderEmail), action("Call or WhatsApp", URLS.founderPhone), action("LinkedIn", URLS.linkedin)]);
       }
 
-      if (includesAny(q, ["founder", "ceo", "muhammad", "ahmed talha", "talha"])) {
+      if (includesAny(q, ["founder", "ceo", "muhammad", "mohammad", "mohammed", "muhamad", "ahmed talha", "ahmad talha", "talha", "talaha", "tahla", "who is he", "about him", "about talha", "profile talha"])) {
         return response(`${DATA.founder.name} is ${DATA.founder.title} and a ${DATA.founder.role}. ${DATA.founder.summary} His profile records ${DATA.statistics.managedWorkstationsClaim} workstations managed, ${DATA.statistics.trainedStudentsClaim} students trained and ${DATA.statistics.securityToolsAndProjectsClaim} projects and custom security tools. He is based in ${DATA.founder.location} and is ${DATA.founder.availability.toLowerCase()}.`, [
           action("Founder profile", URLS.founder), action("Founder website", DATA.founder.website), action("LinkedIn", URLS.linkedin)
         ]);
@@ -334,7 +417,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         ]);
       }
 
-      if (includesAny(q, ["ethical hacking", "penetration testing", "pentest", "responsible", "permission", "legal", "safe"])) {
+      if (includesAny(q, ["ethical hacking", "penetration testing", "pentest", "responsible", "responsibility", "responsibilities", "permission", "legal", "safe", "authorized use", "acceptable use"])) {
         return response("HackStark supports ethical hacking only for education, defensive research and authorized testing. Practice on systems you own or have explicit permission to assess, preferably in isolated laboratories. Unauthorized access, disruption and data theft are not supported.", [action("Responsible-use principles", URLS.responsible)]);
       }
 
@@ -356,9 +439,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         ]);
       }
 
-      return response(`I couldn’t match that to the HackStark knowledge currently available to me. I can answer about the organization; Muhammad Ahmed Talha’s experience, skills, education, speaking and contact details; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner curriculum with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons; community channels; and responsible use policy.`, [
-        action("About HackStark", URLS.about), action("Course curriculum", URLS.curriculum), action("Explore projects", URLS.projects)
-      ]);
+      return contactTalha(`I couldn’t confidently match “${question.trim()}” to a verified answer in the HackStark knowledge base.`);
     }
   }
 
@@ -496,8 +577,8 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
       } catch (error) {
         typing.remove();
         console.error("JARVIS could not answer.", error);
-        this.addMessage("bot", response("I couldn’t generate that response. Your question was not lost. Please try again, or use the HackStark links below.", [action("Explore HackStark", URLS.about)]), [
-          ["Try again", question], ["Assistant help", "What can you answer?"]
+        this.addMessage("bot", contactTalha("I couldn’t generate a reliable response this time."), [
+          ["Try again", question], ["Contact Talha", "How can I contact Talha?"]
         ], "error");
       } finally {
         this.processing = false;
@@ -641,6 +722,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
   window.JarvisHackStarkAssistant = Object.freeze({
     open: () => controller.open(),
     close: () => controller.close(),
-    ask: (question) => controller.ask(String(question || ""))
+    ask: (question) => controller.ask(String(question || "")),
+    answer: (question) => controller.provider.respond(String(question || ""))
   });
 })();
