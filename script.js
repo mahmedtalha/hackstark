@@ -688,7 +688,7 @@
         const expanded = button.getAttribute("aria-expanded") === "true";
         extraVideos.forEach((video) => { video.hidden = expanded; });
         button.setAttribute("aria-expanded", String(!expanded));
-        button.firstChild.textContent = expanded ? `Show ${extraVideos.length} more lessons ` : "Show fewer lessons ";
+        button.firstChild.textContent = expanded ? `Show ${extraVideos.length} more lessons ` : "Show Fewer Lessons ";
 
         if (!expanded) {
           extraVideos.forEach((video) => video.classList.add("is-visible"));

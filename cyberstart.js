@@ -87,8 +87,8 @@
       }
     });
     if (status) status.textContent = fullCurriculum
-      ? `${visible} of ${course.lectureCount} lectures · ${course.topicCount} topics in the full program`
-      : `Preview: ${visible} of ${course.lectureCount} lectures · ${course.topicCount} topics in the full program`;
+      ? `${visible} of ${course.lectureCount} Lectures · ${course.topicCount} Topics in the full program`
+      : `Preview: ${visible} of ${course.lectureCount} Lectures · ${course.topicCount} Topics in the full program`;
   };
 
   const setFullCurriculum = (open) => {

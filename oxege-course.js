@@ -34,7 +34,7 @@
 
     program.tracks.forEach((track) => {
       const article = make("article", "oxege-track-card");
-      article.innerHTML = `<span>${track.number}</span><p>${track.id === "core" ? "Part I" : "Part II"}</p><h4></h4><strong>${track.moduleCount} modules</strong>`;
+      article.innerHTML = `<span>${track.number}</span><p>${track.id === "core" ? "Part I" : "Part II"}</p><h4></h4><strong>${track.moduleCount} Modules</strong>`;
       article.querySelector("h4").textContent = track.name;
       const ul = make("ul");
       track.topics.forEach((topic) => ul.append(make("li", "", topic)));
@@ -115,7 +115,7 @@
       button.setAttribute("aria-controls", `oxege-panel-${section.id}`);
       const heading = make("span", "oxege-module__heading");
       heading.append(make("span", "oxege-module__number", sectionLabel(section)), make("strong", "", section.title));
-      const meta = make("span", "oxege-module__meta", `${section.track === "core" ? "Part I" : "Part II"} · ${section.topics.length} topics`);
+      const meta = make("span", "oxege-module__meta", `${section.track === "core" ? "Part I" : "Part II"} · ${section.topics.length} Topics`);
       const icon = make("span", "oxege-module__icon", "+");
       icon.setAttribute("aria-hidden", "true");
       button.append(heading, meta, icon);
@@ -127,8 +127,8 @@
       if (state.query) setOpen(card, section, true, matches);
     });
     status.textContent = fullCurriculum
-      ? (state.query ? `${visibleSections} sections · ${visibleTopics} matching topics` : `${visibleSections} sections · ${visibleTopics} topics`)
-      : `Preview: Course Introduction + Cybersecurity Lab Setup · ${visibleTopics} opening topics`;
+      ? (state.query ? `${visibleSections} Sections · ${visibleTopics} Matching Topics` : `${visibleSections} Sections · ${visibleTopics} Topics`)
+      : `Preview: Course Introduction + Cybersecurity Lab Setup · ${visibleTopics} Opening Topics`;
   };
 
   const setFullCurriculum = (open) => {

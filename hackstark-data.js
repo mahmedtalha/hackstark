@@ -11,19 +11,19 @@
   ].map(Object.freeze);
 
   const portfolioProjects = [
-    { id: "info-gathering", name: "Information Gathering Framework", aliases: ["information gathering framework", "info gathering", "recon framework"], category: "Recon & VAPT", description: "A Python CLI/GUI that combines Nmap, Masscan, OpenVAS, DNS, CMS and HTTP checks, storing port, OS, service, URL, DNS and vulnerability findings in structured, report-ready output.", technologies: ["Python", "Nmap", "Masscan", "OpenVAS", "DNS/HTTP"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/info-gathering" }] },
-    { id: "user-finder", name: "User Finder Zeta: OSINT Scanner", aliases: ["user finder", "user finder zeta", "osint scanner"], category: "OSINT Reconnaissance", description: "A CLI/GUI OSINT search tool with username permutations, filters, proxies, APIs and concurrent requests that exports authorized public-footprint results to CSV, TXT and PDF.", technologies: ["Python", "OSINT", "APIs", "CSV/PDF"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/user-finder" }] },
-    { id: "metadata-extractor", name: "Zeta Metadata & OSINT Extractor", aliases: ["metadata extractor", "zeta metadata", "metadata osint"], category: "Digital Forensics", description: "A Python CLI/GUI that extracts authors, dates, software, geolocation and meta-metadata from PDFs, DOCX files, images and other supported files.", technologies: ["Python", "PyPDF", "Pillow", "python-docx"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/meta-data-extractor-zeta" }] },
-    { id: "wifi-deauth-detector", name: "Wi-Fi Deauth Detector NodeMCU (Fork)", aliases: ["wifi deauth detector", "wi-fi deauth detector", "nodemcu detector"], category: "Wireless Defense", description: "A forked NodeMCU/ESP8266 sketch that detects Wi-Fi deauthentication activity without external LEDs for wireless-monitoring research.", technologies: ["NodeMCU", "ESP8266", "Arduino/C++", "802.11"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/WiFiDeauthDetectorNodeMCU" }] },
-    { id: "watermark-remover", name: "AI Video Watermark Remover Pro", aliases: ["watermark remover", "ai video watermark", "image watermark remover"], category: "AI & Vision Application", description: "An identified AI video watermark-removal repository whose published files currently contain a title-only README; no implementation, capability or output is presently documented. Use only with owned or licensed media.", technologies: ["Not documented"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/AI-Video-Watermark-Remover-Pro" }] },
-    { id: "slowloris-advanced", name: "Slowloris Advanced Version", aliases: ["slowloris advanced", "dos simulator", "stress testing simulator"], category: "Stress Testing", description: "A Python Slowloris implementation that holds incomplete HTTP connections open, sends periodic headers and replaces closed sockets for authorized lab resilience testing only.", technologies: ["Python", "Sockets", "HTTP", "Slowloris"], sources: [{ label: "View source", url: "https://github.com/mahmedtalha/slowlorisAdvancedVersion" }] },
-    { id: "endpoint-detectors", name: "Live Website & Proxy Detectors", aliases: ["live website detector", "live proxy detector", "website proxy detectors"], category: "Recon & Network Security", description: "A website checker and concurrent proxy checker that classifies HTTP 200 URLs, tests proxies with timeouts and writes good/bad URL lists and live proxies to files.", technologies: ["Python", "Requests", "ThreadPoolExecutor", "File Output"], sources: [{ label: "Website source", url: "https://github.com/mahmedtalha/live-website-detector" }, { label: "Proxy source", url: "https://github.com/mahmedtalha/live-proxy-detector" }] },
-    { id: "prodigy-suite", name: "Prodigy CyberSecurity Research Suite", aliases: ["prodigy suite", "packet sniffer", "endpoint telemetry", "pixel image encryption"], category: "Grouped Security Suite", description: "Three controlled-lab Python GUIs for packet sniffing, endpoint keystroke telemetry and image encryption by pixel manipulation, producing packet logs, key logs and encrypted/decrypted images.", technologies: ["Python", "Scapy", "Tkinter", "Pynput/Pillow"], sources: [{ label: "Sniffer source", url: "https://github.com/mahmedtalha/PRODIGY_CS_05_packet_sniffer" }, { label: "Telemetry source", url: "https://github.com/mahmedtalha/PRODIGY_CS_04_keylogger" }, { label: "Encryption source", url: "https://github.com/mahmedtalha/PRODIGY_CS_02_Pixel_Manipulation_Image_Encryption" }] }
+    { id: "info-gathering", name: "Information Gathering Framework", aliases: ["information gathering framework", "info gathering", "recon framework"], category: "Recon & VAPT", description: "A Python CLI/GUI that combines Nmap, Masscan, OpenVAS, DNS, CMS and HTTP checks, storing port, OS, service, URL, DNS and vulnerability findings in structured, report-ready output.", technologies: ["Python", "Nmap", "Masscan", "OpenVAS", "DNS/HTTP"], sources: [{ label: "View Source", url: "https://github.com/mahmedtalha/info-gathering" }] },
+    { id: "user-finder", name: "User Finder Zeta: OSINT Scanner", aliases: ["user finder", "user finder zeta", "osint scanner"], category: "OSINT Reconnaissance", description: "A CLI/GUI OSINT search tool with username permutations, filters, proxies, APIs and concurrent requests that exports authorized public-footprint results to CSV, TXT and PDF.", technologies: ["Python", "OSINT", "APIs", "CSV/PDF"], sources: [{ label: "View Source", url: "https://github.com/mahmedtalha/user-finder" }] },
+    { id: "metadata-extractor", name: "Zeta Metadata & OSINT Extractor", aliases: ["metadata extractor", "zeta metadata", "metadata osint"], category: "Digital Forensics", description: "A Python CLI/GUI that extracts authors, dates, software, geolocation and meta-metadata from PDFs, DOCX files, images and other supported files.", technologies: ["Python", "PyPDF", "Pillow", "python-docx"], sources: [{ label: "View Source", url: "https://github.com/mahmedtalha/meta-data-extractor-zeta" }] },
+    { id: "wifi-deauth-detector", name: "Wi-Fi Deauth Detector NodeMCU (Fork)", aliases: ["wifi deauth detector", "wi-fi deauth detector", "nodemcu detector"], category: "Wireless Defense", description: "A forked NodeMCU/ESP8266 sketch that detects Wi-Fi deauthentication activity without external LEDs for wireless-monitoring research.", technologies: ["NodeMCU", "ESP8266", "Arduino/C++", "802.11"], sources: [{ label: "View Source", url: "https://github.com/mahmedtalha/WiFiDeauthDetectorNodeMCU" }] },
+    { id: "watermark-remover", name: "AI Video Watermark Remover Pro", aliases: ["watermark remover", "ai video watermark", "image watermark remover"], category: "AI & Vision Application", description: "An identified AI video watermark-removal repository whose published files currently contain a title-only README; no implementation, capability or output is presently documented. Use only with owned or licensed media.", technologies: ["Not documented"], sources: [{ label: "View Source", url: "https://github.com/mahmedtalha/AI-Video-Watermark-Remover-Pro" }] },
+    { id: "slowloris-advanced", name: "Slowloris Advanced Version", aliases: ["slowloris advanced", "dos simulator", "stress testing simulator"], category: "Stress Testing", description: "A Python Slowloris implementation that holds incomplete HTTP connections open, sends periodic headers and replaces closed sockets for authorized lab resilience testing only.", technologies: ["Python", "Sockets", "HTTP", "Slowloris"], sources: [{ label: "View Source", url: "https://github.com/mahmedtalha/slowlorisAdvancedVersion" }] },
+    { id: "endpoint-detectors", name: "Live Website & Proxy Detectors", aliases: ["live website detector", "live proxy detector", "website proxy detectors"], category: "Recon & Network Security", description: "A website checker and concurrent proxy checker that classifies HTTP 200 URLs, tests proxies with timeouts and writes good/bad URL lists and live proxies to files.", technologies: ["Python", "Requests", "ThreadPoolExecutor", "File Output"], sources: [{ label: "Website Source", url: "https://github.com/mahmedtalha/live-website-detector" }, { label: "Proxy Source", url: "https://github.com/mahmedtalha/live-proxy-detector" }] },
+    { id: "prodigy-suite", name: "Prodigy CyberSecurity Research Suite", aliases: ["prodigy suite", "packet sniffer", "endpoint telemetry", "pixel image encryption"], category: "Grouped Security Suite", description: "Three controlled-lab Python GUIs for packet sniffing, endpoint keystroke telemetry and image encryption by pixel manipulation, producing packet logs, key logs and encrypted/decrypted images.", technologies: ["Python", "Scapy", "Tkinter", "Pynput/Pillow"], sources: [{ label: "Sniffer Source", url: "https://github.com/mahmedtalha/PRODIGY_CS_05_packet_sniffer" }, { label: "Telemetry Source", url: "https://github.com/mahmedtalha/PRODIGY_CS_04_keylogger" }, { label: "Encryption Source", url: "https://github.com/mahmedtalha/PRODIGY_CS_02_Pixel_Manipulation_Image_Encryption" }] }
   ].map((project) => Object.freeze({ ...project, aliases: Object.freeze(project.aliases), technologies: Object.freeze(project.technologies), sources: Object.freeze(project.sources.map(Object.freeze)) }));
 
   const videos = [
-    { id: "YnGy6A-ZPtE", aliases: ["course introduction", "introduction course", "start course"], title: "Introduction to Ethical Hacking Course By HackStark", topic: "An overview and starting point for the HackStark ethical hacking course." },
-    { id: "7Tl3fexB3yk", aliases: ["install kali", "kali vmware", "vmware"], title: "How to install Kali Linux on VMware", topic: "Creating an isolated Kali Linux virtual machine lab." },
+    { id: "YnGy6A-ZPtE", aliases: ["course introduction", "introduction course", "start course"], title: "Introduction to Ethical Hacking Course by HackStark", topic: "An overview and starting point for the HackStark Ethical Hacking course." },
+    { id: "7Tl3fexB3yk", aliases: ["install kali", "kali vmware", "vmware"], title: "How to Install Kali Linux on VMware", topic: "Creating an isolated Kali Linux virtual machine lab." },
     { id: "Z9Hs6R5t4Eg", aliases: ["setup repository", "root user", "kali repository setup"], title: "How to Setup Repository & Root User in Kali Linux", topic: "Preparing a Kali Linux learning environment and its package repositories." },
     { id: "x6ICJDVH1Xw", aliases: ["xss", "reflected xss", "dvwa"], title: "XSS Reflected Attack Demonstration on DVWA & Online Website", topic: "A reflected cross site scripting demonstration; use DVWA or another deliberately vulnerable lab only." },
     { id: "84NSaznk-bw", aliases: ["rio", "encrypted video", "rio player"], title: "How to Play RIO Encrypted Video Files", topic: "A practical guide to playing RIO encrypted video files." }
@@ -47,7 +47,7 @@
     shortName: "EH Course 4 Beginners",
     provider: "HackStark",
     level: "Beginner",
-    delivery: "Self paced",
+    delivery: "Self Paced",
     currency: "PKR",
     originalPrice: 4999,
     price: 1999,
@@ -60,8 +60,8 @@
     videoLessonCount: 50,
     numberedModuleCount: 21,
     labLessonCount: 4,
-    description: "A practical introduction to ethical hacking, cybersecurity fundamentals, lab setup, reconnaissance, vulnerability assessment, network security, web security, wireless security, IoT, cryptography and continued security research.",
-    disclaimer: "This independent HackStark course covers ethical hacking topics historically aligned with CEH v11 learning domains. It is an educational resource and is not an official EC Council certification course.",
+    description: "A practical introduction to Ethical Hacking, Cybersecurity fundamentals, lab setup, reconnaissance, vulnerability assessment, Network Security, Web Security, wireless security, IoT, Cryptography and continued security research.",
+    disclaimer: "This independent HackStark course covers Ethical Hacking topics historically aligned with CEH v11 learning domains. It is an educational resource and is not an official EC Council certification course.",
     sections: Object.freeze([
       Object.freeze({
         id: "introduction",
@@ -76,21 +76,21 @@
       Object.freeze({
         id: "lab-setup",
         title: "Part 1: Lab Setup",
-        description: "Build an isolated virtualization environment and prepare Kali Linux for cybersecurity practice.",
+        description: "Build an isolated virtualization environment and prepare Kali Linux for Cybersecurity practice.",
         modules: Object.freeze([
           courseModule("Lab 01", "Downloading & Installing VMware", "Lab Setup", "foundation", [
             courseLesson("lab-01", "Downloading & Installing VMware", "1.1 Downloading & installing VMWare Software.mp4", "Lab Setup", { labOnly: true })
           ]),
           courseModule("Lab 02", "Enabling Virtualization Technology", "Lab Setup", "foundation", [
-            courseLesson("lab-02", "Enabling Virtualization Technology (VT x / AMD V)", "1.2 Enabling Virtualization Technology (VTx).mp4", "Lab Setup", { labOnly: true })
+            courseLesson("lab-02", "Enabling Virtualization Technology (VT-x / AMD-V)", "1.2 Enabling Virtualization Technology (VTx).mp4", "Lab Setup", { labOnly: true })
           ], {
             description: "Learn what hardware virtualization is and how to enable the required processor feature through BIOS/UEFI when supported."
           }),
           courseModule("Lab 03", "Installing Kali Linux on VMware", "Lab Setup", "foundation", [
             courseLesson("lab-03", "Installing Kali Linux on VMware", "1.3 installing Kali Linux on VMWare.mp4", "Lab Setup", { videoUrl: "https://www.youtube.com/watch?v=7Tl3fexB3yk", labOnly: true })
           ], { resources: [
-            courseResource("Current Kali Linux Downloads", "external", { label: "Official downloads", url: "https://www.kali.org/get-kali/", originalFile: "Download Kali Linux.url; Kali Linux Download.url" }),
-            courseResource("Kali in VMware", "external", { label: "Official documentation", url: "https://www.kali.org/docs/virtualization/install-vmware-guest-vm/" })
+            courseResource("Current Kali Linux Downloads", "external", { label: "Official Downloads", url: "https://www.kali.org/get-kali/", originalFile: "Download Kali Linux.url; Kali Linux Download.url" }),
+            courseResource("Kali in VMware", "external", { label: "Official Documentation", url: "https://www.kali.org/docs/virtualization/install-vmware-guest-vm/" })
           ] }),
           courseModule("Lab 04", "Kali Repository & User Configuration", "Lab Setup", "foundation", [
             courseLesson("lab-04", "Setting Up Repositories & User Configuration in Kali Linux", "1.4 Setting up Repository & User in Kali Linux .mp4", "Lab Setup", { videoUrl: "https://www.youtube.com/watch?v=Z9Hs6R5t4Eg", legacy: true, labOnly: true })
@@ -103,7 +103,7 @@
       Object.freeze({
         id: "ethical-hacking-modules",
         title: "Part 2: Ethical Hacking Modules",
-        description: "Progress from cybersecurity fundamentals through reconnaissance, assessment, networks, systems, web security, wireless, IoT, cloud and cryptography.",
+        description: "Progress from Cybersecurity fundamentals through reconnaissance, assessment, networks, systems, Web Security, wireless, IoT, cloud and Cryptography.",
         modules: Object.freeze([
           courseModule("Module 01", "Introduction to Ethical Hacking", "Foundation", "foundation", [
             courseLesson("m01-l01", "Introduction to Ethical Hacking", "2.1 introduction to Ethical Hacking.mp4", "Foundation")
@@ -128,11 +128,11 @@
           courseModule("Module 06", "System Security", "System Security", "system", [
             courseLesson("m06-l01", "Windows System Security & Controlled Exploitation Concepts", "2.6 Windows Sysyem Hacking.mp4", "System Security", { labOnly: true }),
             courseLesson("m06-l02", "Android Security Fundamentals & Lab Demonstration", "2.6.2 Android Hacking.mp4", "System Security", { labOnly: true })
-          ], { badge: "Lab only", resources: [courseResource("System Security Resource", "external", { originalFile: "System Hacking.url" })] }),
+          ], { badge: "Lab Only", resources: [courseResource("System Security Resource", "external", { originalFile: "System Hacking.url" })] }),
           courseModule("Module 07", "Malware Threats", "Malware Awareness", "system", [
             courseLesson("m07-l01", "Malware Threats", "2.7 Malware Threats.mp4", "Malware Awareness"),
             courseLesson("m07-l02", "Malware Tool Awareness: AhMyth & TheFatRat", "2.7.2 AhMyth & FAT-Rat.mp4", "Malware Awareness", { legacy: true, labOnly: true })
-          ], { legacy: true, badge: "Lab only", description: "Legacy offensive tooling is presented only for security awareness, detection and controlled analysis." }),
+          ], { legacy: true, badge: "Lab Only", description: "Legacy offensive tooling is presented only for security awareness, detection and controlled analysis." }),
           courseModule("Module 08", "Sniffing & Network Analysis", "Network Analysis", "networking", [
             courseLesson("m08-l01", "Packet Sniffing Fundamentals", "2.8 Sniffing.mp4", "Network Analysis", { labOnly: true }),
             courseLesson("m08-l02", "Wireshark & Ettercap", "2.8.2 WireShark & Ettercap.mp4", "Network Analysis", { labOnly: true }),
@@ -148,40 +148,40 @@
           courseModule("Module 10", "Denial of Service Concepts & Resilience", "Availability / Network Defense", "networking", [
             courseLesson("m10-l01", "DoS/DDoS Concepts and Legacy Tool Demonstration", "2.10 DDos + Using LOIC & ZDoser.mp4", "Availability / Network Defense", { legacy: true, labOnly: true }),
             courseLesson("m10-l02", "Slowloris & HTTP Service Resilience", "2.10.2 SlowLoris DOS Attack.mp4", "Availability / Network Defense", { legacy: true, labOnly: true })
-          ], { legacy: true, badge: "Controlled lab only", description: "Study availability risks, monitoring, rate limiting, connection management, detection and mitigation. Never disrupt a service." }),
+          ], { legacy: true, badge: "Controlled Lab Only", description: "Study availability risks, monitoring, rate limiting, connection management, detection and mitigation. Never disrupt a service." }),
           courseModule("Module 11", "Session Security", "Web / Session Security", "web", [
             courseLesson("m11-l01", "Session Hijacking Concepts & Cookie Security", "2.11 Session Hijacking & Cookies Stealing.mp4", "Web / Session Security"),
             courseLesson("m11-l02", "Session Security: Controlled Lab Demonstration", "2.11.2 Session Hijacking & Cookies Stealing Practical.mp4", "Web / Session Security", { labOnly: true })
-          ], { badge: "Lab only", description: "Understand insecure session handling and the controls used to prevent it." }),
+          ], { badge: "Lab Only", description: "Understand insecure session handling and the controls used to prevent it." }),
           courseModule("Module 12", "IDS, Firewalls & Honeypots", "Network Defense", "networking", [
             courseLesson("m12-l01", "Understanding IDS, Firewalls, Honeypots & Evasion Concepts", "2.12 Evading IDS, Firewalls, and Honeypots.mp4", "Network Defense", { legacy: true, labOnly: true })
           ], { legacy: true, description: "Learn how defensive controls detect adversarial behavior so they can be designed and evaluated more effectively." }),
           courseModule("Module 13", "Web Server Security", "Web Security", "web", [
             courseLesson("m13-l01", "Web Server Security Fundamentals", "2.13 Hacking Web Servers.mp4", "Web Security"),
             courseLesson("m13-l02", "Web Server Security: Lab Practice", "2.13.2 Hacking Web Servers Practice.mp4", "Web Security", { labOnly: true })
-          ], { badge: "Lab only" }),
+          ], { badge: "Lab Only" }),
           courseModule("Module 14", "Web Application Security", "Application Security", "web", [
             courseLesson("m14-l01", "Web Application Security Fundamentals", "2.14.1 Hacking Web Applications.mp4", "Application Security"),
             courseLesson("m14-l02", "Practice with DVWA & OWASP WebGoat", "2.14.2 DVWA & WebGoat.mp4", "Application Security", { videoUrl: "https://www.youtube.com/watch?v=x6ICJDVH1Xw", labOnly: true })
-          ], { badge: "Lab only", resources: [courseResource("OWASP WebGoat", "external", { label: "Official project", url: "https://owasp.org/www-project-webgoat/" })] }),
+          ], { badge: "Lab Only", resources: [courseResource("OWASP WebGoat", "external", { label: "Official Project", url: "https://owasp.org/www-project-webgoat/" })] }),
           courseModule("Module 15", "SQL Injection", "Application Security", "web", [
             courseLesson("m15-l01", "SQL Injection Fundamentals", "2.15 SQL Injection.mp4", "Application Security"),
             courseLesson("m15-l02", "SQL Injection: Authentication Security Lab", "2.15.2 SQL Injection Pratical (Admin Panel Bypass).mp4", "Application Security", { labOnly: true })
-          ], { badge: "Lab only", description: "Focus on vulnerable query construction, authentication weaknesses, parameterized queries, input handling and remediation." }),
+          ], { badge: "Lab Only", description: "Focus on vulnerable query construction, authentication weaknesses, parameterized queries, input handling and remediation." }),
           courseModule("Module 16", "Wireless Network Security", "Wireless Security", "wireless", [
             courseLesson("m16-l01", "WPA/WPA2 Security Fundamentals", "2.16.1 Wpa & Wpa2 Security.mp4", "Wireless Security"),
             courseLesson("m16-l02", "Wireless Security Testing with Aircrack ng: Lab", "2.16.2 Wi-Fi hacking with aircrack-ng & capturing handshake.mp4", "Wireless Security", { labOnly: true }),
             courseLesson("m16-l03", "Password Security & Wireless Auditing Tools: Lab", "2.16.3 Cracking with John-The-Ripper & Linset on WifiSlax.mp4", "Wireless Security", { legacy: true, labOnly: true })
-          ], { legacy: true, badge: "Authorized networks only" }),
+          ], { legacy: true, badge: "Authorized Networks Only" }),
           courseModule("Module 17", "Mobile Platform Security", "Mobile Security", "mobile", [
             courseLesson("m17-l01", "Android Security Fundamentals", "2.17 Hacking Mobile PlatForms (Android-Linux-Based).mp4", "Mobile Security"),
             courseLesson("m17-l02", "Android Security Testing Tools: Controlled Lab", "2.17.2 Evil-Droid (Auto Payload Generator).mp4", "Mobile Security", { legacy: true, labOnly: true }),
             courseLesson("m17-l03", "Mobile Security Controls & Protection Mechanisms", "2.17.3 Bypass Play Protect.mp4", "Mobile Security", { legacy: true, labOnly: true })
-          ], { legacy: true, badge: "Controlled lab only" }),
+          ], { legacy: true, badge: "Controlled Lab Only" }),
           courseModule("Module 18", "IoT Security", "IoT Security", "iot", [
             courseLesson("m18-l01", "IoT Security Fundamentals", "2.18 IoT Hacking.mp4", "IoT Security"),
             courseLesson("m18-l02", "IoT Security: Practical Lab", "2.18.2 IoT Hacking Practical.mp4", "IoT Security", { labOnly: true })
-          ], { badge: "HackStark core topic", resources: [courseResource("IoT Security Guide", "pdf", { originalFile: "2.18 IoT Hacking.pdf" })] }),
+          ], { badge: "HackStark Core Topic", resources: [courseResource("IoT Security Guide", "pdf", { originalFile: "2.18 IoT Hacking.pdf" })] }),
           courseModule("Module 19", "Cloud Computing", "Cloud", "cloud", [
             courseLesson("m19-l01", "Cloud Computing Fundamentals", "2.19 Cloud Computing .mp4", "Cloud"),
             courseLesson("m19-l02", "Virtual Private Server (VPS) Practical", "2.19.2 VPS Practical.mp4", "Cloud", { labOnly: true })
@@ -191,17 +191,17 @@
           ], { description: "Explore foundational concepts behind encryption, confidentiality, integrity and secure data protection." }),
           courseModule("Module 21", "Additional Security Content", "Additional / Legacy Content", "system", [
             courseLesson("m21-l01", "Malware Obfuscation Awareness & Defensive Detection Concepts", "2.21 Encrypting Virus Files.mp4", "Additional / Legacy Content", { legacy: true, labOnly: true })
-          ], { legacy: true, badge: "Legacy lab content", description: "An additional HackStark module outside the historical 20 module outline, focused on layered detection, behavioral analysis and sandboxing rather than evasion." })
+          ], { legacy: true, badge: "Legacy Lab Content", description: "An additional HackStark module outside the historical 20 module outline, focused on layered detection, behavioral analysis and sandboxing rather than evasion." })
         ])
       }),
       Object.freeze({
         id: "research-continuation",
         title: "Part 3: Continuing Your Research",
-        description: "Conclude with a responsible plan for continued cybersecurity learning and research.",
+        description: "Conclude with a responsible plan for continued Cybersecurity learning and research.",
         modules: Object.freeze([
           courseModule("Conclusion", "Continue Your Cybersecurity Research", "Security Research", "foundation", [
             courseLesson("conclusion-01", "How to Continue Your Cybersecurity Research", "3.1 How to Continue Your Research in Hacking.mp4", "Security Research")
-          ], { description: "Continue through documentation, isolated labs, CTFs, open source projects and responsible experimentation." })
+          ], { description: "Continue through documentation, isolated labs, CTFs, Open Source projects and responsible experimentation." })
         ])
       })
     ]),
@@ -244,12 +244,12 @@
     lectureCount: 16,
     topicCount: 51,
     level: "Foundation Level",
-    description: "A focused cybersecurity foundation program covering cybersecurity fundamentals, Linux, ethical hacking, network scanning, Fortinet-oriented firewall and network security, cyber defense, practical labs, real-world case studies and career development.",
+    description: "A focused Cybersecurity foundation program covering Cybersecurity fundamentals, Linux, Ethical Hacking, network scanning, Fortinet-oriented firewall and Network Security, cyber defense, practical labs, real-world case studies and career development.",
     deliveryDescription: "The program combines concepts, demonstrations, supervised laboratory exercises, applied discussion and a final practical assessment.",
     learningAreas: Object.freeze([
       "Introduction to Cybersecurity", "Linux Fundamentals", "Ethical Hacking Basics",
       "Firewall & Network Security (Fortinet)", "Cyber Defense & Threat Prevention",
-      "Hands-on Practical Labs", "Real-world Case Studies", "Career Guidance & Next Steps"
+      "Hands-on Practical Labs", "Real-World Case Studies", "Career Guidance & Next Steps"
     ]),
     tools: Object.freeze([
       "Kali Linux", "VMware", "APT", "dpkg", "Nmap", "Nmap NSE", "Nikto", "OpenVAS",
@@ -264,10 +264,10 @@
     safetyNotice: "Practical exercises are intended only for isolated laboratory environments, systems owned by the learner, or systems for which explicit authorization has been provided.",
     assessment: Object.freeze({
       title: "Integrated Practical Assessment",
-      areas: Object.freeze(["Network discovery", "Service identification", "Vulnerability assessment", "Defensive review", "Security analysis", "Findings", "Remediation report"])
+      areas: Object.freeze(["Network Discovery", "Service Identification", "Vulnerability Assessment", "Defensive Review", "Security Analysis", "Findings", "Remediation Report"])
     }),
     outcomes: Object.freeze([
-      "Explain core cybersecurity and information-security concepts, including the CIA triad and basic security principles.",
+      "Explain core Cybersecurity and information-security concepts, including the CIA triad and basic security principles.",
       "Use Kali Linux in an isolated virtual lab and work with Linux users, permissions, files and packages.",
       "Understand authorization, ethical-hacking scope and safe laboratory practice.",
       "Perform introductory information gathering, reconnaissance, Nmap scanning and enumeration.",
@@ -278,7 +278,7 @@
       "Analyze network traffic using Wireshark and document suspicious findings.",
       "Practice web-security assessment in intentionally vulnerable training applications.",
       "Document security findings and remediation.",
-      "Understand cybersecurity career paths and skill-development options."
+      "Understand Cybersecurity career paths and skill-development options."
     ]),
     lectures: Object.freeze([
       cyberStartLecture("01", "Cybersecurity Fundamentals", "Introduction to Cybersecurity", [
@@ -400,20 +400,20 @@
     introductorySectionCount: 2,
     topicCount: 587,
     audience: Object.freeze(["Beginners", "Students", "Job seekers", "Aspiring cybersecurity professionals"]),
-    description: "A three-month instructor-led cybersecurity and ethical-hacking training program delivered in partnership with the independent organization Oxege Technologies, combining a CEH v13 / CEH AI-aligned ethical-hacking core with broader professional cybersecurity coverage across defensive security, SOC/SIEM, threat hunting, DFIR, cloud security, DevSecOps, AI security, practical assessments, reporting and career development.",
+    description: "A three-month instructor-led Cybersecurity and ethical-hacking training program delivered in partnership with the independent organization Oxege Technologies, combining a CEH v13 / CEH AI-aligned ethical-hacking core with broader professional Cybersecurity coverage across defensive security, SOC/SIEM, threat hunting, DFIR, Cloud Security, DevSecOps, AI security, practical assessments, reporting and career development.",
     safetyNotice: "All offensive-security exercises, attack simulations, exploitation, password auditing, wireless testing, malware analysis, DoS simulation, social-engineering simulation and related activities are intended only for systems owned by the learner or systems for which explicit written authorization has been provided, preferably inside isolated lab environments.",
     tracks: Object.freeze([
-      Object.freeze({ id: "core", number: "01", name: "CEH v13 / CEH AI-Aligned Core", moduleCount: 20, topics: Object.freeze(["Ethical hacking", "Reconnaissance", "Scanning", "Enumeration", "Vulnerability analysis", "System security", "Malware", "Network analysis", "Social engineering", "Availability", "Session security", "Network defense", "Web & API", "SQL", "Wireless", "Mobile", "IoT/OT", "Cloud", "Cryptography"]) }),
-      Object.freeze({ id: "professional", number: "02", name: "Professional Cybersecurity", moduleCount: 12, topics: Object.freeze(["GRC", "Network infrastructure", "IAM", "Endpoint security", "SOC/SIEM", "Threat intelligence", "Threat hunting", "DFIR", "Backup/DR", "DevSecOps", "AI security", "Penetration testing", "Purple team", "Reporting", "Career development"]) })
+      Object.freeze({ id: "core", number: "01", name: "CEH v13 / CEH AI-Aligned Core", moduleCount: 20, topics: Object.freeze(["Ethical Hacking", "Reconnaissance", "Scanning", "Enumeration", "Vulnerability Analysis", "System Security", "Malware", "Network Analysis", "Social Engineering", "Availability", "Session Security", "Network Defense", "Web & API", "SQL", "Wireless", "Mobile", "IoT/OT", "Cloud", "Cryptography"]) }),
+      Object.freeze({ id: "professional", number: "02", name: "Professional Cybersecurity", moduleCount: 12, topics: Object.freeze(["GRC", "Network Infrastructure", "IAM", "Endpoint Security", "SOC/SIEM", "Threat Intelligence", "Threat Hunting", "DFIR", "Backup/DR", "DevSecOps", "AI Security", "Penetration Testing", "Purple Team", "Reporting", "Career Development"]) })
     ]),
     outcomeGroups: Object.freeze([
-      Object.freeze({ name: "Offensive Security", topics: Object.freeze(["Ethical hacking methodology", "Reconnaissance, scanning & enumeration", "Vulnerability assessment", "Authorized penetration testing", "Web/API & wireless security"]) }),
-      Object.freeze({ name: "Defensive Security", topics: Object.freeze(["Security hardening", "Endpoint & malware defense", "IDS/IPS & firewall architecture", "Detection & monitoring"]) }),
-      Object.freeze({ name: "Security Operations", topics: Object.freeze(["SOC & SIEM fundamentals", "Alert triage & detection logic", "Threat hunting", "Threat intelligence"]) }),
-      Object.freeze({ name: "Incident Response & DFIR", topics: Object.freeze(["Incident handling", "Evidence fundamentals", "Disk, memory & network forensics", "Forensic reporting"]) }),
-      Object.freeze({ name: "Enterprise Security", topics: Object.freeze(["GRC", "IAM & Active Directory", "Network security", "Backup, disaster recovery & continuity"]) }),
-      Object.freeze({ name: "Modern Security", topics: Object.freeze(["Cloud, containers & Kubernetes", "DevSecOps & software supply chain", "AI & machine learning security"]) }),
-      Object.freeze({ name: "Professional Development", topics: Object.freeze(["Assessment methodology", "Reporting & capstones", "Portfolio & GitHub projects", "Interviews & career roadmaps"]) })
+      Object.freeze({ name: "Offensive Security", topics: Object.freeze(["Ethical Hacking Methodology", "Reconnaissance, Scanning & Enumeration", "Vulnerability Assessment", "Authorized Penetration Testing", "Web/API & Wireless Security"]) }),
+      Object.freeze({ name: "Defensive Security", topics: Object.freeze(["Security Hardening", "Endpoint & Malware Defense", "IDS/IPS & Firewall Architecture", "Detection & Monitoring"]) }),
+      Object.freeze({ name: "Security Operations", topics: Object.freeze(["SOC & SIEM Fundamentals", "Alert Triage & Detection Logic", "Threat Hunting", "Threat Intelligence"]) }),
+      Object.freeze({ name: "Incident Response & DFIR", topics: Object.freeze(["Incident Handling", "Evidence Fundamentals", "Disk, Memory & Network Forensics", "Forensic Reporting"]) }),
+      Object.freeze({ name: "Enterprise Security", topics: Object.freeze(["GRC", "IAM & Active Directory", "Network Security", "Backup, Disaster Recovery & Continuity"]) }),
+      Object.freeze({ name: "Modern Security", topics: Object.freeze(["Cloud, Containers & Kubernetes", "DevSecOps & Software Supply Chain", "AI & Machine Learning Security"]) }),
+      Object.freeze({ name: "Professional Development", topics: Object.freeze(["Assessment Methodology", "Reporting & Capstones", "Portfolio & GitHub Projects", "Interviews & Career Roadmaps"]) })
     ]),
     toolGroups: Object.freeze([
       Object.freeze({ name: "Reconnaissance", tools: Object.freeze(["Nmap", "Masscan", "SpiderFoot", "theHarvester", "Shodan"]) }),
@@ -435,7 +435,7 @@
       name: "HackStark",
       type: "Cybersecurity education and open source organization",
       email: "hackstarkofficial@gmail.com",
-      description: "An independent cybersecurity education and open source organization focused on practical, ethical and responsible security learning.",
+      description: "An independent Cybersecurity education and Open Source organization focused on practical, ethical and responsible security learning.",
       origin: "HackStark began as a cybersecurity learning community in 2018 and has since evolved into an organization while preserving its community roots."
     }),
     trainingPartners: Object.freeze([
@@ -491,7 +491,7 @@
       Object.freeze({ type: "Certification training", name: "Certified in CyberSecurity (CC) Training", provider: "(ISC)²", detail: "Official self-paced training | Jun 12, 2023" }),
       Object.freeze({ type: "Course completion", name: "Ethical Hacking Essentials", provider: "Code Red | EC-Council", detail: "Fundamental Pen-Testing Credential" })
     ]),
-    speaking: Object.freeze({ event: "BZU Multan CIT Conference", date: "Aug 2026", role: "CyberSecurity Panelist & Speaker", topics: Object.freeze(["AI-enhanced cyber threats", "Quantum computing implications for cryptography and password security", "Human-firewall strategies", "Digital defense"]) }),
+    speaking: Object.freeze({ event: "BZU Multan CIT Conference", date: "Aug 2026", role: "CyberSecurity Panelist & Speaker", topics: Object.freeze(["AI-Enhanced Cyber Threats", "Quantum Computing Implications for Cryptography and Password Security", "Human-Firewall Strategies", "Digital Defense"]) }),
     website: Object.freeze({
       privacyPolicy: "privacy.html",
       termsOfService: "terms.html",
@@ -509,9 +509,9 @@
     oxegeCybersecurityProgram,
     focusAreas: Object.freeze(["Ethical hacking and penetration testing", "Network security", "IoT and wireless security", "OSINT and reconnaissance", "Security automation", "Linux and controlled security labs"]),
     securityWorkflow: Object.freeze([
-      Object.freeze({ id: "understand", number: "01", name: "Understand", summary: "Concept & scope", label: "Security mindset / Understand", title: "Understand before applying.", description: "Learn the concept, ethical scope and defensive purpose before using a technique." }),
-      Object.freeze({ id: "practice", number: "02", name: "Practice", summary: "Controlled lab", label: "Security mindset / Practice", title: "Practice safely.", description: "Apply the concept inside an authorized, controlled lab." }),
-      Object.freeze({ id: "harden", number: "03", name: "Harden", summary: "Defensive action", label: "Security mindset / Harden", title: "Strengthen defenses.", description: "Remediate findings, verify fixes and document defensive evidence." })
+      Object.freeze({ id: "understand", number: "01", name: "Understand", summary: "Concept & scope", label: "Security Mindset / Understand", title: "Understand Before Applying.", description: "Learn the concept, ethical scope and defensive purpose before using a technique." }),
+      Object.freeze({ id: "practice", number: "02", name: "Practice", summary: "Controlled lab", label: "Security Mindset / Practice", title: "Practice Safely.", description: "Apply the concept inside an authorized, controlled lab." }),
+      Object.freeze({ id: "harden", number: "03", name: "Harden", summary: "Defensive action", label: "Security Mindset / Harden", title: "Strengthen Defenses.", description: "Remediate findings, verify fixes and document defensive evidence." })
     ]),
     courseAreas: Object.freeze(["virtualization and Kali Linux lab setup", "ethical hacking foundations and authorization", "footprinting, reconnaissance and OSINT", "network scanning and enumeration", "vulnerability analysis", "system and endpoint security", "malware threats and defensive analysis", "traffic analysis and sniffing", "social engineering awareness", "denial of service resilience", "session security", "IDS, firewalls and honeypots", "web server and web application security", "DVWA, WebGoat, XSS and SQL injection concepts", "wireless security", "mobile platform security", "IoT security", "cloud computing and VPS fundamentals", "cryptography", "continued research and responsible practice"]),
     statistics: Object.freeze({ snapshotDate: "2026-09-07", publicRepositories: projects.length, projectRecords: "15+", githubFollowers: 9, publicGists: 0, featuredVideos: videos.length, courseLessons: 50, courseModules: 21, labLessons: 4, linkedCourseLessons: 4, experienceClaim: "6+", managedWorkstationsClaim: "400+", trainedStudentsClaim: "5,000+", securityToolsAndProjectsClaim: "15+" }),
