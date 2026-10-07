@@ -1425,3 +1425,53 @@ html[data-theme="light"] .theme-icon--moon { display: block; }
   .program-banner__content { padding-right: 1.8rem; }
   .program-banner__details div { grid-template-columns: 1fr; gap: .18rem; }
 }
+
+/* Courses disclosure: reuse the site's surfaces, accents and button typography. */
+.courses-dropdown { position: relative; }
+.desktop-nav { align-self: stretch; }
+.desktop-nav .courses-dropdown { display: flex; align-self: stretch; align-items: center; }
+.courses-toggle { display: inline-flex; align-items: center; gap: .25rem; padding: .85rem .05rem; border: 0; background: transparent; color: var(--muted); font-size: clamp(.76rem, .78vw, .84rem); font-weight: 650; white-space: nowrap; cursor: pointer; }
+.courses-toggle:hover, .courses-toggle[aria-expanded="true"] { color: var(--text); }
+.courses-toggle svg { width: .85rem; height: .85rem; transition: transform .2s ease; }
+.courses-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+ .courses-menu { position: absolute; z-index: 2; top: 100%; left: -.8rem; width: min(41rem, calc(100vw - 2.5rem)); max-height: calc(100dvh - var(--header-height) - 1rem); overflow-y: auto; padding: .75rem; border: 1px solid var(--border-strong); border-top: 2px solid var(--accent); border-radius: 1rem; background: var(--bg-elevated); box-shadow: 0 24px 70px rgba(0,0,0,.4); animation: courses-open .2s ease; }
+.courses-menu[hidden] { display: none; }
+.courses-menu__intro { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: 0 .2rem .55rem; }
+.courses-menu__eyebrow { color: var(--accent-text); font: 700 .65rem/1.3 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+.courses-menu__intro p { margin: .12rem 0 0; color: var(--text); font-size: 1rem; line-height: 1.3; font-weight: 650; letter-spacing: -.015em; }
+.courses-menu__count { flex-shrink: 0; padding: .22rem .4rem; border: 1px solid var(--border-strong); border-radius: 999px; color: var(--muted); font: 500 .7rem/1.3 var(--font-mono); }
+.courses-tile { display: grid; grid-template-columns: 1.9rem minmax(0,1fr) auto; align-items: start; gap: .6rem; margin-bottom: .4rem; padding: .65rem; border: 1px solid var(--border); border-radius: .65rem; background: var(--surface-soft); transition: border-color .2s ease, background-color .2s ease; }
+.courses-tile:last-child { margin-bottom: 0; }
+.courses-tile:focus-within { border-color: rgba(var(--accent-rgb), .5); background: color-mix(in srgb,var(--surface) 95%,var(--accent)); }
+.courses-tile__icon { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border: 1px solid rgba(var(--accent-rgb),.2); border-radius: .6rem; background: rgba(var(--accent-rgb),.08); color: var(--accent-text); }
+.courses-tile--02 .courses-tile__icon { color: var(--secondary-text); background: rgba(var(--secondary-rgb),.08); border-color: rgba(var(--secondary-rgb),.2); }
+.courses-tile--03 .courses-tile__icon { color: var(--text-soft); background: var(--surface-strong); border-color: var(--border-strong); }
+.courses-tile__icon svg { width: 1.1rem; height: 1.1rem; }
+.courses-tile__provider { display: flex; align-items: center; flex-wrap: wrap; gap: .25rem; margin: 0 0 .2rem; color: var(--muted); font-size: .75rem; line-height: 1.35; }
+.courses-tile__provider b { color: var(--text-soft); font-weight: 650; }
+.courses-tile__number { margin-left: auto; color: var(--muted); font: 500 .7rem/1.35 var(--font-mono); }
+.courses-tile h3 { margin: 0; color: var(--text); font-size: 1rem; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; text-wrap: pretty; }
+.courses-tile__tags { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .35rem; }
+.courses-tile__tags span { padding: .12rem .35rem; border: 1px solid var(--border); border-radius: .25rem; color: var(--text-soft); font-size: .72rem; line-height: 1.35; }
+.courses-tile__actions { display: grid; gap: .3rem; align-self: center; }
+.courses-menu .courses-tile__actions a { display: inline-flex; min-height: 2.35rem; align-items: center; justify-content: center; gap: .4rem; padding: .45rem .6rem; border: 1px solid var(--border-strong); border-radius: .4rem; color: var(--text-soft); font-size: .8rem; font-weight: 700; line-height: 1.4; white-space: nowrap; transition: background-color .2s ease, border-color .2s ease; }
+.courses-menu .courses-tile__actions a::after { content: none; }
+.courses-menu .courses-tile__actions .courses-tile__view { border-color: rgba(var(--accent-rgb),.3); background: rgba(var(--accent-rgb),.1); color: var(--accent-text); }
+.courses-menu .courses-tile__actions a:hover { border-color: var(--accent); background: rgba(var(--accent-rgb),.17); color: var(--text); }
+.courses-tile__actions svg { width: .85rem; height: .85rem; }
+.courses-toggle:focus-visible, .courses-menu a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@keyframes courses-open { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+@media (min-width: 1025px) and (max-width: 1200px) { .courses-toggle { font-size: .78rem; } }
+@media (max-width: 1024px) {
+  .mobile-nav .courses-toggle { width: 100%; min-height: 3.2rem; padding: 0; border-bottom: 1px solid var(--border); color: var(--text-soft); font-size: 1rem; text-align: left; }
+  .mobile-nav .courses-toggle svg { margin-left: auto; }
+  .mobile-nav .courses-menu { position: static; width: 100%; max-height: none; margin-block: .4rem; padding: .5rem; overflow: visible; box-shadow: none; }
+  .mobile-nav .courses-menu__intro { flex-wrap: wrap; gap: .5rem; }
+  .mobile-nav .courses-menu__intro p { font-size: 1rem; }
+  .mobile-nav .courses-tile { grid-template-columns: 1.8rem minmax(0,1fr); gap: .45rem; padding: .6rem; }
+  .mobile-nav .courses-tile__icon { width: 1.8rem; height: 1.8rem; }
+  .mobile-nav .courses-tile__actions { grid-column: 1 / -1; grid-template-columns: 1fr; margin-top: .2rem; }
+  .mobile-nav .courses-tile__actions a { min-height: 2.75rem; padding-inline: .3rem; }
+  .mobile-nav .courses-tile__number { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .courses-menu { animation: none; } .courses-toggle svg { transition: none; } }

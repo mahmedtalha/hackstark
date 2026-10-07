@@ -212,7 +212,45 @@
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#home" class="is-active">Home</a>
         <a href="#about">About</a>
-        <a href="#courses">Courses</a>
+        <div class="courses-dropdown">
+          <button class="courses-toggle" id="courses-toggle-desktop" type="button" aria-expanded="false" aria-haspopup="menu" aria-controls="courses-menu-desktop">Courses <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="courses-menu" id="courses-menu-desktop" role="menu" aria-labelledby="courses-toggle-desktop" hidden>
+            <div class="courses-menu__intro" role="presentation"><div><span class="courses-menu__eyebrow">HackStark learning paths</span><p>Build your next skill.</p></div><span class="courses-menu__count">03 programs</span></div>
+            <div class="courses-tile courses-tile--01" role="group" aria-labelledby="course-label-desktop-01">
+              <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-shield"></use></svg></span>
+              <div class="courses-tile__body">
+                <p class="courses-tile__provider">Provider <b>HackStark</b><span class="courses-tile__number">01</span></p>
+                <h3 id="course-label-desktop-01">Ethical Hacking Course for Beginners</h3>
+                <div class="courses-tile__tags"><span>Beginner</span><span>Self-paced</span></div>
+              </div>
+              <div class="courses-tile__actions">
+                <a class="courses-tile__view" role="menuitem" href="#course-top" aria-label="View Ethical Hacking Course for Beginners">View course <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              </div>
+            </div>
+            <div class="courses-tile courses-tile--02" role="group" aria-labelledby="course-label-desktop-02">
+              <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-terminal"></use></svg></span>
+              <div class="courses-tile__body">
+                <p class="courses-tile__provider">Training partner <b>TechFly</b><span class="courses-tile__number">02</span></p>
+                <h3 id="course-label-desktop-02">CyberStart Level 1</h3>
+                <div class="courses-tile__tags"><span>16 lectures</span><span>Beginner to intermediate</span></div>
+              </div>
+              <div class="courses-tile__actions">
+                <a class="courses-tile__view" role="menuitem" href="#cyberstart" aria-label="View CyberStart Level 1">View course <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              </div>
+            </div>
+            <div class="courses-tile courses-tile--03" role="group" aria-labelledby="course-label-desktop-03">
+              <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-layers"></use></svg></span>
+              <div class="courses-tile__body">
+                <p class="courses-tile__provider">Training partner <b>Oxege Technologies</b><span class="courses-tile__number">03</span></p>
+                <h3 id="course-label-desktop-03">Professional Cybersecurity &amp; Ethical Hacking Program</h3>
+                <div class="courses-tile__tags"><span>32 modules · 587 topics</span><span>CEH v13 / CEH AI aligned</span></div>
+              </div>
+              <div class="courses-tile__actions">
+                <a class="courses-tile__view" role="menuitem" href="#oxege-training" aria-label="View Professional Cybersecurity &amp; Ethical Hacking Program">View course <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="#projects">Projects</a>
         <a href="#founder">Founder</a>
         <a href="#experience">Experience</a>
@@ -247,7 +285,45 @@
       <div class="mobile-nav__inner">
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#courses">Courses</a>
+        <div class="courses-dropdown">
+          <button class="courses-toggle" id="courses-toggle-mobile" type="button" aria-expanded="false" aria-haspopup="menu" aria-controls="courses-menu-mobile">Courses <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="courses-menu" id="courses-menu-mobile" role="menu" aria-labelledby="courses-toggle-mobile" hidden>
+            <div class="courses-menu__intro" role="presentation"><div><span class="courses-menu__eyebrow">HackStark learning paths</span><p>Build your next skill.</p></div><span class="courses-menu__count">03 programs</span></div>
+            <div class="courses-tile courses-tile--01" role="group" aria-labelledby="course-label-mobile-01">
+              <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-shield"></use></svg></span>
+              <div class="courses-tile__body">
+                <p class="courses-tile__provider">Provider <b>HackStark</b><span class="courses-tile__number">01</span></p>
+                <h3 id="course-label-mobile-01">Ethical Hacking Course for Beginners</h3>
+                <div class="courses-tile__tags"><span>Beginner</span><span>Self-paced</span></div>
+              </div>
+              <div class="courses-tile__actions">
+                <a class="courses-tile__view" role="menuitem" href="#course-top" aria-label="View Ethical Hacking Course for Beginners">View course <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              </div>
+            </div>
+            <div class="courses-tile courses-tile--02" role="group" aria-labelledby="course-label-mobile-02">
+              <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-terminal"></use></svg></span>
+              <div class="courses-tile__body">
+                <p class="courses-tile__provider">Training partner <b>TechFly</b><span class="courses-tile__number">02</span></p>
+                <h3 id="course-label-mobile-02">CyberStart Level 1</h3>
+                <div class="courses-tile__tags"><span>16 lectures</span><span>Beginner to intermediate</span></div>
+              </div>
+              <div class="courses-tile__actions">
+                <a class="courses-tile__view" role="menuitem" href="#cyberstart" aria-label="View CyberStart Level 1">View course <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              </div>
+            </div>
+            <div class="courses-tile courses-tile--03" role="group" aria-labelledby="course-label-mobile-03">
+              <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-layers"></use></svg></span>
+              <div class="courses-tile__body">
+                <p class="courses-tile__provider">Training partner <b>Oxege Technologies</b><span class="courses-tile__number">03</span></p>
+                <h3 id="course-label-mobile-03">Professional Cybersecurity &amp; Ethical Hacking Program</h3>
+                <div class="courses-tile__tags"><span>32 modules · 587 topics</span><span>CEH v13 / CEH AI aligned</span></div>
+              </div>
+              <div class="courses-tile__actions">
+                <a class="courses-tile__view" role="menuitem" href="#oxege-training" aria-label="View Professional Cybersecurity &amp; Ethical Hacking Program">View course <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="#projects">Projects</a>
         <a href="#founder">Founder</a>
         <a href="#experience">Experience</a>
@@ -430,6 +506,10 @@
           <div class="course-overview__copy">
             <p><strong>Ethical Hacking Course for Beginners by HackStark</strong> combines 50+ self-paced lessons with practical demonstrations and supporting resources.</p>
             <p>Start with an isolated Kali Linux lab, then progress through reconnaissance, vulnerability assessment, systems, networks, web applications, wireless security, IoT, cloud computing and cryptography.</p>
+            <div class="hero-actions">
+              <a class="button button--primary" href="#curriculum">Explore Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="button button--ghost" href="Ethical%20Hacking%20Course%20Outline%20by%20HackStark.pdf" download="Ethical Hacking Course Outline by HackStark.pdf" aria-label="Download HackStark Ethical Hacking Course for Beginners curriculum PDF">Download Curriculum PDF <svg aria-hidden="true"><use href="#icon-download"></use></svg></a>
+            </div>
           </div>
         </div>
         <div class="container course-enrollment" id="enroll" data-nav-section>
@@ -495,7 +575,6 @@
               <a class="button button--primary" href="#cyberstart-curriculum">View Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
               <a class="button button--ghost enrollment-whatsapp" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20information%20about%20the%20TechFly%20CyberStart%20Level%201%20program.%20Please%20share%20the%20active%20batch%2C%20fees%2C%20schedule%2C%20and%20enrollment%20details." target="_blank" rel="noopener noreferrer"><svg class="whatsapp-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> WhatsApp</a>
             </div>
-            <small>Confirm the current batch and enrollment terms directly with the training provider.</small>
           </div>
         </div>
 
@@ -528,7 +607,6 @@
               <a class="button button--primary" href="#oxege-curriculum">View Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
               <a class="button button--ghost enrollment-whatsapp" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20information%20about%20the%20Oxege%20Professional%20Cybersecurity%20and%20Ethical%20Hacking%20Program.%20Please%20share%20the%20fees%2C%20online%20or%20physical%20schedule%2C%20and%20enrollment%20details." target="_blank" rel="noopener noreferrer"><svg class="whatsapp-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> WhatsApp</a>
             </div>
-            <small>Ask about the online or Rahim Yar Khan physical-class schedule before enrolling.</small>
           </div>
         </div>
         <aside class="container course-instructor reveal" aria-labelledby="course-instructor-heading">
@@ -675,6 +753,7 @@
             <p>The program combines concepts, demonstrations, supervised laboratory exercises, applied discussion and a final practical assessment.</p>
             <div class="cyberstart-actions">
               <a class="button button--primary" href="#cyberstart-curriculum">Explore 16-Lecture Curriculum <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="button button--ghost" href="CyberStart_Level_1_Techfly_16_Lecture_Curriculum.pdf" download="CyberStart_Level_1_Techfly_16_Lecture_Curriculum.pdf" aria-label="Download TechFly CyberStart Level 1 curriculum PDF">Download Curriculum PDF <svg aria-hidden="true"><use href="#icon-download"></use></svg></a>
               <a class="button button--ghost" href="techfly-cyber-security-engineer-poster.jpg" target="_blank" rel="noopener noreferrer">View Program Poster <svg aria-hidden="true"><use href="#icon-eye"></use></svg></a>
               <a class="button button--ghost" href="#experience">View Training Experience</a>
             </div>
@@ -779,6 +858,7 @@
             <p class="oxege-lead">A three-month instructor-led program available online and through physical classes in Rahim Yar Khan, combining ethical-hacking foundations with professional cybersecurity practice across defense, SOC operations, threat hunting, DFIR, cloud, DevSecOps, AI security, reporting and career development.</p>
             <div class="oxege-actions">
               <a class="button button--primary" href="#oxege-curriculum">Explore All 587 Topics <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a class="button button--ghost" href="CEH_v13_CEH_AI_Oxege_Cybersecurity_Curriculum.pdf" download="CEH_v13_CEH_AI_Oxege_Cybersecurity_Curriculum.pdf" aria-label="Download Oxege Professional Cybersecurity and Ethical Hacking Program curriculum PDF">Download Curriculum PDF <svg aria-hidden="true"><use href="#icon-download"></use></svg></a>
               <a class="button button--ghost" href="#experience">View Instructor Experience</a>
             </div>
           </div>

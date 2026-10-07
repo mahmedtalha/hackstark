@@ -34,6 +34,7 @@
       this.hydrateSharedData();
       this.theme();
       this.navigation();
+      this.courseNavigation();
       this.headerState();
       this.scrollProgress();
       this.scrollSpy();
@@ -113,6 +114,7 @@
       if (!toggle || !menu || !header) return;
 
       const closeMenu = (restoreFocus = false) => {
+        menu.dispatchEvent(new Event("navigationclose"));
         toggle.setAttribute("aria-expanded", "false");
         toggle.setAttribute("aria-label", "Open navigation menu");
         menu.hidden = true;
@@ -138,11 +140,12 @@
       });
 
       menu.addEventListener("click", (event) => {
-        if (event.target.closest("a")) closeMenu(false);
+        const link = event.target.closest("a");
+        if (link) closeMenu(link.hasAttribute("download"));
       });
 
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && !menu.hidden) closeMenu(true);
+        if (event.key === "Escape" && !event.defaultPrevented && !menu.hidden) closeMenu(true);
       });
 
       document.addEventListener("click", (event) => {
@@ -152,6 +155,77 @@
       window.addEventListener("resize", () => {
         if (window.innerWidth > 1024 && !menu.hidden) closeMenu(false);
       }, { passive: true });
+    },
+
+    courseNavigation() {
+      const dropdowns = [...document.querySelectorAll(".courses-dropdown")];
+      dropdowns.forEach((dropdown) => {
+        const trigger = dropdown.querySelector(".courses-toggle");
+        const panel = dropdown.querySelector(".courses-menu");
+        const links = [...panel.querySelectorAll("a")];
+        let closeTimer;
+        let pinned = false;
+        const isOpen = () => trigger.getAttribute("aria-expanded") === "true";
+        const setOpen = (open, restoreFocus = false) => {
+          clearTimeout(closeTimer);
+          trigger.setAttribute("aria-expanded", String(open));
+          panel.hidden = !open;
+          if (!open) pinned = false;
+          if (restoreFocus) trigger.focus();
+        };
+        trigger.addEventListener("click", () => {
+          // A first mouse click pins a hover-open menu; the next click closes it.
+          const open = !isOpen() || !pinned;
+          setOpen(open);
+          pinned = open;
+        });
+        dropdown.addEventListener("pointerenter", (event) => {
+          if (event.pointerType === "mouse" && dropdown.closest(".desktop-nav")) setOpen(true);
+        });
+        dropdown.addEventListener("pointerleave", () => {
+          if (!pinned && !dropdown.contains(document.activeElement)) {
+            closeTimer = setTimeout(() => setOpen(false), 180);
+          }
+        });
+        dropdown.addEventListener("focusout", (event) => {
+          if (!dropdown.contains(event.relatedTarget)) setOpen(false);
+        });
+        dropdown.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && isOpen()) {
+            event.preventDefault();
+            event.stopPropagation();
+            setOpen(false, true);
+          } else if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+            event.preventDefault();
+            setOpen(true);
+            pinned = true;
+            const index = links.indexOf(document.activeElement);
+            const next = event.key === "Home" ? 0 : event.key === "End" ? links.length - 1
+              : event.key === "ArrowDown" ? (index + 1) % links.length
+              : (index <= 0 ? links.length : index) - 1;
+            links[next].focus();
+          }
+        });
+        panel.addEventListener("click", (event) => {
+          const link = event.target.closest("a");
+          if (!link) return;
+          if (link.hasAttribute("download")) {
+            setOpen(false, true);
+            return;
+          }
+          setOpen(false);
+          const destination = link.hash ? document.querySelector(link.hash) : null;
+          if (destination) {
+            destination.setAttribute("tabindex", "-1");
+            destination.focus({ preventScroll: true });
+          }
+        });
+        document.addEventListener("click", (event) => {
+          if (!dropdown.contains(event.target)) setOpen(false);
+        });
+        dropdown.closest("nav").addEventListener("navigationclose", () => setOpen(false));
+        window.matchMedia("(max-width: 1024px)").addEventListener("change", () => setOpen(false));
+      });
     },
 
     headerState() {
