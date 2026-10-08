@@ -7,25 +7,29 @@
     return;
   }
 
-  const onCoursePage = document.body.classList.contains("course-page");
-  const homeSection = (hash) => onCoursePage ? `../index.html${hash}` : hash;
-  const siteAsset = (path) => onCoursePage ? `../${path}` : path;
+  const BEGINNER_COURSE = DATA.courses?.find((item) => item.id === "ethical-hacking-beginners");
+  const CYBERSTART = DATA.cyberStartCourse || DATA.courses?.find((item) => item.id === "cyberstart-level-1");
+  const OXEGE = DATA.oxegeCybersecurityProgram || DATA.courses?.find((item) => item.id === "oxege-professional-cybersecurity");
+  const onCoursePage = document.body.classList.contains("course-page")
+    || /\/(?:ethical-hacking-course|cyberstart|oxege-training)\.html$/.test(window.location.pathname);
+  const homeSection = (hash) => onCoursePage ? `index.html${hash}` : hash;
+  const siteAsset = (path) => path;
   const URLS = Object.freeze({
     about: homeSection("#about"),
-    focus: homeSection("#course-tools"),
+    focus: BEGINNER_COURSE.toolsUrl,
     projects: homeSection("#projects"),
-    learn: onCoursePage ? "#course-top" : "#learn",
-    course: "#course-top",
-    curriculum: "#curriculum",
-    cyberstart: homeSection("#cyberstart"),
-    cyberstartCurriculum: homeSection("#cyberstart-curriculum"),
-    oxege: homeSection("#oxege-training"),
-    oxegeCurriculum: homeSection("#oxege-curriculum"),
+    learn: "ethical-hacking-course.html#learn",
+    course: BEGINNER_COURSE.url,
+    curriculum: BEGINNER_COURSE.curriculumUrl,
+    cyberstart: CYBERSTART.url,
+    cyberstartCurriculum: CYBERSTART.curriculumUrl,
+    oxege: OXEGE.url,
+    oxegeCurriculum: OXEGE.curriculumUrl,
     founder: homeSection("#founder"),
     experience: homeSection("#experience"),
     credentials: homeSection("#credentials"),
     community: homeSection("#community"),
-    responsible: onCoursePage ? "#learn-responsibly" : "#responsible-security",
+    responsible: homeSection("#responsible-security"),
     contact: homeSection("#contact"),
     github: DATA.socials.github,
     youtube: DATA.socials.youtube,
@@ -50,9 +54,6 @@
   const PORTFOLIO_PROJECTS = DATA.portfolioProjects || [];
   const VIDEOS = DATA.videos;
   const COURSE_AREAS = DATA.courseAreas;
-  const BEGINNER_COURSE = DATA.courses?.find((item) => item.id === "ethical-hacking-beginners");
-  const CYBERSTART = DATA.cyberStartCourse || DATA.courses?.find((item) => item.id === "cyberstart-level-1");
-  const OXEGE = DATA.oxegeCybersecurityProgram || DATA.courses?.find((item) => item.id === "oxege-professional-cybersecurity");
   const TRAINING_PARTNERS = DATA.trainingPartners || [];
   const LINKED_COURSE_LESSONS = BEGINNER_COURSE?.sections
     .flatMap((section) => section.modules)
@@ -161,6 +162,18 @@
         action("Watch on YouTube", video.url), action("Browse Academy", URLS.learn)
       ]);
 
+      const asksTeachingLanguage = /\b(?:urdu|hindi|english)\b/.test(q)
+        || (/\blanguages?\b/.test(q) && (/\b(?:course|program|class|lesson|training|teaching)\b/.test(q)
+          || /^(?:what|which|in which) languages?\b/.test(q)));
+      if (asksTeachingLanguage) {
+        const course = /\b(?:oxege|oxage|ceh v13|ceh ai|course 3|course three)\b/.test(q) ? OXEGE
+          : /\b(?:techfly|tech fly|cyberstart|cyber start|course 2|course two)\b/.test(q) ? CYBERSTART
+          : /\b(?:beginner|beginners|self paced|hackstark course|course 1|course one)\b/.test(q) ? BEGINNER_COURSE
+          : null;
+        if (course) return response(`${course.name} is taught in ${new Intl.ListFormat("en", { type: "conjunction" }).format(course.teachingLanguages)}.`, [action("View course details", course.url), action("View curriculum", course.curriculumUrl)]);
+        return response(`Teaching languages:\n${DATA.courses.map((item) => `• ${item.name}: ${new Intl.ListFormat("en", { type: "conjunction" }).format(item.teachingLanguages)}`).join("\n")}`, [action("HackStark course", URLS.course), action("TechFly CyberStart", URLS.cyberstart), action("Oxege program", URLS.oxege)]);
+      }
+
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
         return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; Muhammad Ahmed Talha’s profile, experience, skills, education, speaking and contact details; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Founder profile", URLS.founder), action("Projects", URLS.projects)]);
       }
@@ -201,8 +214,8 @@
 Confirm the active batch, seat availability, provider terms and current price before paying.`, [action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact)]);
       }
 
-      if (includesAny(q, ["payment", "pay", "enroll", "enrol", "enrollment", "admission", "buy course", "purchase course", "refund", "cancellation"])) {
-        return response(`${DATA.website.enrollment} Confirm eligibility, current price, recipient details, active batch, seat availability, access or certificate terms, and any refund eligibility before paying. HackStark course access starts only after manual verification; partner-program enrollment terms should be confirmed directly.`, [action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact), action("Terms of Service", URLS.terms)]);
+      if (includesAny(q, ["payment", "pay", "paypal", "binance", "usdt", "bitcoin", "btc", "crypto", "enroll", "enrol", "enrollment", "admission", "buy course", "purchase course", "refund", "cancellation"])) {
+        return response(`${DATA.website.enrollment} For the self-paced course, create an account or sign in, confirm the payment method, pay and send your receipt with your account email on WhatsApp. International payments are accepted through PayPal, Binance Pay, USDT, Bitcoin (BTC), or other crypto by arrangement. Request the recipient, exact amount, currency, any fees and the crypto network before paying. Local JazzCash and Easypaisa transfers are charged in PKR; displayed INR prices are reference prices. Confirm the expected verification time, access period, support and refund eligibility before paying. Partner-program batches and enrollment terms are confirmed directly.`, [action("Enrollment steps", homeSection("#enrollment-guide")), action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact)]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -345,7 +358,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
       }
 
       if (includesAny(q, ["coming soon", "video unavailable", "missing video", "available lessons", "linked lessons"])) {
-        return response(`The learning program includes ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons. The structured website catalog currently exposes ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules plus ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons, and only verified video destinations are clickable. ${LINKED_COURSE_LESSONS} catalog lessons currently have direct verified YouTube links; unavailable destinations are labeled “Video link coming soon.”`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
+        return response(`The learning program includes ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons. The structured website catalog currently exposes ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules plus ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons, and only verified video destinations are clickable. ${LINKED_COURSE_LESSONS} catalog lessons currently have direct verified YouTube links; unavailable destinations are labeled “Included in Full Course.”`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
       }
 
       if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {

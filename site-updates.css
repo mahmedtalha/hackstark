@@ -1,0 +1,88 @@
+/* Homepage course overviews and clear enrollment information. */
+.hero-enrollment-note { margin: .8rem 0 0; color: var(--text-soft); font-size: .78rem; line-height: 1.6; }
+.hero-enrollment-note a { color: var(--accent-text); text-decoration: underline; text-underline-offset: .2em; white-space: nowrap; }
+.featured-course__languages { margin: 0; color: var(--text-soft); font-size: .85rem; }
+.course-teaching-languages { margin: 0 0 .8rem; color: var(--accent-text); font-size: .95rem; font-weight: 650; }
+.course-payment-methods { margin: .8rem 0; color: var(--text-soft); font-size: .8rem; line-height: 1.65; }
+.course-payment-methods a { color: var(--accent-text); text-decoration: underline; text-underline-offset: .2em; }
+.programs-compact .program-banner__details { margin-top: 1rem; }
+.programs-compact .program-banner__details > div { padding-block: .55rem; }
+.programs-compact .program-banner__content > p { font-size: .88rem; }
+.programs-compact .program-banner__type { font-size: .68rem; }
+.programs-compact .program-banner__details dt { font-size: .68rem; }
+.programs-compact .program-banner__details dd { font-size: .85rem; }
+.programs-compact .program-banner__actions .button { min-height: 2.8rem; font-size: .8rem; }
+.programs-compact .program-banner__actions { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+.programs-compact .program-banner__actions .program-curriculum { align-self: center; min-height: 2.35rem; padding: .5rem .6rem; font-size: .68rem; }
+.programs-compact .program-banner__actions .program-contact { grid-column: 1/-1; min-height: 2.5rem; font-size: .72rem; }
+.programs-compact .program-banner-list { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.programs-compact .program-banner { grid-template-columns: minmax(0,1fr); grid-template-rows: 1fr auto auto; }
+.programs-compact .program-banner__content,.programs-compact .program-banner__price,.programs-compact .program-banner__actions { grid-column: 1; grid-row: auto; }
+.programs-compact .program-banner__content { padding-right: 0; }
+.programs-compact .program-banner--professional .program-banner__type { color: var(--secondary-text); }
+.homepage-enrollments .course-enrollment__actions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.homepage-enrollments .course-enrollment__actions .button { min-height: 2.6rem; padding: .55rem .6rem; font-size: .7rem; }
+.homepage-enrollments .course-enrollment__actions [data-course-enroll],.homepage-enrollments .course-enrollment__actions .enrollment-whatsapp { grid-column: 1/-1; }
+.homepage-course { scroll-margin-top: 1rem; }
+.homepage-course + .homepage-course { margin-top: clamp(3rem,6vw,5rem); }
+.homepage-course.cyberstart { overflow: visible; border: 0; background: none; }
+.homepage-course .course-overview__grid { padding: clamp(1.25rem,3vw,2.5rem); border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+.homepage-course .cyberstart-hero { padding-block: clamp(1.5rem,3vw,2.5rem); }
+.homepage-course .course-overview__grid h2,.homepage-course .cyberstart-hero h2,.homepage-course .oxege-hero h2 { max-width: 20ch; font-size: clamp(2rem,4.2vw,3.75rem); line-height: 1.08; }
+.homepage-course .cyberstart-hero__copy,.homepage-course .oxege-hero__copy { min-width: 0; }
+.homepage-course .course-teaching-languages { color: var(--accent-text); }
+.homepage-previews .course-preview-actions,.homepage-previews .course-preview-resources { display: flex; flex-wrap: wrap; gap: .65rem; }
+.homepage-previews .course-preview-actions { margin-top: 1.5rem; }
+.homepage-previews .course-preview-resources { margin-top: .65rem; }
+.homepage-previews .course-preview-actions .button { min-width: 0; }
+.homepage-previews .course-preview-contact { border-color: color-mix(in srgb,var(--accent) 40%,var(--border)); color: var(--accent-text); }
+.homepage-previews .course-preview-contact .whatsapp-icon { width: 1rem; height: 1rem; fill: currentColor; stroke: none; }
+.homepage-course.oxege .oxege-program-label,.homepage-course.oxege .oxege-hero h2 em,.homepage-course.oxege .oxege-credential__badge,.homepage-course.oxege .curriculum-sequence { color: var(--secondary-text); }
+.enrollment-guide .section-intro h2 { max-width: 24ch; }
+.enrollment-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; padding: 0; margin: 1.5rem 0; list-style: none; }
+.partner-enrollment-steps { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.enrollment-steps li { min-width: 0; padding: 1.25rem; border: 1px solid var(--border-strong); border-radius: var(--radius-lg); background: var(--surface); }
+.enrollment-steps li > span { display: block; margin-bottom: .85rem; color: var(--accent-text); font: 750 .85rem var(--font-mono); }
+.enrollment-steps h3 { margin-bottom: .65rem; font-size: 1.05rem; }
+.enrollment-steps p { margin: 0; color: var(--text-soft); font-size: .87rem; line-height: 1.6; }
+.enrollment-guide__note { color: var(--muted); font-size: .85rem; text-align: center; }
+.international-payments { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; padding: 1.25rem; border: 1px solid var(--border-strong); border-radius: var(--radius-lg); background: var(--bg-elevated); }
+.international-payments strong { color: var(--text); }
+.international-payments p { margin: .35rem 0; color: var(--accent-text); font-weight: 650; font-size: .9rem; }
+.international-payments small { display: block; color: var(--muted); line-height: 1.6; }
+.international-payments .button { flex: 0 0 auto; }
+.payment-method-help { margin: .9rem 0; color: var(--text-soft); font-size: .8rem; line-height: 1.65; }
+.payment-methods label { min-width: 0; min-height: 4.5rem; }
+.payment-methods label span { min-width: 0; }
+.payment-instructions dd { overflow-wrap: anywhere; }
+.payment-summary > div { min-width: 0; }
+.payment-summary del { display: block; color: var(--muted); font-size: .75rem; }
+.detail-page main { padding-top: var(--header-height); }
+.course-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; padding-block: 1.25rem; color: var(--muted); font-size: .8rem; }
+.course-breadcrumb a { min-height: 2rem; display: inline-flex; align-items: center; color: var(--accent-text); }
+.course-breadcrumb a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.course-breadcrumb [aria-current] { color: var(--text-soft); }
+.detail-page h1 { max-width: 22ch; font-size: clamp(2.2rem,4.3vw,3.75rem); line-height: 1.12; }
+.detail-page .course-overview__grid h1 { max-width: 20ch; }
+.detail-page .enrollment-guide { padding-block: 1.75rem; }
+.detail-page .course-overview > .enrollment-guide .container { width: min(100% - 2.5rem,var(--container)); }
+.detail-page .course-subnav { position: static; }
+.detail-page .desktop-nav .courses-toggle { color: var(--accent-text); }
+@media (max-width: 64rem) {
+  .programs-compact .program-banner-list { grid-template-columns: 1fr; }
+  .enrollment-steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .international-payments { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 40rem) {
+  .homepage-previews .course-preview-actions .button { width: 100%; justify-content: center; }
+  .homepage-course .oxege-credential dl div { align-items: flex-start; flex-direction: column; gap: .2rem; }
+  .homepage-course .oxege-credential dd { text-align: left; }
+  .enrollment-steps { grid-template-columns: 1fr; gap: .65rem; }
+  .enrollment-steps li { display: flex; gap: 1rem; padding: 1rem; }
+  .enrollment-steps li > span { margin: .1rem 0 0; }
+  .international-payments .button { width: 100%; }
+  .hero-enrollment-note { font-size: .75rem; }
+  .detail-page .course-subnav .container { justify-content: flex-start; }
+  .payment-summary { align-items: flex-start; flex-direction: column; }
+  .payment-whatsapp { font-size: .85rem; white-space: normal; text-align: center; }
+}

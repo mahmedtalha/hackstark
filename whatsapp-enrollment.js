@@ -4,7 +4,6 @@
   const courseName = "Ethical Hacking Course for Beginners";
   const coursePricePkr = 1999;
   const coursePriceUsd = 7.99;
-  const coursePriceInr = 799;
   const courseId = "ethical-hacking-beginners";
   const whatsappNumber = "923023070227";
   const dialog = document.querySelector("#payment-dialog");
@@ -12,13 +11,20 @@
   const featuredStatus = document.querySelector("[data-featured-course-status]");
   const whatsappLink = document.querySelector("[data-payment-whatsapp]");
   const instructions = document.querySelector("[data-payment-instructions]");
-  const currentPrice = document.querySelector("[data-payment-current-price]");
+  const currentPrices = document.querySelectorAll("[data-payment-current-price]");
+  const paymentHelp = document.querySelector("[data-payment-help]");
   const couponPanel = document.querySelector("[data-payment-coupon]");
   const couponInput = document.querySelector("[data-coupon-input]");
   const couponApply = document.querySelector("[data-coupon-apply]");
   const couponStatus = document.querySelector("[data-coupon-status]");
   let waitingForSignIn = false;
   let activeCoupon = null;
+
+  const setEnrollmentStatus = (message) => {
+    [status, featuredStatus].forEach((element) => {
+      if (element) element.textContent = message;
+    });
+  };
 
   const accessState = () => {
     const metadata = window.Clerk?.user?.publicMetadata || {};
@@ -68,39 +74,99 @@
     const multiplier = 1 - discount / 100;
     return {
       pkr: Math.round(coursePricePkr * multiplier),
-      inr: Math.round(coursePriceInr * multiplier),
       usd: Number((coursePriceUsd * multiplier).toFixed(2))
     };
   };
 
-  const formatAmount = ({ pkr, inr, usd }) =>
-    `PKR ${pkr.toLocaleString("en-PK")} · ₹${inr.toLocaleString("en-IN")} INR · USD $${usd.toFixed(2)}`;
+  const internationalMethods = {
+    "PayPal": { currency: "USD", details: "the PayPal recipient and exact USD amount" },
+    "Binance Pay": { currency: "USDT", details: "the Binance Pay ID and exact USDT amount" },
+    "USDT": { currency: "USDT", details: "the USDT wallet address, supported network and exact USDT amount" },
+    "Bitcoin (BTC)": { currency: "BTC", details: "the Bitcoin wallet address, network and quoted BTC amount" },
+    "Other Crypto": { currency: "crypto", details: "the supported coin, wallet address, network and quoted crypto amount" }
+  };
+
+  const renderInstructions = (title, rows) => {
+    const heading = document.createElement("span");
+    heading.textContent = title;
+    const list = document.createElement("dl");
+    rows.forEach(([label, value]) => {
+      const row = document.createElement("div");
+      const term = document.createElement("dt");
+      const definition = document.createElement("dd");
+      term.textContent = label;
+      definition.textContent = value;
+      row.append(term, definition);
+      list.append(row);
+    });
+    instructions.replaceChildren(heading, list);
+  };
+
+  const updateWhatsAppLabel = (label) => {
+    const icon = whatsappLink.querySelector("svg");
+    whatsappLink.replaceChildren(...(icon ? [icon] : []), document.createTextNode(` ${label}`));
+  };
 
   const updatePayment = () => {
     if (!dialog || !instructions || !whatsappLink) return;
     const method = selectedMethod();
-    const amount = formatAmount(calculatedPrices());
-    if (currentPrice) currentPrice.textContent = amount;
-    const details = method === "JazzCash"
-      ? `<span>Pay via JazzCash</span><dl><div><dt>Account Title</dt><dd>Muhammad Ahmed Talha</dd></div><div><dt>JazzCash Number</dt><dd>03238621733</dd></div><div><dt>Amount to Pay</dt><dd>${amount}</dd></div></dl>`
-      : `<span>Pay via Easypaisa</span><dl><div><dt>Easypaisa Number</dt><dd>03023070227</dd></div><div><dt>Amount to Pay</dt><dd>${amount}</dd></div></dl>`;
-    instructions.innerHTML = details;
+    const prices = calculatedPrices();
+    const usdAmount = `USD $${prices.usd.toFixed(2)}`;
+    const international = Object.prototype.hasOwnProperty.call(internationalMethods, method)
+      ? internationalMethods[method]
+      : null;
+    const amount = international
+      ? international.currency === "USD"
+        ? usdAmount
+        : `${usdAmount} reference · ${international.currency === "crypto" ? "Crypto" : international.currency} quote required`
+      : `PKR ${prices.pkr.toLocaleString("en-PK")}`;
+    currentPrices.forEach((price) => { price.textContent = amount; });
+
+    if (international) {
+      renderInstructions(`Request ${method} payment details`, [
+        [international.currency === "USD" ? "Course Fee" : "Course Fee Reference", usdAmount],
+        ["Payment Currency", international.currency === "crypto" ? "Choose a supported coin with us" : international.currency],
+        ["Before You Pay", `Request ${international.details} on WhatsApp.`],
+        ["After Payment", "Send your payment receipt or transaction ID for manual verification."]
+      ]);
+    } else {
+      renderInstructions(`Pay via ${method}`, [
+        ...(method === "JazzCash" ? [["Account Title", "Muhammad Ahmed Talha"]] : []),
+        [`${method} Number`, method === "JazzCash" ? "03238621733" : "03023070227"],
+        ["Amount to Pay", amount]
+      ]);
+    }
+    if (paymentHelp) {
+      paymentHelp.textContent = international
+        ? "Request the recipient, exact amount and any required network before paying. Access activates after manual payment approval."
+        : "Pay the PKR amount above, then send your receipt on WhatsApp. Access activates after manual payment approval.";
+    }
+    updateWhatsAppLabel(international ? "Request Payment Details on WhatsApp" : "Send Receipt on WhatsApp");
 
     const account = accountDetails();
     const message = [
       "Assalam o Alaikum.",
       "",
-      "I have completed payment for my HackStark course enrollment.",
+      international
+        ? "I would like the international payment details for my HackStark course enrollment. I have not paid yet."
+        : "I have completed payment for my HackStark course enrollment.",
       "",
       `Course: ${courseName}`,
-      `Course fee: ${amount}`,
+      `Course fee${international && international.currency !== "USD" ? " reference" : ""}: ${international ? usdAmount : amount}`,
       ...(activeCoupon ? [`Coupon: ${activeCoupon.code} (${activeCoupon.discount}% off)`] : []),
       `Payment Method: ${method}`,
       `Account Name: ${account.name}`,
       `Account Email: ${account.email}`,
       "",
-      "I am attaching my successful payment screenshot for manual verification.",
-      "Please verify the payment and provide course access."
+      ...(international
+        ? [
+          `Please confirm ${international.details} before I send payment.`,
+          "Please also confirm any payment fees and how to submit my receipt or transaction ID for course access."
+        ]
+        : [
+          "I am attaching my successful payment receipt for manual verification.",
+          "Please verify the payment and provide course access."
+        ])
     ].join("\n");
     whatsappLink.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
@@ -142,18 +208,18 @@
 
   const beginEnrollment = () => {
     if (!window.Clerk) {
-      if (status) status.textContent = "Account service is still loading. Please try again in a moment.";
+      setEnrollmentStatus("Account service is still loading. Please try again in a moment, or contact us on WhatsApp.");
       return;
     }
     if (!window.Clerk.isSignedIn) {
       waitingForSignIn = true;
-      if (status) status.textContent = "Sign in with your existing HackStark account to continue.";
+      setEnrollmentStatus("Create a HackStark account or sign in to continue.");
       if (typeof window.hackstarkOpenAuth === "function") window.hackstarkOpenAuth("signIn");
       else window.Clerk.openSignIn();
       return;
     }
     waitingForSignIn = false;
-    if (status) status.textContent = "";
+    setEnrollmentStatus("");
     openPayment();
   };
 
@@ -162,11 +228,13 @@
     if (!trigger) return;
     const state = accessState();
     if (state === "active") {
-      document.querySelector("#curriculum")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const curriculum = document.querySelector("#curriculum");
+      if (curriculum) curriculum.scrollIntoView({ behavior: "smooth", block: "start" });
+      else window.location.href = "ethical-hacking-course.html#curriculum";
       return;
     }
     if (state === "pending") {
-      if (status) status.textContent = "Payment verification is pending. Course access will activate after approval.";
+      setEnrollmentStatus("Payment verification is pending. Course access will activate after approval.");
       return;
     }
     beginEnrollment();

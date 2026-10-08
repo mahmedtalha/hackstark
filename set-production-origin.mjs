@@ -7,6 +7,9 @@ import { fileURLToPath } from "node:url";
 const projectRoot = dirname(fileURLToPath(import.meta.url));
 const replacementFiles = [
   "index.html",
+  "ethical-hacking-course.html",
+  "cyberstart.html",
+  "oxege-training.html",
   "privacy.html",
   "terms.html",
   "robots.txt",

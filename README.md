@@ -17,7 +17,7 @@ A lightweight, responsive website for HackStark—a cybersecurity education and 
 - Six cybersecurity focus areas
 - Filterable open-source project showcase
 - Eight evidence-based founder security project groups with VAPT, OSINT, network, forensics and development filters
-- HackStark Academy video library and complete beginner ethical-hacking course integrated into the homepage
+- Three course comparison boxes, three horizontal enrollment layouts and ordered course previews on the homepage, with dedicated course pages
 - Concise founder profile
 - Official community channels
 - Responsible-security notice
@@ -91,7 +91,10 @@ Upload the root-level website files. No server runtime, database or build step i
 - Typography uses privacy-minded system font stacks for headings, body copy and technical labels; no external font service is contacted.
 - Current branding uses the supplied circular artwork in `hackstark-brand.png`, with dedicated ICO/PNG browser favicons, an Apple touch icon, Android/PWA icons and a mask-safe install icon.
 - Organization, founder, social, HackStark repository, founder project, video, course, statistics and history records live in the shared `hackstark-data.js` source consumed by both the page and JARVIS.
-- The complete beginner course is integrated into `index.html`; its presentation and interaction live in `course.css` and `course.js`.
+- Full course details live in `ethical-hacking-course.html`, `cyberstart.html` and `oxege-training.html`. The homepage groups course content in this order: three vertical comparison boxes, three horizontal enrollment rows, then the opening previews for Courses 01, 02 and 03. Homepage course-menu links open these previews. Each comparison box has a View Course button linking to the top of its dedicated page and a smaller View Curriculum button. The three horizontal enrollment rows also provide View Course, View Curriculum and WhatsApp actions; Course 1 retains Enroll Now. Course 1’s full demonstrations and FAQ appear only on its dedicated page; homepage free-preview links open that page directly. Each opening preview provides View Course, View Curriculum and Contact on WhatsApp, followed by its PDF and other resource links. Curriculum presentation and interaction remain in the existing course CSS and JavaScript files.
+- `site-pages.js` preserves older course-section links and opens deep links to curriculum modules. `site-updates.css` styles enrollment guidance and homepage course overviews.
+- International payments (PayPal, Binance Pay, USDT, Bitcoin and other crypto by arrangement) request exact recipient, amount and network details on WhatsApp before payment. No unverified wallet or payment destination is embedded.
+- Feedback draft wording is kept separately in `feedback-drafts.md` and is not displayed as student testimonials. Add real feedback with permission and source context before publishing a testimonial section.
 - JARVIS behavior and presentation live in `jarvis-aichatbot.js` and `jarvis-aichatbot.css`.
 - JARVIS keeps dated public-profile metadata clearly labeled as a snapshot, distinguishes current verified links from historical references and answers dual-use security topics only at a defensive, authorized-lab level.
 - Critical links and copy remain in HTML so the website still works without JavaScript.
