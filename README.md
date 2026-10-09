@@ -32,8 +32,7 @@ A lightweight, responsive website for HackStark—a cybersecurity education and 
 - Sticky navigation and active-section highlighting
 - Dark and light themes saved as a device-local preference
 - Accessible project filters and video expansion
-- Searchable, filterable 46-lesson course curriculum with accessible module accordions
-- Three-state course progress stored only in the learner's browser
+- Expandable 50+ lesson beginner curriculum with accessible module accordions, plus the 16-lecture CyberStart and 32-module Oxege curricula
 - Clear legacy-content, controlled-lab and unpublished-resource labels
 - Optional current GitHub metadata with static fallbacks
 - Accessible loading skeletons, progress indicators and visible fallback messaging for JARVIS and GitHub metadata
@@ -87,14 +86,15 @@ Upload the root-level website files. No server runtime, database or build step i
 ## Customization
 
 - Design tokens and theme colors are at the top of `style.css`.
+- The 51 Course 1 reviews supplied by the instructor are displayed on `ethical-hacking-course.html` in three columns: 6 initially, 30 after the first expansion, and all 51 after the second. The overview’s View 51 Reviews button jumps directly to the review section. Names and comments are preserved as supplied; source-link attribution can be added when the course URL is provided.
+- Statistics count up once when they enter view, over roughly 1.1–1.4 seconds. Reduced-motion preferences keep the final values visible.
 - The production style follows the supplied portfolio reference: near-black navy surfaces, emerald actions, cyan highlights, glass navigation and compact rounded cards.
 - Typography uses privacy-minded system font stacks for headings, body copy and technical labels; no external font service is contacted.
 - Current branding uses the supplied circular artwork in `hackstark-brand.png`, with dedicated ICO/PNG browser favicons, an Apple touch icon, Android/PWA icons and a mask-safe install icon.
 - Organization, founder, social, HackStark repository, founder project, video, course, statistics and history records live in the shared `hackstark-data.js` source consumed by both the page and JARVIS.
-- Full course details live in `ethical-hacking-course.html`, `cyberstart.html` and `oxege-training.html`. The homepage groups course content in this order: three vertical comparison boxes, three horizontal enrollment rows, then the opening previews for Courses 01, 02 and 03. Homepage course-menu links open these previews. Each comparison box has a View Course button linking to the top of its dedicated page and a smaller View Curriculum button. The three horizontal enrollment rows also provide View Course, View Curriculum and WhatsApp actions; Course 1 retains Enroll Now. Course 1’s full demonstrations and FAQ appear only on its dedicated page; homepage free-preview links open that page directly. Each opening preview provides View Course, View Curriculum and Contact on WhatsApp, followed by its PDF and other resource links. Curriculum presentation and interaction remain in the existing course CSS and JavaScript files.
+- Full course details live in `ethical-hacking-course.html`, `cyberstart.html` and `oxege-training.html`. The homepage groups course content in this order: three vertical comparison boxes, three horizontal enrollment rows, then the opening previews for Courses 01, 02 and 03. Desktop and mobile course-menu links open the corresponding dedicated course page at the top. Each comparison box has a View Course button linking to the top of its dedicated page and a smaller View Curriculum button. The three horizontal enrollment rows also provide View Course, View Curriculum and WhatsApp actions; Course 1 retains Enroll Now. Course 1’s full demonstrations and FAQ appear only on its dedicated page; homepage free-preview links open that page directly. Each opening preview provides View Course, View Curriculum, Enroll Now and Contact on WhatsApp, followed by its PDF and other resource links. The standalone course pages also show enrollment and contact actions beside their curriculum links. Course 1 uses the account/payment dialog; the two partner programs request batch enrollment on WhatsApp. Curriculum presentation and interaction remain in the existing course CSS and JavaScript files.
 - `site-pages.js` preserves older course-section links and opens deep links to curriculum modules. `site-updates.css` styles enrollment guidance and homepage course overviews.
 - International payments (PayPal, Binance Pay, USDT, Bitcoin and other crypto by arrangement) request exact recipient, amount and network details on WhatsApp before payment. No unverified wallet or payment destination is embedded.
-- Feedback draft wording is kept separately in `feedback-drafts.md` and is not displayed as student testimonials. Add real feedback with permission and source context before publishing a testimonial section.
 - JARVIS behavior and presentation live in `jarvis-aichatbot.js` and `jarvis-aichatbot.css`.
 - JARVIS keeps dated public-profile metadata clearly labeled as a snapshot, distinguishes current verified links from historical references and answers dual-use security topics only at a defensive, authorized-lab level.
 - Critical links and copy remain in HTML so the website still works without JavaScript.
@@ -115,3 +115,5 @@ After the permanent domain and redirects are live, run Lighthouse against the de
 ## Responsible security
 
 HackStark resources are for education, defensive research and authorized testing. Practice only on systems you own or have explicit permission to assess, preferably in isolated laboratory environments.
+
+- JARVIS recognizes Courses 1, 2 and 3 by name or number and uses the shared records for course details, PKR/INR/USD fees, languages, curriculum PDFs, enrollment and contact links. Unqualified course questions use the current course page; explicit course names and requests for all programs override that context. Comparisons, certificates, instructors, support and preview questions have dedicated answers. Website page links open in the current tab. It also directs learners to Course 1’s 51 reviews. Course 1 titles use two explicit lines across headings, cards and course menus.

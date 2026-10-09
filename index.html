@@ -47,16 +47,16 @@
   <link rel="stylesheet" href="cyberstart.css?v=20261005c">
   <link rel="stylesheet" href="oxege-course.css?v=20261005c">
   <link rel="stylesheet" href="jarvis-aichatbot.css?v=20260922">
-  <link rel="stylesheet" href="site-updates.css?v=20261008f">
+  <link rel="stylesheet" href="site-updates.css?v=20261009c">
   <script defer fetchpriority="high" crossorigin="anonymous" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"></script>
   <script defer fetchpriority="high" crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJlbWl1bS1jb3ctMTE1MC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://premium-cow-1150.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
   <script src="clerk-auth.js?v=20260922g" defer></script>
   <script src="oxege-curriculum-data.js?v=20261004" defer></script>
-  <script src="hackstark-data.js?v=20261008b" defer></script>
-  <script src="script.js?v=20261004" defer></script>
-  <script src="site-pages.js?v=20261008e" defer></script>
-  <script src="whatsapp-enrollment.js?v=20261008" defer></script>
-  <script src="jarvis-aichatbot.js?v=20261008e" defer></script>
+  <script src="hackstark-data.js?v=20261009c" defer></script>
+  <script src="script.js?v=20261009a" defer></script>
+  <script src="site-pages.js?v=20261009b" defer></script>
+  <script src="whatsapp-enrollment.js?v=20261009a" defer></script>
+  <script src="jarvis-aichatbot.js?v=20261009d" defer></script>
 
   <script type="application/ld+json">
 {
@@ -295,18 +295,18 @@
           <button class="courses-toggle" id="courses-toggle-desktop" type="button" aria-expanded="false" aria-haspopup="menu" aria-controls="courses-menu-desktop">Courses <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
           <div class="courses-menu" id="courses-menu-desktop" role="menu" aria-labelledby="courses-toggle-desktop" hidden>
             <div class="courses-menu__intro" role="presentation"><div><span class="courses-menu__eyebrow">HackStark Learning Paths</span></div><span class="courses-menu__count">3 Courses</span></div>
-            <a class="courses-tile courses-tile--01" role="menuitem" href="#about-course" aria-labelledby="course-label-desktop-01">
+            <a class="courses-tile courses-tile--01" role="menuitem" href="ethical-hacking-course.html" aria-labelledby="course-label-desktop-01">
               <span class="courses-tile__icon courses-tile__icon--art" aria-hidden="true"><img src="course-security-art.svg" width="80" height="80" alt=""></span>
               <div class="courses-tile__body">
                 <p class="courses-tile__provider"><span class="courses-tile__label">By</span> <b>HackStark</b></p>
-                <h3 id="course-label-desktop-01">Ethical Hacking Course for Beginners</h3>
+                <h3 id="course-label-desktop-01" class="course-title-two-lines"><span>Ethical Hacking Course</span> <span>for Beginners</span></h3>
                 <div class="courses-tile__tags"><span>Beginner</span><span>Self-Paced</span></div>
               </div>
               <div class="courses-tile__actions">
                 <span class="courses-tile__view" aria-hidden="true"><span>View Course</span> <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
               </div>
             </a>
-            <a class="courses-tile courses-tile--02" role="menuitem" href="#cyberstart" aria-labelledby="course-label-desktop-02">
+            <a class="courses-tile courses-tile--02" role="menuitem" href="cyberstart.html" aria-labelledby="course-label-desktop-02">
               <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-terminal"></use></svg></span>
               <div class="courses-tile__body">
                 <p class="courses-tile__provider"><span class="courses-tile__label">Partner</span> <b>TechFly</b></p>
@@ -317,7 +317,7 @@
                 <span class="courses-tile__view" aria-hidden="true"><span>View Course</span> <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
               </div>
             </a>
-            <a class="courses-tile courses-tile--03" role="menuitem" href="#oxege-training" aria-labelledby="course-label-desktop-03">
+            <a class="courses-tile courses-tile--03" role="menuitem" href="oxege-training.html" aria-labelledby="course-label-desktop-03">
               <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-layers"></use></svg></span>
               <div class="courses-tile__body">
                 <p class="courses-tile__provider"><span class="courses-tile__label">Partner</span> <b>Oxege Technologies</b></p>
@@ -368,18 +368,18 @@
           <button class="courses-toggle" id="courses-toggle-mobile" type="button" aria-expanded="false" aria-haspopup="menu" aria-controls="courses-menu-mobile">Courses <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
           <div class="courses-menu" id="courses-menu-mobile" role="menu" aria-labelledby="courses-toggle-mobile" hidden>
             <div class="courses-menu__intro" role="presentation"><div><span class="courses-menu__eyebrow">HackStark Learning Paths</span></div><span class="courses-menu__count">3 Courses</span></div>
-            <a class="courses-tile courses-tile--01" role="menuitem" href="#about-course" aria-labelledby="course-label-mobile-01">
+            <a class="courses-tile courses-tile--01" role="menuitem" href="ethical-hacking-course.html" aria-labelledby="course-label-mobile-01">
               <span class="courses-tile__icon courses-tile__icon--art" aria-hidden="true"><img src="course-security-art.svg" width="80" height="80" alt=""></span>
               <div class="courses-tile__body">
                 <p class="courses-tile__provider"><span class="courses-tile__label">By</span> <b>HackStark</b></p>
-                <h3 id="course-label-mobile-01">Ethical Hacking Course for Beginners</h3>
+                <h3 id="course-label-mobile-01" class="course-title-two-lines"><span>Ethical Hacking Course</span> <span>for Beginners</span></h3>
                 <div class="courses-tile__tags"><span>Beginner</span><span>Self-Paced</span></div>
               </div>
               <div class="courses-tile__actions">
                 <span class="courses-tile__view" aria-hidden="true"><span>View Course</span> <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
               </div>
             </a>
-            <a class="courses-tile courses-tile--02" role="menuitem" href="#cyberstart" aria-labelledby="course-label-mobile-02">
+            <a class="courses-tile courses-tile--02" role="menuitem" href="cyberstart.html" aria-labelledby="course-label-mobile-02">
               <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-terminal"></use></svg></span>
               <div class="courses-tile__body">
                 <p class="courses-tile__provider"><span class="courses-tile__label">Partner</span> <b>TechFly</b></p>
@@ -390,7 +390,7 @@
                 <span class="courses-tile__view" aria-hidden="true"><span>View Course</span> <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
               </div>
             </a>
-            <a class="courses-tile courses-tile--03" role="menuitem" href="#oxege-training" aria-labelledby="course-label-mobile-03">
+            <a class="courses-tile courses-tile--03" role="menuitem" href="oxege-training.html" aria-labelledby="course-label-mobile-03">
               <span class="courses-tile__icon" aria-hidden="true"><svg><use href="#icon-layers"></use></svg></span>
               <div class="courses-tile__body">
                 <p class="courses-tile__provider"><span class="courses-tile__label">Partner</span> <b>Oxege Technologies</b></p>
@@ -448,8 +448,9 @@
               <span><i aria-hidden="true"></i> Featured Course</span>
               <span>Beginner</span>
             </div>
-            <h2 id="featured-course-title">Ethical Hacking Course for Beginners</h2>
+            <h2 id="featured-course-title" class="course-title-two-lines"><span>Ethical Hacking Course</span> <span>for Beginners</span></h2>
             <p class="featured-course__languages">Course Languages: Urdu, Hindi &amp; English</p>
+<a class="course-reviews-summary" href="ethical-hacking-course.html#course-reviews"><strong data-count-up>50+</strong> Positive Reviews <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
             <div class="featured-course__metrics" aria-label="Course highlights">
               <a href="ethical-hacking-course.html#curriculum"><svg aria-hidden="true"><use href="#icon-book"></use></svg><strong><span class="stat-number" data-count-up>50+</span><span class="stat-label">Lessons</span></strong></a>
               <a href="ethical-hacking-course.html#about-course"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><strong>Beginner Level</strong></a>
@@ -526,561 +527,583 @@
          </p>
         </div>
         <div class="program-banner-list">
-         <article class="program-banner reveal">
-          <div aria-hidden="true" class="program-banner__index">
-           01
-          </div>
-          <div class="program-banner__content">
-           <span class="program-banner__type">
-            HackStark · Self-Paced
-           </span>
-           <h3 class="program-banner__title--beginner">
-            <a class="program-banner__course-link" href="#about-course">
-             <span>
-              Ethical Hacking Course
-             </span>
-             <span>
-              for Beginners
-             </span>
-            </a>
-           </h3>
-           <p>
-            Build practical Cybersecurity foundations through self-paced study, with preparation for Internships and Junior-Level Roles.
-           </p>
-           <dl class="program-banner__details">
-            <div>
-             <dt>
-              Provider
-             </dt>
-             <dd>
-              HackStark
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Languages
-             </dt>
-             <dd>
-              Urdu, Hindi &amp; English
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Level
-             </dt>
-             <dd>
-              Beginner
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Format
-             </dt>
-             <dd>
-              Self-Paced Online
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Curriculum
-             </dt>
-             <dd class="curriculum-metrics curriculum-metrics--two-lines">
-              <span>
-               50+ Lessons
-              </span>
-              <span>
-               <span aria-hidden="true" class="curriculum-metrics__separator">
-                ·
-               </span>
-               25+ Tools
-              </span>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Best For
-             </dt>
-             <dd>
-              <span class="program-banner__career-label">
-               <svg aria-hidden="true">
-                <use href="#icon-shield">
-                </use>
-               </svg>
-               Job Ready Course
-              </span>
-              <ul class="program-banner__bullets">
-               <li>
-                First-Time Ethical-Hacking Learners
-               </li>
-               <li>
-                Preparation for Internships and Junior-Level Roles
-               </li>
-              </ul>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Key Focus
-             </dt>
-             <dd>
-              <ul class="program-banner__bullets">
-               <li>
-                Ethical Hacking and Linux
-               </li>
-               <li>
-                Networks, Web Security and IoT
-               </li>
-              </ul>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Learning Style
-             </dt>
-             <dd>
-              <ul class="program-banner__bullets">
-               <li>
-                Independent Lessons
-               </li>
-               <li>
-                Practical Demonstrations
-               </li>
-              </ul>
-             </dd>
-            </div>
-           </dl>
-          </div>
-          <div aria-label="Ethical Hacking Course pricing" class="program-banner__price">
-           <small>
-            Course Fee · 60% Off
-           </small>
-           <span>
-            <del>
-             PKR 4,999
-            </del>
-            <strong>
-             PKR 1,999
-            </strong>
-           </span>
-           <em aria-label="Approximate international prices">
-            <span>
-             USD
-             <b>
-              $7.99
-             </b>
-            </span>
-            <span>
-             INR
-             <b>
-              ₹799
-             </b>
-            </span>
-           </em>
-          </div>
-          <div class="program-banner__actions">
-           <a class="button button--primary program-course" href="ethical-hacking-course.html">
-            View Course
-            <svg aria-hidden="true">
-             <use href="#icon-arrow">
-             </use>
-            </svg>
-           </a>
-           <a class="button button--ghost program-curriculum" data-course-filter-link="all" href="ethical-hacking-course.html#curriculum">
-            View Curriculum
-            <svg aria-hidden="true">
-             <use href="#icon-arrow">
-             </use>
-            </svg>
-           </a>
-           <a aria-label="Ask on WhatsApp about the HackStark Ethical Hacking Course" class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20HackStark%20Ethical%20Hacking%20Course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
-            <svg aria-hidden="true" class="whatsapp-icon">
-             <use href="#icon-whatsapp">
-             </use>
-            </svg>
-            <span>
-             Contact on WhatsApp
-            </span>
-           </a>
-          </div>
-         </article>
-         <article class="program-banner program-banner--training reveal">
-          <div aria-hidden="true" class="program-banner__index">
-           02
-          </div>
-          <div class="program-banner__content">
-           <span class="program-banner__type">
-            Training Partner · TechFly · Online Weekend
-           </span>
-           <h3>
-            <a class="program-banner__course-link" href="#cyberstart">
-             CyberStart Level 1
-            </a>
-           </h3>
-           <p>
-            A guided Cyber Security Engineer foundation track with supervised labs, case studies and a final practical assessment.
-           </p>
-           <dl class="program-banner__details">
-            <div>
-             <dt>
-              Training Partner
-             </dt>
-             <dd>
-              TechFly, Multan
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Languages
-             </dt>
-             <dd>
-              Urdu &amp; Hindi
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Level
-             </dt>
-             <dd>
-              Beginner to Intermediate
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Format
-             </dt>
-             <dd>
-              Online Instructor-Led Weekend Training
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Curriculum
-             </dt>
-             <dd class="curriculum-metrics">
-              <span>
-               16 Lectures
-              </span>
-              <span>
-               <span aria-hidden="true" class="curriculum-metrics__separator">
-                ·
-               </span>
-               16 Hours
-              </span>
-              <span>
-               <span aria-hidden="true" class="curriculum-metrics__separator">
-                ·
-               </span>
-               51 Topics
-              </span>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Schedule
-             </dt>
-             <dd>
-              <ul class="program-banner__bullets">
-               <li>
-                2 Months · Friday–Sunday
-               </li>
-               <li>
-                7:00–8:30 PM PKT
-               </li>
-              </ul>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Best For
-             </dt>
-             <dd>
-              <span class="program-banner__career-label">
-               <svg aria-hidden="true">
-                <use href="#icon-shield">
-                </use>
-               </svg>
-               Job Ready Course
-              </span>
-              <ul class="program-banner__bullets">
-               <li>
-                Guided Fundamentals
-               </li>
-               <li>
-                Supervised Labs
-               </li>
-              </ul>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Key Focus
-             </dt>
-             <dd>
-              <ul class="program-banner__bullets">
-               <li>
-                Red Team and Blue Team
-               </li>
-               <li>
-                Fortinet and Cyber Defense
-               </li>
-              </ul>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Learning Style
-             </dt>
-             <dd>
-              <ul class="program-banner__bullets">
-               <li>
-                Instructor-Led Lessons
-               </li>
-               <li>
-                Supervised Labs and Case Studies
-               </li>
-              </ul>
-             </dd>
-            </div>
-           </dl>
-          </div>
-          <div aria-label="CyberStart Level 1 pricing" class="program-banner__price">
-           <small>
-            Program Fee · 60% Off
-           </small>
-           <span>
-            <del>
-             PKR 24,999
-            </del>
-            <strong>
-             PKR 9,999
-            </strong>
-           </span>
-           <em aria-label="Approximate international prices">
-            <span>
-             USD
-             <del>
-              $89.99
-             </del>
-             <b>
-              $35.99
-             </b>
-            </span>
-            <span>
-             INR
-             <del>
-              ₹8,999
-             </del>
-             <b>
-              ₹3,499
-             </b>
-            </span>
-           </em>
-          </div>
-          <div class="program-banner__actions">
-           <a class="button button--primary program-course" href="cyberstart.html">
-            View Course
-            <svg aria-hidden="true">
-             <use href="#icon-arrow">
-             </use>
-            </svg>
-           </a>
-           <a class="button button--ghost program-curriculum" href="cyberstart.html#cyberstart-curriculum">
-            View Curriculum
-            <svg aria-hidden="true">
-             <use href="#icon-arrow">
-             </use>
-            </svg>
-           </a>
-           <a aria-label="Ask on WhatsApp about TechFly CyberStart Level 1" class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20TechFly%20CyberStart%20Level%201%20course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20weekend%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
-            <svg aria-hidden="true" class="whatsapp-icon">
-             <use href="#icon-whatsapp">
-             </use>
-            </svg>
-            <span>
-             Contact on WhatsApp
-            </span>
-           </a>
-          </div>
-         </article>
-         <article class="program-banner program-banner--professional reveal">
-          <div aria-hidden="true" class="program-banner__index">
-           03
-          </div>
-          <div class="program-banner__content">
-           <span class="program-banner__type">
-            Training Partner · Oxege Technologies
-           </span>
-           <h3>
-            <a class="program-banner__course-link" href="#oxege-training">
-             Professional Cybersecurity &amp; Ethical Hacking Program
-            </a>
-           </h3>
-           <p>
-            A comprehensive three-month path connecting Ethical Hacking with enterprise defense and career-focused practice.
-           </p>
-           <dl class="program-banner__details">
-            <div>
-             <dt>
-              Training Partner
-             </dt>
-             <dd>
-              Oxege Technologies, RYK
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Languages
-             </dt>
-             <dd>
-              Urdu &amp; Hindi
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Level
-             </dt>
-             <dd>
-              Foundation to Professional
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Format
-             </dt>
-             <dd>
-              Online + Physical in Rahim Yar Khan
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Curriculum
-             </dt>
-             <dd class="curriculum-metrics curriculum-metrics--two-lines">
-              <span>
-               32 Modules
-              </span>
-              <span>
-               <span aria-hidden="true" class="curriculum-metrics__separator">
-                ·
-               </span>
-               587 Topics
-              </span>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Best For
-             </dt>
-             <dd>
-              <span class="program-banner__career-label">
-               <svg aria-hidden="true">
-                <use href="#icon-shield">
-                </use>
-               </svg>
-               Job Ready Course
-              </span>
-              <ul class="program-banner__bullets">
-               <li>
-                Career-Focused Learning
-               </li>
-               <li>
-                Comprehensive Training
-               </li>
-              </ul>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Key Focus
-             </dt>
-             <dd>
-              <ul class="program-banner__bullets">
-               <li>
-                CEH-Aligned Core
-               </li>
-               <li>
-                SOC, DFIR, Cloud and AI
-               </li>
-              </ul>
-             </dd>
-            </div>
-            <div>
-             <dt>
-              Learning Style
-             </dt>
-             <dd>
-              <ul class="program-banner__bullets">
-               <li>
-                Instructor-Led Training
-               </li>
-               <li>
-                Practical Labs and Capstone Projects
-               </li>
-              </ul>
-             </dd>
-            </div>
-           </dl>
-          </div>
-          <div aria-label="Oxege professional program pricing" class="program-banner__price">
-           <small>
-            Program Fee · 50% Off
-           </small>
-           <span>
-            <del>
-             PKR 89,999
-            </del>
-            <strong>
-             PKR 44,999
-            </strong>
-           </span>
-           <em aria-label="Approximate international prices">
-            <span>
-             USD
-             <del>
-              $319
-             </del>
-             <b>
-              $159
-             </b>
-            </span>
-            <span>
-             INR
-             <del>
-              ₹30,999
-             </del>
-             <b>
-              ₹15,499
-             </b>
-            </span>
-           </em>
-          </div>
-          <div class="program-banner__actions">
-           <a class="button button--primary program-course" href="oxege-training.html">
-            View Course
-            <svg aria-hidden="true">
-             <use href="#icon-arrow">
-             </use>
-            </svg>
-           </a>
-           <a class="button button--ghost program-curriculum" href="oxege-training.html#oxege-curriculum">
-            View Curriculum
-            <svg aria-hidden="true">
-             <use href="#icon-arrow">
-             </use>
-            </svg>
-           </a>
-           <a aria-label="Ask on WhatsApp about the Oxege Professional Cybersecurity Program" class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20Oxege%20Professional%20Cybersecurity%20and%20Ethical%20Hacking%20Program.%20Please%20share%20the%20curriculum%2C%20fees%2C%20class%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
-            <svg aria-hidden="true" class="whatsapp-icon">
-             <use href="#icon-whatsapp">
-             </use>
-            </svg>
-            <span>
-             Contact on WhatsApp
-            </span>
-           </a>
-          </div>
-         </article>
-        </div>
+ <article class="program-banner reveal">
+  <div aria-hidden="true" class="program-banner__index">
+   01
+  </div>
+  <div class="program-banner__content">
+   <span class="program-banner__type">
+    HackStark · Self-Paced
+   </span>
+   <h3 class="program-banner__title--beginner course-title-two-lines">
+    <a class="program-banner__course-link" href="#about-course">
+     <span>
+      Ethical Hacking Course
+     </span>
+     <span>
+      for Beginners
+     </span>
+    </a>
+   </h3>
+   <p>
+    Build practical Cybersecurity foundations through self-paced study, with preparation for Internships and Junior-Level Roles.
+   </p>
+   <dl class="program-banner__details">
+<div><dt>Reviews</dt><dd><a href="ethical-hacking-course.html#course-reviews"><span data-count-up>50+</span> Positive Reviews</a></dd></div>
+    <div>
+     <dt>
+      Provider
+     </dt>
+     <dd>
+      HackStark
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Languages
+     </dt>
+     <dd>
+      Urdu, Hindi &amp; English
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Level
+     </dt>
+     <dd>
+      Beginner
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Format
+     </dt>
+     <dd>
+      Self-Paced Online
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Curriculum
+     </dt>
+     <dd class="curriculum-metrics curriculum-metrics--two-lines">
+      <span>
+       <span data-count-up="">
+        50+
+       </span>
+       Lessons
+      </span>
+      <span>
+       <span aria-hidden="true" class="curriculum-metrics__separator">
+        ·
+       </span>
+       <span data-count-up="">
+        25+
+       </span>
+       Tools
+      </span>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Best For
+     </dt>
+     <dd>
+      <span class="program-banner__career-label">
+       <svg aria-hidden="true">
+        <use href="#icon-shield">
+        </use>
+       </svg>
+       Job Ready Course
+      </span>
+      <ul class="program-banner__bullets">
+       <li>
+        First-Time Ethical-Hacking Learners
+       </li>
+       <li>
+        Preparation for Internships and Junior-Level Roles
+       </li>
+      </ul>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Key Focus
+     </dt>
+     <dd>
+      <ul class="program-banner__bullets">
+       <li>
+        Ethical Hacking and Linux
+       </li>
+       <li>
+        Networks, Web Security and IoT
+       </li>
+      </ul>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Learning Style
+     </dt>
+     <dd>
+      <ul class="program-banner__bullets">
+       <li>
+        Independent Lessons
+       </li>
+       <li>
+        Practical Demonstrations
+       </li>
+      </ul>
+     </dd>
+    </div>
+   </dl>
+  </div>
+  <div aria-label="Ethical Hacking Course pricing" class="program-banner__price">
+   <small>
+    Course Fee · 60% Off
+   </small>
+   <span>
+    <del>
+     PKR 4,999
+    </del>
+    <strong>
+     PKR 1,999
+    </strong>
+   </span>
+   <em aria-label="Approximate international prices">
+    <span>
+     USD
+     <b>
+      $7.99
+     </b>
+    </span>
+    <span>
+     INR
+     <b>
+      ₹799
+     </b>
+    </span>
+   </em>
+  </div>
+  <div class="program-banner__actions">
+   <a class="button button--primary program-course" href="ethical-hacking-course.html">
+    View Course
+    <svg aria-hidden="true">
+     <use href="#icon-arrow">
+     </use>
+    </svg>
+   </a>
+   <a class="button button--ghost program-curriculum" data-course-filter-link="all" href="ethical-hacking-course.html#curriculum">
+    View Curriculum
+    <svg aria-hidden="true">
+     <use href="#icon-arrow">
+     </use>
+    </svg>
+   </a>
+   <a aria-label="Ask on WhatsApp about the HackStark Ethical Hacking Course" class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20HackStark%20Ethical%20Hacking%20Course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
+    <svg aria-hidden="true" class="whatsapp-icon">
+     <use href="#icon-whatsapp">
+     </use>
+    </svg>
+    <span>
+     Contact on WhatsApp
+    </span>
+   </a>
+  </div>
+ </article>
+ <article class="program-banner program-banner--training reveal">
+  <div aria-hidden="true" class="program-banner__index">
+   02
+  </div>
+  <div class="program-banner__content">
+   <span class="program-banner__type">
+    Training Partner · TechFly · Online Weekend
+   </span>
+   <h3>
+    <a class="program-banner__course-link" href="#cyberstart">
+     CyberStart Level 1
+    </a>
+   </h3>
+   <p>
+    A guided Cyber Security Engineer foundation track with supervised labs, case studies and a final practical assessment.
+   </p>
+   <dl class="program-banner__details">
+    <div>
+     <dt>
+      Training Partner
+     </dt>
+     <dd>
+      TechFly, Multan
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Languages
+     </dt>
+     <dd>
+      Urdu &amp; Hindi
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Level
+     </dt>
+     <dd>
+      Beginner to Intermediate
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Format
+     </dt>
+     <dd>
+      Online Instructor-Led Weekend Training
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Curriculum
+     </dt>
+     <dd class="curriculum-metrics">
+      <span>
+       <span data-count-up="">
+        16
+       </span>
+       Lectures
+      </span>
+      <span>
+       <span aria-hidden="true" class="curriculum-metrics__separator">
+        ·
+       </span>
+       <span data-count-up="">
+        16
+       </span>
+       Hours
+      </span>
+      <span>
+       <span aria-hidden="true" class="curriculum-metrics__separator">
+        ·
+       </span>
+       <span data-count-up="">
+        51
+       </span>
+       Topics
+      </span>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Schedule
+     </dt>
+     <dd>
+      <ul class="program-banner__bullets">
+       <li>
+        2 Months · Friday–Sunday
+       </li>
+       <li>
+        7:00–8:30 PM PKT
+       </li>
+      </ul>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Best For
+     </dt>
+     <dd>
+      <span class="program-banner__career-label">
+       <svg aria-hidden="true">
+        <use href="#icon-shield">
+        </use>
+       </svg>
+       Job Ready Course
+      </span>
+      <ul class="program-banner__bullets">
+       <li>
+        Guided Fundamentals
+       </li>
+       <li>
+        Supervised Labs
+       </li>
+      </ul>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Key Focus
+     </dt>
+     <dd>
+      <ul class="program-banner__bullets">
+       <li>
+        Red Team and Blue Team
+       </li>
+       <li>
+        Fortinet and Cyber Defense
+       </li>
+      </ul>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Learning Style
+     </dt>
+     <dd>
+      <ul class="program-banner__bullets">
+       <li>
+        Instructor-Led Lessons
+       </li>
+       <li>
+        Supervised Labs and Case Studies
+       </li>
+      </ul>
+     </dd>
+    </div>
+   </dl>
+  </div>
+  <div aria-label="CyberStart Level 1 pricing" class="program-banner__price">
+   <small>
+    Program Fee · 60% Off
+   </small>
+   <span>
+    <del>
+     PKR 24,999
+    </del>
+    <strong>
+     PKR 9,999
+    </strong>
+   </span>
+   <em aria-label="Approximate international prices">
+    <span>
+     USD
+     <del>
+      $89.99
+     </del>
+     <b>
+      $35.99
+     </b>
+    </span>
+    <span>
+     INR
+     <del>
+      ₹8,999
+     </del>
+     <b>
+      ₹3,499
+     </b>
+    </span>
+   </em>
+  </div>
+  <div class="program-banner__actions">
+   <a class="button button--primary program-course" href="cyberstart.html">
+    View Course
+    <svg aria-hidden="true">
+     <use href="#icon-arrow">
+     </use>
+    </svg>
+   </a>
+   <a class="button button--ghost program-curriculum" href="cyberstart.html#cyberstart-curriculum">
+    View Curriculum
+    <svg aria-hidden="true">
+     <use href="#icon-arrow">
+     </use>
+    </svg>
+   </a>
+   <a aria-label="Ask on WhatsApp about TechFly CyberStart Level 1" class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20TechFly%20CyberStart%20Level%201%20course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20weekend%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
+    <svg aria-hidden="true" class="whatsapp-icon">
+     <use href="#icon-whatsapp">
+     </use>
+    </svg>
+    <span>
+     Contact on WhatsApp
+    </span>
+   </a>
+  </div>
+ </article>
+ <article class="program-banner program-banner--professional reveal">
+  <div aria-hidden="true" class="program-banner__index">
+   03
+  </div>
+  <div class="program-banner__content">
+   <span class="program-banner__type">
+    Training Partner · Oxege Technologies
+   </span>
+   <h3>
+    <a class="program-banner__course-link" href="#oxege-training">
+     Professional Cybersecurity &amp; Ethical Hacking Program
+    </a>
+   </h3>
+   <p>
+    A comprehensive three-month path connecting Ethical Hacking with enterprise defense and career-focused practice.
+   </p>
+   <dl class="program-banner__details">
+    <div>
+     <dt>
+      Training Partner
+     </dt>
+     <dd>
+      Oxege Technologies, RYK
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Languages
+     </dt>
+     <dd>
+      Urdu &amp; Hindi
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Level
+     </dt>
+     <dd>
+      Foundation to Professional
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Format
+     </dt>
+     <dd>
+      Online + Physical in Rahim Yar Khan
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Curriculum
+     </dt>
+     <dd class="curriculum-metrics curriculum-metrics--two-lines">
+      <span>
+       <span data-count-up="">
+        32
+       </span>
+       Modules
+      </span>
+      <span>
+       <span aria-hidden="true" class="curriculum-metrics__separator">
+        ·
+       </span>
+       <span data-count-up="">
+        587
+       </span>
+       Topics
+      </span>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Best For
+     </dt>
+     <dd>
+      <span class="program-banner__career-label">
+       <svg aria-hidden="true">
+        <use href="#icon-shield">
+        </use>
+       </svg>
+       Job Ready Course
+      </span>
+      <ul class="program-banner__bullets">
+       <li>
+        Career-Focused Learning
+       </li>
+       <li>
+        Comprehensive Training
+       </li>
+      </ul>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Key Focus
+     </dt>
+     <dd>
+      <ul class="program-banner__bullets">
+       <li>
+        CEH-Aligned Core
+       </li>
+       <li>
+        SOC, DFIR, Cloud and AI
+       </li>
+      </ul>
+     </dd>
+    </div>
+    <div>
+     <dt>
+      Learning Style
+     </dt>
+     <dd>
+      <ul class="program-banner__bullets">
+       <li>
+        Instructor-Led Training
+       </li>
+       <li>
+        Practical Labs and Capstone Projects
+       </li>
+      </ul>
+     </dd>
+    </div>
+   </dl>
+  </div>
+  <div aria-label="Oxege professional program pricing" class="program-banner__price">
+   <small>
+    Program Fee · 50% Off
+   </small>
+   <span>
+    <del>
+     PKR 89,999
+    </del>
+    <strong>
+     PKR 44,999
+    </strong>
+   </span>
+   <em aria-label="Approximate international prices">
+    <span>
+     USD
+     <del>
+      $319
+     </del>
+     <b>
+      $159
+     </b>
+    </span>
+    <span>
+     INR
+     <del>
+      ₹30,999
+     </del>
+     <b>
+      ₹15,499
+     </b>
+    </span>
+   </em>
+  </div>
+  <div class="program-banner__actions">
+   <a class="button button--primary program-course" href="oxege-training.html">
+    View Course
+    <svg aria-hidden="true">
+     <use href="#icon-arrow">
+     </use>
+    </svg>
+   </a>
+   <a class="button button--ghost program-curriculum" href="oxege-training.html#oxege-curriculum">
+    View Curriculum
+    <svg aria-hidden="true">
+     <use href="#icon-arrow">
+     </use>
+    </svg>
+   </a>
+   <a aria-label="Ask on WhatsApp about the Oxege Professional Cybersecurity Program" class="button button--ghost program-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20Oxege%20Professional%20Cybersecurity%20and%20Ethical%20Hacking%20Program.%20Please%20share%20the%20curriculum%2C%20fees%2C%20class%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
+    <svg aria-hidden="true" class="whatsapp-icon">
+     <use href="#icon-whatsapp">
+     </use>
+    </svg>
+    <span>
+     Contact on WhatsApp
+    </span>
+   </a>
+  </div>
+ </article>
+</div>
       </div>
     </section>
 
@@ -1116,10 +1139,8 @@
          </span>
          Manual enrollment
         </p>
-        <h3>
-         <a class="course-enrollment__title-link" href="ethical-hacking-course.html#about-course">
-          Ethical Hacking Course for Beginners
-         </a>
+        <h3 class="course-title-two-lines">
+         <a class="course-enrollment__title-link" href="ethical-hacking-course.html#about-course"><span>Ethical Hacking Course</span> <span>for Beginners</span></a>
         </h3>
         <p>
          Learn with 50+ self-paced lessons from Muhammad Ahmed Talha. Published previews remain free; complete course enrollment is verified manually.
@@ -1150,7 +1171,8 @@
          <li>
           Manual Payment Verification
          </li>
-        </ul>
+        <li><a href="ethical-hacking-course.html#course-reviews"><strong data-count-up>50+</strong> Positive Reviews</a></li>
+</ul>
         <dl aria-label="Course purchase details" class="course-purchase-details">
          <div>
           <dt>
@@ -1619,14 +1641,13 @@
             </span>
             Beginner Course
            </p>
-           <h2 id="about-course-heading">
-            Ethical Hacking Course for Beginners
-           </h2>
+           <h2 id="about-course-heading" class="course-title-two-lines"><span>Ethical Hacking Course</span> <span>for Beginners</span></h2>
           </div>
           <div class="course-overview__copy">
            <p class="course-teaching-languages">
             Course Languages: Urdu, Hindi &amp; English
            </p>
+<a class="course-reviews-summary" href="ethical-hacking-course.html#course-reviews"><strong data-count-up>50+</strong> Positive Reviews <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
            <p>
             <strong>
              Ethical Hacking Course for Beginners by HackStark
@@ -1637,7 +1658,7 @@
             Start with an isolated Kali Linux lab, then progress through reconnaissance, vulnerability assessment, systems, networks, web applications, wireless security, IoT, cloud computing and Cryptography.
            </p>
            <div class="hero-actions course-preview-actions">
- <a class="button button--primary course-preview-page" href="ethical-hacking-course.html">
+ <a class="button button--ghost course-preview-page" href="ethical-hacking-course.html">
   View Course
   <svg aria-hidden="true">
    <use href="#icon-arrow">
@@ -1651,6 +1672,9 @@
    </use>
   </svg>
  </a>
+ <button class="button button--primary" data-featured-course-cta="" type="button">
+  Enroll Now
+ </button>
  <a aria-label="Ask on WhatsApp about the HackStark Ethical Hacking Course" class="button button--ghost course-preview-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20HackStark%20Ethical%20Hacking%20Course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
   <svg aria-hidden="true" class="whatsapp-icon">
    <use href="#icon-whatsapp">
@@ -1661,6 +1685,7 @@
   </span>
  </a>
 </div>
+<p class="course-enrollment-message" data-enrollment-status role="status" aria-live="polite"></p>
 <div class="hero-actions course-preview-resources">
  <a aria-label="Download HackStark Ethical Hacking Course for Beginners curriculum PDF" class="button button--ghost" download="Ethical Hacking Course Outline by HackStark.pdf" href="Ethical%20Hacking%20Course%20Outline%20by%20HackStark.pdf">
   Download Curriculum PDF
@@ -1707,7 +1732,7 @@
             The program combines concepts, demonstrations, supervised laboratory exercises, applied discussion and a final practical assessment.
            </p>
            <div class="cyberstart-actions course-preview-actions">
- <a class="button button--primary course-preview-page" href="cyberstart.html">
+ <a class="button button--ghost course-preview-page" href="cyberstart.html">
   View Course
   <svg aria-hidden="true">
    <use href="#icon-arrow">
@@ -1720,6 +1745,9 @@
    <use href="#icon-arrow">
    </use>
   </svg>
+ </a>
+ <a class="button button--primary" href="https://wa.me/923023070227?text=Hello%2C+I+would+like+to+enroll+in+TechFly+CyberStart+Level+1.+Please+confirm+the+active+batch%2C+available+seats%2C+fees%2C+schedule+and+registration+details." rel="noopener noreferrer" target="_blank">
+  Enroll Now
  </a>
  <a aria-label="Ask on WhatsApp about TechFly CyberStart Level 1" class="button button--ghost course-preview-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20TechFly%20CyberStart%20Level%201%20course.%20Please%20share%20the%20curriculum%2C%20fees%2C%20weekend%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
   <svg aria-hidden="true" class="whatsapp-icon">
@@ -1861,7 +1889,7 @@
             A three-month instructor-led program available online and through physical classes in Rahim Yar Khan, combining ethical-hacking foundations with professional Cybersecurity practice across defense, SOC operations, threat hunting, DFIR, cloud, DevSecOps, AI security, reporting and career development.
            </p>
            <div class="oxege-actions course-preview-actions">
- <a class="button button--primary course-preview-page" href="oxege-training.html">
+ <a class="button button--ghost course-preview-page" href="oxege-training.html">
   View Course
   <svg aria-hidden="true">
    <use href="#icon-arrow">
@@ -1874,6 +1902,9 @@
    <use href="#icon-arrow">
    </use>
   </svg>
+ </a>
+ <a class="button button--primary" href="https://wa.me/923023070227?text=Hello%2C+I+would+like+to+enroll+in+Oxege+Professional+Cybersecurity+%26+Ethical+Hacking+Program.+Please+confirm+the+active+batch%2C+available+seats%2C+fees%2C+schedule+and+registration+details." rel="noopener noreferrer" target="_blank">
+  Enroll Now
  </a>
  <a aria-label="Ask on WhatsApp about the Oxege Professional Cybersecurity Program" class="button button--ghost course-preview-contact" href="https://wa.me/923023070227?text=Hello%2C%20I%20would%20like%20more%20information%20about%20the%20Oxege%20Professional%20Cybersecurity%20and%20Ethical%20Hacking%20Program.%20Please%20share%20the%20curriculum%2C%20fees%2C%20class%20schedule%2C%20and%20enrollment%20details." rel="noopener noreferrer" target="_blank">
   <svg aria-hidden="true" class="whatsapp-icon">
@@ -2555,7 +2586,6 @@
           </div>
         </form>
         <div class="jarvis-input-footer">
-          <span class="jarvis-footer-text">Local HackStark Knowledge • No External AI Service</span>
           <button id="jarvis-clear-btn" type="button">Clear Chat</button>
         </div>
       </div>

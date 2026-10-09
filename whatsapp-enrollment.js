@@ -7,7 +7,6 @@
   const courseId = "ethical-hacking-beginners";
   const whatsappNumber = "923023070227";
   const dialog = document.querySelector("#payment-dialog");
-  const status = document.querySelector("[data-enrollment-status]");
   const featuredStatus = document.querySelector("[data-featured-course-status]");
   const whatsappLink = document.querySelector("[data-payment-whatsapp]");
   const instructions = document.querySelector("[data-payment-instructions]");
@@ -21,9 +20,8 @@
   let activeCoupon = null;
 
   const setEnrollmentStatus = (message) => {
-    [status, featuredStatus].forEach((element) => {
-      if (element) element.textContent = message;
-    });
+    document.querySelectorAll("[data-enrollment-status], [data-featured-course-status]")
+      .forEach((element) => { element.textContent = message; });
   };
 
   const accessState = () => {

@@ -6,6 +6,7 @@
     "about-course": "ethical-hacking-course.html",
     "learn": "ethical-hacking-course.html",
     "faq": "ethical-hacking-course.html",
+    "course-reviews": "ethical-hacking-course.html",
     "enroll": "ethical-hacking-course.html",
     "course-tools": "ethical-hacking-course.html",
     "outcomes": "ethical-hacking-course.html",

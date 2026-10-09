@@ -19,11 +19,11 @@
     focus: BEGINNER_COURSE.toolsUrl,
     projects: homeSection("#projects"),
     learn: "ethical-hacking-course.html#learn",
-    course: BEGINNER_COURSE.url,
+    course: BEGINNER_COURSE.pageUrl,
     curriculum: BEGINNER_COURSE.curriculumUrl,
-    cyberstart: CYBERSTART.url,
+    cyberstart: CYBERSTART.pageUrl,
     cyberstartCurriculum: CYBERSTART.curriculumUrl,
-    oxege: OXEGE.url,
+    oxege: OXEGE.pageUrl,
     oxegeCurriculum: OXEGE.curriculumUrl,
     founder: homeSection("#founder"),
     experience: homeSection("#experience"),
@@ -97,7 +97,7 @@
     const normalizedText = normalize(text);
     const normalizedPhrase = normalize(phrase);
     if (!normalizedPhrase) return false;
-    if (normalizedText.includes(normalizedPhrase)) return true;
+    if (` ${normalizedText} `.includes(` ${normalizedPhrase} `)) return true;
     const textTokens = tokens(normalizedText);
     const phraseTokens = tokens(normalizedPhrase);
     return phraseTokens.every((expected) => textTokens.some((input) => fuzzyTokenMatch(input, expected)));
@@ -123,12 +123,53 @@
     };
   };
 
+  const COURSES = [BEGINNER_COURSE, CYBERSTART, OXEGE];
+  const currentCourse = COURSES.find((course) => window.location.pathname.endsWith(`/${course.pageUrl}`));
+  const courseAliases = [
+    /\b(?:course 0?1|course one|first course|ethical hacking course|beginner course|beginners course|hackstark course|self[ -]paced|51 reviews)\b/,
+    /\b(?:cyberstart|cyber start|cyberstert|cybrstart|techfly|tech fly|tekfly|course 0?2|course two|second course)\b/,
+    /\b(?:oxege|oxage|oxegee|ogexe|oche|ceh v13|ceh ai|587 topics|course 0?3|course three|third course|professional cybersecurity program)\b/
+  ];
+  const requestedCourses = (question) => {
+    const expanded = question.replace(/\bcourses? (0?[123]) (and|vs|versus|or) (0?[123])\b/g, "course $1 $2 course $3");
+    return COURSES.filter((course, index) => expanded.includes(normalize(course.name)) || courseAliases[index].test(expanded));
+  };
+  const isCourseQuestion = (question) => /\b(?:this course|this program|courses?|programs?|curriculums?|curricula|syllabus|pdfs?|fees?|prices?|costs?|charges?|pay|payments?|paypal|binance|usdt|btc|crypto|enroll?|enrollment|admission|lectures?|lessons?|topics?|reviews?|feedback|schedule|timing|batch|languages?|certificates?|certifications?|instructors?|teachers?|trainers?|support|duration|access|refunds?|cancellation|tools?|platforms?|software|previews?|posters?|contact|whatsapp)\b/.test(question)
+    && !/\b(?:founder|talha|muhammad|jarvis|privacy|projects?|github|experience|resume|cv)\b/.test(question);
+  const courseLanguages = (course) => new Intl.ListFormat("en", { type: "conjunction" }).format(course.teachingLanguages);
+  const courseFees = (course) => {
+    const inrOriginal = course.approximateInrOriginalPrice;
+    const inrPrice = course.inrPrice ?? course.approximateInrPrice;
+    const usdOriginal = course.usdOriginalPrice ?? course.approximateUsdOriginalPrice;
+    const usdPrice = course.usdPrice ?? course.approximateUsdPrice;
+    return `PKR ${course.originalPrice.toLocaleString("en-US")} → PKR ${course.price.toLocaleString("en-US")} · ${inrOriginal ? `₹${inrOriginal.toLocaleString("en-US")} → ` : ""}₹${inrPrice.toLocaleString("en-US")} INR · USD $${usdOriginal} → $${usdPrice}`;
+  };
+  const courseWhatsApp = (course, enroll = false) => `https://wa.me/923023070227?text=${encodeURIComponent(enroll
+    ? `Hello, I would like to enroll in ${course.name}. Please confirm the active batch, available seats, fees, schedule and registration details.`
+    : `Hello, I would like more information about ${course.name}. Please share the curriculum, fees, schedule and enrollment details.`)}`;
+  const courseActions = (course) => [
+    action("View Course", course.pageUrl),
+    action("View Curriculum", course.curriculumUrl),
+    action("Enroll Now", course === BEGINNER_COURSE ? course.enrollmentUrl : courseWhatsApp(course, true)),
+    action("Contact on WhatsApp", courseWhatsApp(course))
+  ];
+  const courseSummary = (course) => {
+    const format = course === BEGINNER_COURSE ? `${course.videoLessonCount}+ self-paced lessons · 25+ tools and platforms`
+      : course === CYBERSTART ? `${course.lectureCount} lectures · ${course.durationHours} hours · ${course.topicCount} topics · ${course.batchDuration} online weekend batch\nSchedule: ${course.schedule}`
+      : `${course.moduleCount} modules · ${course.topicCount} topics · ${course.duration} · Online + physical classes in ${course.physicalLocation}`;
+    return `Course ${course.sequence}: ${course.name}\n${format}\nCourse Languages: ${courseLanguages(course)}\nListed fees: ${courseFees(course)}`;
+  };
+
   class HackStarkKnowledge {
     async respond(question) {
       const q = normalize(question);
       if (!q) return response("Please enter a question about HackStark.");
+      const namedCourses = requestedCourses(q);
+      const asksAllCourses = /\b(?:all|three|3) (?:courses?|programs?)\b/.test(q);
+      const selectedCourse = asksAllCourses ? null : namedCourses.length === 1 ? namedCourses[0]
+        : namedCourses.length === 0 && isCourseQuestion(q) ? currentCourse : null;
 
-      if (/^(hello|hi|hey|salam|assalam|good morning|good evening)(\s|$)/.test(q)) {
+      if (/^(hello|hi|hey|salam|assalam|good morning|good evening)(?: there| jarvis)?\.*$/.test(q)) {
         return response("Hello. I’m JARVIS, the HackStark assistant. What would you like to explore?", [
           action("About HackStark", URLS.about), action("View projects", URLS.projects)
         ]);
@@ -138,6 +179,14 @@
         return response("I can help with defensive cybersecurity education and authorized lab practice, but I can’t provide instructions for attacking real systems, bypassing access controls or disrupting services.", [
           action("Responsible security", URLS.responsible), action("Learning resources", URLS.learn)
         ]);
+      }
+
+      const asksComparison = /\b(?:compare|comparison|difference|versus|vs)\b/.test(q) && (namedCourses.length > 0 || /\b(?:courses?|programs?)\b/.test(q));
+      const asksCatalog = /\b(?:courses|programs)\b/.test(q) && /\b(?:what|which|available|show|list|offer|options|all|three|3)\b/.test(q);
+      const asksFees = /\b(?:prices?|fees?|costs?|charges?)\b/.test(q);
+      if (!asksFees && (asksComparison || (asksCatalog && (asksAllCourses || !namedCourses.length) && !/\b(?:pdfs?|curricula|curriculums?|languages?|reviews?)\b/.test(q)))) {
+        const courses = namedCourses.length > 1 && !/\ball\b/.test(q) ? namedCourses : COURSES;
+        return response(`${courses.map(courseSummary).join("\n\n")}\nTechFly and Oxege Technologies are independent training partners. Open a course page for its full curriculum and enrollment details.`, [...courses.map((course) => action(`Course ${course.sequence}: View Course`, course.pageUrl)), action("Compare Programs", homeSection("#courses"))]);
       }
 
       const portfolioProject = PORTFOLIO_PROJECTS.find((item) => includesAny(q, item.aliases));
@@ -162,27 +211,66 @@
         action("Watch on YouTube", video.url), action("Browse Academy", URLS.learn)
       ]);
 
+      if (/\b(?:reviews?|feedback|testimonials?)\b/.test(q)) {
+        if (selectedCourse && selectedCourse !== BEGINNER_COURSE) return response(`No learner reviews are currently published for ${selectedCourse.name} on this website. Course 1 has ${BEGINNER_COURSE.reviewCount} published reviews.`, [action("View Course", selectedCourse.pageUrl), action("Course 1 Reviews", BEGINNER_COURSE.reviewsUrl)]);
+        return response(`${BEGINNER_COURSE.name} has ${BEGINNER_COURSE.reviewCount} reviews on its course page, below the curriculum. Select View 51 Reviews in the overview to jump there. Six reviews appear first; Show More Reviews reveals 24 more, and Show Even More Reviews reveals the remaining 21, bringing the total to 51.`, [action("View 51 Reviews", BEGINNER_COURSE.reviewsUrl), action("View Course", BEGINNER_COURSE.pageUrl)]);
+      }
+
+      if (/\b(?:pdfs?|download curriculum|download outline)\b/.test(q) && (selectedCourse || /\b(?:courses?|curriculums?|curricula|programs?|outline|download)\b/.test(q))) {
+        if (selectedCourse) return response(`Download the curriculum PDF for ${selectedCourse.name}, or browse the curriculum on its dedicated course page.`, [action("Download Curriculum PDF", selectedCourse.curriculumPdf), action("View Curriculum", selectedCourse.curriculumUrl)]);
+        return response("Download the curriculum PDF for Course 1, Course 2 or Course 3.", COURSES.map((course) => action(`Course ${course.sequence}: Curriculum PDF`, course.curriculumPdf)));
+      }
+
+      if (selectedCourse && /\b(?:certificates?|certifications?|accredited|official|ec council)\b/.test(q)) {
+        const detail = selectedCourse === CYBERSTART
+          ? "The TechFly poster lists certificate or career support. Confirm the certificate issuer, requirements and current batch terms directly before enrolling. It is not presented as an official CEH certification course."
+          : selectedCourse === OXEGE
+            ? "This is independent training aligned with CEH v13 / CEH AI subject areas. It is not official EC-Council courseware and does not award CEH certification. Confirm any separate completion-certificate terms directly."
+            : "This is independent HackStark education and does not award EC-Council or CEH certification. Confirm any separate completion-certificate terms with HackStark before enrolling.";
+        return response(`${selectedCourse.name}: ${detail}`, courseActions(selectedCourse));
+      }
+
+      if (selectedCourse && /\b(?:support|access period|access duration|lifetime access)\b/.test(q)) {
+        const detail = selectedCourse === CYBERSTART
+          ? "The supplied poster lists live classes, study material, lab access, expert mentors, and certificate or career support. Confirm what is included for the active batch and how long resources and support remain available."
+          : "Confirm the access period, support arrangements and response times directly before paying. The website does not promise lifetime access or a fixed support period.";
+        return response(`${selectedCourse.name}: ${detail}`, courseActions(selectedCourse));
+      }
+
+      if (/\b(?:free previews?|free lessons?|practical demonstrations?)\b/.test(q)) {
+        const detail = selectedCourse && selectedCourse !== BEGINNER_COURSE
+          ? `The published free video lessons on this site belong to Course 1. For ${selectedCourse.name}, contact the training team about a demo or preview.`
+          : `Course 1 includes ${VIDEOS.length} published practical demonstrations. Three are shown first; select Show 2 More Lessons to see the rest.`;
+        return response(detail, [action("Watch Free Previews", URLS.learn), ...(selectedCourse && selectedCourse !== BEGINNER_COURSE ? [action("Contact on WhatsApp", courseWhatsApp(selectedCourse))] : [action("View Course", URLS.course)])]);
+      }
+
+      if (selectedCourse && /\b(?:contact|whatsapp|phone)\b/.test(q) && !/\b(?:enroll|enrol|payment|pay|refund)\b/.test(q)) return response(`Contact on WhatsApp at +92 302 3070227 for ${selectedCourse.name}. Ask about fees, the curriculum, schedule and enrollment details.`, courseActions(selectedCourse));
+      if (/\bwhatsapp\b/.test(q) && /\b(?:contact|number|phone|help)\b/.test(q) && !/\b(?:history|historical|group|community|payment|pay)\b/.test(q)) return response("Contact HackStark on WhatsApp at +92 302 3070227 for course questions, fees and enrollment help.", [action("Contact on WhatsApp", courseWhatsApp(selectedCourse || BEGINNER_COURSE))]);
+
       const asksTeachingLanguage = /\b(?:urdu|hindi|english)\b/.test(q)
         || (/\blanguages?\b/.test(q) && (/\b(?:course|program|class|lesson|training|teaching)\b/.test(q)
           || /^(?:what|which|in which) languages?\b/.test(q)));
       if (asksTeachingLanguage) {
-        const course = /\b(?:oxege|oxage|ceh v13|ceh ai|course 3|course three)\b/.test(q) ? OXEGE
-          : /\b(?:techfly|tech fly|cyberstart|cyber start|course 2|course two)\b/.test(q) ? CYBERSTART
-          : /\b(?:beginner|beginners|self paced|hackstark course|course 1|course one)\b/.test(q) ? BEGINNER_COURSE
-          : null;
-        if (course) return response(`${course.name} is taught in ${new Intl.ListFormat("en", { type: "conjunction" }).format(course.teachingLanguages)}.`, [action("View course details", course.url), action("View curriculum", course.curriculumUrl)]);
+        const course = selectedCourse || (/\b(?:beginner|beginners)\b/.test(q) ? BEGINNER_COURSE : null);
+        if (course) return response(`${course.name} · Course Languages: ${courseLanguages(course)}.`, courseActions(course));
         return response(`Teaching languages:\n${DATA.courses.map((item) => `• ${item.name}: ${new Intl.ListFormat("en", { type: "conjunction" }).format(item.teachingLanguages)}`).join("\n")}`, [action("HackStark course", URLS.course), action("TechFly CyberStart", URLS.cyberstart), action("Oxege program", URLS.oxege)]);
       }
 
+      if (selectedCourse && /\b(?:instructors?|teachers?|trainers?|who teaches|who teach|taught by|delivered by)\b/.test(q)) return response(`${selectedCourse.name} is delivered by ${DATA.founder.name}${selectedCourse === BEGINNER_COURSE ? ", founder and instructor at HackStark" : ` with independent training partner ${selectedCourse.provider || selectedCourse.organization}`}.`, [action("View Course", selectedCourse.pageUrl), action("Instructor Experience", URLS.experience), action("Contact on WhatsApp", courseWhatsApp(selectedCourse))]);
+
+      if (selectedCourse === BEGINNER_COURSE && /\b(?:tools?|platforms?|software)\b/.test(q)) return response(`Course 1 covers 25+ tools and platforms, with ${BEGINNER_COURSE.technologyCount} named technologies including Kali Linux, VMware, Wireshark, SpiderFoot, Nikto and WebGoat. The tools section groups them by learning area.`, [action("View Tools & Platforms", BEGINNER_COURSE.toolsUrl), action("View Curriculum", BEGINNER_COURSE.curriculumUrl)]);
+
+      if (!selectedCourse && /\b(?:curriculums?|curricula|syllabus|syllabi|course outline)\b/.test(q)) return response("Choose a curriculum: Course 1 has 50+ self-paced lessons; Course 2 has 16 lectures and 51 topics; Course 3 has 32 modules and 587 topics.", COURSES.map((course) => action(`Course ${course.sequence}: View Curriculum`, course.curriculumUrl)));
+
       if (includesAny(q, ["who are you", "what can you answer", "what do you know", "your data", "knowledge base", "help me explore"])) {
-        return response(`I’m JARVIS, HackStark’s local website assistant. My shared knowledge includes the organization’s history and mission; Muhammad Ahmed Talha’s profile, experience, skills, education, speaking and contact details; ${DATA.focusAreas.length} focus areas; ${DATA.statistics.projectRecords} projects; the beginner course with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons; ${VIDEOS.length} currently featured YouTube lessons; community channels; cautions for legacy content; and responsible security guidance. Live repository metadata is shared with project cards when available. I work without sending your question to an external AI service.`, [action("About HackStark", URLS.about), action("Founder profile", URLS.founder), action("Projects", URLS.projects)]);
+        return response(`I’m JARVIS, HackStark’s local website assistant. I can help with all three courses, dedicated course pages, curricula and PDFs, fees in PKR/INR/USD, teaching languages, enrollment, international payments, schedules, posters and Course 1’s 51 reviews. I also cover HackStark’s history and mission, Muhammad Ahmed Talha’s experience and skills, projects, community channels and responsible security guidance. I work without sending your question to an external AI service.`, COURSES.map((course) => action(`Course ${course.sequence}`, course.pageUrl)));
       }
 
       if (includesAny(q, ["jarvis privacy", "chat privacy", "chatbot privacy", "conversation data", "question data", "does jarvis store", "does jarvis send", "local assistant"])) {
         return response(`${DATA.website.jarvisPrivacy} Clearing or reloading the page removes the visible conversation. JARVIS is a rule-based website assistant, so it can still misunderstand a question; use its source links or contact Talha when confirmation matters.`, [action("Privacy Policy", URLS.privacy), action("Contact Talha", URLS.contact)]);
       }
 
-      if (includesAny(q, ["privacy", "privacy policy", "personal data", "data collection", "cookies", "local storage", "tracking"])) {
+      if (/\b(?:privacy|privacy policy|personal data|data collection|cookies|local storage|tracking)\b/.test(q)) {
         return response(`HackStark’s Privacy Policy explains account information processed through ${DATA.website.accountProvider}, communications you choose to send, basic technical information handled by hosting or authentication providers, browser preferences, external services, retention, security and privacy choices. HackStark says it does not currently sell personal information or use third-party advertising trackers.`, [action("Read Privacy Policy", URLS.privacy), action("Privacy contact", URLS.email)]);
       }
 
@@ -203,19 +291,18 @@
       }
 
       if (includesAny(q, ["poster", "course poster", "program poster", "flyer", "brochure"])) {
+        if (selectedCourse?.poster) return response(`View the program poster for ${selectedCourse.name}. Confirm the active batch and enrollment details on WhatsApp.`, [action("View Program Poster", selectedCourse.poster), ...courseActions(selectedCourse)]);
         return response("The website includes supplied posters for the two instructor-led partner programs: TechFly CyberStart Level 1 and the Oxege Professional Cybersecurity & Ethical Hacking Program.", [action("TechFly poster", URLS.techflyPoster), action("Oxege poster", URLS.oxegePoster), action("Compare programs", homeSection("#courses"))]);
       }
 
       if (includesAny(q, ["price", "prices", "fee", "fees", "cost", "costs", "charges"])) {
-        return response(`Current listed prices are:
-• ${BEGINNER_COURSE.name}: PKR ${BEGINNER_COURSE.price.toLocaleString("en-US")} · ₹${BEGINNER_COURSE.inrPrice.toLocaleString("en-US")} INR · USD $${BEGINNER_COURSE.usdPrice}
-• ${CYBERSTART.name}: PKR ${CYBERSTART.originalPrice.toLocaleString("en-US")} → PKR ${CYBERSTART.price.toLocaleString("en-US")} · ₹${CYBERSTART.approximateInrOriginalPrice.toLocaleString("en-US")} → ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${CYBERSTART.approximateUsdOriginalPrice} → $${CYBERSTART.approximateUsdPrice}
-• ${OXEGE.name}: PKR ${OXEGE.originalPrice.toLocaleString("en-US")} → PKR ${OXEGE.price.toLocaleString("en-US")} · ₹${OXEGE.approximateInrOriginalPrice.toLocaleString("en-US")} → ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR · approx. USD $${OXEGE.approximateUsdOriginalPrice} → $${OXEGE.approximateUsdPrice}
-Confirm the active batch, seat availability, provider terms and current price before paying.`, [action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact)]);
+        const courses = /\ball\b/.test(q) ? COURSES : namedCourses.length > 1 ? namedCourses : selectedCourse && !asksComparison ? [selectedCourse] : COURSES;
+        return response(`Current listed course fees:\n${courses.map((course) => `• Course ${course.sequence} — ${course.name}: ${courseFees(course)}`).join("\n")}\nConfirm the final currency, amount, active batch and available seats before paying. INR prices are reference prices.`, courses.length === 1 ? courseActions(courses[0]) : [...courses.map((course) => action(`Course ${course.sequence}: View Fees`, course.enrollmentUrl)), action("Contact on WhatsApp", courseWhatsApp(BEGINNER_COURSE))]);
       }
 
       if (includesAny(q, ["payment", "pay", "paypal", "binance", "usdt", "bitcoin", "btc", "crypto", "enroll", "enrol", "enrollment", "admission", "buy course", "purchase course", "refund", "cancellation"])) {
-        return response(`${DATA.website.enrollment} For the self-paced course, create an account or sign in, confirm the payment method, pay and send your receipt with your account email on WhatsApp. International payments are accepted through PayPal, Binance Pay, USDT, Bitcoin (BTC), or other crypto by arrangement. Request the recipient, exact amount, currency, any fees and the crypto network before paying. Local JazzCash and Easypaisa transfers are charged in PKR; displayed INR prices are reference prices. Confirm the expected verification time, access period, support and refund eligibility before paying. Partner-program batches and enrollment terms are confirmed directly.`, [action("Enrollment steps", homeSection("#enrollment-guide")), action("Compare programs", homeSection("#courses")), action("Contact Talha", URLS.contact)]);
+        if (selectedCourse && selectedCourse !== BEGINNER_COURSE) return response(`For ${selectedCourse.name}, select Enroll Now or Contact on WhatsApp on its course page. Confirm the active batch, seats, fees, schedule, certificate terms and payment details directly before paying. International payments can be arranged through PayPal, Binance Pay, USDT, Bitcoin (BTC) or other crypto; confirm the recipient, final amount and crypto network first.`, courseActions(selectedCourse));
+        return response(`${DATA.website.enrollment} For the self-paced course, create an account or sign in, confirm the payment method, pay and send your receipt with your account email on WhatsApp. International payments are accepted through PayPal, Binance Pay, USDT, Bitcoin (BTC), or other crypto by arrangement. Request the recipient, exact amount, currency, any fees and the crypto network before paying. Local JazzCash and Easypaisa transfers are charged in PKR; displayed INR prices are reference prices. Confirm the expected verification time, access period, support and refund eligibility before paying. Partner-program batches and enrollment terms are confirmed directly.`, selectedCourse === BEGINNER_COURSE ? courseActions(BEGINNER_COURSE) : [action("Enrollment steps", homeSection("#enrollment-guide")), action("Compare programs", homeSection("#courses")), action("Contact on WhatsApp", courseWhatsApp(BEGINNER_COURSE))]);
       }
 
       if (includesAny(q, ["mission", "vision", "goal", "goals", "objective", "objectives", "purpose", "why hackstark", "gadget skills", "internet skills"])) {
@@ -242,21 +329,21 @@ Confirm the active batch, seat availability, provider terms and current price be
         return response(`Muhammad Ahmed Talha works with two independent training partners: ${TRAINING_PARTNERS.map((partner) => partner.name).join(" and ")}. TechFly partners on ${CYBERSTART.name}, while Oxege Technologies partners on ${OXEGE.name}. Neither company is owned by Muhammad Ahmed Talha or HackStark.`, [action("Compare partner programs", homeSection("#courses")), action("Training experience", URLS.experience)]);
       }
 
-      if (includesAny(q, ["oxege", "oxage", "oxegee", "ogexe", "oche", "och", "professional cybersecurity program", "ceh v13", "ceh ai", "587 topics", "three month program", "3 month program"])) {
+      if (selectedCourse === OXEGE || includesAny(q, ["oxege", "oxage", "oxegee", "ogexe", "oche", "och", "professional cybersecurity program", "ceh v13", "ceh ai", "587 topics", "three month program", "3 month program"])) {
         if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${OXEGE.name} is listed at PKR ${OXEGE.price.toLocaleString("en-US")} after a reduction from PKR ${OXEGE.originalPrice.toLocaleString("en-US")}. Approximate international pricing is USD $${OXEGE.approximateUsdPrice} after USD $${OXEGE.approximateUsdOriginalPrice}, or ₹${OXEGE.approximateInrPrice.toLocaleString("en-US")} INR after ₹${OXEGE.approximateInrOriginalPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
         if (includesAny(q, ["online", "physical", "classroom", "rahim yar khan", "location", "venue"])) return response(`${OXEGE.name} is available online and as physical instructor-led classes in ${OXEGE.physicalLocation}.`, [action("Oxege program", URLS.oxege)]);
         if (includesAny(q, ["official", "authorized", "ec council", "certification", "accredited"])) return response(`${OXEGE.name} is independent professional training aligned with relevant CEH v13 / CEH AI subject areas. It is not official EC-Council courseware, is not presented as an EC-Council-authorized training program, and this website does not claim that it awards CEH certification.`, [action("Program context", URLS.oxege), action("Full curriculum", URLS.oxegeCurriculum)]);
         if (includesAny(q, ["who teach", "instructor", "specialist", "provider", "where", "employment", "contract", "partner"])) return response(`${OXEGE.name} is delivered with independent training partner ${OXEGE.organization} by ${OXEGE.instructor}, ${OXEGE.role}. Oxege Technologies is not owned by HackStark. The engagement is listed for ${OXEGE.year}.`, [action("Oxege program", URLS.oxege), action("Instructor experience", URLS.experience)]);
         if (includesAny(q, ["tool", "platform", "software"])) return response(`${OXEGE.name} references tools across ${OXEGE.toolGroups.length} practice groups, including ${OXEGE.toolGroups.flatMap((group) => group.tools).slice(0, 18).join(", ")}, and more. These are curriculum references for controlled, authorized learning.`, [action("Tools and curriculum", URLS.oxege), action("Responsible use", URLS.responsible)]);
-        if (includesAny(q, ["curriculum", "module", "topic", "outline", "cover", "how many", "track"])) return response(`${OXEGE.name} is a ${OXEGE.duration.toLowerCase()} with ${OXEGE.moduleCount} numbered modules and ${OXEGE.topicCount} topics, plus Course Introduction and Cybersecurity Lab Setup. Part I contains ${OXEGE.coreModuleCount} CEH v13 / CEH AI-aligned core modules; Part II contains ${OXEGE.professionalModuleCount} professional cybersecurity modules.`, [action("Search all 587 topics", URLS.oxegeCurriculum)]);
-        return response(`${OXEGE.name} is a ${OXEGE.duration.toLowerCase()} delivered with independent training partner ${OXEGE.organization}. Its ${OXEGE.moduleCount} modules and ${OXEGE.topicCount} topics connect ethical hacking with defensive security, SOC/SIEM, threat hunting, DFIR, enterprise security, cloud, DevSecOps, AI security, capstones and professional reporting. Oxege Technologies is not owned by HackStark.`, [action("Explore Oxege program", URLS.oxege), action("View curriculum", URLS.oxegeCurriculum)]);
+        if (includesAny(q, ["curriculum", "syllabus", "module", "topic", "outline", "cover", "how many", "track"])) return response(`${OXEGE.name} is a ${OXEGE.duration.toLowerCase()} with ${OXEGE.moduleCount} numbered modules and ${OXEGE.topicCount} topics, plus Course Introduction and Cybersecurity Lab Setup. Part I contains ${OXEGE.coreModuleCount} CEH v13 / CEH AI-aligned core modules; Part II contains ${OXEGE.professionalModuleCount} professional cybersecurity modules.`, [action("Search all 587 topics", URLS.oxegeCurriculum)]);
+        return response(`${courseSummary(OXEGE)}\n${OXEGE.description}\nOxege Technologies is an independent training partner.`, courseActions(OXEGE));
       }
 
       if (includesAny(q, ["three courses", "three programs", "all courses", "all programs", "compare courses", "compare programs", "course options"])) {
-        return response(`The site presents three programs in this order:\n• HackStark — ${BEGINNER_COURSE.name}: PKR ${BEGINNER_COURSE.price.toLocaleString("en-US")}\n• Training partner TechFly — ${CYBERSTART.name}: PKR ${CYBERSTART.price.toLocaleString("en-US")}\n• Training partner Oxege Technologies — ${OXEGE.name}: PKR ${OXEGE.price.toLocaleString("en-US")}, available online and through physical classes in ${OXEGE.physicalLocation}\nTechFly and Oxege Technologies are independent partner organizations, not HackStark-owned companies.`, [action("All program boxes", homeSection("#courses")), action("Oxege curriculum", URLS.oxegeCurriculum)]);
+        return response(`${COURSES.map(courseSummary).join("\n\n")}\nTechFly and Oxege Technologies are independent training partners. The homepage shows three comparison boxes, three enrollment rows, then three course previews. Full details are on each dedicated course page.`, [...COURSES.map((course) => action(`Course ${course.sequence}: View Course`, course.pageUrl)), action("Compare Programs", homeSection("#courses"))]);
       }
 
-      if (includesAny(q, ["cyberstart", "cyber start", "cyberstert", "cybrstart", "techfly", "tech fly", "tekfly"])) {
+      if (selectedCourse === CYBERSTART || includesAny(q, ["cyberstart", "cyber start", "cyberstert", "cybrstart", "techfly", "tech fly", "tekfly"])) {
         const asksDifference = includesAny(q, ["same", "difference", "ethical hacking course", "hackstark course", "separate"]);
         if (includesAny(q, ["price", "fee", "cost", "charges", "payment"])) return response(`${CYBERSTART.name} is listed at PKR ${CYBERSTART.price.toLocaleString("en-US")} after a reduction from PKR ${CYBERSTART.originalPrice.toLocaleString("en-US")}. Approximate international pricing is USD $${CYBERSTART.approximateUsdPrice} after USD $${CYBERSTART.approximateUsdOriginalPrice}, or ₹${CYBERSTART.approximateInrPrice.toLocaleString("en-US")} INR after ₹${CYBERSTART.approximateInrOriginalPrice.toLocaleString("en-US")} INR.`, [action("View program pricing", homeSection("#courses")), action("CyberStart curriculum", URLS.cyberstartCurriculum)]);
         if (includesAny(q, ["schedule", "timing", "time", "weekend", "days", "online", "batch"])) return response(`${CYBERSTART.name} is presented as an online ${CYBERSTART.batchDuration.toLowerCase()} weekend batch delivered with training partner TechFly. The listed schedule is ${CYBERSTART.schedule}.`, [action("TechFly program", URLS.cyberstart), action("View curriculum", URLS.cyberstartCurriculum)]);
@@ -264,10 +351,10 @@ Confirm the active batch, seat availability, provider terms and current price be
         if (includesAny(q, ["tool", "technology", "platform"])) return response(`${CYBERSTART.name} includes curriculum-supported technologies and concepts such as ${CYBERSTART.tools.join(", ")}. Tools are used only in supervised, authorized labs and intentionally vulnerable training environments where applicable.`, [action("Explore CyberStart", URLS.cyberstart), action("Responsible use", URLS.responsible)]);
         if (includesAny(q, ["assessment", "final practical", "final exam"])) return response(`${CYBERSTART.assessment.title} is Lecture 16. It covers ${CYBERSTART.assessment.areas.join(", ")}. The source curriculum does not state a grade, certificate or accreditation.`, [action("View Lecture 16", URLS.cyberstartCurriculum)]);
         if (includesAny(q, ["lab", "practical", "hands on", "hands-on"])) return response(`Yes. ${CYBERSTART.name} includes supervised, authorized laboratory exercises: ${CYBERSTART.practicalLabs.join("; ")}. Web-security practice uses intentionally vulnerable training environments such as DVWA, WebGoat and OWASP Juice Shop. ${CYBERSTART.safetyNotice}`, [action("Practical labs", URLS.cyberstart), action("Responsible use", URLS.responsible)]);
-        if (includesAny(q, ["who teach", "instructor", "trainer", "where", "delivered", "techfly", "multan", "partner"])) return response(`${CYBERSTART.name} is delivered by ${CYBERSTART.instructor}, ${CYBERSTART.instructorRole}, with independent training partner ${CYBERSTART.provider} in ${CYBERSTART.location}. TechFly is not owned by HackStark. The partner engagement is listed for ${CYBERSTART.year}.`, [action("Training experience", URLS.experience), action("CyberStart", URLS.cyberstart)]);
-        if (includesAny(q, ["cover", "topic", "curriculum", "lecture", "how many", "outline"])) return response(`${CYBERSTART.name} contains ${CYBERSTART.lectureCount} lectures, ${CYBERSTART.durationHours} total hours and ${CYBERSTART.topicCount} topics. Its learning areas are:
+        if (includesAny(q, ["who teach", "instructor", "trainer", "where", "delivered", "partner"])) return response(`${CYBERSTART.name} is delivered by ${CYBERSTART.instructor}, ${CYBERSTART.instructorRole}, with independent training partner ${CYBERSTART.provider} in ${CYBERSTART.location}. TechFly is not owned by HackStark. The partner engagement is listed for ${CYBERSTART.year}.`, [action("Training experience", URLS.experience), action("CyberStart", URLS.cyberstart)]);
+        if (includesAny(q, ["cover", "topic", "curriculum", "syllabus", "lecture", "how many", "outline"])) return response(`${CYBERSTART.name} contains ${CYBERSTART.lectureCount} lectures, ${CYBERSTART.durationHours} total hours and ${CYBERSTART.topicCount} topics. Its learning areas are:
 ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("Full 16-lecture curriculum", URLS.cyberstartCurriculum)]);
-        return response(`${CYBERSTART.name}: ${CYBERSTART.subtitle}. It is a ${CYBERSTART.durationHours}-hour instructor-led cybersecurity foundation program delivered by ${CYBERSTART.instructor} with independent training partner ${CYBERSTART.provider}, ${CYBERSTART.location}. It combines core concepts, demonstrations, supervised labs, real-world case studies, career guidance and an integrated practical assessment. TechFly is not owned by HackStark.`, [action("Explore CyberStart", URLS.cyberstart), action("View curriculum", URLS.cyberstartCurriculum)]);
+        return response(`${courseSummary(CYBERSTART)}\n${CYBERSTART.description}\nDelivered by ${CYBERSTART.instructor} with independent training partner ${CYBERSTART.provider}, ${CYBERSTART.location}.`, courseActions(CYBERSTART));
       }
 
       if (includesAny(q, ["experience", "professional experience", "work experience", "career", "employment", "job history", "work history", "toyota", "sugar mills", "itsolera", "techfly", "oxege", "navttc", "udemy", "devcastle", "codealpha", "prodigy infotech"])) {
@@ -361,10 +448,8 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         return response(`The learning program includes ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons. The structured website catalog currently exposes ${BEGINNER_COURSE?.numberedModuleCount || 21} numbered modules plus ${BEGINNER_COURSE?.labLessonCount || 4} lab setup lessons, and only verified video destinations are clickable. ${LINKED_COURSE_LESSONS} catalog lessons currently have direct verified YouTube links; unavailable destinations are labeled “Included in Full Course.”`, [action("Browse curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)]);
       }
 
-      if (includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {
-        return response(`HackStark Academy offers a structured ${BEGINNER_COURSE?.level?.toLowerCase() || "beginner"}, self-paced Ethical Hacking Course for Beginners with ${BEGINNER_COURSE?.videoLessonCount || 50}+ lessons covering 25+ tools and platforms. It begins with virtualization and Kali Linux, then progresses through reconnaissance, network and system security, vulnerability assessment, web security, wireless, mobile, IoT, cloud and cryptography. No previous penetration testing experience is required.`, [
-          action("Explore the course", URLS.course), action("Open curriculum", URLS.curriculum), action("YouTube channel", URLS.youtube)
-        ]);
+      if (selectedCourse === BEGINNER_COURSE || includesAny(q, ["academy", "tutorial", "tutorials", "video", "videos", "youtube", "course", "beginner", "no programming", "kali lab", "learning path"])) {
+        return response(`${courseSummary(BEGINNER_COURSE)}\n${BEGINNER_COURSE.description}\nNo previous penetration testing experience is required. The course page includes ${BEGINNER_COURSE.reviewCount} reviews and free practical demonstrations.`, [...courseActions(BEGINNER_COURSE), action("View 51 Reviews", BEGINNER_COURSE.reviewsUrl), action("Watch Free Previews", URLS.learn)]);
       }
 
       if (includesAny(q, ["iot", "internet of things", "wireless", "wifi", "wi-fi"])) {
@@ -485,8 +570,7 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         form: root.querySelector("#jarvis-form"),
         input: root.querySelector("#jarvis-text-input"),
         send: root.querySelector("#jarvis-send-btn"),
-        clear: root.querySelector("#jarvis-clear-btn"),
-        footerStatus: root.querySelector(".jarvis-footer-text")
+        clear: root.querySelector("#jarvis-clear-btn")
       };
       this.bind();
       this.trackViewport();
@@ -549,16 +633,20 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
 
     showWelcome() {
       this.welcomed = true;
-      this.addMessage("bot", response("Hello! I’m JARVIS, HackStark’s local website assistant. I can explain HackStark’s beginner course and Muhammad Ahmed Talha’s programs delivered with independent training partners TechFly and Oxege Technologies. Neither partner company is owned by Muhammad Ahmed Talha or HackStark. I can also help with his experience, skills, projects and contact details."), [
+      this.addMessage("bot", response("Hello! I’m JARVIS. Explore Course 1: HackStark Ethical Hacking for Beginners, Course 2: TechFly CyberStart Level 1, or Course 3: Oxege Professional Cybersecurity. Ask about fees, languages, curriculum PDFs, enrollment, international payments, schedules or Course 1’s 51 reviews. I can also help with the instructor’s experience, projects and contact details."), [
         ["About", "What is HackStark?"],
         ["Experience", "Tell me about Muhammad Ahmed Talha's professional experience"],
         ["Skills", "What are Muhammad Ahmed Talha's technical skills?"],
         ["Learning topics", "What does HackStark teach?"],
         ["Projects", "Show me HackStark projects"],
-        ["CyberStart", "What is CyberStart Level 1?"],
-        ["Oxege program", "What is the Oxege professional cybersecurity program?"],
+        ["Course 1", "Tell me about course 1"],
+        ["Course 2", "Tell me about course 2"],
+        ["Course 3", "Tell me about course 3"],
         ["Compare programs", "Compare all three programs"],
-        ["Beginner course", "Tell me about the beginner course"],
+        ["Course fees", "Show all course fees"],
+        ["Languages", "Which languages are used for teaching?"],
+        ["Enroll", "How do I enroll in a course?"],
+        ["51 Reviews", "Where are the 51 course reviews?"],
         ["Curriculum", "Show the full course curriculum"],
         ["GitHub facts", "Show GitHub stats"],
         ["Founder", "Who founded HackStark?"],
@@ -609,7 +697,6 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
       this.el.input.disabled = value;
       this.el.send.setAttribute("aria-busy", String(value));
       this.root.classList.toggle("jarvis-processing", value);
-      if (this.el.footerStatus) this.el.footerStatus.textContent = value ? "Generating a HackStark response…" : "HackStark knowledge • No API key exposed";
     }
 
     addMessage(role, payload, quickActions = [], tone = "") {
@@ -663,8 +750,11 @@ ${CYBERSTART.learningAreas.map((area) => `• ${area}`).join("\n")}`, [action("F
         link.className = "jarvis-action-btn";
         link.href = safeUrl(item.url);
         link.textContent = item.label;
-        if (!item.url.startsWith("#") && !item.url.startsWith("mailto:") && !item.url.startsWith("tel:")) { link.target = "_blank"; link.rel = "noopener noreferrer"; }
-        if (item.url.startsWith("#")) link.addEventListener("click", () => this.close());
+        const destination = new URL(link.href, window.location.href);
+        const isSitePage = destination.origin === window.location.origin
+          && (destination.pathname.endsWith(".html") || destination.pathname.endsWith("/"));
+        if (!isSitePage && !["mailto:", "tel:"].includes(destination.protocol)) { link.target = "_blank"; link.rel = "noopener noreferrer"; }
+        if (isSitePage) link.addEventListener("click", () => this.close());
         container.append(link);
       });
       return container;

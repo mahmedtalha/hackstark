@@ -363,14 +363,20 @@
           const target = Number(original.replace(/[^\d]/g, ""));
           const suffix = original.endsWith("+") ? "+" : "";
           if (!Number.isFinite(target)) return;
+          const duration = target >= 1000 ? 1400 : 1100;
+          item.dataset.countUpTarget = original;
           const started = performance.now();
           item.classList.add("is-counting");
+          item.textContent = `0${suffix}`;
           const animate = (time) => {
-            const progress = Math.min(1, (time - started) / 240);
-            const value = Math.round(target * (1 - Math.pow(1 - progress, 4)));
+            const progress = Math.min(1, (time - started) / duration);
+            const value = Math.round(target * (1 - Math.pow(1 - progress, 3)));
             item.textContent = `${value.toLocaleString("en-US")}${suffix}`;
             if (progress < 1) requestAnimationFrame(animate);
-            else item.classList.remove("is-counting");
+            else {
+              item.textContent = original;
+              item.classList.remove("is-counting");
+            }
           };
           requestAnimationFrame(animate);
           currentObserver.unobserve(item);

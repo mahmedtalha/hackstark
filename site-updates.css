@@ -31,12 +31,35 @@
 .homepage-course .course-overview__grid h2,.homepage-course .cyberstart-hero h2,.homepage-course .oxege-hero h2 { max-width: 20ch; font-size: clamp(2rem,4.2vw,3.75rem); line-height: 1.08; }
 .homepage-course .cyberstart-hero__copy,.homepage-course .oxege-hero__copy { min-width: 0; }
 .homepage-course .course-teaching-languages { color: var(--accent-text); }
-.homepage-previews .course-preview-actions,.homepage-previews .course-preview-resources { display: flex; flex-wrap: wrap; gap: .65rem; }
-.homepage-previews .course-preview-actions { margin-top: 1.5rem; }
-.homepage-previews .course-preview-resources { margin-top: .65rem; }
-.homepage-previews .course-preview-actions .button { min-width: 0; }
-.homepage-previews .course-preview-contact { border-color: color-mix(in srgb,var(--accent) 40%,var(--border)); color: var(--accent-text); }
-.homepage-previews .course-preview-contact .whatsapp-icon { width: 1rem; height: 1rem; fill: currentColor; stroke: none; }
+.course-preview-actions,.course-preview-resources { display: flex; flex-wrap: wrap; gap: .65rem; }
+.course-preview-actions { margin-top: 1.5rem; }
+.course-preview-resources { margin-top: .65rem; }
+.course-preview-actions .button { min-width: 0; padding-inline: .85rem; font-size: .8rem; }
+.course-preview-contact { border-color: color-mix(in srgb,var(--accent) 40%,var(--border)); color: var(--accent-text); }
+.course-preview-contact .whatsapp-icon { width: 1rem; height: 1rem; fill: currentColor; stroke: none; }
+.course-enrollment-message { margin: .45rem 0 0; color: var(--text-soft); font-size: .8rem; }
+.course-enrollment-message:empty { display: none; }
+.homepage-course .course-overview__grid .course-title-two-lines,.detail-page .course-overview__grid .course-title-two-lines { max-width: none; font-size: clamp(1.35rem,3.4vw,2.65rem); line-height: 1.15; }
+.course-title-two-lines > span,.course-title-two-lines > a > span { display: block; white-space: nowrap; }
+.featured-course h2.course-title-two-lines { font-size: clamp(1.3rem,5.3vw,2.4rem); }
+.course-enrollment__content h3.course-title-two-lines { font-size: clamp(1.1rem,2.1vw,1.65rem); line-height: 1.2; }
+.course-curriculum-section .section-intro h2.course-title-two-lines { max-width: none; font-size: clamp(1.25rem,3.4vw,2.65rem); }
+.courses-tile--01 .courses-tile__body { container-type: inline-size; }
+.courses-tile--01 h3.course-title-two-lines { font-size: clamp(.68rem,8cqi,.87rem); }
+[data-count-up] { font-variant-numeric: tabular-nums; }
+.course-reviews-summary { display: inline-flex; align-items: center; gap: .4rem; width: fit-content; margin: .2rem 0 .9rem; padding: .4rem .7rem; border: 1px solid color-mix(in srgb,var(--accent) 30%,var(--border)); border-radius: 999px; background: color-mix(in srgb,var(--accent) 6%,var(--surface)); color: var(--text-soft); font-size: .76rem; font-weight: 650; }
+.course-reviews-summary strong { color: var(--accent-text); }
+.course-reviews-summary svg { width: .85rem; height: .85rem; }
+.course-reviews .section-intro h2 { max-width: none; }
+.course-review-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.course-review-card { display: grid; grid-template-rows: auto 1fr; gap: .9rem; min-width: 0; scroll-margin-top: 1rem; padding: 1.15rem; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-soft); }
+.course-review-card__header { display: flex; align-items: center; gap: .7rem; min-width: 0; }
+.course-review-avatar { display: grid; width: 2.3rem; height: 2.3rem; flex: 0 0 auto; place-items: center; border-radius: .7rem; color: var(--accent-text); background: color-mix(in srgb,var(--accent) 10%,var(--surface)); font: 750 .75rem var(--font-mono); }
+.course-review-card h3 { margin: 0; color: var(--text); font-size: .9rem; line-height: 1.4; }
+.course-review-quote { margin-left: auto; color: var(--accent-text); font-size: 2rem; line-height: 1; }
+.course-review-card blockquote { margin: 0; color: var(--text-soft); font-size: .85rem; line-height: 1.7; }
+.course-reviews-more { display: grid; justify-items: center; gap: .6rem; margin-top: 1.5rem; }
+.course-reviews-more p { margin: 0; color: var(--muted); font-size: .8rem; }
 .homepage-course.oxege .oxege-program-label,.homepage-course.oxege .oxege-hero h2 em,.homepage-course.oxege .oxege-credential__badge,.homepage-course.oxege .curriculum-sequence { color: var(--secondary-text); }
 .enrollment-guide .section-intro h2 { max-width: 24ch; }
 .enrollment-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; padding: 0; margin: 1.5rem 0; list-style: none; }
@@ -69,12 +92,14 @@
 .detail-page .course-subnav { position: static; }
 .detail-page .desktop-nav .courses-toggle { color: var(--accent-text); }
 @media (max-width: 64rem) {
+  .course-review-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .programs-compact .program-banner-list { grid-template-columns: 1fr; }
   .enrollment-steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .international-payments { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 40rem) {
-  .homepage-previews .course-preview-actions .button { width: 100%; justify-content: center; }
+  .course-review-grid { grid-template-columns: 1fr; gap: .7rem; }
+  .course-preview-actions .button { width: 100%; justify-content: center; }
   .homepage-course .oxege-credential dl div { align-items: flex-start; flex-direction: column; gap: .2rem; }
   .homepage-course .oxege-credential dd { text-align: left; }
   .enrollment-steps { grid-template-columns: 1fr; gap: .65rem; }
